@@ -16,6 +16,9 @@ h3 a{
 	font-size: 15px;
 }
 
+table td,th {
+   text-align: center;   
+}
 .tweet {
     margin: 0 auto;
     width: 100%;

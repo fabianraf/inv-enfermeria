@@ -71,6 +71,14 @@
 									<li>
 										<a class="text-white" href="/login">Login</a>
 									</li>
+									<li class="dropdown">
+										<a class="dropdown-toggle text-white"  data-toggle="dropdown">Administración<b class="caret"></b></a>
+										<ul class="dropdown-menu">
+											<li>
+												<a href="/logout">Ingresar Grupos de Alimentos</a>
+											</li>
+										</ul>
+									</li>
 								</ul>
 							<?php } ?>
 				
