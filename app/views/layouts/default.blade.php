@@ -75,7 +75,7 @@
 										<a class="dropdown-toggle text-white"  data-toggle="dropdown">Administración<b class="caret"></b></a>
 										<ul class="dropdown-menu">
 											<li>
-												<a href="/logout">Ingresar Grupos de Alimentos</a>
+												{{ HTML::link('tipo_de_alimentos/ingresar', "Ingresar Tipo de Alimentos" ) }}
 											</li>
 										</ul>
 									</li>

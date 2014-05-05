@@ -4,13 +4,23 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
+	
+	protected $fillable = array('email', 'password');
 
+	protected $guarded = array('id');
+
+	public static $rules = array(
+	    'email'=>'required|email|unique:usuarios',
+	    'password'=>'required|alpha_num|between:6,12|confirmed',
+	    'password_confirmation'=>'required|alpha_num|between:6,12'
+	    );
+			
 	/**
 	 * The database table used by the model.
 	 *
 	 * @var string
 	 */
-	protected $table = 'users';
+	protected $table = 'usuarios';
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -24,6 +34,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @return mixed
 	 */
+	
+
+	
+	
 	public function getAuthIdentifier()
 	{
 		return $this->getKey();
