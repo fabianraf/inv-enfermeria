@@ -1,6 +1,6 @@
 <?php
 
-class TipoDeAlimentosController extends BaseController {
+class EncuestasController extends BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,7 +9,7 @@ class TipoDeAlimentosController extends BaseController {
 	 */
 	public function index()
 	{
-        return View::make('grupo_de_alimentos.index');
+        return View::make('encuestas.index');
 	}
 
 	/**
@@ -20,7 +20,7 @@ class TipoDeAlimentosController extends BaseController {
 	public function create()
 	{
 		$tipos_de_alimentos = TipoDeAlimento::all();
-    return View::make('tipo_de_alimentos.create', array('tipos_de_alimentos' => $tipos_de_alimentos));
+        return View::make('encuestas.create', array('tipos_de_alimentos' => $tipos_de_alimentos));
 	}
 
 	/**
@@ -30,15 +30,7 @@ class TipoDeAlimentosController extends BaseController {
 	 */
 	public function store()
 	{
-		$input = Input::all();
-		$validator = Validator::make($input, TipoDeAlimento::$rules);
-		if ($validator->passes()) {
-			$index = TipoDeAlimento::all()->count() + 1;
-				$tipo_de_alimento = TipoDeAlimento::create($input);
-				return View::make("tipo_de_alimentos/tipo_de_alimento", array("tipo_de_alimento" => $tipo_de_alimento, 'index' => $index));
-		} else {
-			return Response::json($validator->messages(), 403);
-		}
+		//
 	}
 
 	/**
@@ -49,7 +41,7 @@ class TipoDeAlimentosController extends BaseController {
 	 */
 	public function show($id)
 	{
-        return View::make('grupodealimentos.show');
+        return View::make('encuestas.show');
 	}
 
 	/**
@@ -60,7 +52,7 @@ class TipoDeAlimentosController extends BaseController {
 	 */
 	public function edit($id)
 	{
-        return View::make('grupodealimentos.edit');
+        return View::make('encuestas.edit');
 	}
 
 	/**

@@ -13,4 +13,4 @@
 Route::get('/', "HomeController@home");
 Route::get("tipo_de_alimentos/ingresar", "TipoDeAlimentosController@create");
 Route::resource("tipo_de_alimentos", "TipoDeAlimentosController");
-	
+Route::get('encuesta', "EncuestasController@create");
