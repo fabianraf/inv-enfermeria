@@ -64,12 +64,23 @@
 						
 						
 							<?php }else{ ?>
-								<ul class="nav navbar-nav right-menu">
+								<ul class="nav navbar-nav">
 									<li>
 										<a class="text-white" href="/register">Registro</a>
 									</li>
 									<li>
 										<a class="text-white" href="/login">Login</a>
+									</li>
+									<li class="dropdown">
+										<a class="dropdown-toggle text-white"  data-toggle="dropdown">Encuestas<b class="caret"></b></a>
+										<ul class="dropdown-menu">
+											<li>
+												{{ HTML::link('/encuesta_bares', "Encuesta de Bares" ) }}
+											</li>
+											<li>
+												{{ HTML::link('/encuesta_consumo_alimentos', "Encuesta de Consumo de Alimentos" ) }}
+											</li>
+										</ul>
 									</li>
 									<li class="dropdown">
 										<a class="dropdown-toggle text-white"  data-toggle="dropdown">Administración<b class="caret"></b></a>
