@@ -16,8 +16,12 @@ class CreateAlimentosTable extends Migration {
 			$table->increments('id');
 			$table->string('nombre');
 			$table->string('porciones');
-			$table->integer('tipo_de_alimento_id');
+			$table->string('url_foto')->nullable();
+			$table->integer('tipo_de_alimento_id')->unsigned();
 			$table->timestamps();
+			$table->foreign('tipo_de_alimento_id')
+				->references('id')->on('tipo_de_alimentos')
+				->onDelete('set null');
 		});
 	}
 
