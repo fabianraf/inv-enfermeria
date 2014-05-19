@@ -2,8 +2,9 @@
 	
 @section('content')
 
+{{ Form::open(array('url' => 'encuesta_consumo_alimentos')) }}
 <div class="col-lg-12">
-	<h2>Encuesta Bares <div class="pull-right"><input type="submit" value="GRABAR" class="btn btn-success"> <input type="button" value="LIMPIAR" class="btn btn-warning"></div></h2>
+	<h2>Encuesta Frecuencia de Consumo <div class="pull-right"><input type="submit" value="GRABAR" class="btn btn-success"> <input type="button" value="LIMPIAR" class="btn btn-warning"></div></h2>
 	<hr>
 	<div class="col-lg-3">
 	  @foreach($tipos_de_alimentos as $tipo_de_alimento)
@@ -21,38 +22,43 @@
 				<th rowspan="2">
 					Porciones
 				</th>
-				<th colspan="4">
-					Semanal
+				<th colspan="6">
+					Frecuencia
 				</th>
 				<th rowspan="2">
 					N. de porciones diarias
 				</th>
-				<th colspan="1">
+				<th rowspan="2">
 					Tiempo de comida
 				</th>
 			</tr>
 		
 		  <tr>
+		  	<td>
+		      Nunca
+		    </td>
 		    <td>
 		      Diario
 		    </td>
 		    <td>
-		      1 Vez
+		      1 vez por semana
 		    </td>
 		    <td>
-		      2-4 veces
+		      2-4 veces por semana
 		    </td>
 		    <td>
-		      5-6 veces
+		      5-6 veces por semana
 		    </td>
 		    <td>
-		      desayuno, ½ mañana, almuerzo, ½ tarde, merienda
+		      Cada 15 días
 		    </td>
 		  </tr>
 			
 			<tr>
 				<td>Doritos</td>
 				<td>&nbsp;</td>
+				<td><input type="radio" name="alimento"></td>
+				<td><input type="radio" name="alimento"></td>
 				<td><input type="radio" name="alimento"></td>
 				<td><input type="radio" name="alimento"></td>
 				<td><input type="radio" name="alimento"></td>
@@ -67,6 +73,8 @@
 							<option>6</option>
 							<option>7</option>
 							<option>8</option>
+							<option>9</option>
+							<option>10</option>
 					</select>
 				</td>
 				
@@ -90,4 +98,5 @@
 	
 	
 </div>
+{{ Form::close() }}
 @stop

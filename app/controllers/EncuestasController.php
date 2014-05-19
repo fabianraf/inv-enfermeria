@@ -19,7 +19,7 @@ class EncuestasController extends BaseController {
 	 */
 	public function create()
 	{
-		$tipos_de_alimentos = TipoDeAlimento::all();
+		$tipos_de_alimentos = TipoDeAlimento::orderBy('nombre')->get();
         return View::make('encuestas.create', array('tipos_de_alimentos' => $tipos_de_alimentos));
 	}
 
