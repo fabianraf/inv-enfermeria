@@ -17,10 +17,10 @@ class EncuestasController extends BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function consumoAlimentos()
 	{
 		$tipos_de_alimentos = TipoDeAlimento::orderBy('nombre')->get();
-        return View::make('encuestas.create', array('tipos_de_alimentos' => $tipos_de_alimentos));
+        return View::make('encuestas.consumoAlimentos', array('tipos_de_alimentos' => $tipos_de_alimentos));
 	}
 
 	/**
@@ -75,6 +75,18 @@ class EncuestasController extends BaseController {
 	public function destroy($id)
 	{
 		//
+	}
+
+	public function createConsumoAlimentos()
+	{
+		$campos = Input::all();
+		$id = $campos['tipo_alimento_id'];
+		$tipo_de_alimento = TipoDeAlimento::find($id);
+    	$alimentos = $tipo_de_alimento->alimentos;
+		$tipos_de_alimentos = TipoDeAlimento::orderBy('nombre')->get();
+        return View::make('encuestas.consumoAlimentos', array('tipos_de_alimentos' => $tipos_de_alimentos,
+        													  'tipo_de_alimento_id' => $id,
+        													  'alimentos' => $alimentos));
 	}
 
 }

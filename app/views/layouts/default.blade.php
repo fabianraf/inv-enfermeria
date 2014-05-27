@@ -84,7 +84,27 @@
 									<li>
 										<a class="text-white" href="/login">Login</a>
 									</li>
-									
+
+									<li class="dropdown">
+										<a class="dropdown-toggle text-white"  data-toggle="dropdown">Encuestas<b class="caret"></b></a>
+										<ul class="dropdown-menu">											
+											<li>
+												{{ HTML::link('/encuesta_consumo_alimentos', "Consumo de Alimentos" ) }}
+											</li>
+											<li>
+												{{ HTML::link('/encuesta_bares', "Consumo de Alimentos en Bares" ) }}
+											</li>
+										</ul>
+									</li>
+									<li class="dropdown">
+										<a class="dropdown-toggle text-white"  data-toggle="dropdown">Administración<b class="caret"></b></a>
+										<ul class="dropdown-menu">
+											<li>
+												{{ HTML::link('tipo_de_alimentos/ingresar', "Ingresar Tipo de Alimentos" ) }}
+											</li>
+										</ul>
+									</li>
+
 								</ul>
 							<?php } ?>
 				
@@ -120,10 +140,6 @@
 		<!-- Scripts are placed here -->
 
 		{{ HTML::script('/bootstrap/js/bootstrap.min.js') }}
-		{{ HTML::script('/js/jquery/validate/jquery.validate.min.js') }}
-		{{ HTML::script('/js/jquery/validate/messages_es.js') }}
-		{{ HTML::script('/js/jquery/jquery.cookie.js') }}
-		{{ HTML::script('/js/app.js') }}
 
 	</body>
 </html>
