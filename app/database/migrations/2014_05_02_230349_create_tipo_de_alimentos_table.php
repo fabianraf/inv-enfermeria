@@ -15,7 +15,7 @@ class CreateTipoDeAlimentosTable extends Migration {
 		Schema::create('tipo_de_alimentos', function(Blueprint $table) {
 			$table->increments('id');
 			$table->string('nombre');
-			$table->integer('posicion');
+			$table->integer('posicion')->nullable();
 			$table->timestamps();
 		});
 	}
