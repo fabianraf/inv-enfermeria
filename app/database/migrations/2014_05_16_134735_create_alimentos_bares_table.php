@@ -17,9 +17,9 @@ class CreateAlimentosBaresTable extends Migration {
 			$table->string('nombre');
 			$table->string('porciones')->nullable();
 			$table->string('url_foto')->nullable();
-			$table->integer('tipo_de_alimento_bar_id')->unsigned();
+			$table->integer('tipo_de_alimento_bares_id')->unsigned();
 			$table->timestamps();
-			$table->foreign('tipo_de_alimento_bar_id')
+			$table->foreign('tipo_de_alimento_bares_id')
 				->references('id')->on('tipo_de_alimentos_bares')
 				->onDelete('set null');
 		});

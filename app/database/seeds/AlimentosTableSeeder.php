@@ -547,7 +547,7 @@ public function run()
 
         Alimento::create(array(
             'nombre'  => 'Queso mozarella',
-            'porciones' => '',
+            'porciones' => '1 onza',
             'tipo_de_alimento_id' => '12',            
         ));
 
@@ -642,7 +642,7 @@ public function run()
         ));
 
         Alimento::create(array(
-            'nombre'  => 'Gaseosas(coca cola, fanta, sprite, fiora fresa)',
+            'nombre'  => 'Gaseosas (coca cola, fanta, sprite, fiora fresa)',
             'porciones' => '1 vaso',
             'tipo_de_alimento_id' => '15',            
         ));

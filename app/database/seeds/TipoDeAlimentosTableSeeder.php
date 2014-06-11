@@ -55,7 +55,7 @@ public function run()
         ));
 
         TipoDeAlimento::create(array(
-            'nombre'  => 'Leguminosos, nueces y semillas',
+            'nombre'  => 'Leguminosas, nueces y semillas',
             'posicion' => '11'
         ));
 
@@ -70,7 +70,7 @@ public function run()
         ));
 
          TipoDeAlimento::create(array(
-            'nombre'  => 'Aceite y grasas',
+            'nombre'  => 'Aceites y grasas',
             'posicion' => '14'
         ));
 

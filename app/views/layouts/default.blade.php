@@ -31,7 +31,7 @@
 						<span class="icon-bar"></span>
 						
 					</button>
-					 <a class="navbar-brand" href="/">Nombre del sitio</a>
+					 <a class="navbar-brand" href="/">PHP Challenge</a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
@@ -40,7 +40,7 @@
 						<?php if (Auth::check()){
 							?>
 
-							<li class="dropdown">
+							<li class="dropdown pull-right" >
 								<a href="#" class="dropdown-toggle text-white"  data-toggle="dropdown">{{(Auth::user() -> email) }} 
 								<b class="caret"></b></a> 
 								<ul class="dropdown-menu">
@@ -58,10 +58,10 @@
 								<a class="dropdown-toggle text-white"  data-toggle="dropdown">Encuestas<b class="caret"></b></a>
 								<ul class="dropdown-menu">
 									<li>
-										{{ HTML::link('/encuesta_bares', "Encuesta de Bares" ) }}
+										{{ HTML::link('/encuesta_consumo_alimentos', "Consumo de Alimentos en Universidad y alrededores" ) }}
 									</li>
 									<li>
-										{{ HTML::link('/encuesta_consumo_alimentos', "Encuesta de Consumo de Alimentos" ) }}
+										{{ HTML::link('/encuesta_consumo_alimentos_bares', "Consumo de Alimentos en Bares" ) }}
 									</li>
 								</ul>
 							</li>
@@ -84,27 +84,6 @@
 									<li>
 										<a class="text-white" href="/login">Login</a>
 									</li>
-
-									<li class="dropdown">
-										<a class="dropdown-toggle text-white"  data-toggle="dropdown">Encuestas<b class="caret"></b></a>
-										<ul class="dropdown-menu">											
-											<li>
-												{{ HTML::link('/encuesta_consumo_alimentos', "Consumo de Alimentos" ) }}
-											</li>
-											<li>
-												{{ HTML::link('/encuesta_bares', "Consumo de Alimentos en Bares" ) }}
-											</li>
-										</ul>
-									</li>
-									<li class="dropdown">
-										<a class="dropdown-toggle text-white"  data-toggle="dropdown">Administración<b class="caret"></b></a>
-										<ul class="dropdown-menu">
-											<li>
-												{{ HTML::link('tipo_de_alimentos/ingresar', "Ingresar Tipo de Alimentos" ) }}
-											</li>
-										</ul>
-									</li>
-
 								</ul>
 							<?php } ?>
 				

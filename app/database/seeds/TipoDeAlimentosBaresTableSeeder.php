@@ -40,7 +40,7 @@ public function run()
         ));
 
         TipoDeAlimentoBares::create(array(
-            'nombre'  => 'Productos´procesados',
+            'nombre'  => 'Productos procesados',
             'posicion' => '8'
         ));       
     }
