@@ -70,9 +70,23 @@ class UsersController extends BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit()
 	{
-        return View::make('users.edit');
+        $user = Auth::user();
+        $input = Input::all();
+        $user->fecha_nacimiento = $input['fecha_nacimiento'];
+        $user->genero = $input['genero'];
+        $user->personas_hogar = $input['personas_hogar'];
+        $user->save();
+		return View::make('users.profile', ['user' => $user]); 
+
+	}
+
+
+	public function editProfile()
+	{
+        $user = Auth::user();
+		return View::make('users.edit', ['user' => $user]);         
 	}
 
 	/**
@@ -102,5 +116,6 @@ class UsersController extends BaseController {
 		$user = User::find($id);
     return View::make('entries.index', ['user' => $user]);
 	}
+
 
 }

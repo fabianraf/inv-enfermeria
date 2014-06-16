@@ -27,3 +27,7 @@ Route::get('users/register', "UsersController@create");
 Route::resource("sessions", 'SessionsController');
 Route::resource("users", 'UsersController');
 Route::get('/profile', 'UsersController@profile');
+Route::get('/edit', 'UsersController@editProfile');
+Route::post('edit', 'UsersController@edit');
+
+

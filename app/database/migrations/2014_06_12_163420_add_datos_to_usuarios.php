@@ -18,9 +18,9 @@ class AddDatosToUsuarios extends Migration {
 			$table->string('apellido');
 			$table->string('direccion');
 			$table->string('telefono');
-			$table->date('fecha_nacimiento');
-			$table->string('genero',1);
-			$table->string('personas_hogar');
+			$table->date('fecha_nacimiento')->nullable();
+			$table->string('genero',1)->nullable();
+			$table->string('personas_hogar')->nullable();
 		});
 	}
 

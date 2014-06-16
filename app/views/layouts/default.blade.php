@@ -8,7 +8,10 @@
 		<!-- CSS are placed here -->
 		{{ HTML::style('bootstrap/css/bootstrap.css') }}
 		{{ HTML::style('bootstrap/css/bootstrap-responsive.css') }}
+		{{ HTML::style('bootstrap/css/datepicker.css') }}
 		{{ HTML::style('css/app.css') }}
+
+		{{ HTML::style('bootstrap/less/datepicker.less') }}
 
 		<!-- js are placed here -->
 		{{ HTML::script('/js/jquery/jquery-1.11.0.min.js') }}
@@ -37,7 +40,7 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="navbar-menu">
 					<ul class="nav navbar-nav">
-						<?php if (Auth::check()){
+						<?php if (Auth::check()){							
 							?>
 
 							<li class="dropdown pull-right" >
@@ -45,9 +48,12 @@
 								<b class="caret"></b></a> 
 								<ul class="dropdown-menu">
 									<li>
-										{{ HTML::link('/profile', "Profile" ) }}
-									</li>
-									
+										{{ HTML::link('/profile', "Ver Perfil" ) }}
+									</li>									
+									<li class="divider"></li>
+									<li>
+										{{ HTML::link('/edit', "Editar Perfil" ) }}
+									</li>									
 									<li class="divider"></li>
 									<li>
 										<a href="/logout">Logout</a>
@@ -119,6 +125,7 @@
 		<!-- Scripts are placed here -->
 
 		{{ HTML::script('/bootstrap/js/bootstrap.min.js') }}
+		{{ HTML::script('/bootstrap/js/bootstrap-datepicker.js') }}
 
 	</body>
 </html>
