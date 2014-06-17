@@ -66,6 +66,7 @@
 									<li>
 										{{ HTML::link('/encuesta_consumo_alimentos', "Consumo de Alimentos en Universidad y alrededores" ) }}
 									</li>
+									<li class="divider"></li>
 									<li>
 										{{ HTML::link('/encuesta_consumo_alimentos_bares', "Consumo de Alimentos en Bares" ) }}
 									</li>
@@ -74,6 +75,10 @@
 							<li class="dropdown">
 								<a class="dropdown-toggle text-white"  data-toggle="dropdown">Administración<b class="caret"></b></a>
 								<ul class="dropdown-menu">
+									<li>
+										{{ HTML::link('antropometria', "Antropometria" ) }}
+									</li>
+									<li class="divider"></li>
 									<li>
 										{{ HTML::link('tipo_de_alimentos/ingresar', "Ingresar Tipo de Alimentos" ) }}
 									</li>
