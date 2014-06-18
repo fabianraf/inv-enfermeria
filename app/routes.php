@@ -20,6 +20,7 @@ Route::post('encuesta_consumo_alimentos', "EncuestasController@createConsumoAlim
 Route::get('antropometria', "AntropometriasController@main");
 Route::post('antropometria', "AntropometriasController@buscarEstudiantes");
 Route::get('antropometria/datos/{id}', "AntropometriasController@ingresarDatos");
+Route::post('antropometria.ingresar', "AntropometriasController@create");
 
 Route::get('/registrar', "UsersController@create");
 Route::get('/login', "SessionsController@create");

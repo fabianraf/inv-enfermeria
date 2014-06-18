@@ -25,6 +25,7 @@
         <th></th>
     </tr> 
 	<ul>
+  @if(isset($estudiantes))
   @foreach($estudiantes as $estudiante)
   <tr>
         <td>{{ $estudiante->cedula }}</td>
@@ -33,6 +34,7 @@
         <td><a href="{{{ URL::to('antropometria/datos/'.$estudiante->id) }}}">Datos Antropometricos</a></td>        
     </tr>    
   @endforeach
+  @endif
 	</ul>
 </table>
 </div>
