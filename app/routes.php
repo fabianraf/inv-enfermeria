@@ -17,8 +17,10 @@ Route::resource("tipo_de_alimentos", "TipoDeAlimentosController");
 Route::get('encuesta_consumo_alimentos', "EncuestasController@consumoAlimentos");
 Route::post('encuesta_consumo_alimentos', "EncuestasController@createConsumoAlimentos");
 
-Route::get('encuesta_consumo_alimentos_bares', "EncuestasController@consumoAlimentosBares");
-Route::post('encuesta_consumo_alimentos_bares', "EncuestasController@createConsumoAlimentosBares");
+Route::get('antropometria', "AntropometriasController@main");
+Route::post('antropometria', "AntropometriasController@buscarEstudiantes");
+Route::get('antropometria/datos/{id}', "AntropometriasController@ingresarDatos");
+Route::post('antropometria.ingresar', "AntropometriasController@create");
 
 Route::get('/registrar', "UsersController@create");
 Route::get('/login', "SessionsController@create");
@@ -27,3 +29,10 @@ Route::get('users/register', "UsersController@create");
 Route::resource("sessions", 'SessionsController');
 Route::resource("users", 'UsersController');
 Route::get('/profile', 'UsersController@profile');
+Route::get('/edit', 'UsersController@editProfile');
+Route::post('edit', 'UsersController@edit');
+
+Route::get('encuesta_consumo_alimentos_bares', "EncuestasController@consumoAlimentosBares");
+Route::post('encuesta_consumo_alimentos_bares', "EncuestasController@createConsumoAlimentosBares");
+
+
