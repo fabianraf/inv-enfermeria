@@ -35,6 +35,11 @@ class EncuestasController extends BaseController {
         return View::make('encuestas.consumoAlimentosBares', array('tipos_de_alimentos_bares' => $tipos_de_alimentos_bares));
 	}
 
+	public function consumoHabitual()
+	{
+		return View::make('encuestas.consumoHabitual');
+	}
+
 	/**
 	 * Store a newly created resource in storage.
 	 *

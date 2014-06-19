@@ -70,6 +70,10 @@
 									<li>
 										{{ HTML::link('/encuesta_consumo_alimentos_bares', "Consumo de Alimentos en Bares" ) }}
 									</li>
+									<li class="divider"></li>
+									<li>
+										{{ HTML::link('/encuesta_consumo_habitual', "Consumo Habitual" ) }}
+									</li>
 								</ul>
 							</li>
 							<li class="dropdown">

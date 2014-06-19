@@ -35,4 +35,4 @@ Route::post('edit', 'UsersController@edit');
 Route::get('encuesta_consumo_alimentos_bares', "EncuestasController@consumoAlimentosBares");
 Route::post('encuesta_consumo_alimentos_bares', "EncuestasController@createConsumoAlimentosBares");
 
-
+Route::get('encuesta_consumo_habitual', "EncuestasController@consumoHabitual");
