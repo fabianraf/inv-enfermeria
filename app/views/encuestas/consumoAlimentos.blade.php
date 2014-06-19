@@ -12,17 +12,27 @@
 	</h2>
 	<hr>
 	<div class="col-lg-3">
-	  @foreach($tipos_de_alimentos as $tipo_de_alimento)
-			<!--<input type="button" value="{{ $tipo_de_alimento->nombre }}" class="btn btn-default"/> </br></br>-->
-			{{ $tipo_de_alimento->id }}
-			{{ Form::hidden('tipo_alimento_id', $tipo_de_alimento->id) }}
-			{{ Form::submit($tipo_de_alimento->nombre, array('class'=>'btn btn-default')) }}</br></br>
+	  @foreach($tipos_de_alimentos as $key => $tipo_de_alimento)
+			<?php 
+				if($key == 0)
+					$button_class = "btn-info";
+				else
+					$button_class = "";
+			?>
+			{{ Form::button($tipo_de_alimento->nombre, array('class'=>'btn btn-default tipo-alimento ' . $button_class, 'onclick' => 'submit_tipo_de_alimento("'.$tipo_de_alimento->id.'")')) }}
+			
+		</br></br>
 	  @endforeach
 	</div>
-	@if(isset($tipo_de_alimento_id))
-	{{$tipo_de_alimento_id}}
+	@foreach($tipos_de_alimentos as $key => $tipo_de_alimento)
+	<?php 
+		if($key == 0)
+			$class = "";
+		else
+			$class = "hidden";
+	?>
 	<div class="col-lg-9">
-		<table class="table table-bordered col-lg-12"> 
+		<table class="table table-bordered col-lg-12 {{ $class }}" id="tipo-alimento-{{ $tipo_de_alimento->id }}"> 
 
 			<tr>
 				
@@ -63,7 +73,7 @@
 		      Cada 15 días
 		    </td>
 		  </tr>
-		 @foreach($alimentos as $alimento)			
+		 		@foreach($tipo_de_alimento->alimentos as $alimento)
 		  	<tr>
 				<td>{{ $alimento->nombre }}</td>
 				<td>&nbsp;</td>
@@ -96,10 +106,10 @@
 					Merienda <input type="checkbox" name="alimento">
 				</td>
 			</tr>
-		@endforeach	  
+  		@endforeach
 		</table>
 	</div>
-	@endif
+	@endforeach
 </div>
 {{ Form::close() }}
 @stop

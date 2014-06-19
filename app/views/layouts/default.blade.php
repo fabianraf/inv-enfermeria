@@ -119,6 +119,7 @@
 		<!-- Scripts are placed here -->
 
 		{{ HTML::script('/bootstrap/js/bootstrap.min.js') }}
+		{{ HTML::script('/js/app.js') }}
 
 	</body>
 </html>
