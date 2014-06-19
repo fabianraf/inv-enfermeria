@@ -11,7 +11,7 @@
 		</div>
 	</h2>
 	<hr>
-	<div class="col-lg-3">
+	<div class="col-lg-12">
 	  @foreach($tipos_de_alimentos as $key => $tipo_de_alimento)
 			<?php 
 				if($key == 0)
@@ -20,10 +20,9 @@
 					$button_class = "";
 			?>
 			{{ Form::button($tipo_de_alimento->nombre, array('class'=>'btn btn-default tipo-alimento ' . $button_class, 'onclick' => 'submit_tipo_de_alimento("'.$tipo_de_alimento->id.'")')) }}
-			
-		</br></br>
-	  @endforeach
+		@endforeach
 	</div>
+	</br></br>
 	@foreach($tipos_de_alimentos as $key => $tipo_de_alimento)
 	<?php 
 		if($key == 0)
@@ -31,7 +30,7 @@
 		else
 			$class = "hidden";
 	?>
-	<div class="col-lg-9">
+	<div class="col-lg-12">
 		<table class="table table-bordered col-lg-12 {{ $class }}" id="tipo-alimento-{{ $tipo_de_alimento->id }}"> 
 
 			<tr>
