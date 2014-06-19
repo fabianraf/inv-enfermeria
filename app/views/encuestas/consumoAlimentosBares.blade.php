@@ -12,17 +12,27 @@
 	</h2>
 	<hr>
 	<div class="col-lg-3">
-	  @foreach($tipos_de_alimentos_bares as $tipo_de_alimento)
-			<!--<input type="button" value="{{ $tipo_de_alimento->nombre }}" class="btn btn-default"/> </br></br>-->
-			{{ $tipo_de_alimento->id }}
-			{{ Form::hidden('tipo_alimento_id', $tipo_de_alimento->id) }}
-			{{ Form::submit($tipo_de_alimento->nombre, array('class'=>'btn btn-default')) }}</br></br>
+	  @foreach($tipos_de_alimentos_bares as $key => $tipo_de_alimento)
+			<?php 
+				if($key == 0)
+					$button_class = "btn-info";
+				else
+					$button_class = "";
+			?>
+			{{ Form::button($tipo_de_alimento->nombre, array('class'=>'btn btn-default tipo-alimento ' . $button_class, 'onclick' => 'submit_tipo_de_alimento("'.$tipo_de_alimento->id.'")')) }}
+			
+		</br></br>
 	  @endforeach
 	</div>
-	@if(isset($tipo_de_alimento_id))
-	{{$tipo_de_alimento_id}}
+	@foreach($tipos_de_alimentos_bares as $key => $tipo_de_alimento)
+	<?php 
+		if($key == 0)
+			$class = "";
+		else
+			$class = "hidden";
+	?>
 	<div class="col-lg-9">
-		<table class="table table-bordered col-lg-12"> 
+		<table class="table table-bordered col-lg-12 {{ $class }}" id="tipo-alimento-{{ $tipo_de_alimento->id }}"> 
 
 			<tr>
 				
@@ -63,16 +73,16 @@
 		      Cada 15 días
 		    </td>
 		  </tr>
-		 @foreach($alimentos as $alimento)			
+		 @foreach($tipo_de_alimento->alimentosBares as $alimento)			
 		  	<tr>
 				<td>{{ $alimento->nombre }}</td>
 				<td>&nbsp;</td>
-				<td><input type="radio" name="alimento"></td>
-				<td><input type="radio" name="alimento"></td>
-				<td><input type="radio" name="alimento"></td>
-				<td><input type="radio" name="alimento"></td>
-				<td><input type="radio" name="alimento"></td>
-				<td><input type="radio" name="alimento"></td>
+				<td><input type="radio" name="frecuencia[{{ Helper::clean($alimento->nombre) }}]" value="{{ $alimento->id }}"></td>
+				<td><input type="radio" name="frecuencia[{{ Helper::clean($alimento->nombre) }}]" value="{{ $alimento->id }}"></td>
+				<td><input type="radio" name="frecuencia[{{ Helper::clean($alimento->nombre) }}]" value="{{ $alimento->id }}"></td>
+				<td><input type="radio" name="frecuencia[{{ Helper::clean($alimento->nombre) }}]" value="{{ $alimento->id }}"></td>
+				<td><input type="radio" name="frecuencia[{{ Helper::clean($alimento->nombre) }}]" value="{{ $alimento->id }}"></td>
+				<td><input type="radio" name="frecuencia[{{ Helper::clean($alimento->nombre) }}]" value="{{ $alimento->id }}"></td>
 				<td>
 					<select>
 							<option>1</option>
@@ -99,7 +109,7 @@
 		@endforeach	  
 		</table>
 	</div>
-	@endif
+	@endforeach
 </div>
 {{ Form::close() }}
 @stop

@@ -77,12 +77,12 @@
 		  	<tr>
 				<td>{{ $alimento->nombre }}</td>
 				<td>&nbsp;</td>
-				<td><input type="radio" name="alimento"></td>
-				<td><input type="radio" name="alimento"></td>
-				<td><input type="radio" name="alimento"></td>
-				<td><input type="radio" name="alimento"></td>
-				<td><input type="radio" name="alimento"></td>
-				<td><input type="radio" name="alimento"></td>
+				<td><input type="radio" name="frecuencia[{{ Helper::clean($alimento->nombre) }}]" value="{{ $alimento->id }}"></td>
+				<td><input type="radio" name="frecuencia[{{ Helper::clean($alimento->nombre) }}]" value="{{ $alimento->id }}"></td>
+				<td><input type="radio" name="frecuencia[{{ Helper::clean($alimento->nombre) }}]" value="{{ $alimento->id }}"></td>
+				<td><input type="radio" name="frecuencia[{{ Helper::clean($alimento->nombre) }}]" value="{{ $alimento->id }}"></td>
+				<td><input type="radio" name="frecuencia[{{ Helper::clean($alimento->nombre) }}]" value="{{ $alimento->id }}"></td>
+				<td><input type="radio" name="frecuencia[{{ Helper::clean($alimento->nombre) }}]" value="{{ $alimento->id }}"></td>
 				<td>
 					<select>
 							<option>1</option>

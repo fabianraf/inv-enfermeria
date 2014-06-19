@@ -13,11 +13,11 @@ class AddDatosToUsuarios extends Migration {
 	public function up()
 	{
 		Schema::table('usuarios', function(Blueprint $table) {
-			$table->string('cedula',10);
-			$table->string('nombre');
-			$table->string('apellido');
-			$table->string('direccion');
-			$table->string('telefono');
+			$table->string('cedula',10)->nullable();
+			$table->string('nombre')->nullable();
+			$table->string('apellido')->nullable();
+			$table->string('direccion')->nullable();
+			$table->string('telefono')->nullable();
 			$table->date('fecha_nacimiento')->nullable();
 			$table->string('genero',1)->nullable();
 			$table->string('personas_hogar')->nullable();
