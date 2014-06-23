@@ -22,7 +22,7 @@
         <th>Cedula</th>
         <th>Nombre Completo</th>
         <th>Fecha de nacimiento</th>
-        <th></th>
+        <th>Datos Antropometricos</th>
     </tr> 
 	<ul>
   @if(isset($estudiantes))
@@ -31,12 +31,17 @@
         <td>{{ $estudiante->cedula }}</td>
         <td>{{ $estudiante->nombre.' '.$estudiante->apellido }}</td> 
         <td>{{ $estudiante->fecha_nacimiento }}</td>
-        <td><a href="{{{ URL::to('antropometria/datos/'.$estudiante->id) }}}">Datos Antropometricos</a></td>        
+        @if($estudiante->antropometria=='SI')
+          <td><a href="{{{ URL::to('antropometria/datos/'.$estudiante->id) }}}">Ver</a></td>
+        @else
+          <td><a href="{{{ URL::to('antropometria/datos/'.$estudiante->id) }}}">Ingresar</a></td>
+        @endif
     </tr>    
   @endforeach
   @endif
-	</ul>
+	</ul>  
 </table>
+<?php echo $estudiantes->links(); ?>
 </div>
 {{ Form::close() }}
 @stop
