@@ -6,8 +6,8 @@ class AntropometriasController extends BaseController {
 	public function main()
 	{
 		$estudiantes = DB::table('usuarios')->where('tipo', '=', 'estudiante')
-                                                ->orderBy('apellido')
-                                                ->orderBy('nombre')                                                
+                                                ->orderBy('nombre')
+                                                ->orderBy('apellido')                                                
                                                 ->paginate(20);
 		//$estudiantes = User::where('tipo', '=', 'estudiante');                             
         return View::make('antropometrias.main', array('estudiantes' => $estudiantes));
@@ -16,12 +16,13 @@ class AntropometriasController extends BaseController {
 	public function buscarEstudiantes()
 	{
 		$campos = Input::all();
-		$cedula = $campos['busqueda'];
+		$nombre = $campos['busqueda'];
 		$estudiantes = DB::table('usuarios')->where('tipo', '=', 'estudiante')
-											->where('cedula', '=', $cedula)
-                                                ->orderBy('apellido')
-                                                ->orderBy('nombre')                                                
-                                                ->get();
+											->where('nombre', 'like', '%'.$nombre.'%')
+											->orWhere('apellido', 'like', '%'.$nombre.'%')
+                                            ->orderBy('nombre')
+                                            ->orderBy('apellido')                                                
+                                            ->paginate(20);
 		return View::make('antropometrias.main', array('estudiantes' => $estudiantes));		
 	}
 

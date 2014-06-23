@@ -12,6 +12,7 @@
 
 	<div class="form-group">    	
         {{Form::text('busqueda', Input::old('busqueda'), array('class'=>'form-control'))}}
+        <br>
         {{Form::submit('Buscar', array('class'=>'btn btn-success'))}}
     </div>    
 </div>
