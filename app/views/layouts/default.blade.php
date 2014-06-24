@@ -74,6 +74,18 @@
 									<li>
 										{{ HTML::link('/encuesta_consumo_habitual', "Consumo Habitual" ) }}
 									</li>
+									<li class="divider"></li>
+									<li>
+										{{ HTML::link('/encuesta_higiene_personal', "Control de higiene del personal de bares y comedores de la PUCE" ) }}
+									</li>
+									<li class="divider"></li>
+									<li>
+										{{ HTML::link('/encuesta_manipulacion_comedores', "Control de manipulación de alimentos e higiene de los comedores de la PUCE" ) }}
+									</li>
+									<li class="divider"></li>
+									<li>
+										{{ HTML::link('/encuesta_manipulacion_bares', "Control de manipulación de alimentos e higiene de los bares de la PUCE" ) }}
+									</li>
 								</ul>
 							</li>
 							<li class="dropdown">

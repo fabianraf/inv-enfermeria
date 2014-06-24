@@ -19,7 +19,8 @@ class AntropometriasController extends BaseController {
 		$nombre = $campos['busqueda'];
 		$estudiantes = DB::table('usuarios')->where('tipo', '=', 'estudiante')
 											->where('nombre', 'like', '%'.$nombre.'%')
-											->orWhere('apellido', 'like', '%'.$nombre.'%')
+											->orWhere('tipo', '=', 'estudiante')
+											->where('apellido', 'like', '%'.$nombre.'%')
                                             ->orderBy('nombre')
                                             ->orderBy('apellido')                                                
                                             ->paginate(20);
