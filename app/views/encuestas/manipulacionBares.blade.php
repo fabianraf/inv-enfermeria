@@ -4,7 +4,7 @@
 
 {{ Form::open(array('url' => 'encuesta_manipulacion_comedores')) }}
 <div class="col-lg-12">
-	<h2>Control de manipulación de alimentos e higiene de los comedores de la PUCE
+	<h2>Control de manipulación de alimentos e higiene de los bares de la PUCE
 		<div class="pull-right">
 			<input type="submit" value="GRABAR" class="btn btn-success">
 			<input type="button" value="LIMPIAR" class="btn btn-warning">
