@@ -36,14 +36,17 @@ class EncuestasController extends BaseController {
 
 	public function manipulacionComedores()
 	{
-		$encabezados_preguntas = EncabezadoPreguntasEncuestas::distinct()->where('tipo_encuesta_id', '=', '2')->get(array('encabezado'));
-		return View::make('encuestas.manipulacionComedores', array('encabezados_preguntas' => $encabezados_preguntas));
+		return View::make('encuestas.manipulacionComedores');
+	}
+
+	public function createManipulacionComedores()
+	{
+		return View::make('encuestas.emc_manipulacion_alimentos');
 	}
 
 	public function manipulacionBares()
 	{
-		$encabezados_preguntas = EncabezadoPreguntasEncuestas::distinct()->where('tipo_encuesta_id', '=', '3')->get(array('encabezado'));
-		return View::make('encuestas.manipulacionBares', array('encabezados_preguntas' => $encabezados_preguntas));
+		return View::make('encuestas.manipulacionBares');
 	}
 
 	/**
