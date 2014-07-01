@@ -42,6 +42,17 @@ $(document).ready(function() {
 		}
 		$(this).addClass("btn-info");
 	});
+
+	$(".encabezado-pregunta").click(function(){
+		if($(this).hasClass("btn-info")){
+			//No hace nada
+		} else{
+			$(".encabezado-pregunta").each(function(){
+				$(this).removeClass("btn-info");
+			});
+		}
+		$(this).addClass("btn-info");
+	});
 	
 });  
 
@@ -52,6 +63,15 @@ function submit_tipo_de_alimento(tipo_de_alimento_id){
 		}else{
 			$(this).addClass("hidden");
 		}
+	});	
+}
+
+function submit_encabezado_pregunta(encabezado_pregunta_id){
+	$(".table-bordered").each(function(){
+		if($(this).attr("id") == "encabezado-pregunta-" + encabezado_pregunta_id){
+			$(this).removeClass("hidden");
+		}else{
+			$(this).addClass("hidden");
+		}
 	});
-	
-} 
+}

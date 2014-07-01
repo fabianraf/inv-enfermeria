@@ -31,46 +31,19 @@
 				</th>
 				<th>
 					Preparacion/alimento
-				</th>
-				<th>
-					Tipo de preparacion
-				</th>
+				</th>				
 				<th>
 					Ingredientes
+				</th>
+				<th>
+					Forma de cocción
 				</th>
 				<th>
 					Imagen
 				</th>
 				<th>
 					Num. porciones
-				</th>
-				<th>
-					Kcal
-				</th>
-				<th>
-					CHO (g)
-				</th>
-				<th>
-					Prot. (g)					
-				</th>
-				<th>
-					Grasa (g)
-				</th>
-				<th>
-					Vitamina A (ug/d)
-				</th>
-				<th>
-					Vitamina C (mg/d)
-				</th>
-				<th>
-					Folato (ug/d)
-				</th>
-				<th>
-					Calcio (mg/d)
-				</th>
-				<th>
-					Hierro (mg/d)
-				</th>
+				</th>				
 			</tr>
 		
 		  <tr>
@@ -97,6 +70,11 @@
 		    </td>
 		    <td>
 				<select>
+					
+				</select>
+		    </td>		    
+		    <td>
+				<select>
 					<option>--Seleccione--</option>
 					<option>Cocido</option>
 					<option>Estofado</option>
@@ -106,12 +84,7 @@
 					<option>Al vapor</option>
 				</select>
 		    </td>
-		    <td>
-				<select>
-					
-				</select>
-		    </td>
-		    <td></td>
+		    <td></td>		    
 		    <td>
 				<select>
 					<option>--Seleccione--</option>
@@ -126,16 +99,7 @@
 					<option>9</option>
 					<option>10</option>
 				</select>
-			</td>		    
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
+			</td>		    		    
 		  </tr>
 
 		  <tr>
@@ -162,6 +126,11 @@
 		    </td>
 		    <td>
 				<select>
+					
+				</select>
+		    </td>		    
+		    <td>
+				<select>
 					<option>--Seleccione--</option>
 					<option>Cocido</option>
 					<option>Estofado</option>
@@ -169,11 +138,6 @@
 					<option>Al Horno</option>
 					<option>A la plancha</option>
 					<option>Al vapor</option>
-				</select>
-		    </td>
-		    <td>
-				<select>
-					
 				</select>
 		    </td>
 		    <td></td>
@@ -191,16 +155,7 @@
 					<option>9</option>
 					<option>10</option>
 				</select>
-			</td>		    
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
+			</td>		    		    
 		  </tr>
 
 		  <tr>
@@ -227,6 +182,11 @@
 		    </td>
 		    <td>
 				<select>
+					
+				</select>
+		    </td>		    
+		    <td>
+				<select>
 					<option>--Seleccione--</option>
 					<option>Cocido</option>
 					<option>Estofado</option>
@@ -234,11 +194,6 @@
 					<option>Al Horno</option>
 					<option>A la plancha</option>
 					<option>Al vapor</option>
-				</select>
-		    </td>
-		    <td>
-				<select>
-					
 				</select>
 		    </td>
 		    <td></td>
@@ -256,16 +211,7 @@
 					<option>9</option>
 					<option>10</option>
 				</select>
-			</td>		    
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
+			</td>		    	    
 		  </tr>
 
 		  <tr>
@@ -292,6 +238,11 @@
 		    </td>
 		    <td>
 				<select>
+					
+				</select>
+		    </td>		    
+		    <td>
+				<select>
 					<option>--Seleccione--</option>
 					<option>Cocido</option>
 					<option>Estofado</option>
@@ -299,11 +250,6 @@
 					<option>Al Horno</option>
 					<option>A la plancha</option>
 					<option>Al vapor</option>
-				</select>
-		    </td>
-		    <td>
-				<select>
-					
 				</select>
 		    </td>
 		    <td></td>
@@ -321,16 +267,7 @@
 					<option>9</option>
 					<option>10</option>
 				</select>
-			</td>		    
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
+			</td>		    		    
 		  </tr>
 
 		  <tr>
@@ -357,6 +294,11 @@
 		    </td>
 		    <td>
 				<select>
+					
+				</select>
+		    </td>		    
+		    <td>
+				<select>
 					<option>--Seleccione--</option>
 					<option>Cocido</option>
 					<option>Estofado</option>
@@ -364,11 +306,6 @@
 					<option>Al Horno</option>
 					<option>A la plancha</option>
 					<option>Al vapor</option>
-				</select>
-		    </td>
-		    <td>
-				<select>
-					
 				</select>
 		    </td>
 		    <td></td>
@@ -386,16 +323,7 @@
 					<option>9</option>
 					<option>10</option>
 				</select>
-			</td>		    
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
+			</td>		    		    
 		  </tr>	 	
 		</table>
 	</div>

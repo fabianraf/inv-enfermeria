@@ -66,7 +66,7 @@
 								<strong>Fecha de nacimiento:</strong>														
 							</td>
 							<td align='left'>
-								{{ Form::text('fecha_nacimiento', '', array('class' => 'form-control','placeholder' => $user->fecha_nacimiento,'id' => 'datepicker','data-date-format'=>'yyyy-mm-dd')) }}</p>
+								{{ Form::text('fecha_nacimiento', '', array('class' => 'form-control','placeholder' => $user->fecha_nacimiento,'id' => 'datepicker','data-date-format'=>'yyyy-mm-dd','readonly')) }}</p>
 								<script>
 								  $(function() {
 								    $( "#datepicker" ).datepicker();
