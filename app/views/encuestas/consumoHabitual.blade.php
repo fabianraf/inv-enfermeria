@@ -39,7 +39,7 @@
 					Forma de cocción
 				</th>
 				<th>
-					Imagen
+					Cantidad en medidas caseras
 				</th>
 				<th>
 					Num. porciones
@@ -84,22 +84,8 @@
 					<option>Al vapor</option>
 				</select>
 		    </td>
-		    <td></td>		    
-		    <td>
-				<select>
-					<option>--Seleccione--</option>
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
-					<option>5</option>
-					<option>6</option>
-					<option>7</option>
-					<option>8</option>
-					<option>9</option>
-					<option>10</option>
-				</select>
-			</td>		    		    
+		    <td>{{Form::text('cantidad', Input::old('cantidad'), array('class'=>'form-control'))}}</td>
+		    <td>{{Form::text('porciones', Input::old('porciones'), array('class'=>'form-control'))}}</td>
 		  </tr>
 
 		  <tr>
@@ -140,22 +126,8 @@
 					<option>Al vapor</option>
 				</select>
 		    </td>
-		    <td></td>
-		    <td>
-				<select>
-					<option>--Seleccione--</option>
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
-					<option>5</option>
-					<option>6</option>
-					<option>7</option>
-					<option>8</option>
-					<option>9</option>
-					<option>10</option>
-				</select>
-			</td>		    		    
+		    <td>{{Form::text('cantidad', Input::old('cantidad'), array('class'=>'form-control'))}}</td>
+		    <td>{{Form::text('porciones', Input::old('porciones'), array('class'=>'form-control'))}}</td>		    		    
 		  </tr>
 
 		  <tr>
@@ -196,22 +168,8 @@
 					<option>Al vapor</option>
 				</select>
 		    </td>
-		    <td></td>
-		    <td>
-				<select>
-					<option>--Seleccione--</option>
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
-					<option>5</option>
-					<option>6</option>
-					<option>7</option>
-					<option>8</option>
-					<option>9</option>
-					<option>10</option>
-				</select>
-			</td>		    	    
+		    <td>{{Form::text('cantidad', Input::old('cantidad'), array('class'=>'form-control'))}}</td>
+		    <td>{{Form::text('porciones', Input::old('porciones'), array('class'=>'form-control'))}}</td>		    	    
 		  </tr>
 
 		  <tr>
@@ -252,22 +210,8 @@
 					<option>Al vapor</option>
 				</select>
 		    </td>
-		    <td></td>
-		    <td>
-				<select>
-					<option>--Seleccione--</option>
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
-					<option>5</option>
-					<option>6</option>
-					<option>7</option>
-					<option>8</option>
-					<option>9</option>
-					<option>10</option>
-				</select>
-			</td>		    		    
+		    <td>{{Form::text('cantidad', Input::old('cantidad'), array('class'=>'form-control'))}}</td>
+		    <td>{{Form::text('porciones', Input::old('porciones'), array('class'=>'form-control'))}}</td>		    		    
 		  </tr>
 
 		  <tr>
@@ -308,22 +252,8 @@
 					<option>Al vapor</option>
 				</select>
 		    </td>
-		    <td></td>
-		    <td>
-				<select>
-					<option>--Seleccione--</option>
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
-					<option>5</option>
-					<option>6</option>
-					<option>7</option>
-					<option>8</option>
-					<option>9</option>
-					<option>10</option>
-				</select>
-			</td>		    		    
+		    <td>{{Form::text('cantidad', Input::old('cantidad'), array('class'=>'form-control'))}}</td>
+		    <td>{{Form::text('porciones', Input::old('porciones'), array('class'=>'form-control'))}}</td>		    		    
 		  </tr>	 	
 		</table>
 	</div>

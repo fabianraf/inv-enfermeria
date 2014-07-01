@@ -93,9 +93,10 @@
 							<td align='left'>
 								<select name="personas_hogar" id="personas_hogar">
 									<option>--Seleccione--</option>
-									<option <?php if($user->personas_hogar=='Con tu novio/a, esposo/a') { echo 'selected'; } ?> >Con tu novio/a, esposo/a</option>
-									<option <?php if($user->personas_hogar=='Con tus padres') { echo 'selected'; } ?> >Con tus padres</option>
-									<option <?php if($user->personas_hogar=='Sólo') { echo 'selected'; } ?> >Sólo</option>
+									<option <?php if($user->personas_hogar=='Padres/Abuelos') { echo 'selected'; } ?> >Padres/Abuelos</option>
+									<option <?php if($user->personas_hogar=='Pareja') { echo 'selected'; } ?> >Pareja</option>
+									<option <?php if($user->personas_hogar=='Sólo/a') { echo 'selected'; } ?> >Sólo/a</option>
+									<option <?php if($user->personas_hogar=='Otros') { echo 'selected'; } ?> >Otros</option>
 								</select>
 							</td>
 						</tr>

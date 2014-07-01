@@ -2,7 +2,7 @@
 	
 @section('content')
 
-{{ Form::open(array('url' => 'encuesta_manipulacion_comedores')) }}
+{{ Form::open(array('url' => 'encuesta_manipulacion_bares')) }}
 	<div class="pull-right">
 			<input type="submit" value="SIGUIENTE" class="btn btn-success">
 	</div></br></br></br>
@@ -40,28 +40,14 @@
 				<td><input type="radio" name="cumple2" value="NO"></td>
 				<td><input type="checkbox" name="no_se_pudo_observar"></td>
 				<td><input type="checkbox" name="no_hay_termometro"></td>
-			</tr>
+			</tr>			
 			<tr>
-				<td>Ensaladas se conservan frescas para servir en las próximas 4 horas</td>
+				<td>Alimentos se conservan frescos para servir durante el día</td>
 				<td><input type="radio" name="cumple3" value="SI"></td>
 				<td><input type="radio" name="cumple3" value="NO"></td>
 				<td><input type="checkbox" name="no_se_pudo_observar"></td>
 				<td><input type="checkbox" name="no_hay_termometro"></td>
-			</tr>
-			<tr>
-				<td>Alimentos preparados para servir en las próximas 4 horas, conservados a 65ºC</td>
-				<td><input type="radio" name="cumple4" value="SI"></td>
-				<td><input type="radio" name="cumple4" value="NO"></td>
-				<td><input type="checkbox" name="no_se_pudo_observar"></td>
-				<td><input type="checkbox" name="no_hay_termometro"></td>
-			</tr>
-			<tr>
-				<td>Cocción de carnes o pescados a más de 90ºC</td>
-				<td><input type="radio" name="cumple5" value="SI"></td>
-				<td><input type="radio" name="cumple5" value="NO"></td>
-				<td><input type="checkbox" name="no_se_pudo_observar"></td>
-				<td><input type="checkbox" name="no_hay_termometro"></td>
-			</tr>	 		
+			</tr>				 		
 		</table>
 	</div>	
 	{{ Form::hidden('encuesta', '2') }}

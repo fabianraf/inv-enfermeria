@@ -72,7 +72,7 @@
 									</li>
 									<li class="divider"></li>
 									<li>
-										{{ HTML::link('/encuesta_consumo_habitual', "Consumo Habitual" ) }}
+										{{ HTML::link('/encuesta_consumo_habitual', "Consumo Habitual de Alimentos" ) }}
 									</li>
 									<li class="divider"></li>
 									<li>

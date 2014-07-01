@@ -2,12 +2,11 @@
 	
 @section('content')
 
-{{ Form::open(array('url' => 'encuesta_manipulacion_comedores')) }}
+{{ Form::open(array('url' => 'encuesta_manipulacion_bares')) }}
 <div class="col-lg-12">
-	<h2>Control de manipulación de alimentos e higiene de los bares de la PUCE
+	<h2>Control de manipulación de alimentos e higiene de los comedores de la PUCE
 		<div class="pull-right">
-			<input type="submit" value="GRABAR" class="btn btn-success">
-			<input type="button" value="LIMPIAR" class="btn btn-warning">
+			<input type="submit" value="SIGUIENTE" class="btn btn-success">			
 		</div>
 	</h2>
 	<hr>
@@ -33,23 +32,22 @@
 				});
 			</script>
 		</div>
+	</div><br>	
+	<div class="form-group">
+		{{ Form::label('recomendaciones', 'Recomendaciones',array('class' => 'col-sm-2 control-label')); }}
+		<div class="col-sm-6">
+			{{ Form::textarea('recomendaciones','', array('class' => 'form-control', 'placeholder' => 'Recomendaciones' )); }}
+		</div>
 	</div><br><br>
 	<div class="col-lg-12">
-	  @foreach($encabezados_preguntas as $key => $encabezado_pregunta)
-			<?php 
-				if($key == 0)
-					$button_class = "btn-info";
-				else
-					$button_class = "";
-			?>
-			{{ Form::button($encabezado_pregunta->encabezado, array('class'=>'btn btn-default encabezado-pregunta ' . $button_class, 'onclick' => 'submit_encabezado_pregunta("'.$encabezado_pregunta->id.'")')) }}
-		@endforeach
+	  
 	</div>
 </div>
 	</div>
 	<div class="col-lg-12">
 	</div>
 	</br></br>
+	{{ Form::hidden('encuesta', '1') }}
 </div>
 {{ Form::close() }}
 @stop

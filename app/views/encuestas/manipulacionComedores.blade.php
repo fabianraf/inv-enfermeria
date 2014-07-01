@@ -53,6 +53,7 @@
 	<div class="col-lg-12">
 	</div>
 	</br></br>
+	{{ Form::hidden('encuesta', '1') }}
 </div>
 {{ Form::close() }}
 @stop
