@@ -106,18 +106,32 @@ class EncuestasController extends BaseController {
 	public function createConsumoAlimentos()
 	{
 		$campos = Input::all();
-		if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])
-		    AND strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
-		   return $campos;
+		// if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])
+		//     AND strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
+		//    return $campos;
+		// }
+		// return $campos;
+// 		$aceites_y_grasas = $campos;
+		$tipo_de_alimentos = TipoDeAlimento::all();
+		foreach($campos['frecuencia'] as $frecuencia){
+			$encuesta = new EncuestaAlimentosUniversidad;
+			$encuesta->alimento_id = $frecuencia;
+			
 		}
-		
-		$id = $campos['tipo_alimento_id'];
-		$tipo_de_alimento = TipoDeAlimento::find($id);
-    	$alimentos = $tipo_de_alimento->alimentos;
-		$tipos_de_alimentos = TipoDeAlimento::orderBy('nombre')->get();
-        return View::make('encuestas.consumoAlimentos', array('tipos_de_alimentos' => $tipos_de_alimentos,
-        													  'tipo_de_alimento_id' => $id,
-        													  'alimentos' => $alimentos));
+		return $encuesta;
+		// return $campos['frecuencia']['aceite-de-girasol'];
+
+		// foreach($tipo_de_alimentos as $tipo_de_alimento){
+// 			foreach($tipo_de_alimento->alimentos as $alimento){
+// 				if(isset($campos['frecuencia'][''.Helper::clean($alimento->nombre).'']))
+// 					// return $campos['frecuencia'][''.Helper::clean($alimento->nombre).''];
+// 					$encuesta = new EncuestaAlimentosUniversidad;
+// 					$encuesta->alimento_id = $campos['frecuencia'][''.Helper::clean($alimento->nombre).''];
+// 			}
+//
+// 			// Helper::clean($alimento->nombre)
+// 		}
+		return $encuesta;
 	}
 
 	public function createConsumoAlimentosBares()
