@@ -30,7 +30,7 @@
 						<span class="icon-bar"></span>
 						
 					</button>
-					 <a class="navbar-brand" href="/">PHP Challenge</a>
+					 <a class="navbar-brand" href="/">Enfermeria</a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
