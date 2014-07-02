@@ -65,7 +65,7 @@ public function run()
         ));
 
         User::create(array(
-            'email'  => 'lourdes.bustos@inv-enf.com',
+            'email'  => 'fabian.aguirre@inv-enf.com',
             'password' => '$2y$10$3XerjXiDpytspETyy.oEkuWLU/SsvIkFvv.SVW8goNFv61F/uXqCS',
             'tipo' => 'estudiante',
             'nombre' => 'Fabian', 
@@ -75,7 +75,7 @@ public function run()
         ));
 
         User::create(array(
-            'email'  => 'lourdes.bustos@inv-enf.com',
+            'email'  => 'jose.valdiviezo@inv-enf.com',
             'password' => '$2y$10$3XerjXiDpytspETyy.oEkuWLU/SsvIkFvv.SVW8goNFv61F/uXqCS',
             'tipo' => 'estudiante',
             'nombre' => 'Jose', 
@@ -85,7 +85,7 @@ public function run()
         ));
 
         User::create(array(
-            'email'  => 'lourdes.bustos@inv-enf.com',
+            'email'  => 'gabriela.rosero@inv-enf.com',
             'password' => '$2y$10$3XerjXiDpytspETyy.oEkuWLU/SsvIkFvv.SVW8goNFv61F/uXqCS',
             'tipo' => 'estudiante',
             'nombre' => 'Gabriela', 
@@ -95,7 +95,7 @@ public function run()
         ));
 
         User::create(array(
-            'email'  => 'lourdes.bustos@inv-enf.com',
+            'email'  => 'andres.moreno@inv-enf.com',
             'password' => '$2y$10$3XerjXiDpytspETyy.oEkuWLU/SsvIkFvv.SVW8goNFv61F/uXqCS',
             'tipo' => 'estudiante',
             'nombre' => 'Andres', 
