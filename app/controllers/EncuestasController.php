@@ -80,10 +80,25 @@ class EncuestasController extends BaseController {
 			return View::make('encuestas.emb_area_bar');
 		if($campos['encuesta']==5)
 			return View::make('encuestas.emb_area_comedor');		
-		if($campos['encuesta']==8)
+		if($campos['encuesta']==6)
 			return View::make('encuestas.emb_area_almacenaje_materiales_limpieza');
-		if($campos['encuesta']==9)
-			return View::make('encuestas.manipulacionBares');
+		if($campos['encuesta']==7)
+			//return View::make('encuestas.manipulacionBares')->with('success', 'Encuesta creada satisfactoriamente');
+			return Redirect::to('encuesta_manipulacion_bares')->with('success', 'Encuesta creada satisfactoriamente');
+	}
+
+	public function controlHigienePersonal()
+	{
+		return View::make('encuestas.controlHigienePersonal');
+	}
+
+	public function createControlHigienePersonal()
+	{
+		$campos = Input::all();
+		if($campos['encuesta']==1)
+			return View::make('encuestas.echp_empleado');
+		if($campos['encuesta']==2)
+			return Redirect::to('encuesta_control_higiene_personal')->with('success', 'Encuesta creada satisfactoriamente');
 	}
 
 	/**

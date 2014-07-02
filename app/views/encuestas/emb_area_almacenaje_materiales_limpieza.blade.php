@@ -2,7 +2,7 @@
 	
 @section('content')
 
-{{ Form::open(array('url' => 'encuesta_manipulacion_comedores')) }}
+{{ Form::open(array('url' => 'encuesta_manipulacion_bares')) }}
 	<div class="pull-right">
 			<input type="submit" value="FINALIZAR" class="btn btn-success">
 	</div></br></br></br>
@@ -162,7 +162,7 @@
 		</table>
 	</div> 
 
-	{{ Form::hidden('encuesta', '9') }}
+	{{ Form::hidden('encuesta', '7') }}
 </div>
 {{ Form::close() }}
 @stop

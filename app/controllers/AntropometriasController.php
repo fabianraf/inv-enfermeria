@@ -8,7 +8,7 @@ class AntropometriasController extends BaseController {
 		$estudiantes = DB::table('usuarios')->where('tipo', '=', 'estudiante')
                                                 ->orderBy('nombre')
                                                 ->orderBy('apellido')                                                
-                                                ->paginate(20);
+                                                ->paginate(5);
 		//$estudiantes = User::where('tipo', '=', 'estudiante');                             
         return View::make('antropometrias.main', array('estudiantes' => $estudiantes));
 	}
@@ -23,7 +23,7 @@ class AntropometriasController extends BaseController {
 											->where('apellido', 'like', '%'.$nombre.'%')
                                             ->orderBy('nombre')
                                             ->orderBy('apellido')                                                
-                                            ->paginate(20);
+                                            ->paginate(5);
 		return View::make('antropometrias.main', array('estudiantes' => $estudiantes));		
 	}
 
@@ -71,7 +71,7 @@ class AntropometriasController extends BaseController {
 		$estudiantes = DB::table('usuarios')->where('tipo', '=', 'estudiante')
                                                 ->orderBy('apellido')
                                                 ->orderBy('nombre')                                                
-                                                ->paginate(20);
+                                                ->paginate(5);
 		return View::make('antropometrias.main', array('estudiantes' => $estudiantes));		
 	}
 

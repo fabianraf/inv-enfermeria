@@ -3,6 +3,9 @@
 @section('content')
 
 {{ Form::open(array('url' => 'encuesta_manipulacion_comedores')) }}
+@if (Session::get('mensaje'))
+		<div class="alert alert-success">{{Session::get('mensaje')}}</div>
+	@endif
 <div class="col-lg-12">
 	<h2>Control de manipulación de alimentos e higiene de los comedores de la PUCE
 		<div class="pull-right">

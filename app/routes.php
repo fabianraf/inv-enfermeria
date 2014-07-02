@@ -43,6 +43,9 @@ Route::post('encuesta_manipulacion_comedores', "EncuestasController@createManipu
 Route::get('encuesta_manipulacion_bares', "EncuestasController@manipulacionBares");
 Route::post('encuesta_manipulacion_bares', "EncuestasController@createManipulacionBares");
 
+Route::get('encuesta_control_higiene_personal', "EncuestasController@controlHigienePersonal");
+Route::post('encuesta_control_higiene_personal', "EncuestasController@createControlHigienePersonal");
+
 
 
 

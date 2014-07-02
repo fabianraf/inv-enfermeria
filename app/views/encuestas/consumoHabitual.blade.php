@@ -68,11 +68,7 @@
 					
 				</select>
 		    </td>
-		    <td>
-				<select>
-					
-				</select>
-		    </td>		    
+		    <td>{{Form::text('ingrediente', Input::old('ingrediente'), array('class'=>'form-control'))}}</td>
 		    <td>
 				<select>
 					<option>--Seleccione--</option>
@@ -110,11 +106,7 @@
 					
 				</select>
 		    </td>
-		    <td>
-				<select>
-					
-				</select>
-		    </td>		    
+		    <td>{{Form::text('ingrediente', Input::old('ingrediente'), array('class'=>'form-control'))}}</td>		    
 		    <td>
 				<select>
 					<option>--Seleccione--</option>
@@ -152,11 +144,7 @@
 					
 				</select>
 		    </td>
-		    <td>
-				<select>
-					
-				</select>
-		    </td>		    
+		    <td>{{Form::text('ingrediente', Input::old('ingrediente'), array('class'=>'form-control'))}}</td>		    
 		    <td>
 				<select>
 					<option>--Seleccione--</option>
@@ -194,11 +182,7 @@
 					
 				</select>
 		    </td>
-		    <td>
-				<select>
-					
-				</select>
-		    </td>		    
+		    <td>{{Form::text('ingrediente', Input::old('ingrediente'), array('class'=>'form-control'))}}</td>		    
 		    <td>
 				<select>
 					<option>--Seleccione--</option>
@@ -236,11 +220,7 @@
 					
 				</select>
 		    </td>
-		    <td>
-				<select>
-					
-				</select>
-		    </td>		    
+		    <td>{{Form::text('ingrediente', Input::old('ingrediente'), array('class'=>'form-control'))}}</td>		    
 		    <td>
 				<select>
 					<option>--Seleccione--</option>

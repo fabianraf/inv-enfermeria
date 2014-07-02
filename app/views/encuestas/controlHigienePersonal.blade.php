@@ -2,12 +2,12 @@
 	
 @section('content')
 
-{{ Form::open(array('url' => 'encuesta_manipulacion_bares')) }}
+{{ Form::open(array('url' => 'encuesta_control_higiene_personal')) }}
 @if (Session::get('mensaje'))
 		<div class="alert alert-success">{{Session::get('mensaje')}}</div>
 	@endif
 <div class="col-lg-12">
-	<h2>Control de manipulación de alimentos e higiene de los comedores de la PUCE
+	<h2>Control de higiene del personal de bares y comedores de la PUCE
 		<div class="pull-right">
 			<input type="submit" value="SIGUIENTE" class="btn btn-success">			
 		</div>
@@ -37,9 +37,9 @@
 		</div>
 	</div><br>	
 	<div class="form-group">
-		{{ Form::label('recomendaciones', 'Recomendaciones',array('class' => 'col-sm-2 control-label')); }}
+		{{ Form::label('observaciones', 'Observaciones',array('class' => 'col-sm-2 control-label')); }}
 		<div class="col-sm-6">
-			{{ Form::textarea('recomendaciones','', array('class' => 'form-control', 'placeholder' => 'Recomendaciones' )); }}
+			{{ Form::textarea('observaciones','', array('class' => 'form-control', 'placeholder' => 'Observaciones' )); }}
 		</div>
 	</div><br><br>
 	<div class="col-lg-12">
