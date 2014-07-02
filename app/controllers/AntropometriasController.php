@@ -69,8 +69,8 @@ class AntropometriasController extends BaseController {
 		$estudiante->antropometria = 'SI';
 		$estudiante->save();
 		$estudiantes = DB::table('usuarios')->where('tipo', '=', 'estudiante')
-                                                ->orderBy('apellido')
-                                                ->orderBy('nombre')                                                
+                                                ->orderBy('nombre')
+                                                ->orderBy('apellido')                                                
                                                 ->paginate(5);
 		return View::make('antropometrias.main', array('estudiantes' => $estudiantes));		
 	}

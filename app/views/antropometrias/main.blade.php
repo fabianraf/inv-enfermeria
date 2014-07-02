@@ -34,8 +34,10 @@
         <td>{{ $estudiante->fecha_nacimiento }}</td>
         @if($estudiante->antropometria=='SI')
           <td><a href="{{{ URL::to('antropometria/datos/'.$estudiante->id) }}}">Ver</a></td>
-        @else
+        @elseif($estudiante->edito_perfil=='SI')
           <td><a href="{{{ URL::to('antropometria/datos/'.$estudiante->id) }}}">Ingresar</a></td>
+        @elseif($estudiante->edito_perfil!='SI')
+          <td>No edito su perfil</a></td>  
         @endif
     </tr>    
   @endforeach
