@@ -20,6 +20,8 @@ class EncuestasController extends BaseController {
 	public function consumoAlimentos()
 	{
 		$tipos_de_alimentos = TipoDeAlimento::orderBy('nombre')->get();
+		// return TipoDeAlimento::get_total_alimentos();
+		// return Auth::user()->encuestaAlimentosUniversidad->count();
 		return View::make('encuestas.consumoAlimentos', array('tipos_de_alimentos' => $tipos_de_alimentos));
 	}
 
@@ -164,26 +166,27 @@ class EncuestasController extends BaseController {
 		// }
 		// return $campos;
 // 		$aceites_y_grasas = $campos;
-		$tipo_de_alimentos = TipoDeAlimento::all();
-		foreach($campos['frecuencia'] as $frecuencia){
-			$encuesta = new EncuestaAlimentosUniversidad;
-			$encuesta->alimento_id = $frecuencia;
-			
+		// $tipo_de_alimentos = TipoDeAlimento::all();
+		for($i = 0; $i < 126 ; $i++){
+			if(isset($campos['frecuencia'][$i])){
+				$encuesta = EncuestaAlimentosUniversidad::where("usuario_id", "=", Auth::user()->id)->where("alimento_id", "=", $campos['frecuencia']['alimento'][$i])->first();
+				if(!isset($encuesta)){
+					$encuesta = new EncuestaAlimentosUniversidad;	
+				}
+				$encuesta->alimento_id = $campos['frecuencia']['alimento'][$i];
+				$encuesta->frecuencia = $campos['frecuencia'][$i];
+				$encuesta->usuario_id = Auth::user()->id;
+				$encuesta->num_porciones = $campos['frecuencia']['porciones'][$i];
+				$encuesta->save();
+			}
 		}
-		return $encuesta;
-		// return $campos['frecuencia']['aceite-de-girasol'];
-
-		// foreach($tipo_de_alimentos as $tipo_de_alimento){
-// 			foreach($tipo_de_alimento->alimentos as $alimento){
-// 				if(isset($campos['frecuencia'][''.Helper::clean($alimento->nombre).'']))
-// 					// return $campos['frecuencia'][''.Helper::clean($alimento->nombre).''];
-// 					$encuesta = new EncuestaAlimentosUniversidad;
-// 					$encuesta->alimento_id = $campos['frecuencia'][''.Helper::clean($alimento->nombre).''];
-// 			}
-//
-// 			// Helper::clean($alimento->nombre)
-// 		}
-		return $encuesta;
+		if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])
+				     AND strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
+   				    return "yead";
+   				 }else{
+							$tipos_de_alimentos = TipoDeAlimento::orderBy('nombre')->get();
+							return View::make('encuestas.consumoAlimentos', array('tipos_de_alimentos' => $tipos_de_alimentos, 'message' => "Borrador grabado exitosamente!"));
+		}
 	}
 
 	public function createConsumoAlimentosBares()

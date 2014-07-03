@@ -11,4 +11,11 @@ class TipoDeAlimento extends Eloquent {
 		    {
 	        return $this->hasMany('Alimento')->orderBy("created_at", "DESC");
 		    }
+	public static function get_total_alimentos(){
+		$count = 0;
+		foreach(TipoDeAlimento::all() as $tipo_de_alimento){
+			$count += $tipo_de_alimento->alimentos->count();
+		}
+		return $count;
+	}
 }

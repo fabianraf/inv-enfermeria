@@ -54,6 +54,7 @@ $(document).ready(function() {
 		$(this).addClass("btn-info");
 	});
 	
+	
 });  
 
 function submit_tipo_de_alimento(tipo_de_alimento_id){
@@ -74,4 +75,18 @@ function submit_encabezado_pregunta(encabezado_pregunta_id){
 			$(this).addClass("hidden");
 		}
 	});
+}
+
+var autosave = window.setInterval("autosaveForm()", 120000);
+
+function autosaveForm() {
+		$('#encuesta_consumo_alimentos_universidad').submit(function(){
+			$.post('/encuesta_consumo_alimentos', $('#encuesta_consumo_alimentos_universidad').serialize());
+			return false;
+		});
+    $('#encuesta_consumo_alimentos_universidad').submit();
+		$('#draft-saved').show();
+		setTimeout("$('#draft-saved').hide()", 7000);
+
+  
 }
