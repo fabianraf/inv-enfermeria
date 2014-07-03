@@ -57,7 +57,7 @@
 				<th rowspan="2">
 					Porciones
 				</th>
-				<th colspan="6">
+				<th colspan="7">
 					Frecuencia
 				</th>
 				<th rowspan="2">
@@ -87,6 +87,9 @@
 		    <td>
 		      Cada 15 días
 		    </td>
+		    <td>
+		      No Aplica
+		    </td>
 		  </tr>
 		 		@foreach($tipo_de_alimento->alimentos as $alimento)
 				<?php  
@@ -102,6 +105,7 @@
 				<td><input type="radio" name="frecuencia[{{ $index }}]" value="4" {{$encuesta_alimentos_universidad['frecuencia'] == 4 ? 'checked="checked"' : ''}}></td>
 				<td><input type="radio" name="frecuencia[{{ $index }}]" value="5" {{$encuesta_alimentos_universidad['frecuencia'] == 5 ? 'checked="checked"' : ''}}></td>
 				<td><input type="radio" name="frecuencia[{{ $index }}]" value="6" {{$encuesta_alimentos_universidad['frecuencia'] == 6 ? 'checked="checked"' : ''}}></td>
+				<td><input type="radio" name="frecuencia[{{ $index }}]" value="7" {{$encuesta_alimentos_universidad['frecuencia'] == 7 ? 'checked="checked"' : ''}}></td>
 				<td>
 					<select name="frecuencia[porciones][{{$index}}]">
 							<option value="1" {{$encuesta_alimentos_universidad['num_porciones'] == 1 ? 'selected="selected"' : ''}}>1</option>
