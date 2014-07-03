@@ -160,16 +160,10 @@ class EncuestasController extends BaseController {
 	public function createConsumoAlimentos()
 	{
 		$campos = Input::all();
-		// if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])
-		//     AND strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
-		//    return $campos;
-		// }
-		// return $campos;
-// 		$aceites_y_grasas = $campos;
-		// $tipo_de_alimentos = TipoDeAlimento::all();
 		for($i = 0; $i < 126 ; $i++){
 			if(isset($campos['frecuencia'][$i])){
 				$encuesta = EncuestaAlimentosUniversidad::where("usuario_id", "=", Auth::user()->id)->where("alimento_id", "=", $campos['frecuencia']['alimento'][$i])->first();
+				//Reviso si es que ya existe un dato guardado para el usuario para decidir si se va a editar o a crear nuevo.
 				if(!isset($encuesta)){
 					$encuesta = new EncuestaAlimentosUniversidad;	
 				}
@@ -182,7 +176,7 @@ class EncuestasController extends BaseController {
 		}
 		if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])
 				     AND strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
-   				    return "yead";
+							 //No haga nada
    				 }else{
 							$tipos_de_alimentos = TipoDeAlimento::orderBy('nombre')->get();
 							return View::make('encuestas.consumoAlimentos', array('tipos_de_alimentos' => $tipos_de_alimentos, 'message' => "Borrador grabado exitosamente!"));
