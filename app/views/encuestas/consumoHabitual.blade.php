@@ -27,7 +27,7 @@
 					Lugar
 				</th>
 				<th>
-					Gasto diario
+					Gasto diario ($)
 				</th>
 				<th>
 					Preparacion/alimento
@@ -54,7 +54,7 @@
 		    <td>
 				<select>
 					<option>--Seleccione--</option>
-					<option>Casa</option>
+					<option>Hogar</option>
 					<option>Restaurante</option>
 					<option>Tienda</option>
 					<option>Cafeteria</option>
@@ -92,7 +92,7 @@
 		    <td>
 				<select>
 					<option>--Seleccione--</option>
-					<option>Casa</option>
+					<option>Hogar</option>
 					<option>Restaurante</option>
 					<option>Tienda</option>
 					<option>Cafeteria</option>
@@ -130,7 +130,7 @@
 		    <td>
 				<select>
 					<option>--Seleccione--</option>
-					<option>Casa</option>
+					<option>Hogar</option>
 					<option>Restaurante</option>
 					<option>Tienda</option>
 					<option>Cafeteria</option>
@@ -168,7 +168,7 @@
 		    <td>
 				<select>
 					<option>--Seleccione--</option>
-					<option>Casa</option>
+					<option>Hogar</option>
 					<option>Restaurante</option>
 					<option>Tienda</option>
 					<option>Cafeteria</option>
@@ -206,7 +206,7 @@
 		    <td>
 				<select>
 					<option>--Seleccione--</option>
-					<option>Casa</option>
+					<option>Hogar</option>
 					<option>Restaurante</option>
 					<option>Tienda</option>
 					<option>Cafeteria</option>
