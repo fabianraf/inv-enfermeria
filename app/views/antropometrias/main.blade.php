@@ -37,7 +37,7 @@
         @elseif($estudiante->edito_perfil=='SI')
           <td><a href="{{{ URL::to('antropometria/datos/'.$estudiante->id) }}}">Ingresar</a></td>
         @elseif($estudiante->edito_perfil!='SI')
-          <td>No edito su perfil</a></td>  
+          <td>No editó su perfil</a></td>  
         @endif
     </tr>    
   @endforeach

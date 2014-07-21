@@ -5,11 +5,10 @@
 <div class="col-lg-9">
 	
     <!-- the actual blog post: title/author/date/content -->
-    <h1>Información Antropométrica</h1>
-    <hr>
-			<div class="col row">				
-			
+    <h1>Información Antropométrica</h1>    
+			<div class="col row">		
 				<div class="col-md-4 col-lg-9" >
+					<h3>Datos del estudiante</h3>
 					<p>
 						<strong>Email:</strong>
 						{{ $estudiante->email }}
@@ -34,11 +33,7 @@
 					<p>
 						<strong>Talla (m):</strong>
 						{{ $antropometria->talla }}
-					</p>
-					<p>
-						<strong>Indice IMC:</strong>
-						{{ $antropometria->imc }}
-					</p>
+					</p>					
 					<p>
 						<strong>Circunferencia cintura (cm):</strong>
 						{{ $antropometria->circunferencia_cintura }}
@@ -47,19 +42,11 @@
 					<p>
 						<strong>Circunferencia cadera (cm):</strong>
 						{{ $antropometria->circunferencia_cadera }}
-					</p>
-					<p>
-						<strong>Indice cintura-cadera:</strong>
-						{{ $antropometria->indice_cintura_cadera }}
-					</p>
+					</p>					
 					<p>
 						<strong>Circunferencia media del brazo – CMB (cm):</strong>
 						{{ $antropometria->circunferencia_media_brazo }}
-					</p>
-					<p>
-						<strong>CMB (%):</strong>
-						{{ $antropometria->porcentaje_cmb }}
-					</p>
+					</p>					
 					<p>
 						<strong>Pliegue bicipital (mm):</strong>
 						{{ $antropometria->pliegue_bicipital }}
@@ -67,11 +54,7 @@
 					<p>
 						<strong>Pliegue tricipital - PT (mm):</strong>
 						{{ $antropometria->pliegue_tricipital }}
-					</p>
-					<p>
-						<strong>Pliegue tricipital (%):</strong>
-						{{ $antropometria->porcentaje_pt }}
-					</p>
+					</p>					
 					<p>
 						<strong>Pliegue subescapular (mm):</strong>
 						{{ $antropometria->pliegue_subescapular }}
@@ -79,7 +62,24 @@
 					<p>
 						<strong>Pliegue suprailíaco (mm):</strong>
 						{{ $antropometria->pliegue_suprailiaco }}
-					</p>				
+					</p><br>
+					<h3>Resultados e interpretación</h3>
+						<p>
+							<strong>Indice masa corporal (IMC):</strong>
+							{{ $antropometria->imc }}
+						</p>
+						<p>
+							<strong>Indice cintura-cadera:</strong>
+							{{ $antropometria->indice_cintura_cadera }}
+						</p>
+						<p>
+							<strong>Porcentaje circunferencia media del brazo (% CMB):</strong>
+							{{ $antropometria->porcentaje_cmb }}
+						</p>
+						<p>
+							<strong>Porcentaje pliegue tricipital (%):</strong>
+							{{ $antropometria->porcentaje_pt }}
+						</p>
 				</div>				
 			</div>
 </div>

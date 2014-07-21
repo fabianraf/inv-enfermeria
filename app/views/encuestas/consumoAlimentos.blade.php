@@ -4,7 +4,7 @@
 
 {{ Form::open(array('url' => 'encuesta_consumo_alimentos', 'id' => 'encuesta_consumo_alimentos_universidad')) }}
 <div class="col-lg-12">
-	<h2>Frecuencia de Consumo de Alimentos en la Universidad y alrededores
+	<h2>Frecuencia de consumo de alimentos en la Universidad y alrededores
 		<div class="pull-right">
 			<input type="submit" value="GRABAR" class="btn btn-success">
 			<input type="button" value="LIMPIAR" class="btn btn-warning">
@@ -24,10 +24,9 @@
         <a href="#" class="close" data-dismiss="alert">&times;</a>
 				Por favor completa toda la encuesta.
     </div>
-		@endif
+		@endif		
 		
-		
-	  @foreach($tipos_de_alimentos as $key => $tipo_de_alimento)
+	  	@foreach($tipos_de_alimentos as $key => $tipo_de_alimento)
 			<?php 
 				if($key == 0)
 					$button_class = "btn-info";
@@ -49,48 +48,24 @@
 	<div class="col-lg-12">
 		<table class="table table-bordered col-lg-12 {{ $class }}" id="tipo-alimento-{{ $tipo_de_alimento->id }}"> 
 
-			<tr>
-				
-				<th rowspan="2">
-					Alimentos
-				</th>
-				<th rowspan="2">
-					Porciones
-				</th>
-				<th colspan="7">
-					Frecuencia
-				</th>
-				<th rowspan="2">
-					N. de porciones diarias
-				</th>
-				<th rowspan="2">
-					Tiempo de comida
-				</th>
-			</tr>
-		
-		  <tr>
-		  	<td>
-		      Nunca
-		    </td>
-		    <td>
-		      Diario
-		    </td>
-		    <td>
-		      1 vez por semana
-		    </td>
-		    <td>
-		      2-4 veces por semana
-		    </td>
-		    <td>
-		      5-6 veces por semana
-		    </td>
-		    <td>
-		      Cada 15 días
-		    </td>
-		    <td>
-		      No Aplica
-		    </td>
-		  </tr>
+			<tr>				
+				<th rowspan="2">Alimentos</th>
+				<th rowspan="2">Porciones</th>
+				<th colspan="10">Frecuencia (veces a la semana)</th>
+				<th rowspan="2">N. de porciones diarias</th>				
+			</tr>		
+		  	<tr>
+			  	<td>7</td>
+			  	<td>6</td>
+			  	<td>5</td>
+			  	<td>4</td>
+			  	<td>3</td>
+			  	<td>2</td>
+			  	<td>1</td>
+			  	<td>Cada 15 días</td>
+			  	<td>Nunca</td>
+			  	<td>Desconoce</td>	    
+		  	</tr>
 		 		@foreach($tipo_de_alimento->alimentos as $alimento)
 				<?php  
 					$index++; 
@@ -106,6 +81,9 @@
 				<td><input type="radio" name="frecuencia[{{ $index }}]" value="5" {{$encuesta_alimentos_universidad['frecuencia'] == 5 ? 'checked="checked"' : ''}}></td>
 				<td><input type="radio" name="frecuencia[{{ $index }}]" value="6" {{$encuesta_alimentos_universidad['frecuencia'] == 6 ? 'checked="checked"' : ''}}></td>
 				<td><input type="radio" name="frecuencia[{{ $index }}]" value="7" {{$encuesta_alimentos_universidad['frecuencia'] == 7 ? 'checked="checked"' : ''}}></td>
+				<td><input type="radio" name="frecuencia[{{ $index }}]" value="8" {{$encuesta_alimentos_universidad['frecuencia'] == 8 ? 'checked="checked"' : ''}}></td>
+				<td><input type="radio" name="frecuencia[{{ $index }}]" value="9" {{$encuesta_alimentos_universidad['frecuencia'] == 9 ? 'checked="checked"' : ''}}></td>
+				<td><input type="radio" name="frecuencia[{{ $index }}]" value="10" {{$encuesta_alimentos_universidad['frecuencia'] == 10 ? 'checked="checked"' : ''}}></td>
 				<td>
 					<select name="frecuencia[porciones][{{$index}}]">
 							<option value="1" {{$encuesta_alimentos_universidad['num_porciones'] == 1 ? 'selected="selected"' : ''}}>1</option>
@@ -119,15 +97,7 @@
 							<option value="9" {{$encuesta_alimentos_universidad['num_porciones'] == 9 ? 'selected="selected"' : ''}}>9</option>
 							<option value="10" {{$encuesta_alimentos_universidad['num_porciones'] == 10 ? 'selected="selected"' : ''}}>10</option>
 					</select>
-				</td>
-				
-				<td>
-					Desayuno <input type="checkbox" name="alimento"><br/>
-					½ mañana <input type="checkbox" name="alimento"><br/>
-					Almuerzo <input type="checkbox" name="alimento"><br/>
-					½ Tarde <input type="checkbox" name="alimento"><br/>
-					Merienda <input type="checkbox" name="alimento">
-				</td>
+				</td>			
 			</tr>
   		@endforeach
 		</table>

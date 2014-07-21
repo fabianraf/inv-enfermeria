@@ -186,13 +186,27 @@ class EncuestasController extends BaseController {
 	public function createConsumoAlimentosBares()
 	{
 		$campos = Input::all();
-		$id = $campos['tipo_alimento_id'];
-		$tipo_de_alimento_bares = TipoDeAlimentoBares::find($id);
-    	$alimentos = $tipo_de_alimento_bares->alimentosBares;
-		$tipo_de_alimento_bares = TipoDeAlimentoBares::orderBy('nombre')->get();
-        return View::make('encuestas.consumoAlimentosBares', array('tipos_de_alimentos_bares' => $tipo_de_alimento_bares,
-        													  'tipo_de_alimento_id' => $id,
-        													  'alimentos' => $alimentos));
+		for($i = 0; $i < 161 ; $i++){
+			if(isset($campos['frecuencia'][$i])){
+				$encuesta = EncuestaAlimentosBares::where("usuario_id", "=", Auth::user()->id)->where("alimento_bares_id", "=", $campos['frecuencia']['alimento'][$i])->first();
+				//Reviso si es que ya existe un dato guardado para el usuario para decidir si se va a editar o a crear nuevo.
+				if(!isset($encuesta)){
+					$encuesta = new EncuestaAlimentosBares;	
+				}
+				$encuesta->alimento_bares_id = $campos['frecuencia']['alimento'][$i];
+				$encuesta->frecuencia = $campos['frecuencia'][$i];
+				$encuesta->usuario_id = Auth::user()->id;
+				$encuesta->num_porciones = $campos['frecuencia']['porciones'][$i];
+				$encuesta->save();
+			}
+		}
+		if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])
+				     AND strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
+							 //No haga nada
+   				 }else{
+							$tipo_de_alimento_bares = TipoDeAlimentoBares::orderBy('nombre')->get();
+							return View::make('encuestas.consumoAlimentosBares', array('tipos_de_alimentos_bares' => $tipo_de_alimento_bares, 'message' => "Borrador grabado exitosamente!"));
+		}
 	}
 
 }

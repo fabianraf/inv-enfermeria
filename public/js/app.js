@@ -88,5 +88,13 @@ function autosaveForm() {
 		$('#draft-saved').show();
 		setTimeout("$('#draft-saved').hide()", 7000);
 
+		$('#encuesta_consumo_alimentos_bares').submit(function(){
+			$.post('/encuesta_consumo_alimentos_bares', $('#encuesta_consumo_alimentos_bares').serialize());
+			return false;
+		});
+    $('#encuesta_consumo_alimentos_bares').submit();
+		$('#draft-saved').show();
+		setTimeout("$('#draft-saved').hide()", 7000);
+
   
 }
