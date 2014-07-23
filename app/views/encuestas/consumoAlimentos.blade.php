@@ -28,15 +28,16 @@
 		
 	  	@foreach($tipos_de_alimentos as $key => $tipo_de_alimento)
 			<?php 
+			if(Auth::user()->totalDeAlimentosPorTipoEncuestaAlimentosUniversidad($tipo_de_alimento) == "0")
+				$button_class = "btn-danger btn-striped";
+			else
+				$button_class = "btn-success btn-striped";		
 				if($key == 0)
-					$button_class = "btn-info";
+					$button_class = " btn-info btn-striped";
 				else
-					$button_class = "";
+					$button_class .= "";
 				
-				if(Auth::user()->totalDeAlimentosPorTipoEncuestaAlimentosUniversidad($tipo_de_alimento) == "0")
-					$button_class .= " btn-danger btn-striped";
-				else
-					$button_class .= " btn-success btn-striped";					
+							
 			?>
 			{{ Form::button($tipo_de_alimento->nombre, array('class'=>'btn btn-default tipo-alimento ' . $button_class, 'onclick' => 'submit_tipo_de_alimento("'.$tipo_de_alimento->id.'")', 'id' => 'boton-tipo-alimento-'.$tipo_de_alimento->id)) }}
 		@endforeach
