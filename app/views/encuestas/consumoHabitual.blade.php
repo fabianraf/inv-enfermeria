@@ -68,6 +68,9 @@ source: availableTags
 				</th>
 				<th>
 					Num. porciones
+				</th>
+				<th>
+					Grupo de alimento
 				</th>				
 			</tr>
 		
@@ -109,6 +112,20 @@ source: availableTags
 		    </td>
 		    <td>{{Form::text('cantidad', Input::old('cantidad'), array('class'=>'form-control'))}}</td>
 		    <td>{{Form::text('porciones', Input::old('porciones'), array('class'=>'form-control'))}}</td>
+		    <td>
+				<select>
+					<option>-</option>
+					<option>LE</option>
+					<option>LSD</option>
+					<option>LD</option>
+					<option>V</option>
+					<option>F</option>
+					<option>Al</option>
+					<option>Az</option>
+					<option>C</option>
+					<option>G</option>
+				</select>
+		    </td>
 		  </tr>
 
 		  <tr>
@@ -147,6 +164,20 @@ source: availableTags
 		    </td>
 		    <td>{{Form::text('cantidad', Input::old('cantidad'), array('class'=>'form-control'))}}</td>
 		    <td>{{Form::text('porciones', Input::old('porciones'), array('class'=>'form-control'))}}</td>		    		    
+		    <td>
+				<select>
+					<option>-</option>
+					<option>LE</option>
+					<option>LSD</option>
+					<option>LD</option>
+					<option>V</option>
+					<option>F</option>
+					<option>Al</option>
+					<option>Az</option>
+					<option>C</option>
+					<option>G</option>
+				</select>
+		    </td>
 		  </tr>
 
 		  <tr>
@@ -184,7 +215,21 @@ source: availableTags
 				</select>
 		    </td>
 		    <td>{{Form::text('cantidad', Input::old('cantidad'), array('class'=>'form-control'))}}</td>
-		    <td>{{Form::text('porciones', Input::old('porciones'), array('class'=>'form-control'))}}</td>		    	    
+		    <td>{{Form::text('porciones', Input::old('porciones'), array('class'=>'form-control'))}}</td>
+		    <td>
+				<select>
+					<option>-</option>
+					<option>LE</option>
+					<option>LSD</option>
+					<option>LD</option>
+					<option>V</option>
+					<option>F</option>
+					<option>Al</option>
+					<option>Az</option>
+					<option>C</option>
+					<option>G</option>
+				</select>
+		    </td>		    	    
 		  </tr>
 
 		  <tr>
@@ -222,7 +267,21 @@ source: availableTags
 				</select>
 		    </td>
 		    <td>{{Form::text('cantidad', Input::old('cantidad'), array('class'=>'form-control'))}}</td>
-		    <td>{{Form::text('porciones', Input::old('porciones'), array('class'=>'form-control'))}}</td>		    		    
+		    <td>{{Form::text('porciones', Input::old('porciones'), array('class'=>'form-control'))}}</td>
+		    <td>
+				<select>
+					<option>-</option>
+					<option>LE</option>
+					<option>LSD</option>
+					<option>LD</option>
+					<option>V</option>
+					<option>F</option>
+					<option>Al</option>
+					<option>Az</option>
+					<option>C</option>
+					<option>G</option>
+				</select>
+		    </td>	    		    
 		  </tr>
 
 		  <tr>
@@ -260,7 +319,21 @@ source: availableTags
 				</select>
 		    </td>
 		    <td>{{Form::text('cantidad', Input::old('cantidad'), array('class'=>'form-control'))}}</td>
-		    <td>{{Form::text('porciones', Input::old('porciones'), array('class'=>'form-control'))}}</td>		    		    
+		    <td>{{Form::text('porciones', Input::old('porciones'), array('class'=>'form-control'))}}</td>
+		    <td>
+				<select>
+					<option>-</option>
+					<option>LE</option>
+					<option>LSD</option>
+					<option>LD</option>
+					<option>V</option>
+					<option>F</option>
+					<option>Al</option>
+					<option>Az</option>
+					<option>C</option>
+					<option>G</option>
+				</select>
+		    </td>	    		    
 		  </tr>	 	
 		</table>
 	</div>

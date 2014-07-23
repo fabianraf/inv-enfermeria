@@ -2,7 +2,7 @@
 class EncabezadoPreguntasEncuestasTableSeeder extends Seeder {
 public function run()
     {
-        // !!! All existing users are deleted !!!
+        // !!! All existing rows are deleted !!!
         DB::table('encabezado_preguntas_encuestas')->delete();
 
         /*CONTROL DE HIGIENE DEL PERSONAL DE BARES Y COMEDORES DE LA PUCE*/

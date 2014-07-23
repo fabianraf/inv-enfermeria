@@ -7,7 +7,7 @@
 		<div class="alert alert-success">{{Session::get('mensaje')}}</div>
 	@endif
 <div class="col-lg-12">
-	<h2>Control de manipulación de alimentos e higiene de los comedores de la PUCE
+	<h2>Control de manipulación de alimentos e higiene de los bares de la PUCE
 		<div class="pull-right">
 			<input type="submit" value="SIGUIENTE" class="btn btn-success">			
 		</div>

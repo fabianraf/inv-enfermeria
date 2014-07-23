@@ -2,7 +2,7 @@
 class TipoDeAlimentosTableSeeder extends Seeder {
 public function run()
     {
-        // !!! All existing users are deleted !!!
+        // !!! All existing rows are deleted !!!
         DB::table('tipo_de_alimentos')->delete();
 
         TipoDeAlimento::create(array(

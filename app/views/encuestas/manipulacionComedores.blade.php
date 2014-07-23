@@ -26,6 +26,16 @@
 		</div>
 	</div><br>
 	<div class="form-group">
+		{{ Form::label('relacionPuce', 'Relacion PUCE',array('class' => 'col-sm-2 control-label')); }}
+		<div class="col-sm-6">
+			<select>
+					<option>--Seleccione--</option>
+					<option>Externo</option>
+					<option>Interno</option>
+				</select>
+		</div>
+	</div><br>
+	<div class="form-group">
 		{{ Form::label('fechaEncuesta', 'Fecha',array('class' => 'col-sm-2 control-label')); }}
 		<div class="col-sm-6">
 			{{ Form::text('fechaEncuesta', '', array('class' => 'form-control','placeholder' => 'Fecha','id' => 'datepicker','data-date-format'=>'yyyy-mm-dd','readonly')) }}
