@@ -22,7 +22,7 @@
 		@if(Auth::user()->encuestaAlimentosUniversidad->count() < TipoDeAlimento::get_total_alimentos())
     <div class="alert alert-success">
         <a href="#" class="close" data-dismiss="alert">&times;</a>
-				Por favor completa toda la encuesta.
+				Por favor completa todas las etiquetas rojas.
     </div>
 		@endif		
 		
@@ -32,8 +32,13 @@
 					$button_class = "btn-info";
 				else
 					$button_class = "";
+				
+				if(Auth::user()->totalDeAlimentosPorTipoEncuestaAlimentosUniversidad($tipo_de_alimento) == "0")
+					$button_class .= " btn-danger btn-striped";
+				else
+					$button_class .= " btn-success btn-striped";					
 			?>
-			{{ Form::button($tipo_de_alimento->nombre, array('class'=>'btn btn-default tipo-alimento ' . $button_class, 'onclick' => 'submit_tipo_de_alimento("'.$tipo_de_alimento->id.'")')) }}
+			{{ Form::button($tipo_de_alimento->nombre, array('class'=>'btn btn-default tipo-alimento ' . $button_class, 'onclick' => 'submit_tipo_de_alimento("'.$tipo_de_alimento->id.'")', 'id' => 'boton-tipo-alimento-'.$tipo_de_alimento->id)) }}
 		@endforeach
 	</div>
 	</br></br>

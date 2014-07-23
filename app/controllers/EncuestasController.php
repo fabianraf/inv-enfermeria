@@ -17,8 +17,12 @@ class EncuestasController extends BaseController {
 	 *
 	 * @return Response
 	 */
+	
+	//Frecuencia de consumo de alimentos en la Universidad y alrededores
 	public function consumoAlimentos()
 	{
+		// return TipoDeAlimento::find(1);
+		// return TipoDeAlimento::find(1)->alimentos->count();
 		$tipos_de_alimentos = TipoDeAlimento::orderBy('nombre')->get();
 		// return TipoDeAlimento::get_total_alimentos();
 		// return Auth::user()->encuestaAlimentosUniversidad->count();
@@ -157,6 +161,8 @@ class EncuestasController extends BaseController {
 		//
 	}
 
+
+	//Frecuencia de consumo de alimentos en la Universidad y alrededores
 	public function createConsumoAlimentos()
 	{
 		$campos = Input::all();
