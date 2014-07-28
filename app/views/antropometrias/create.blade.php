@@ -5,7 +5,7 @@
 <div class="col-lg-8">
 	
     <!-- the actual blog post: title/author/date/content -->
-    <h1>Ingresar Datos Antropometricos</h1>
+    <h1>Ingresar Datos Antropométricos</h1>
     <hr>
     	{{ Form::open(array('url' => 'antropometria.ingresar')) }}
 			<div class="col row">	

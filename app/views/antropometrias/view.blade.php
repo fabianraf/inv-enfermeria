@@ -8,7 +8,7 @@
     <h1>Información Antropométrica</h1>    
 			<div class="col row">		
 				<div class="col-md-4 col-lg-9" >
-					<h3>Datos del estudiante</h3>
+					<h4><i><u>Datos del estudiante</u></i></h4>
 					<p>
 						<strong>Email:</strong>
 						{{ $estudiante->email }}
@@ -24,7 +24,8 @@
 							$interval = $birthday->diff(new DateTime);
 							echo $interval->y." años";
 						?>
-					</p>
+					</p><br>
+					<h4><i><u>Datos Antropométricos</u></i></h4>
 					<p>
 						<strong>Peso (kg):</strong>
 						{{ $antropometria->peso }}
@@ -63,7 +64,7 @@
 						<strong>Pliegue suprailíaco (mm):</strong>
 						{{ $antropometria->pliegue_suprailiaco }}
 					</p><br>
-					<h3>Resultados e interpretación</h3>
+					<h1>Resultados e interpretación</h1><br>
 						<p>
 							<strong>Indice masa corporal (IMC):</strong>
 							{{ $antropometria->imc }}

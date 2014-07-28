@@ -5,11 +5,10 @@ class AntropometriasController extends BaseController {
 
 	public function main()
 	{
-		$estudiantes = DB::table('usuarios')->where('tipo', '=', 'estudiante')
-                                                ->orderBy('nombre')
-                                                ->orderBy('apellido')                                                
-                                                ->paginate(5);
-		//$estudiantes = User::where('tipo', '=', 'estudiante');                             
+        $estudiantes = User::where('tipo', '=', 'estudiante')
+        					->orderBy('nombre')
+                            ->orderBy('apellido')
+                            ->paginate(5);		                          
         return View::make('antropometrias.main', array('estudiantes' => $estudiantes));
 	}
 
@@ -17,21 +16,22 @@ class AntropometriasController extends BaseController {
 	{
 		$campos = Input::all();
 		$nombre = $campos['busqueda'];
-		$estudiantes = DB::table('usuarios')->where('tipo', '=', 'estudiante')
-											->where('nombre', 'like', '%'.$nombre.'%')
-											->orWhere('tipo', '=', 'estudiante')
-											->where('apellido', 'like', '%'.$nombre.'%')
-                                            ->orderBy('nombre')
-                                            ->orderBy('apellido')                                                
-                                            ->paginate(5);
+        $estudiantes = User::where('tipo', '=', 'estudiante')
+        					->where('nombre', 'like', '%'.$nombre.'%')
+							->orWhere('tipo', '=', 'estudiante')
+							->where('apellido', 'like', '%'.$nombre.'%')
+                            ->orderBy('nombre')
+                            ->orderBy('apellido')                                                
+                            ->paginate(5);
+
 		return View::make('antropometrias.main', array('estudiantes' => $estudiantes));		
 	}
 
 	public function ingresarDatos($id)
 	{
 		$estudiante = User::find($id);
-		$antropometria = DB::table('antropometrias')->where('usuario_id', '=', $estudiante->id)                                    
-                                                ->first();
+        $antropometria = Antropometrias::where('usuario_id', '=', $estudiante->id)
+        								->first();
         if(count($antropometria)>0)
         	return View::make('antropometrias.view', array('estudiante' => $estudiante,
         													'antropometria' => $antropometria));
@@ -65,14 +65,11 @@ class AntropometriasController extends BaseController {
 			$antropometria->porcentaje_pt = ($campos['pliegue_tricipital']/16.5)*100;
 		$antropometria->pliegue_subescapular = $campos['pliegue_subescapular'];
 		$antropometria->pliegue_suprailiaco = $campos['pliegue_suprailiaco'];
-		$antropometria->save();
+		$antropometria->save();		
 		$estudiante->antropometria = 'SI';
 		$estudiante->save();
-		$estudiantes = DB::table('usuarios')->where('tipo', '=', 'estudiante')
-                                                ->orderBy('nombre')
-                                                ->orderBy('apellido')                                                
-                                                ->paginate(5);
-		return View::make('antropometrias.main', array('estudiantes' => $estudiantes));		
+		$id=$estudiante->id;
+		return Redirect::action('AntropometriasController@ingresarDatos', array('id' => $id));
 	}
 
 }
