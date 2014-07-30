@@ -66,7 +66,7 @@ return array(
 		'pgsql' => array(
 			'driver'   => 'pgsql',
 			'host'     => 'localhost',
-			'database' => 'inv_enfermeria',
+			'database' => 'inv_enfermeria_production',
 			'username' => 'postgres',
 			'password' => '',
 			'charset'  => 'utf8',
