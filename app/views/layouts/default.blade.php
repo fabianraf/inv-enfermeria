@@ -135,7 +135,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>By Us.</p>
+                    <p></p>
                 </div>
             </div>
         </footer>
