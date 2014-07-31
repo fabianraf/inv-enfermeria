@@ -7,7 +7,7 @@
 	<h2>Frecuencia de consumo de alimentos en los bares de la Universidad
 		<div class="pull-right">
 			<input type="submit" value="GRABAR" class="btn btn-success">
-			<input type="button" value="LIMPIAR" class="btn btn-warning">
+			<!-- <input type="button" value="LIMPIAR" class="btn btn-warning"> -->
 		</div>
 	</h2>
 	<hr>
@@ -22,18 +22,21 @@
 		@if(Auth::user()->encuestaAlimentosBares->count() < TipoDeAlimentoBares::get_total_alimentos_bares())
     <div class="alert alert-success">
         <a href="#" class="close" data-dismiss="alert">&times;</a>
-				Por favor completa toda la encuesta.
+				Por favor completa todas las etiquetas rojas.
     </div>
 		@endif
 	
 	  	@foreach($tipos_de_alimentos_bares as $key => $tipo_de_alimento)
 			<?php 
-				if($key == 0)
-					$button_class = "btn-info";
-				else
-					$button_class = "";
+			if(Auth::user()->totalDeAlimentosPorTipoEncuestaAlimentosBaresDeLaUniversidad($tipo_de_alimento) == "0")
+				$button_class = "btn-danger btn-striped";
+			else
+				$button_class = "btn-success btn-striped";		
+			if($key == 0)
+				$button_class = " btn-info btn-striped";				
+							
 			?>
-			{{ Form::button($tipo_de_alimento->nombre, array('class'=>'btn btn-default tipo-alimento ' . $button_class, 'onclick' => 'submit_tipo_de_alimento("'.$tipo_de_alimento->id.'")')) }}
+			{{ Form::button($tipo_de_alimento->nombre, array('class'=>'btn btn-default tipo-alimento ' . $button_class, 'onclick' => 'submit_tipo_de_alimento("'.$tipo_de_alimento->id.'")', 'id' => 'boton-tipo-alimento-'.$tipo_de_alimento->id)) }}
 	  	@endforeach
 	</div>
 	</br></br>
@@ -45,7 +48,7 @@
 		else
 			$class = "hidden";
 	?>
-	<div class="col-lg-12">
+	<div class="col-lg-12 responsive">
 		<table class="table table-bordered col-lg-12 {{ $class }}" id="tipo-alimento-{{ $tipo_de_alimento->id }}"> 
 
 			<tr>				

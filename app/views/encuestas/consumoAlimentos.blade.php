@@ -7,7 +7,7 @@
 	<h2>Frecuencia de consumo de alimentos en la Universidad y alrededores
 		<div class="pull-right">
 			<input type="submit" value="GRABAR" class="btn btn-success">
-			<input type="button" value="LIMPIAR" class="btn btn-warning">
+			<!-- <input type="button" value="LIMPIAR" class="btn btn-warning"> -->
 		</div>
 	</h2>
 	<hr>
@@ -48,7 +48,7 @@
 		else
 			$class = "hidden";
 	?>
-	<div class="col-lg-12">
+	<div class="col-lg-12 responsive">
 		<table class="table table-bordered col-lg-12 {{ $class }}" id="tipo-alimento-{{ $tipo_de_alimento->id }}"> 
 
 			<tr>				

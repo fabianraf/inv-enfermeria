@@ -99,12 +99,49 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->hasMany('EncuestaAlimentosUniversidad', 'usuario_id');
 	}
 	
+
+	//======================
+	//****************************************
+	//
+	//
+	// Frecuencia de consumo de alimentos en la Universidad y alrededores
+	//
+	//
+	//======================
+	//****************************************
 	public function totalDeAlimentosPorTipoEncuestaAlimentosUniversidad($tipo_de_alimento)
 	{
 		//tipo_de_alimento_completo = 1 significa VERDADERO. 0 significa FALSO
 		$tipo_de_alimento_completo = 1;
 		foreach($tipo_de_alimento->alimentos as $alimento){
 			$encuesta = EncuestaAlimentosUniversidad::where("usuario_id", "=", $this->id)->where("alimento_id", "=", $alimento->id)->first();
+			if(isset($encuesta)){
+				continue;
+			}else{
+				$tipo_de_alimento_completo = 0;
+			}
+		}
+				
+		
+		return $tipo_de_alimento_completo;
+	}
+
+
+	//======================
+	//****************************************
+	//
+	//
+	// Frecuencia de consumo de alimentos en los bares de la Universidad 
+	//
+	//
+	//======================
+	//****************************************
+	public function totalDeAlimentosPorTipoEncuestaAlimentosBaresDeLaUniversidad($tipo_de_alimento)
+	{
+		//tipo_de_alimento_completo = 1 significa VERDADERO. 0 significa FALSO
+		$tipo_de_alimento_completo = 1;
+		foreach($tipo_de_alimento->alimentosBares as $alimento){
+			$encuesta = EncuestaAlimentosBares::where("usuario_id", "=", $this->id)->where("alimento_bares_id", "=", $alimento->id)->first();
 			if(isset($encuesta)){
 				continue;
 			}else{

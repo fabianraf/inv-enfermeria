@@ -72,6 +72,7 @@ $(document).ready(function() {
 	$('#encuesta_consumo_alimentos_bares').submit(function(){
 		$.post('/encuesta_consumo_alimentos_bares', $('#encuesta_consumo_alimentos_bares').serialize());
 		$('#draft-saved').show();
+		revisar_si_esta_completo();
 		setTimeout("$('#draft-saved').hide()", 7000);
 		return false;
 	});
