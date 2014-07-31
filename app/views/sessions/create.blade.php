@@ -109,7 +109,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Hecho Por Fabian Aguirre R.</p>
+                    <p></p>
                 </div>
             </div>
         </footer>

@@ -2,7 +2,7 @@
 class TipoEncuestasTableSeeder extends Seeder {
 public function run()
     {
-        // !!! All existing users are deleted !!!
+        // !!! All existing rows are deleted !!!
         DB::table('tipo_encuestas')->delete();
 
         TipoEncuestas::create(array(

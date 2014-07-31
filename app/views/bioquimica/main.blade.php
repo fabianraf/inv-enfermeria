@@ -3,12 +3,12 @@
 @section('content')
 
 <h1>
-  Gestión Antropométrica
+  Gestión de Pruebas Bioquímicas
   
 </h1>
 <div class="row estudiantes">
 	<h3>Buscar estudiantes</h3>
-	{{ Form::open(array('url' => 'antropometria')) }}
+	{{ Form::open(array('url' => 'bioquimica')) }}
 
 	<div class="form-group">    	
         {{Form::text('busqueda', Input::old('busqueda'), array('class'=>'form-control'))}}
@@ -23,7 +23,7 @@
         <th>Cedula</th>
         <th>Nombre Completo</th>
         <th>Fecha de nacimiento</th>
-        <th>Datos Antropometricos</th>
+        <th>Datos Bioquímicos</th>
     </tr> 
 	<ul>
   @if(isset($estudiantes))
@@ -32,10 +32,10 @@
         <td>{{ $estudiante->cedula }}</td>
         <td>{{ $estudiante->nombre.' '.$estudiante->apellido }}</td> 
         <td>{{ $estudiante->fecha_nacimiento }}</td>
-        @if($estudiante->antropometria=='SI')
-          <td><a href="{{{ URL::to('antropometria/datos/'.$estudiante->id) }}}">Ver</a></td>
+        @if($estudiante->bioquimica=='SI')
+          <td><a href="{{{ URL::to('bioquimica/datos/'.$estudiante->id) }}}">Ver</a></td>
         @elseif($estudiante->edito_perfil=='SI')
-          <td><a href="{{{ URL::to('antropometria/datos/'.$estudiante->id) }}}">Ingresar</a></td>
+          <td><a href="{{{ URL::to('bioquimica/datos/'.$estudiante->id) }}}">Ingresar</a></td>
         @elseif($estudiante->edito_perfil!='SI')
           <td>No editó su perfil</a></td>  
         @endif

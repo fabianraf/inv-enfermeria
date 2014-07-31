@@ -11,4 +11,11 @@ class TipoDeAlimentoBares extends Eloquent {
 		    {
 	        return $this->hasMany('AlimentoBares')->orderBy("created_at", "DESC");
 		    }
+	public static function get_total_alimentos_bares(){
+		$count = 0;
+		foreach(TipoDeAlimentoBares::all() as $tipo_de_alimento_bares){
+			$count += $tipo_de_alimento_bares->alimentosBares->count();
+		}
+		return $count;
+	}
 }

@@ -96,6 +96,10 @@
 									</li>
 									<li class="divider"></li>
 									<li>
+										{{ HTML::link('bioquimica', "Pruebas Bioquímicas" ) }}
+									</li>
+									<li class="divider"></li>
+									<li>
 										{{ HTML::link('tipo_de_alimentos/ingresar', "Ingresar Tipo de Alimentos" ) }}
 									</li>
 								</ul>

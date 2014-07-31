@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'localhost:8000',
+	'url' => 'sivan-promocion.visualdyc.com',
 
 	/*
 	|--------------------------------------------------------------------------

@@ -2,7 +2,7 @@
 class TiemposComidaTableSeeder extends Seeder {
 public function run()
     {
-        // !!! All existing users are deleted !!!
+        // !!! All existing rows are deleted !!!
         DB::table('tiempos_comida')->delete();
 
         TiemposComida::create(array(

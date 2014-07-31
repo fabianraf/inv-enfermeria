@@ -32,7 +32,9 @@ $(document).ready(function() {
 	});
 	
 	
+	//Cambia colores a los botones
 	$(".tipo-alimento").click(function(){
+		revisar_si_esta_completo();
 		if($(this).hasClass("btn-info")){
 			//No hace nada
 		} else{
@@ -40,8 +42,11 @@ $(document).ready(function() {
 				$(this).removeClass("btn-info");
 			});
 		}
-		$(this).addClass("btn-info");
+		$(this).attr("class", "btn btn-default tipo-alimento btn-info btn-striped");
+		
 	});
+	
+	//Fin de cambiar colores a los botonoes
 
 	$(".encabezado-pregunta").click(function(){
 		if($(this).hasClass("btn-info")){
@@ -54,6 +59,22 @@ $(document).ready(function() {
 		$(this).addClass("btn-info");
 	});
 	
+	//Frecuencia de consumo de alimentos en la Universidad y alrededores
+	$('#encuesta_consumo_alimentos_universidad').submit(function(){
+		$.post('/encuesta_consumo_alimentos', $('#encuesta_consumo_alimentos_universidad').serialize());
+		$('#draft-saved').show();
+		revisar_si_esta_completo();
+		setTimeout("$('#draft-saved').hide()", 7000);
+		return false;
+	});
+	
+	//Frecuencia de consumo de alimentos en los bares de la Universidad
+	$('#encuesta_consumo_alimentos_bares').submit(function(){
+		$.post('/encuesta_consumo_alimentos_bares', $('#encuesta_consumo_alimentos_bares').serialize());
+		$('#draft-saved').show();
+		setTimeout("$('#draft-saved').hide()", 7000);
+		return false;
+	});
 	
 });  
 
@@ -77,16 +98,48 @@ function submit_encabezado_pregunta(encabezado_pregunta_id){
 	});
 }
 
-var autosave = window.setInterval("autosaveForm()", 120000);
+function revisar_si_esta_completo(){
+			for(var i = 0; i < 18; i++){
+				var names = {};
+		    var count = 0;
+				var count_names = 0;
+				
+		    $("#tipo-alimento-" + i + " :radio").each(function() {
+		        names[$(this).attr('name')] = true;
+		    });
+		    
+				//Itera cada alimento de acuerdo a su nombre. Ej: frecuencia[15]
+		    $.each(names, function(name, value) { 
+					count_names++;
+						if($('[name="' + name + '"]').is(':checked'))
+							count++;
+		    });
+				//Asigna la clase de completo
+				if($("#boton-tipo-alimento-" + i).hasClass('btn-info'))
+					btn_class = " btn-info"
+				else
+					btn_class = "";
+		    if (count_names == count) {
+					// if($("#boton-tipo-alimento-" + i).hasClass('btn-info'))
+						$("#boton-tipo-alimento-" + i).attr("class", "btn btn-default tipo-alimento  btn-success btn-striped" + btn_class);
+					
+		    } else{
+						$("#boton-tipo-alimento-" + i).attr("class", "btn btn-default tipo-alimento btn-danger btn-striped");
+					
+		    }
+			}
+	
+}
 
+// var autosave = window.setInterval("autosaveForm()", 15000); //Para probar, 15 segundos
+var	autosave = window.setInterval("autosaveForm()", 120000); //Dos minutos
+		
 function autosaveForm() {
-		$('#encuesta_consumo_alimentos_universidad').submit(function(){
-			$.post('/encuesta_consumo_alimentos', $('#encuesta_consumo_alimentos_universidad').serialize());
-			return false;
-		});
-    $('#encuesta_consumo_alimentos_universidad').submit();
-		$('#draft-saved').show();
-		setTimeout("$('#draft-saved').hide()", 7000);
-
+		if($('#encuesta_consumo_alimentos_universidad').length > 0)
+			$('#encuesta_consumo_alimentos_universidad').submit();
+		
+		if($('#encuesta_consumo_alimentos_bares').length > 0)
+			$('#encuesta_consumo_alimentos_bares').submit();
+		
   
 }

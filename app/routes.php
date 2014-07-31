@@ -22,6 +22,12 @@ Route::post('antropometria', "AntropometriasController@buscarEstudiantes");
 Route::get('antropometria/datos/{id}', "AntropometriasController@ingresarDatos");
 Route::post('antropometria.ingresar', "AntropometriasController@create");
 
+Route::get('bioquimica', "BioquimicaController@main");
+Route::post('bioquimica', "BioquimicaController@buscarEstudiantes");
+Route::get('bioquimica/datos/{id}', "BioquimicaController@ingresarDatos");
+Route::post('bioquimica.ingresar', "BioquimicaController@create");
+
+
 Route::get('/registrar', "UsersController@create");
 Route::get('/login', "SessionsController@create");
 Route::get('/logout', "SessionsController@logout");

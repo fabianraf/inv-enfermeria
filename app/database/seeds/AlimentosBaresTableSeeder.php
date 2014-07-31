@@ -2,7 +2,7 @@
 class AlimentosBaresTableSeeder extends Seeder {
 public function run()
     {
-        // !!! All existing users are deleted !!!
+        // !!! All existing rows are deleted !!!
         DB::table('alimentos_bares')->delete();
 
         AlimentoBares::create(array(
