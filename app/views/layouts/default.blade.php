@@ -63,6 +63,7 @@
 							<li class="dropdown">
 								<a class="dropdown-toggle text-white"  data-toggle="dropdown">Encuestas<b class="caret"></b></a>
 								<ul class="dropdown-menu">
+									<?php if(Auth::user()->tipo == "estudiante"){?>
 									<li>
 										{{ HTML::link('/encuesta_consumo_alimentos', "Consumo de Alimentos en Universidad y alrededores" ) }}
 									</li>
@@ -70,6 +71,7 @@
 									<li>
 										{{ HTML::link('/encuesta_consumo_alimentos_bares', "Consumo de Alimentos en Bares" ) }}
 									</li>
+									<?php }else {?>
 									<li class="divider"></li>
 									<li>
 										{{ HTML::link('/encuesta_consumo_habitual', "Consumo Habitual de Alimentos" ) }}
@@ -86,24 +88,27 @@
 									<li>
 										{{ HTML::link('/encuesta_manipulacion_bares', "Control de manipulación de alimentos e higiene de los bares de la PUCE" ) }}
 									</li>
+									<?php } ?>
 								</ul>
 							</li>
-							<li class="dropdown">
-								<a class="dropdown-toggle text-white"  data-toggle="dropdown">Administración<b class="caret"></b></a>
-								<ul class="dropdown-menu">
-									<li>
-										{{ HTML::link('antropometria', "Antropometria" ) }}
-									</li>
-									<li class="divider"></li>
-									<li>
-										{{ HTML::link('bioquimica', "Pruebas Bioquímicas" ) }}
-									</li>
-									<li class="divider"></li>
-									<li>
-										{{ HTML::link('tipo_de_alimentos/ingresar', "Ingresar Tipo de Alimentos" ) }}
-									</li>
-								</ul>
-							</li>
+							<?php if(Auth::user()->tipo == "admin"){?>
+								<li class="dropdown">
+									<a class="dropdown-toggle text-white"  data-toggle="dropdown">Administración<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li>
+											{{ HTML::link('antropometria', "Antropometria" ) }}
+										</li>
+										<li class="divider"></li>
+										<li>
+											{{ HTML::link('bioquimica', "Pruebas Bioquímicas" ) }}
+										</li>
+										<li class="divider"></li>
+										<li>
+											{{ HTML::link('tipo_de_alimentos/ingresar', "Ingresar Tipo de Alimentos" ) }}
+										</li>
+									</ul>
+								</li>
+							<?php } ?>
 						</ul>
 						
 						
@@ -125,8 +130,8 @@
 		
 		<div class="container">
 
-        <div class="row">
-						@yield('content')
+        	<div class="row">
+        		@yield('content')
             <div class="col-lg-4">
                 
                 
