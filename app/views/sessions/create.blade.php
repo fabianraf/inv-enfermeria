@@ -64,9 +64,11 @@
 						
 							<?php }else{ ?>
 								<ul class="nav navbar-nav right-menu">
+									<!--
 									<li>
 										<a class="text-white" href="/registrar">Registro</a>
 									</li>
+								-->
 									<li>
 										<a class="text-white" href="/login">Login</a>
 									</li>
