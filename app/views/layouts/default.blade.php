@@ -71,8 +71,7 @@
 									<li>
 										{{ HTML::link('/encuesta_consumo_alimentos_bares', "Consumo de Alimentos en Bares" ) }}
 									</li>
-									<?php }else {?>
-									<li class="divider"></li>
+									<?php }else {?>									
 									<li>
 										{{ HTML::link('/encuesta_consumo_habitual', "Consumo Habitual de Alimentos" ) }}
 									</li>
@@ -91,10 +90,10 @@
 									<?php } ?>
 								</ul>
 							</li>
+							<?php if(Auth::user()->tipo == "admin"){?>
 							<li class="dropdown">
 								<a class="dropdown-toggle text-white"  data-toggle="dropdown">Administración<b class="caret"></b></a>
-								<ul class="dropdown-menu">
-									<?php if(Auth::user()->tipo == "admin"){?>								
+								<ul class="dropdown-menu">																	
 										<li>
 											{{ HTML::link('alimentos', "Gestión de alimentos" ) }}											
 										</li>
@@ -105,10 +104,10 @@
 										<li class="divider"></li>										
 										<li>
 											{{ HTML::link('bioquimica', "Gestión de pruebas bioquímicas " ) }}
-										</li>
-									<?php } ?>
+										</li>									
 								</ul>
-							</li>							
+							</li>			
+							<?php } ?>				
 						</ul>					
 							<?php }else{ ?>
 								<ul class="nav navbar-nav">
