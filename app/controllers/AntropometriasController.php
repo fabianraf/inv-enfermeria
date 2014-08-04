@@ -15,7 +15,7 @@ class AntropometriasController extends BaseController {
 	public function buscarEstudiantes()
 	{
 		$campos = Input::all();
-		$nombre = $campos['busqueda'];
+		$nombre = strtoupper($campos['busqueda']);
         $estudiantes = User::where('tipo', '=', 'estudiante')
         					->where('nombre', 'like', '%'.$nombre.'%')
 							->orWhere('tipo', '=', 'estudiante')

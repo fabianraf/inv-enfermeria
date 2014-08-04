@@ -3,7 +3,7 @@
 @section('content')
 
 <h1>
-  Gestión Antropométrica
+  Gestión antropométrica
   
 </h1>
 <div class="row estudiantes">

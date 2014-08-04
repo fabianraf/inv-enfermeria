@@ -118,7 +118,7 @@
 						{{ $bioquimica->hbsag }}
 					</p>
 					<br>
-					<h3>Resultados e interpretación</h3>
+					<h1>Resultados e interpretación</h1>
 						
 				</div>				
 			</div>

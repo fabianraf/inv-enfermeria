@@ -91,27 +91,25 @@
 									<?php } ?>
 								</ul>
 							</li>
-							<?php if(Auth::user()->tipo == "admin"){?>
-								<li class="dropdown">
-									<a class="dropdown-toggle text-white"  data-toggle="dropdown">Administración<b class="caret"></b></a>
-									<ul class="dropdown-menu">
+							<li class="dropdown">
+								<a class="dropdown-toggle text-white"  data-toggle="dropdown">Administración<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<?php if(Auth::user()->tipo == "admin"){?>								
 										<li>
-											{{ HTML::link('antropometria', "Antropometria" ) }}
+											{{ HTML::link('alimentos', "Gestión de alimentos" ) }}											
 										</li>
 										<li class="divider"></li>
 										<li>
-											{{ HTML::link('bioquimica', "Pruebas Bioquímicas" ) }}
+											{{ HTML::link('antropometria', "Gestión antropométrica" ) }}											
 										</li>
-										<li class="divider"></li>
+										<li class="divider"></li>										
 										<li>
-											{{ HTML::link('tipo_de_alimentos/ingresar', "Ingresar Tipo de Alimentos" ) }}
+											{{ HTML::link('bioquimica', "Gestión de pruebas bioquímicas " ) }}
 										</li>
-									</ul>
-								</li>
-							<?php } ?>
-						</ul>
-						
-						
+									<?php } ?>
+								</ul>
+							</li>							
+						</ul>					
 							<?php }else{ ?>
 								<ul class="nav navbar-nav">
 									<li>

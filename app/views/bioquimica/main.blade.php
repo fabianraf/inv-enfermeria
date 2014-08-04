@@ -3,7 +3,7 @@
 @section('content')
 
 <h1>
-  Gestión de Pruebas Bioquímicas
+  Gestión de pruebas bioquímicas
   
 </h1>
 <div class="row estudiantes">

@@ -113,7 +113,7 @@
 						</tr>				
 					</table>
 					<br>
-					{{ Form::hidden('estudiante_id', $estudiante->id) }}					
+					{{ Form::hidden('estudiante_id', $estudiante->id) }}
 					{{ Form::submit('Guardar', array('class'=>'btn btn-success')) }}</br></br>
 				</div>
 				{{ Form::close() }}
