@@ -20,7 +20,7 @@ class SessionsController extends BaseController {
 	public function create()
 	{
 		if(Auth::check()) return 'Already logged in!!';
-    return View::make('sessions.create');
+    	return View::make('sessions.create');
 	}
 
 	/**
@@ -32,7 +32,10 @@ class SessionsController extends BaseController {
 	{
 		if (Auth::attempt(Input::only("email", "password")))
 		{
-			return Redirect::to("/profile");//View::make('users.profile');
+			if(Auth::user()->tipo == "admin")
+				return Redirect::to("/");
+			else	
+				return Redirect::to("/profile");//View::make('users.profile');
 		}
 		return "Failed!";
 	}

@@ -1,6 +1,16 @@
 @extends('layouts.default')
+
 	
 @section('content')
+
+<!-- Success-Messages -->
+                @if ($message = Session::get('error'))
+                    <div class="alert alert-danger alert-block">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <h4>Error</h4>
+                        {{{ $message }}}
+                    </div>
+                @endif
 	
 <div class="col-lg-8">
 	
@@ -64,7 +74,7 @@
 					<div class="col-lg-12">		
     					<div class="alert alert-success">
         				<a href="#" class="close" data-dismiss="alert">&times;</a>
-							{{'Por favor complete los siguientes datos personales'}}
+							{{'Por favor completa los siguientes datos personales'}}
     					</div>
     				</div>
 
