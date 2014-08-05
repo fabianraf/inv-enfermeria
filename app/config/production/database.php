@@ -68,7 +68,7 @@ return array(
 			'host'     => 'localhost',
 			'database' => 'inv_enfermeria_production',
 			'username' => 'postgres',
-			'password' => '',
+			'password' => 'root',
 			'charset'  => 'utf8',
 			'prefix'   => '',
 			'schema'   => 'public',
