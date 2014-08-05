@@ -5,40 +5,31 @@
 <div class="col-lg-8">
 	
     <!-- the actual blog post: title/author/date/content -->
-    <h1>Ingresar Datos Antropométricos</h1>
+    <h1>Ingresar datos antropométricos</h1>
     <hr>
     	{{ Form::open(array('url' => 'antropometria.ingresar')) }}
 			<div class="col row">	
 				<div class="col-md-4 col-lg-8" >
-					<table class="table table-bordered col-lg-12">
-						<tr>
-							<td>		
-								<strong>Email:</strong>															
-							</td>
-							<td align='left'>
-								{{ $estudiante->email }}
-							</td>
-						</tr>
-						<tr>
-							<td>		
-								<strong>Nombre:</strong>														
-							</td>
-							<td align='left'>
-								{{ $estudiante->nombre.' '. $estudiante->apellido}}								
-							</td>
-						</tr>
-						<tr>
-							<td>		
-								<strong>Edad:</strong>														
-							</td>
-							<td align='left'>
-								<?php
-									$birthday = new DateTime($estudiante->fecha_nacimiento);
-									$interval = $birthday->diff(new DateTime);
-									echo $interval->y." años";
-								?>
-							</td>
-						</tr>
+					<h4><i><u>Datos del estudiante</u></i></h4>
+					<p>
+						<strong>Email:</strong>
+						{{ $estudiante->email }}
+					</p>
+					<p>
+						<strong>Nombre:</strong>
+						{{ $estudiante->nombre.' '. $estudiante->apellido}}
+					</p>
+					<p>
+						<strong>Edad:</strong>
+						<?php
+							$birthday = new DateTime($estudiante->fecha_nacimiento);
+							$interval = $birthday->diff(new DateTime);
+							echo $interval->y." años";
+						?>
+					</p><br>
+					<h4><i><u>Datos antropométricos</u></i></h4>
+					
+						<table class="table table-bordered col-lg-12">
 						<tr>
 							<td>		
 								<strong>Peso (kg):</strong>														

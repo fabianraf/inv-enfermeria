@@ -5,12 +5,10 @@
 <div class="col-lg-8">
 	
     <!-- the actual blog post: title/author/date/content -->
-    <h1>Informacion Personal</h1>
+    <h1>Datos personales</h1>
     <hr>
     	{{ Form::open(array('url' => 'edit')) }}
-			<div class="col row">
-				
-			
+			<div class="col row">		
 				<div class="col-md-4 col-lg-8" >
 					<table class="table table-bordered col-lg-12">
 						<tr>
@@ -61,6 +59,16 @@
 								{{ $user->telefono }}
 							</td>
 						</tr>
+					</table>
+
+					<div class="col-lg-12">		
+    					<div class="alert alert-success">
+        				<a href="#" class="close" data-dismiss="alert">&times;</a>
+							{{'Por favor complete los siguientes datos personales'}}
+    					</div>
+    				</div>
+
+					<table class="table table-bordered col-lg-12">
 						<tr>
 							<td>		
 								<strong>Fecha de nacimiento:</strong>														

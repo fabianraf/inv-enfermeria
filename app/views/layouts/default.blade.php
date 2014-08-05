@@ -47,14 +47,18 @@
 								<a href="#" class="dropdown-toggle text-white"  data-toggle="dropdown">{{(Auth::user() -> email) }} 
 								<b class="caret"></b></a> 
 								<ul class="dropdown-menu">
+									<?php if(Auth::user()->edito_perfil == "SI" && Auth::user()->tipo != "admin"){?>
+										<li>
+											{{ HTML::link('/profile', "Ver perfil" ) }}
+										</li>									
+										<li class="divider"></li>
+									<?php }?>
+									<?php if(Auth::user()->edito_perfil != "SI" && Auth::user()->tipo != "admin"){?>
 									<li>
-										{{ HTML::link('/profile', "Ver Perfil" ) }}
+										{{ HTML::link('/edit', "Editar perfil" ) }}
 									</li>									
 									<li class="divider"></li>
-									<li>
-										{{ HTML::link('/edit', "Editar Perfil" ) }}
-									</li>									
-									<li class="divider"></li>
+									<?php }?>
 									<li>
 										<a href="/logout">Logout</a>
 									</li>
@@ -65,15 +69,15 @@
 								<ul class="dropdown-menu">
 									<?php if(Auth::user()->tipo == "estudiante"){?>
 									<li>
-										{{ HTML::link('/encuesta_consumo_alimentos', "Consumo de Alimentos en Universidad y alrededores" ) }}
+										{{ HTML::link('/encuesta_consumo_alimentos', "Consumo de alimentos en Universidad y alrededores" ) }}
 									</li>
 									<li class="divider"></li>
 									<li>
-										{{ HTML::link('/encuesta_consumo_alimentos_bares', "Consumo de Alimentos en Bares" ) }}
+										{{ HTML::link('/encuesta_consumo_alimentos_bares', "Consumo de alimentos en bares" ) }}
 									</li>
 									<?php }else {?>									
 									<li>
-										{{ HTML::link('/encuesta_consumo_habitual', "Consumo Habitual de Alimentos" ) }}
+										{{ HTML::link('/encuesta_consumo_habitual', "Consumo habitual de alimentos" ) }}
 									</li>
 									<li class="divider"></li>
 									<li>

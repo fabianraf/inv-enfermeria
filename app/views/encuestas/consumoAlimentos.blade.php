@@ -2,6 +2,17 @@
 	
 @section('content')
 
+<?php if(Auth::user()->edito_perfil != "SI"){?>
+	<div class="col-lg-12">		
+	    <div class="alert alert-success">
+	        <a href="#" class="close" data-dismiss="alert">&times;</a>
+					{{'Por favor complete su información personal en "Editar perfil", para poder continuar con las encuestas'}}
+	    </div>
+	</div>
+
+
+<?php }else {?>
+
 {{ Form::open(array('url' => 'encuesta_consumo_alimentos', 'id' => 'encuesta_consumo_alimentos_universidad')) }}
 <div class="col-lg-12">
 	<h2>Frecuencia de consumo de alimentos en la Universidad y alrededores
@@ -111,4 +122,5 @@
 <div id="draft-saved" class="feedback-success">
   <p>Borrador grabado automaticamente!</p>
 </div>
+<?php } ?>
 @stop

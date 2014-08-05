@@ -67,15 +67,18 @@
 					<h1>Resultados e interpretación</h1><br>
 						<p>
 							<strong>Indice masa corporal (IMC):</strong>
-							{{ $antropometria->imc }}
+							{{ $antropometria->imc }} - 
+							{{ $antropometria->interpretacion_imc }}
 						</p>
 						<p>
 							<strong>Indice cintura-cadera:</strong>
-							{{ $antropometria->indice_cintura_cadera }}
+							{{ $antropometria->indice_cintura_cadera }} - 
+							{{ $antropometria->interpretacion_indice_cintura_cadera }}
 						</p>
 						<p>
 							<strong>Porcentaje circunferencia media del brazo (% CMB):</strong>
-							{{ $antropometria->porcentaje_cmb }}
+							{{ $antropometria->porcentaje_cmb }} - 
+							{{ $antropometria->interpretacion_cmb }}
 						</p>
 						<p>
 							<strong>Porcentaje pliegue tricipital (%):</strong>

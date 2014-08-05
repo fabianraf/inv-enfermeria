@@ -5,7 +5,7 @@
 <div class="col-lg-8">
 	
     <!-- the actual blog post: title/author/date/content -->
-    <h1>Informacion Personal</h1>
+    <h1>Datos personales</h1>
     <hr>    	
 			<div class="col row">			
 				<div class="col-md-4 col-lg-8" >
