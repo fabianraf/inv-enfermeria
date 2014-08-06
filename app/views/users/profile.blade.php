@@ -26,17 +26,17 @@
 						{{ $user->apellido }}
 					</p>
 					<p>
-						<strong>Genero:</strong>
+						<strong>Género:</strong>
 						<?php if($user->genero=='H') echo "Hombre";
 								elseif($user->genero=='M') echo "Mujer";
 						?>						
 					</p>
 					<p>
-						<strong>Direccion:</strong>
+						<strong>Dirección:</strong>
 						{{ $user->direccion }}
 					</p>
 					<p>
-						<strong>Telefono:</strong>
+						<strong>Teléfono:</strong>
 						{{ $user->telefono }}
 					</p>
 					<p>
@@ -47,13 +47,8 @@
 						<strong>Con quién vives?:</strong>
 						{{ $user->personas_hogar }}
 					</p><br>									
-				</div>
-				
-
-				
-				
+				</div>			
 		</div>
-
 </div>
 	
 @stop

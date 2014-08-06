@@ -31,7 +31,7 @@
 						</tr>
 						<tr>
 							<td>		
-								<strong>Cedula:</strong>														
+								<strong>Cédula:</strong>														
 							</td>
 							<td align='left'>
 								{{ $user->cedula }}
@@ -55,7 +55,7 @@
 						</tr>
 						<tr>
 							<td>		
-								<strong>Direccion:</strong>														
+								<strong>Dirección:</strong>														
 							</td>
 							<td align='left'>
 								{{ $user->direccion }}
@@ -63,7 +63,7 @@
 						</tr>
 						<tr>
 							<td>		
-								<strong>Telefono:</strong>													
+								<strong>Teléfono:</strong>													
 							</td>
 							<td align='left'>
 								{{ $user->telefono }}
@@ -94,7 +94,7 @@
 						</tr>
 						<tr>
 							<td>		
-								<strong>Genero:</strong>
+								<strong>Género:</strong>
 							</td>
 							<td align='left'>
 								<select name="genero" id="genero">
@@ -119,18 +119,19 @@
 							</td>
 						</tr>
 					</table>
-					<br>					
-					{{ Form::submit('Guardar', array('class'=>'btn btn-success')) }}</br></br>
+					<br>
+					<button class='btn btn-success' style="white-space: normal" type='button' data-toggle="modal" data-target="#confirmDelete" 
+					data-title="Atención" 
+					data-message='Una vez guardada tu información personal no podrás volver a editarla.
+					Estás seguro que deseas continuar?'>Guardar</button>						
+					<!--{{ Form::submit('Guardar', array('class'=>'btn btn-success')) }}</br></br>-->
+
 				</div>
-				{{ Form::close() }}
-
-				
-				
+				{{ Form::close() }}			
 		</div>
-
-</div>
+	</div>
 	
-
+@include('users.confirm')
 @stop
 	
 	
