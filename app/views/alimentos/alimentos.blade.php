@@ -18,14 +18,14 @@
 {{ Form::hidden('tipo_de_alimento_id', $tipo_de_alimento->id) }}
 {{ Form::close() }}
 
-<div class="col-lg-12">
+<div class="col-lg-9">
 	<h2><td>{{ $tipo_de_alimento->nombre }}</td></h2>
 	<table class="table">
 	  <thead>
 			<tr>
 				<td>#</td>
-				<td>Nombre</td>	
-				<td>Acciones</td>
+				<td>Alimento</td>	
+				<td></td>
 			</tr>
 		</thead>
 		</tbody>
@@ -33,10 +33,8 @@
 		  	@foreach($alimentos as $alimento)
 				<tr id="alimento-{{ $index }}">
 					<td>{{ $index }}</td>
-					<td>{{ $alimento->nombre }}</td>
-					<td>						
-						{{ HTML::linkRoute('alimentos.edit', "Editar", array($alimento->id) ) }}
-					</td>
+					<td>{{ HTML::linkRoute('alimentos.edit', $alimento->nombre, array($alimento->id) ) }}</td>
+					<td><i class='glyphicon glyphicon-tags'></i></td>
 				</tr>
 				<?php $index++; ?> 
 		  	@endforeach

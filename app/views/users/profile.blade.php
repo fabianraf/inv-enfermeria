@@ -24,13 +24,7 @@
 					<p>
 						<strong>Apellido:</strong>
 						{{ $user->apellido }}
-					</p>
-					<p>
-						<strong>Género:</strong>
-						<?php if($user->genero=='H') echo "Hombre";
-								elseif($user->genero=='M') echo "Mujer";
-						?>						
-					</p>
+					</p>					
 					<p>
 						<strong>Dirección:</strong>
 						{{ $user->direccion }}
@@ -38,10 +32,16 @@
 					<p>
 						<strong>Teléfono:</strong>
 						{{ $user->telefono }}
-					</p>
+					</p>					
 					<p>
 						<strong>Fecha de nacimiento:</strong>
 						{{ $user->fecha_nacimiento }}
+					</p>
+					<p>
+						<strong>Género:</strong>
+						<?php if($user->genero=='H') echo "Hombre";
+								elseif($user->genero=='M') echo "Mujer";
+						?>						
 					</p>
 					<p>
 						<strong>Con quién vives?:</strong>

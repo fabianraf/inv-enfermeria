@@ -122,7 +122,7 @@
 					<br>
 					<button class='btn btn-success' style="white-space: normal" type='button' data-toggle="modal" data-target="#confirmDelete" 
 					data-title="Atención" 
-					data-message='Una vez guardada tu información personal no podrás volver a editarla.
+					data-message='Una vez guardada tu información personal, no podrás volver a editarla.
 					Estás seguro que deseas continuar?'>Guardar</button>						
 					<!--{{ Form::submit('Guardar', array('class'=>'btn btn-success')) }}</br></br>-->
 
