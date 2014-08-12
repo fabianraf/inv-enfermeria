@@ -5113,7 +5113,7 @@ button.close {
 }
 .modal-dialog {
   position: relative;
-  width: auto;
+  width: 300px;
   margin: 10px;
 }
 .modal-content {

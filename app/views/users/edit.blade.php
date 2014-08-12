@@ -3,6 +3,15 @@
 	
 @section('content')
 
+
+@if($errors->any())
+ <div class="alert alert-danger alert-block">
+   <ul>
+     {{ implode('', $errors->all('<li class="error">:message</li>')) }}
+   </ul>
+ </div>
+ @endif
+
 <!-- Success-Messages -->
                 @if ($message = Session::get('error'))
                     <div class="alert alert-danger alert-block">
@@ -84,7 +93,7 @@
 								<strong>Fecha de nacimiento:</strong>														
 							</td>
 							<td align='left'>
-								{{ Form::text('fecha_nacimiento', '', array('class' => 'form-control','placeholder' => $user->fecha_nacimiento,'id' => 'datepicker','data-date-format'=>'yyyy-mm-dd','readonly')) }}</p>
+								{{ Form::text('fecha_nacimiento',Input::old('fecha_nacimiento'), array('class' => 'form-control','placeholder' => $user->fecha_nacimiento,'id' => 'datepicker','data-date-format'=>'yyyy-mm-dd','readonly')) }}</p>
 								<script>
 								  $(function() {
 								    $( "#datepicker" ).datepicker();
@@ -98,9 +107,9 @@
 							</td>
 							<td align='left'>
 								<select name="genero" id="genero">
-									<option value="0">--Seleccione--</option>
-									<option value="H" <?php if($user->genero=='H') { echo 'selected'; } ?> >Hombre</option>
-									<option value="M" <?php if($user->genero=='M') { echo 'selected'; } ?> >Mujer</option>
+									<option value="">--Seleccione--</option>
+									<option value="H" <?php if(Input::old('genero')=='H') { echo 'selected'; }?> >Hombre</option>
+									<option value="M" <?php if(Input::old('genero')=='M') { echo 'selected'; } ?> >Mujer</option>
 								</select>
 							</td>
 						</tr>
@@ -110,11 +119,11 @@
 							</td>
 							<td align='left'>
 								<select name="personas_hogar" id="personas_hogar">
-									<option>--Seleccione--</option>
-									<option <?php if($user->personas_hogar=='Padres/Abuelos') { echo 'selected'; } ?> >Padres/Abuelos</option>
-									<option <?php if($user->personas_hogar=='Pareja') { echo 'selected'; } ?> >Pareja</option>
-									<option <?php if($user->personas_hogar=='Sólo/a') { echo 'selected'; } ?> >Sólo/a</option>
-									<option <?php if($user->personas_hogar=='Otros') { echo 'selected'; } ?> >Otros</option>
+									<option value="">--Seleccione--</option>
+									<option <?php if(Input::old('personas_hogar')=='Padres/Abuelos') { echo 'selected'; }?> >Padres/Abuelos</option>
+									<option <?php if(Input::old('personas_hogar')=='Pareja') { echo 'selected'; }?> >Pareja</option>
+									<option <?php if(Input::old('personas_hogar')=='Sólo/a') { echo 'selected'; }?> >Sólo/a</option>
+									<option <?php if(Input::old('personas_hogar')=='Otros') { echo 'selected'; }?> >Otros</option>
 								</select>
 							</td>
 						</tr>
@@ -123,7 +132,7 @@
 					<button class='btn btn-success' style="white-space: normal" type='button' data-toggle="modal" data-target="#confirmDelete" 
 					data-title="Atención" 
 					data-message='Una vez guardada tu información personal, no podrás volver a editarla.
-					Estás seguro que deseas continuar?'>Guardar</button>						
+					Estás seguro que deseas continuar?'>Guardar</button>
 					<!--{{ Form::submit('Guardar', array('class'=>'btn btn-success')) }}</br></br>-->
 
 				</div>
@@ -131,7 +140,5 @@
 		</div>
 	</div>
 	
-@include('users.confirm')
+@include('layouts.confirm')
 @stop
-	
-	

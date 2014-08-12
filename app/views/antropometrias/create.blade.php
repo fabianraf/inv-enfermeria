@@ -1,6 +1,16 @@
 @extends('layouts.default')
 	
 @section('content')
+
+
+ @if($errors->any())
+ <div class="alert alert-danger alert-block">
+   <ul>
+     {{ implode('', $errors->all('<li class="error">:message</li>')) }}
+   </ul>
+ </div>
+ @endif
+
 	
 <div class="col-lg-8">
 	
@@ -8,6 +18,9 @@
     <h1>Ingresar datos antropométricos</h1>
     <hr>
     	{{ Form::open(array('url' => 'antropometria.ingresar')) }}
+    	<?php
+			if(!isset($id)){
+		?>
 			<div class="col row">	
 				<div class="col-md-4 col-lg-8" >
 					<h4><i><u>Datos del estudiante</u></i></h4>
@@ -34,7 +47,7 @@
 							<td>		
 								<strong>Peso (kg):</strong>														
 							</td>
-							<td align='left'>
+							<td align='left'>								
 								{{Form::text('peso', Input::old('peso'), array('class'=>'form-control'))}}	
 							</td>
 						</tr>
@@ -43,14 +56,14 @@
 								<strong>Talla (m):</strong>														
 							</td>
 							<td align='left'>
-								{{Form::text('talla', Input::old('talla'), array('class'=>'form-control'))}}	
+								{{Form::text('talla', Input::old('talla'), array('class'=>'form-control'))}}
 							</td>
 						</tr>
 						<tr>
 							<td>		
 								<strong>Circunferencia Cintura (cm):</strong>														
 							</td>
-							<td align='left'>
+							<td align='left'>								
 								{{Form::text('circunferencia_cintura', Input::old('circunferencia_cintura'), array('class'=>'form-control'))}}
 							</td>
 						</tr>
@@ -59,7 +72,7 @@
 								<strong>Circunferencia cadera (cm):</strong>													
 							</td>
 							<td align='left'>
-								{{Form::text('circunferencia_cadera', Input::old('circunferencia_cadera'), array('class'=>'form-control'))}}		
+								{{Form::text('circunferencia_cadera', Input::old('circunferencia_cadera'), array('class'=>'form-control'))}}								
 							</td>
 						</tr>
 						<tr>
@@ -67,14 +80,14 @@
 								<strong>Circunferencia Media del Brazo – CMB (cm):</strong>													
 							</td>
 							<td align='left'>
-								{{Form::text('circunferencia_brazo', Input::old('circunferencia_brazo'), array('class'=>'form-control'))}}			
+								{{Form::text('circunferencia_media_brazo', Input::old('circunferencia_media_brazo'), array('class'=>'form-control'))}}
 							</td>
 						</tr>
 						<tr>
 							<td>		
 								<strong>Pliegue Bicipital (mm):</strong>													
 							</td>
-							<td align='left'>
+							<td align='left'>								
 								{{Form::text('pliegue_bicipital', Input::old('pliegue_bicipital'), array('class'=>'form-control'))}}
 							</td>
 						</tr>
@@ -82,7 +95,7 @@
 							<td>		
 								<strong>Pliegue Tricipital - PT (mm):</strong>													
 							</td>
-							<td align='left'>
+							<td align='left'>								
 								{{Form::text('pliegue_tricipital', Input::old('pliegue_tricipital'), array('class'=>'form-control'))}}
 							</td>
 						</tr>
@@ -90,32 +103,36 @@
 							<td>		
 								<strong>Pliegue Subescapular (mm):</strong>													
 							</td>
-							<td align='left'>
-								{{Form::text('pliegue_subescapular', Input::old('pliegue_subescapular'), array('class'=>'form-control'))}}	
+							<td align='left'>								
+								{{Form::text('pliegue_subescapular', Input::old('pliegue_subescapular'), array('class'=>'form-control'))}}
 							</td>
 						</tr>
 						<tr>
 							<td>		
 								<strong>Pliegue Suprailíaco (mm):</strong>													
 							</td>
-							<td align='left'>
-								{{Form::text('pliegue_suprailiaco', Input::old('pliegue_suprailiaco'), array('class'=>'form-control'))}}		
+							<td align='left'>								
+								{{Form::text('pliegue_suprailiaco', Input::old('pliegue_suprailiaco'), array('class'=>'form-control'))}}
 							</td>
 						</tr>				
 					</table>
 					<br>
 					{{ Form::hidden('estudiante_id', $estudiante->id) }}
-					{{ Form::submit('Guardar', array('class'=>'btn btn-success')) }}</br></br>
+					<button class='btn btn-success' style="white-space: normal" type='button' data-toggle="modal" data-target="#confirmDelete" 
+					data-title="Atención" 
+					data-message='Una vez guardada la información antropométrica, no podrás editarla.
+					Estás seguro que deseas continuar?'>Guardar</button>
+					<!--{{ Form::submit('Guardar', array('class'=>'btn btn-success')) }}</br></br>-->
 				</div>
-				{{ Form::close() }}
-
-				
-				
+				{{ Form::close() }}				
 		</div>
+		<?php
+			}
+		?>
 
 </div>
 	
-
+@include('layouts.confirm')
 @stop
 	
 	

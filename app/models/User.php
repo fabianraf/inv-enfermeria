@@ -10,9 +10,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	protected $guarded = array('id');
 
 	public static $rules = array(
-	    'email'=>'required|email|unique:usuarios',
-	    'password'=>'required|alpha_num|between:6,12|confirmed',
-	    'password_confirmation'=>'required|alpha_num|between:6,12'
+	    'fecha_nacimiento'=>'required',
+	    'genero'=>'required',
+	    'personas_hogar'=>'required'
 	    );
 			
 	/**
