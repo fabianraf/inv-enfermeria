@@ -83,7 +83,7 @@
 					<div class="col-lg-12">		
     					<div class="alert alert-success">
         				<a href="#" class="close" data-dismiss="alert">&times;</a>
-							{{'Por favor completa los siguientes datos personales'}}
+							{{'Por favor completa la siguiente información'}}
     					</div>
     				</div>
 
