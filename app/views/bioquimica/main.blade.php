@@ -13,7 +13,7 @@
 	<div class="form-group">    	
         {{Form::text('busqueda', Input::old('busqueda'), array('class'=>'form-control'))}}
         <br>
-        {{Form::submit('Buscar', array('class'=>'btn btn-success'))}}
+        <button type="submit" class="btn btn-success" id="confirm"><i class='glyphicon glyphicon-search'></i></button>        
     </div>    
 </div>
 <h3>Estudiantes</h3>

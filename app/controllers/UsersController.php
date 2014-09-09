@@ -74,12 +74,17 @@ class UsersController extends BaseController {
 	{
         $user = Auth::user();
         $input = Input::all();
-        $user->fecha_nacimiento = $input['fecha_nacimiento'];
-        $user->genero = $input['genero'];
-        $user->personas_hogar = $input['personas_hogar'];
-        $user->edito_perfil = 'SI';
-        $user->save();
-		return View::make('users.profile', ['user' => $user]); 
+        $validator = Validator::make($input, User::$rules);
+        if ($validator->passes()) {
+	        $user->fecha_nacimiento = $input['fecha_nacimiento'];
+	        $user->genero = $input['genero'];
+	        $user->personas_hogar = $input['personas_hogar'];
+	        $user->edito_perfil = 'SI';
+	        $user->save();
+			return View::make('users.profile', ['user' => $user]);
+		}else {
+		    return Redirect::back()->withInput()->withErrors($validator->messages());
+		}
 
 	}
 

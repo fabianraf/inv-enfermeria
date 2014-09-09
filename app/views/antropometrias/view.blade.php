@@ -5,7 +5,7 @@
 <div class="col-lg-9">
 	
     <!-- the actual blog post: title/author/date/content -->
-    <h1>Información Antropométrica</h1>    
+    <h1>Información Antropométrica</h1>     
 			<div class="col row">		
 				<div class="col-md-4 col-lg-9" >
 					<h4><i><u>Datos del estudiante</u></i></h4>

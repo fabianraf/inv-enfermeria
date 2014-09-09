@@ -1,6 +1,14 @@
 @extends('layouts.default')
 	
 @section('content')
+
+ @if($errors->any())
+ <div class="alert alert-danger alert-block">
+   <ul>
+     {{ implode('', $errors->all('<li class="error">:message</li>')) }}
+   </ul>
+ </div>
+ @endif
 	
 <div class="col-lg-8">
 	

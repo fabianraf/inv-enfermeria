@@ -43,36 +43,41 @@ class BioquimicaController extends BaseController {
 	public function create()
 	{
 		$campos = Input::all();
-		$estudiante = User::find($campos['estudiante_id']);		
-		$bioquimica = new Bioquimica;
-		$bioquimica->usuario_id = $estudiante->id;
-		$bioquimica->wbc = $campos['wbc'];
-		$bioquimica->neutrofilos = $campos['neutrofilos'];
-		$bioquimica->linfocitos = $campos['linfocitos'];
-		$bioquimica->monocitos = $campos['monocitos'];
-		$bioquimica->eosinofilos = $campos['eosinofilos'];
-		$bioquimica->basofilos = $campos['basofilos'];
-		$bioquimica->linfocitos_atipicos = $campos['linfocitos_atipicos'];
-		$bioquimica->celulas_grandes_inmaduras = $campos['celulas_grandes_inmaduras'];
-		$bioquimica->rbc = $campos['rbc'];
-		$bioquimica->hgb = $campos['hgb'];
-		$bioquimica->hct = $campos['hct'];
-		$bioquimica->rdw = $campos['rdw'];
-		$bioquimica->plt = $campos['plt'];
-		$bioquimica->mch = $campos['mch'];
-		$bioquimica->mchc = $campos['mchc'];
-		$bioquimica->mcv = $campos['mcv'];
-		$bioquimica->colesterol = $campos['colesterol'];
-		$bioquimica->hdl_colesterol = $campos['hdl_colesterol'];
-		$bioquimica->trigliceridos = $campos['trigliceridos'];
-		$bioquimica->glucosa_ayunas = $campos['glucosa_ayunas'];
-		$bioquimica->ldl_colesterol = $campos['ldl_colesterol'];
-		$bioquimica->hbsag = $campos['hbsag'];
-		$bioquimica->save();		
-		$estudiante->bioquimica = 'SI';
-		$estudiante->save();
-		$id=$estudiante->id;
-		return Redirect::action('BioquimicaController@ingresarDatos', array('id' => $id));
+		$validator = Validator::make($campos, Bioquimica::$rules);
+		if ($validator->passes()) {
+			$estudiante = User::find($campos['estudiante_id']);		
+			$bioquimica = new Bioquimica;
+			$bioquimica->usuario_id = $estudiante->id;
+			$bioquimica->wbc = $campos['wbc'];
+			$bioquimica->neutrofilos = $campos['neutrofilos'];
+			$bioquimica->linfocitos = $campos['linfocitos'];
+			$bioquimica->monocitos = $campos['monocitos'];
+			$bioquimica->eosinofilos = $campos['eosinofilos'];
+			$bioquimica->basofilos = $campos['basofilos'];
+			$bioquimica->linfocitos_atipicos = $campos['linfocitos_atipicos'];
+			$bioquimica->celulas_grandes_inmaduras = $campos['celulas_grandes_inmaduras'];
+			$bioquimica->rbc = $campos['rbc'];
+			$bioquimica->hgb = $campos['hgb'];
+			$bioquimica->hct = $campos['hct'];
+			$bioquimica->rdw = $campos['rdw'];
+			$bioquimica->plt = $campos['plt'];
+			$bioquimica->mch = $campos['mch'];
+			$bioquimica->mchc = $campos['mchc'];
+			$bioquimica->mcv = $campos['mcv'];
+			$bioquimica->colesterol = $campos['colesterol'];
+			$bioquimica->hdl_colesterol = $campos['hdl_colesterol'];
+			$bioquimica->trigliceridos = $campos['trigliceridos'];
+			$bioquimica->glucosa_ayunas = $campos['glucosa_ayunas'];
+			$bioquimica->ldl_colesterol = $campos['ldl_colesterol'];
+			$bioquimica->hbsag = $campos['hbsag'];
+			$bioquimica->save();		
+			$estudiante->bioquimica = 'SI';
+			$estudiante->save();
+			$id=$estudiante->id;
+			return Redirect::action('BioquimicaController@ingresarDatos', array('id' => $id));
+		}else {
+		    return Redirect::back()->withInput()->withErrors($validator->messages());
+		}
 	}
 
 }
