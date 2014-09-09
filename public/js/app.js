@@ -251,6 +251,7 @@ function anadir_alimento(tipo){
 	$("." + tipo + "-row:last").find(".col-sm-6.col-lg-2.ingredientes").children(".small").each(function(){
 		$(this).attr("name", "ingredientes_" + tipo + "_" + siguiente_id + "[]");
 	});
+	activar_tags();
 }
 function anadir_ingrediente(objeto){
 	var jQueryItem = $(objeto);
