@@ -159,6 +159,27 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	{
 		return $this->hasMany('EncuestaAlimentosBares', 'usuario_id');
 	}
+
+
+	//======================
+	//****************************************
+	//
+	//
+	// Obtener estudiante randomicamente
+	//
+	//
+	//======================
+	//****************************************	
+	public static function obtenerEstudianteRandomicamente()
+	{
+		$user = User::where("tipo", "=" , 'estudiante')->where("tiene_consumo_habitual", "=", "f")->orderBy(DB::raw('RANDOM()'))->take(1)->get();
+		return $user;
+	}
+
+	public function consumoHabitualDeAlimento()
+	    {
+        return $this->hasOne('ConsumoHabitualDeAlimento');
+	    }
 	
 
 }

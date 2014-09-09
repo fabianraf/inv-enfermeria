@@ -44,6 +44,8 @@ Route::get('encuesta_consumo_alimentos_bares', "EncuestasController@consumoAlime
 Route::post('encuesta_consumo_alimentos_bares', "EncuestasController@createConsumoAlimentosBares");
 
 Route::get('encuesta_consumo_habitual', "EncuestasController@consumoHabitual");
+Route::get('/obtener_alumno_randomicamente', "EncuestasController@obtener_alumno_randomicamente");
+Route::post('/grabar_consumo_habitual', "EncuestasController@grabar_consumo_habitual");
 
 Route::get('encuesta_manipulacion_comedores', "EncuestasController@manipulacionComedores");
 Route::post('encuesta_manipulacion_comedores', "EncuestasController@createManipulacionComedores");
@@ -54,6 +56,7 @@ Route::post('encuesta_manipulacion_bares', "EncuestasController@createManipulaci
 Route::get('encuesta_control_higiene_personal', "EncuestasController@controlHigienePersonal");
 Route::post('encuesta_control_higiene_personal', "EncuestasController@createControlHigienePersonal");
 
+Route::get('/obtener_alimentos', "AlimentosController@obtener_alimentos");
 
 
 

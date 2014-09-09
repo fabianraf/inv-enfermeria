@@ -219,4 +219,56 @@ class EncuestasController extends BaseController {
 		}
 	}
 
+
+	public function obtener_alumno_randomicamente()
+	{
+		return User::obtenerEstudianteRandomicamente()->first();
+	}
+
+	public function grabar_consumo_habitual()
+	{
+		$campos = Input::all();
+		// return $campos;
+		// return $campos['numero_de_preparaciones_desayuno'];
+		$tiempos = ["desayuno", "media_manana", "almuerzo", "media_tarde", "merienda"];
+		foreach($tiempos as $tiempo){ 
+			$consumo_habitual = new ConsumoHabitualDeAlimento;
+			$consumo_habitual->usuario_id = $campos['alumno_id'];
+			$consumo_habitual->tiempo_de_comida	= $tiempo;
+			$consumo_habitual->horario = $campos['horario_'.$tiempo];
+			$consumo_habitual->lugar = $campos['lugar_'.$tiempo];
+			$consumo_habitual->gasto_diario = $campos['gasto_diario_'.$tiempo];
+			$consumo_habitual->save();
+			for($i = 1; $i < $campos['numero_de_preparaciones_'.$tiempo] + 1; $i++ ){
+				if(isset($campos['nombre_alimento_'.$tiempo.'_'.$i]) && $campos['nombre_alimento_'.$tiempo.'_'.$i] <> ""){
+					$preparacion_consumo_habitual = new PreparacionConsumoHabitualDeAlimento;
+					$preparacion_consumo_habitual->consumo_habitual_de_alimentos_id = $consumo_habitual->id;
+					$preparacion_consumo_habitual->nombre_alimento = $campos['nombre_alimento_'.$tiempo.'_'.$i];
+					$preparacion_consumo_habitual->forma_de_coccion = $campos['forma_de_coccion_'.$tiempo.'_'.$i];
+					$preparacion_consumo_habitual->cantidad_en_medidas_caseras = $campos['cantidad_'.$tiempo.'_'.$i];
+					$preparacion_consumo_habitual->numero_de_porciones = $campos['porciones_'.$tiempo.'_'.$i];
+					$preparacion_consumo_habitual->grupo_de_alimentos = $campos['grupo_alimento_'.$tiempo.'_'.$i];
+					$preparacion_consumo_habitual->save();
+					foreach($campos['ingredientes_'.$tiempo.'_'.$i] as $ingrediente){
+						if(isset($ingrediente) && $ingrediente <> ""){
+							$ingrediente_preparacion = new IngredientesPreparacionConsumoHabitualDeAlimento;
+							$ingrediente_preparacion->preparacion_consumo_habitual_de_alimentos_id = $preparacion_consumo_habitual->id;
+							$ingrediente_preparacion->ingrediente = $ingrediente;
+							$ingrediente_preparacion->save();
+						}
+					}
+					// return $preparacion_consumo_habitual_desayuno;
+				}
+			}
+		}
+		$user = User::find($campos['alumno_id']);
+		$user->tiene_consumo_habitual = true;
+		$user->save();
+		return View::make('encuestas.consumoHabitual', array('message' => "Consumo habitual grabado exitosamente"));
+		
+		
+
+		
+	}
+
 }

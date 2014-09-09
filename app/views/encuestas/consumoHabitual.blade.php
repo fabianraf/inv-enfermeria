@@ -2,341 +2,240 @@
 	
 @section('content')
 
-{{ Form::open(array('url' => 'encuesta_consumo_alimentos')) }}
+{{ Form::open(array('url' => '/grabar_consumo_habitual', 'id' => 'form-consumo-habitual')) }}
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script>
 $(function() {
-var availableTags = [
-"Arroz",
-"Jamón",
-"Queso cheddar",
-"Pan de dulce",
-"Pan de sal",
-"Pan integral",
-"Leche entera",
-"Leche descremada",
-"Queso mozarella",
-"Piña",
-"Sandía"
-];
-$( "#tags" ).autocomplete({
-source: availableTags
+	activar_tags();
+
 });
-});
+function activar_tags(){
+	var alimentos;
+	var availableTags = [];
+	$.ajax({
+           type: 'GET',
+           url: '/obtener_alimentos',
+           dataType: "json",
+           success: function(data)
+           {
+           	for(var i = 0; i < data.length; i++) {
+			    var obj = data[i];
+			    availableTags.push(obj.nombre);
+			}
+           },
+	         error: function(jqXHR, textStatus, errorThrown) {
+	        	//Si ocurre un error 
+	         },
+	        async: false
+         });
+	
+	$( ".tags" ).autocomplete({
+		source: availableTags
+	});
+}
 </script>
 
 <div class="col-lg-12">
 	<h2>Consumo habitual de alimentos
 		<div class="pull-right">
 			<input type="submit" value="GRABAR" class="btn btn-success">
-			<input type="button" value="LIMPIAR" class="btn btn-warning">
 		</div>
 	</h2>
-	<hr>	
-	</br>	
-	<div class="col-lg-12">
-		<table class="table table-bordered col-lg-12" id="tipo-alimento"> 
-
-			<tr>
-				
-				<th>
-					Tiempo de comida
-				</th>
-				<th>
-					Horario
-				</th>
-				<th>
-					Lugar
-				</th>
-				<th>
-					Gasto diario ($)
-				</th>
-				<th>
-					Preparacion/alimento
-				</th>				
-				<th>
-					Ingredientes
-				</th>
-				<th>
-					Forma de cocción
-				</th>
-				<th>
-					Cantidad en medidas caseras
-				</th>
-				<th>
-					Num. porciones
-				</th>
-				<th>
-					Grupo de alimento
-				</th>				
-			</tr>
-		
-		  <tr>
-		  	<td>
-		      Desayuno
-		    </td>
-		    <td>{{Form::text('horario', Input::old('horario'), array('class'=>'form-control'))}}</td>
-
-		    <td>
-				<select>
-					<option>--Seleccione--</option>
-					<option>Hogar</option>
-					<option>Restaurante</option>
-					<option>Tienda</option>
-					<option>Cafeteria</option>
-					<option>Bar</option>
-					<option>Comedor</option>
-				</select>
-		    </td>
-		    <td>{{Form::text('gasto', Input::old('gasto'), array('class'=>'form-control'))}}</td>
-		    <td>
-				<select>
-					
-				</select>
-		    </td>
-		    <!--<td>{{Form::text('ingrediente', Input::old('ingrediente'), array('class'=>'form-control'))}}</td>-->
-		    <td><input id="tags"></td>
-		    <td>
-				<select>
-					<option>--Seleccione--</option>
-					<option>Cocido</option>
-					<option>Estofado</option>
-					<option>Frito</option>
-					<option>Al Horno</option>
-					<option>A la plancha</option>
-					<option>Al vapor</option>
-				</select>
-		    </td>
-		    <td>{{Form::text('cantidad', Input::old('cantidad'), array('class'=>'form-control'))}}</td>
-		    <td>{{Form::text('porciones', Input::old('porciones'), array('class'=>'form-control'))}}</td>
-		    <td>
-				<select>
-					<option>-</option>
-					<option>LE</option>
-					<option>LSD</option>
-					<option>LD</option>
-					<option>V</option>
-					<option>F</option>
-					<option>Al</option>
-					<option>Az</option>
-					<option>C</option>
-					<option>G</option>
-				</select>
-		    </td>
-		  </tr>
-
-		  <tr>
-		  	<td>
-		      Media Mañana
-		    </td>
-		    <td>{{Form::text('horario', Input::old('horario'), array('class'=>'form-control'))}}</td>
-		    <td>
-				<select>
-					<option>--Seleccione--</option>
-					<option>Hogar</option>
-					<option>Restaurante</option>
-					<option>Tienda</option>
-					<option>Cafeteria</option>
-					<option>Bar</option>
-					<option>Comedor</option>
-				</select>
-		    </td>
-		    <td>{{Form::text('gasto', Input::old('gasto'), array('class'=>'form-control'))}}</td>
-		    <td>
-				<select>
-					
-				</select>
-		    </td>
-		    <td>{{Form::text('ingrediente', Input::old('ingrediente'), array('class'=>'form-control','id'=>'ingrediente'))}}</td>		    
-		    <td>
-				<select>
-					<option>--Seleccione--</option>
-					<option>Cocido</option>
-					<option>Estofado</option>
-					<option>Frito</option>
-					<option>Al Horno</option>
-					<option>A la plancha</option>
-					<option>Al vapor</option>
-				</select>
-		    </td>
-		    <td>{{Form::text('cantidad', Input::old('cantidad'), array('class'=>'form-control'))}}</td>
-		    <td>{{Form::text('porciones', Input::old('porciones'), array('class'=>'form-control'))}}</td>		    		    
-		    <td>
-				<select>
-					<option>-</option>
-					<option>LE</option>
-					<option>LSD</option>
-					<option>LD</option>
-					<option>V</option>
-					<option>F</option>
-					<option>Al</option>
-					<option>Az</option>
-					<option>C</option>
-					<option>G</option>
-				</select>
-		    </td>
-		  </tr>
-
-		  <tr>
-		  	<td>
-		      Almuerzo
-		    </td>
-		    <td>{{Form::text('horario', Input::old('horario'), array('class'=>'form-control'))}}</td>
-		    <td>
-				<select>
-					<option>--Seleccione--</option>
-					<option>Hogar</option>
-					<option>Restaurante</option>
-					<option>Tienda</option>
-					<option>Cafeteria</option>
-					<option>Bar</option>
-					<option>Comedor</option>
-				</select>
-		    </td>
-		    <td>{{Form::text('gasto', Input::old('gasto'), array('class'=>'form-control'))}}</td>
-		    <td>
-				<select>
-					
-				</select>
-		    </td>
-		    <td>{{Form::text('ingrediente', Input::old('ingrediente'), array('class'=>'form-control'))}}</td>		    
-		    <td>
-				<select>
-					<option>--Seleccione--</option>
-					<option>Cocido</option>
-					<option>Estofado</option>
-					<option>Frito</option>
-					<option>Al Horno</option>
-					<option>A la plancha</option>
-					<option>Al vapor</option>
-				</select>
-		    </td>
-		    <td>{{Form::text('cantidad', Input::old('cantidad'), array('class'=>'form-control'))}}</td>
-		    <td>{{Form::text('porciones', Input::old('porciones'), array('class'=>'form-control'))}}</td>
-		    <td>
-				<select>
-					<option>-</option>
-					<option>LE</option>
-					<option>LSD</option>
-					<option>LD</option>
-					<option>V</option>
-					<option>F</option>
-					<option>Al</option>
-					<option>Az</option>
-					<option>C</option>
-					<option>G</option>
-				</select>
-		    </td>		    	    
-		  </tr>
-
-		  <tr>
-		  	<td>
-		      Media Tarde
-		    </td>
-		    <td>{{Form::text('horario', Input::old('horario'), array('class'=>'form-control'))}}</td>
-		    <td>
-				<select>
-					<option>--Seleccione--</option>
-					<option>Hogar</option>
-					<option>Restaurante</option>
-					<option>Tienda</option>
-					<option>Cafeteria</option>
-					<option>Bar</option>
-					<option>Comedor</option>
-				</select>
-		    </td>
-		    <td>{{Form::text('gasto', Input::old('gasto'), array('class'=>'form-control'))}}</td>
-		    <td>
-				<select>
-					
-				</select>
-		    </td>
-		    <td>{{Form::text('ingrediente', Input::old('ingrediente'), array('class'=>'form-control'))}}</td>		    
-		    <td>
-				<select>
-					<option>--Seleccione--</option>
-					<option>Cocido</option>
-					<option>Estofado</option>
-					<option>Frito</option>
-					<option>Al Horno</option>
-					<option>A la plancha</option>
-					<option>Al vapor</option>
-				</select>
-		    </td>
-		    <td>{{Form::text('cantidad', Input::old('cantidad'), array('class'=>'form-control'))}}</td>
-		    <td>{{Form::text('porciones', Input::old('porciones'), array('class'=>'form-control'))}}</td>
-		    <td>
-				<select>
-					<option>-</option>
-					<option>LE</option>
-					<option>LSD</option>
-					<option>LD</option>
-					<option>V</option>
-					<option>F</option>
-					<option>Al</option>
-					<option>Az</option>
-					<option>C</option>
-					<option>G</option>
-				</select>
-		    </td>	    		    
-		  </tr>
-
-		  <tr>
-		  	<td>
-		      Merienda
-		    </td>
-		    <td>{{Form::text('horario', Input::old('horario'), array('class'=>'form-control'))}}</td>
-		    <td>
-				<select>
-					<option>--Seleccione--</option>
-					<option>Hogar</option>
-					<option>Restaurante</option>
-					<option>Tienda</option>
-					<option>Cafeteria</option>
-					<option>Bar</option>
-					<option>Comedor</option>
-				</select>
-		    </td>
-		    <td>{{Form::text('gasto', Input::old('gasto'), array('class'=>'form-control'))}}</td>
-		    <td>
-				<select>
-					
-				</select>
-		    </td>
-		    <td>{{Form::text('ingrediente', Input::old('ingrediente'), array('class'=>'form-control'))}}</td>		    
-		    <td>
-				<select>
-					<option>--Seleccione--</option>
-					<option>Cocido</option>
-					<option>Estofado</option>
-					<option>Frito</option>
-					<option>Al Horno</option>
-					<option>A la plancha</option>
-					<option>Al vapor</option>
-				</select>
-		    </td>
-		    <td>{{Form::text('cantidad', Input::old('cantidad'), array('class'=>'form-control'))}}</td>
-		    <td>{{Form::text('porciones', Input::old('porciones'), array('class'=>'form-control'))}}</td>
-		    <td>
-				<select>
-					<option>-</option>
-					<option>LE</option>
-					<option>LSD</option>
-					<option>LD</option>
-					<option>V</option>
-					<option>F</option>
-					<option>Al</option>
-					<option>Az</option>
-					<option>C</option>
-					<option>G</option>
-				</select>
-		    </td>	    		    
-		  </tr>	 	
-		</table>
+	<div id="mensajes">
+		@if(isset($message))
+		    <div class="alert alert-success">
+		        <a href="#" class="close" data-dismiss="alert">&times;</a>
+						{{$message}}
+		    </div>
+		@endif
 	</div>
+	
+	<hr>	
+	</br>
+	
+	<div class="row">
+		{{ Form::label('alumno', 'Alumno',array('class' => 'col-sm-1 col-lg-1 control-label')); }}
+		
+		<div class="col-sm-6">
+			{{ Form::text('nombrePropietario','', array('class' => 'form-control', 'placeholder' => 'Alumno', 'id' => 'nombre_alumno' )); }}
+		</div>
+		<input type="button" value="Obtener Alumno" class="btn btn-warning" id="obtener_alumno">
+		{{ Form::hidden('alumno_id','', array('id' => 'alumno_id' )); }}
+	</div>
+
+	<br><br/>
+
+	<div class="row">
+	{{ Form::button("Desayuno", array('class'=>'btn btn-default btn-info btn-striped tiempo', 'id' => 'desayuno')) }} 
+	{{ Form::button("Media Mañana", array('class'=>'btn btn-default btn-success btn-striped tiempo', 'id' => 'media_manana')) }} 
+	{{ Form::button("Almuerzo", array('class'=>'btn btn-default btn-success btn-striped tiempo', 'id' => 'almuerzo')) }} 
+	{{ Form::button("Media Tarde", array('class'=>'btn btn-default btn-success btn-striped tiempo', 'id' => 'media_tarde')) }} 
+	{{ Form::button("Merienda", array('class'=>'btn btn-default btn-success btn-striped tiempo', 'id' => 'merienda')) }} 
+	</div>	</br></br>
+
+	<div class="row show-grid">
+		<div class="col-sm-6 col-lg-1">
+			<h5>Horario</h5>
+		</div>
+		<div class="col-sm-6 col-lg-1">
+			<h5>Lugar</h5>
+		</div>	
+		<div class="col-sm-6 col-lg-1">
+			<h5>Gasto diario ($)</h5>
+		</div>
+		<div class="col-sm-6 col-lg-2">
+			<h5>Preparación/alimento</h5>
+		</div>
+		<div class="col-sm-6 col-lg-2">
+			<h5>Ingredientes</h5>
+		</div>
+		<div class="col-sm-6 col-lg-1">
+			<h5>Forma de cocción</h5>
+		</div>
+		<div class="col-sm-6 col-lg-1">
+			<h5>Cantidad en medidas caseras</h5>
+		</div>
+		<div class="col-sm-6 col-lg-1">
+			<h5>Num. porciones</h5>
+		</div>
+		<div class="col-sm-6 col-lg-1">
+			<h5>Grupo de alimento</h5>
+		</div>	
+	</div>
+
+	<?php $tiempos = ["desayuno", "media_manana", "almuerzo", "media_tarde", "merienda"]; ?>
+	<?php 
+		foreach($tiempos as $tiempo){ 
+			// $class = "tiempo ";
+			if($tiempo == "desayuno")
+				$class = "";
+			else
+				$class = "hidden";
+	?> 
+	{{ Form::hidden('numero_de_preparaciones_'.$tiempo,'3', array('id' => 'numero_de_preparaciones_'.$tiempo )); }}
+	<div id="{{$tiempo}}-id" class="{{$class}}">
+		<div class="row">
+			<div class="col-sm-6 col-lg-1">
+				{{Form::text('horario_'.$tiempo, Input::old('horario'), array('class'=>'small'))}}
+				
+			</div>
+			<div class="col-sm-6 col-lg-1">
+				<select class="small-select" name="lugar_{{$tiempo}}">
+						<option>----</option>
+						<option>Hogar</option>
+						<option>Restaurante</option>
+						<option>Tienda</option>
+						<option>Cafeteria</option>
+						<option>Bar</option>
+						<option>Comedor</option>
+				</select>
+			</div>	
+			<div class="col-sm-6 col-lg-1">
+				{{Form::text('gasto_diario_'.$tiempo, Input::old('gasto'), array('class'=>'small'))}}
+			</div>
+			<div class="col-sm-6 col-lg-2">
+				<input class="small" type="text" name="nombre_alimento_{{$tiempo}}_1" id="nombre-alimento-{{$tiempo}}-1"/>
+				<a href="javascript:anadir_alimento('{{$tiempo}}')"><span class="glyphicon glyphicon-plus"></span> Añadir alimento</a>
+			</div>
+			<div class="col-sm-6 col-lg-2">
+				<input class="small col-lg-12 ui-autocomplete-input tags" type="text" name="ingredientes_{{$tiempo}}_1[]"/>
+				<input class="small col-lg-12 ui-autocomplete-input tags" type="text" name="ingredientes_{{$tiempo}}_1[]"/>
+				<input class="small col-lg-12 ui-autocomplete-input tags" type="text" name="ingredientes_{{$tiempo}}_1[]"/>
+				<input class="small col-lg-12 ui-autocomplete-input tags" type="text" name="ingredientes_{{$tiempo}}_1[]"/> <a href="#" onclick="anadir_ingrediente(this); return false;"><span class="glyphicon glyphicon-plus"></span> Añadir ingrediente</a>
+			</div>
+			<div class="col-sm-6 col-lg-1">
+				<select class="small-select" name="forma_de_coccion_{{$tiempo}}_1">
+						<option>----</option>
+						<option>Cocido</option>
+						<option>Estofado</option>
+						<option>Frito</option>
+						<option>Al Horno</option>
+						<option>A la plancha</option>
+						<option>Al vapor</option>
+					</select>
+			</div>
+			<div class="col-sm-6 col-lg-1">
+				{{Form::text('cantidad_'.$tiempo.'_1', Input::old('cantidad'), array('class'=>'small'))}}
+			</div>
+			<div class="col-sm-6 col-lg-1">
+				{{Form::text('porciones_'.$tiempo.'_1', Input::old('porciones'), array('class'=>'small'))}}
+			</div>
+			<div class="col-sm-6 col-lg-1">
+				<select class="small-select" name="grupo_alimento_{{$tiempo}}_1">
+						<option>-</option>
+						<option>LE</option>
+						<option>LSD</option>
+						<option>LD</option>
+						<option>V</option>
+						<option>F</option>
+						<option>Al</option>
+						<option>Az</option>
+						<option>C</option>
+						<option>G</option>
+					</select>
+			</div>	
+		</div>
+
+		<div class="row top7 {{$tiempo}}-row">
+			<div class="col-sm-6 col-lg-1">
+				&nbsp;
+			</div>
+			<div class="col-sm-6 col-lg-1">
+				&nbsp;
+			</div>	
+			<div class="col-sm-6 col-lg-1">
+				&nbsp;
+			</div>
+			<div class="col-sm-6 col-lg-2 nombre-alimento">
+				<input class="small" type="text" name="nombre_alimento_{{$tiempo}}_2"/>
+			</div>
+			<div class="col-sm-6 col-lg-2 ingredientes">
+				<input class="small col-lg-12 ui-autocomplete-input tags" type="text" name="ingredientes_{{$tiempo}}_2[]"/>
+				<input class="small col-lg-12 ui-autocomplete-input tags" type="text" name="ingredientes_{{$tiempo}}_2[]"/>
+				<input class="small col-lg-12 ui-autocomplete-input tags" type="text" name="ingredientes_{{$tiempo}}_2[]"/>
+				<input class="small col-lg-12 ui-autocomplete-input tags" type="text" name="ingredientes_{{$tiempo}}_2[]"/> <a href="#" onclick="anadir_ingrediente(this); return false;"><span class="glyphicon glyphicon-plus"></span> Añadir ingrediente</a>
+			</div>
+			<div class="col-sm-6 col-lg-1 forma-de-coccion">
+				<select class="small-select" name="forma_de_coccion_{{$tiempo}}_2">
+						<option>----</option>
+						<option>Cocido</option>
+						<option>Estofado</option>
+						<option>Frito</option>
+						<option>Al Horno</option>
+						<option>A la plancha</option>
+						<option>Al vapor</option>
+					</select>
+			</div>
+			<div class="col-sm-6 col-lg-1 cantidad">
+				{{Form::text('cantidad_'.$tiempo.'_2', Input::old('cantidad'), array('class'=>'small'))}}
+			</div>
+			<div class="col-sm-6 col-lg-1 porciones">
+				{{Form::text('porciones_'.$tiempo.'_2', Input::old('porciones'), array('class'=>'small'))}}
+			</div>
+			<div class="col-sm-6 col-lg-1 grupo-de-alimentos">
+				<select class="small-select" name="grupo_alimento_{{$tiempo}}_2">
+						<option>-</option>
+						<option>LE</option>
+						<option>LSD</option>
+						<option>LD</option>
+						<option>V</option>
+						<option>F</option>
+						<option>Al</option>
+						<option>Az</option>
+						<option>C</option>
+						<option>G</option>
+					</select>
+			</div>	
+		</div>
+	</div>
+	<?php } ?>
+
+
+
+
 </div>
 {{ Form::close() }}
 @stop

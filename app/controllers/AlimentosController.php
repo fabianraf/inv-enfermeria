@@ -144,7 +144,10 @@ class AlimentosController extends BaseController {
 
 
 
-
+	public function obtener_alimentos()
+	{
+		return Response::json(DB::table('alimentos')->select('nombre')->get());
+	}
 
 
 }

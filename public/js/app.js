@@ -76,6 +76,98 @@ $(document).ready(function() {
 		setTimeout("$('#draft-saved').hide()", 7000);
 		return false;
 	});
+
+	//Obtener alumnos randomicamente para consumo habitual
+	$("#obtener_alumno").click(function(){
+		$.get('/obtener_alumno_randomicamente', function( data ) {
+			$("#nombre_alumno").val(data["nombre"] + " " + data["apellido"])
+			$("#alumno_id").val(data["id"]);
+		});
+	});
+
+	//Oculta y Muestra los campos para los tiempos de consumo habitual
+	$(".tiempo").click(function(){
+		var nombre_id = $(this).attr("id");
+		console.log(nombre_id);
+		$(".tiempo").each(function(){
+			var id_interno = $(this).attr("id");
+			$(this).removeClass("btn-info");
+			$(this).addClass("btn-success");
+			$("#" + id_interno + "-id").addClass("hidden");
+		});
+		$(this).addClass("btn-info");
+		$("#" + nombre_id + "-id").removeClass("hidden");
+	});
+
+	//Valida campos para consumo habitual
+	$("#form-consumo-habitual").submit(function(){
+		var mensaje = "";
+		var error = false;
+		if($("#alumno_id").val() == ""){
+			error = true;
+			if($("#alumno-error").length < 1)
+				mensaje += "<div class='alert alert-warning' id='alumno-error'><a href='#' class='close' data-dismiss='alert'>&times;</a>Se debe seleccionar un alumno.</a></div>"; 
+		}else{
+			if($("#alumno-error").length > 0){
+				$("#alumno-error").remove();
+			}
+		}
+
+		if($("#nombre-alimento-desayuno-1").val() == ""){
+			error = true;
+			if($("#desayuno-error").length < 1)
+				mensaje += "<div class='alert alert-warning' id='desayuno-error'><a href='#' class='close' data-dismiss='alert'>&times;</a>Se debe ingresar un alimento para el desayuno.</a></div>";
+		}
+		else{
+			if($("#desayuno-error").length > 0){
+				$("#desayuno-error").remove();
+			}
+		}
+		if($("#nombre-alimento-media_manana-1").val() == ""){
+			error = true;
+			if($("#media-manana-error").length < 1)
+				mensaje += "<div class='alert alert-warning' id='media-manana-error'><a href='#' class='close' data-dismiss='alert'>&times;</a>Se debe ingresar un alimento para la media mañana.</a></div>";
+		}
+		else{
+			if($("#media-manana-error").length > 0){
+				$("#media-manana-error").remove();
+			}
+		}
+		if($("#nombre-alimento-almuerzo-1").val() == ""){
+			error = true;
+			if($("#almuerzo-error").length < 1)
+				mensaje += "<div class='alert alert-warning' id='almuerzo-error'><a href='#' class='close' data-dismiss='alert'>&times;</a>Se debe ingresar un alimento para el almuerzo.</a></div>";
+		}
+		else{
+			if($("#almuerzo-error").length > 0){
+				$("#almuerzo-error").remove();
+			}
+		}
+		if($("#nombre-alimento-media_tarde-1").val() == ""){
+			error = true;
+			if($("#media-tarde-error").length < 1)
+				mensaje += "<div class='alert alert-warning' id='media-tarde-error'><a href='#' class='close' data-dismiss='alert'>&times;</a>Se debe ingresar un alimento para la media tarde.</a></div>";
+		}
+		else{
+			if($("#media-tarde-error").length > 0){
+				$("#media-tarde-error").remove();
+			}
+		}
+		if($("#nombre-alimento-merienda-1").val() == ""){
+			error = true;
+			if($("#merienda-error").length < 1)
+				mensaje += "<div class='alert alert-warning' id='merienda-error'><a href='#' class='close' data-dismiss='alert'>&times;</a>Se debe ingresar un alimento para la merienda.</a></div>";
+		}
+		else{
+			if($("#merienda-error").length > 0){
+				$("#merienda-error").remove();
+			}
+		}
+		if(error == true){
+			$("#mensajes").append(mensaje);
+			return false;
+		}
+	});
 	
 });  
 
@@ -143,4 +235,26 @@ function autosaveForm() {
 			$('#encuesta_consumo_alimentos_bares').submit();
 		
   
+}
+
+function anadir_alimento(tipo){
+	clonned_row = $("." + tipo + "-row:last").clone();
+	siguiente_id = parseInt($("#numero_de_preparaciones_" + tipo).val());
+	console.log(siguiente_id);
+	$("#numero_de_preparaciones_" + tipo).val(siguiente_id + 1);
+	$("." + tipo + "-row:last").after(clonned_row);
+	$("." + tipo + "-row:last").find(".col-sm-6.col-lg-2.nombre-alimento").children(".small").attr("name", "nombre_alimento_" + tipo + "_" + siguiente_id).val("");
+	$("." + tipo + "-row:last").find(".col-sm-6.col-lg-1.forma-de-coccion").children(".small-select").attr("name", "forma_de_coccion_" + tipo + "_" + siguiente_id).val("");
+	$("." + tipo + "-row:last").find(".col-sm-6.col-lg-1.cantidad").children(".small").attr("name", "cantidad_" + tipo + "_" + siguiente_id).val("");
+	$("." + tipo + "-row:last").find(".col-sm-6.col-lg-1.porciones").children(".small").attr("name", "porciones_" + tipo + "_" + siguiente_id).val("");
+	$("." + tipo + "-row:last").find(".col-sm-6.col-lg-1.grupo-de-alimentos").children(".small-select").attr("name", "grupo_alimento_" + tipo + "_" + siguiente_id).val("");
+	$("." + tipo + "-row:last").find(".col-sm-6.col-lg-2.ingredientes").children(".small").each(function(){
+		$(this).attr("name", "ingredientes_" + tipo + "_" + siguiente_id + "[]");
+	});
+}
+function anadir_ingrediente(objeto){
+	var jQueryItem = $(objeto);
+	ingrediente_clonado = jQueryItem.prev().clone().val("");
+	jQueryItem.before(ingrediente_clonado);
+	activar_tags();
 }

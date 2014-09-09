@@ -8,6 +8,7 @@
 		<!-- CSS are placed here -->
 		{{ HTML::style('bootstrap/css/bootstrap.css') }}
 		{{ HTML::style('bootstrap/css/bootstrap-responsive.css') }}
+		{{ HTML::style('bootstrap/css/bootstrap-theme.css') }}
 		{{ HTML::style('bootstrap/css/datepicker.css') }}
 		{{ HTML::style('css/app.css') }}
 
@@ -15,7 +16,7 @@
 
 		<!-- js are placed here -->
 		{{ HTML::script('/js/jquery/jquery-1.11.0.min.js') }}
-
+		
 	</head>
 
 	<body>
