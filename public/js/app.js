@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+	$('.clockpicker').clockpicker();
 	//Add any jquery code here. It will be loaded at the end of the page   
 	$("#crear-tipo-de-alimentos").submit(function(){
 		var message = "";

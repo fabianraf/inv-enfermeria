@@ -6,6 +6,8 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+{{ HTML::script('/js/jquery-clockpicker.js') }}
+{{ HTML::style('/css/bootstrap-clockpicker.css') }}
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script>
 $(function() {
@@ -77,7 +79,7 @@ function activar_tags(){
 	</div>	</br></br>
 
 	<div class="row show-grid">
-		<div class="col-sm-6 col-lg-1">
+		<div class="col-sm-6 col-lg-2">
 			<h5>Horario</h5>
 		</div>
 		<div class="col-sm-6 col-lg-1">
@@ -118,9 +120,26 @@ function activar_tags(){
 	{{ Form::hidden('numero_de_preparaciones_'.$tiempo,'3', array('id' => 'numero_de_preparaciones_'.$tiempo )); }}
 	<div id="{{$tiempo}}-id" class="{{$class}}">
 		<div class="row">
-			<div class="col-sm-6 col-lg-1">
-				{{Form::text('horario_'.$tiempo, Input::old('horario'), array('class'=>'small'))}}
+			<div class="col-sm-6 col-lg-2">
 				
+				<div class="input-group clockpicker">
+				<?php 
+					if($tiempo == "desayuno")
+						$hora = "7:00";
+					elseif($tiempo == "media_manana")
+						$hora = "11:00";
+					elseif($tiempo == "almuerzo")
+						$hora = "13:00";
+					elseif($tiempo == "media_tarde")
+						$hora = "16:00";
+					elseif($tiempo == "merienda") 
+						$hora = "20:00";
+				?>
+				    <input type="text" class="form-control" value="{{$hora}}" name="horario_{{$tiempo}}">
+				    <span class="input-group-addon">
+				        <span class="glyphicon glyphicon-time"></span>
+				    </span>
+				</div>
 			</div>
 			<div class="col-sm-6 col-lg-1">
 				<select class="small-select" name="lugar_{{$tiempo}}">
@@ -180,7 +199,7 @@ function activar_tags(){
 		</div>
 
 		<div class="row top7 {{$tiempo}}-row">
-			<div class="col-sm-6 col-lg-1">
+			<div class="col-sm-6 col-lg-2">
 				&nbsp;
 			</div>
 			<div class="col-sm-6 col-lg-1">
