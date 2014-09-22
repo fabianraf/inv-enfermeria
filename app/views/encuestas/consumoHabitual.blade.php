@@ -4,8 +4,6 @@
 
 {{ Form::open(array('url' => '/grabar_consumo_habitual', 'id' => 'form-consumo-habitual')) }}
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 {{ HTML::script('/js/jquery-clockpicker.js') }}
 {{ HTML::style('/css/bootstrap-clockpicker.css') }}
 <link rel="stylesheet" href="/resources/demos/style.css">
@@ -157,7 +155,7 @@ function activar_tags(){
 			</div>
 			<div class="col-sm-6 col-lg-2">
 				<input class="small" type="text" name="nombre_alimento_{{$tiempo}}_1" id="nombre-alimento-{{$tiempo}}-1"/>
-				<a href="javascript:anadir_alimento('{{$tiempo}}')"><span class="glyphicon glyphicon-plus"></span> Añadir alimento</a>
+				<a href="javascript:anadir_alimento('{{$tiempo}}')"><span class="glyphicon glyphicon-plus"></span> Añadir preparación</a>
 			</div>
 			<div class="col-sm-6 col-lg-2">
 				<input class="small col-lg-12 ui-autocomplete-input tags" type="text" name="ingredientes_{{$tiempo}}_1[]"/>

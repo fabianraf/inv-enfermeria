@@ -16,6 +16,8 @@
 
 		<!-- js are placed here -->
 		{{ HTML::script('/js/jquery/jquery-1.11.0.min.js') }}
+		{{ HTML::script('/js/jquery/jquery-ui.1.11.0.js') }}
+		
 		
 	</head>
 
