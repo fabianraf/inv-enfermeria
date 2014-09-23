@@ -57,6 +57,7 @@ Route::get('encuesta_control_higiene_personal', "EncuestasController@controlHigi
 Route::post('encuesta_control_higiene_personal', "EncuestasController@createControlHigienePersonal");
 
 Route::get('/obtener_alimentos', "AlimentosController@obtener_alimentos");
+Route::get('search/autocomplete', 'UsersController@autocomplete');
 
 
 

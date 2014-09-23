@@ -15,16 +15,26 @@ class AntropometriasController extends BaseController {
 	public function buscarEstudiantes()
 	{
 		$campos = Input::all();
-		$nombre = strtoupper($campos['busqueda']);
+		$id = $campos['alumno_id'];
+		$estudiante = User::find($id);
+		$antropometria = Antropometrias::where('usuario_id', '=', $estudiante->id)
+        								->first();
+        if(count($antropometria)>0)
+        	return View::make('antropometrias.main', array('estudiante' => $estudiante,
+        													'antropometria' => $antropometria));
+       	else
+			return View::make('antropometrias.main', array('estudiante' => $estudiante));
+
+		/*$nombre = strtoupper($campos['nombre_alumno']);
         $estudiantes = User::where('tipo', '=', 'estudiante')
         					->where('nombre', 'like', '%'.$nombre.'%')
 							->orWhere('tipo', '=', 'estudiante')
 							->where('apellido', 'like', '%'.$nombre.'%')
                             ->orderBy('nombre')
                             ->orderBy('apellido')                                                
-                            ->paginate(5);
+                            ->paginate(5);*/
 
-		return View::make('antropometrias.main', array('estudiantes' => $estudiantes));		
+		//return View::make('antropometrias.main', array('estudiante' => $estudiante));		
 	}
 
 	public function ingresarDatos($id)
@@ -33,7 +43,7 @@ class AntropometriasController extends BaseController {
         $antropometria = Antropometrias::where('usuario_id', '=', $estudiante->id)
         								->first();
         if(count($antropometria)>0)
-        	return View::make('antropometrias.view', array('estudiante' => $estudiante,
+        	return View::make('antropometrias.main', array('estudiante' => $estudiante,
         													'antropometria' => $antropometria));
        	else
 			return View::make('antropometrias.create', array('estudiante' => $estudiante));

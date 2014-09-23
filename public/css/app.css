@@ -98,6 +98,13 @@ table td,th {
 	margin-right: 3px;
 	margin-bottom: 7px;
 }
+
+.gestion-alimentos{
+    margin-top: 3px;
+    margin-left: 0px;
+    margin-right: 3px;
+    margin-bottom: 7px;
+}
 /* Feedback */
 .feedback-success {
     padding: 6px 14px 8px 14px;

@@ -2,53 +2,93 @@
     
 @section('content')
 
-<h1>
-  Gestión de pruebas bioquímicas
-  
-</h1>
-<div class="row estudiantes">
-	<h3>Buscar estudiantes</h3>
-	{{ Form::open(array('url' => 'bioquimica')) }}
+{{ Form::open(array('url' => 'bioquimica')) }}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+{{ HTML::script('/js/jquery-clockpicker.js') }}
+{{ HTML::style('/css/bootstrap-clockpicker.css') }}
+<link rel="stylesheet" href="/resources/demos/style.css">
 
-	<div class="form-group">    	
-        {{Form::text('busqueda', Input::old('busqueda'), array('class'=>'form-control'))}}
-        <br>
-        <button type="submit" class="btn btn-success" id="confirm"><i class='glyphicon glyphicon-search'></i></button>        
-    </div>    
-</div>
-<h3>Estudiantes</h3>
-<div class="list-group">
-<table class="table table-striped" style="width: 900px">
-    <tr>
-        <th>Cedula</th>
-        <th>Nombre Completo</th>
-        <th>Fecha de nacimiento</th>
-        <th>Datos Bioquímicos</th>
-    </tr> 
-	<ul>
-  @if(isset($estudiantes))
-  @foreach($estudiantes as $estudiante)
-  <tr>
-        <td>{{ $estudiante->cedula }}</td>
-        <td>{{ $estudiante->nombre.' '.$estudiante->apellido }}</td> 
-        <td>{{ $estudiante->fecha_nacimiento }}</td>
-        @if($estudiante->bioquimica=='SI')
-          <td><a href="{{{ URL::to('bioquimica/datos/'.$estudiante->id) }}}">Ver</a></td>
-        @elseif($estudiante->edito_perfil=='SI')
-          <td><a href="{{{ URL::to('bioquimica/datos/'.$estudiante->id) }}}">Ingresar</a></td>
-        @elseif($estudiante->edito_perfil!='SI')
-          <td>No editó su perfil</a></td>  
-        @endif
-    </tr>    
-  @endforeach
+
+<div class="col-lg-12">
+  <h2>Gestión de pruebas bioquímicas</h2>
+  <hr>
+  </br>
+ 
+  <div class="row">    
+    <div class="col-sm-6">
+      {{ Form::text('nombre_alumno','', array('class' => 'form-control', 'placeholder' => 'Buscar estudiante', 'id' => 'nombre_alumno' )); }}      
+      {{ Form::hidden('alumno_id', Input::old('alumno_id'),array('id'=>'alumno_id'))}}
+    </div>
+    <button type="submit" class="btn btn-success" id="confirm"><i class='glyphicon glyphicon-search'></i></button>        
+  </div>    
+  </br></br>
+  @if(isset($estudiante))
+    <div class="col-md-4 col-lg-9" >
+      <h4><i><u>Datos del estudiante</u></i></h4>
+        <ul type = square>
+          <p><li><strong>Email: </strong>{{ $estudiante->email }}</p>
+          <p><li><strong>Nombre: </strong>{{ $estudiante->nombre.' '. $estudiante->apellido}}</p>
+          <p><li><strong>Edad: </strong>
+            <?php
+              $birthday = new DateTime($estudiante->fecha_nacimiento);
+              $interval = $birthday->diff(new DateTime);
+              echo $interval->y." años";
+            ?></p>
+        </ul>
+    @if($estudiante->bioquimica=='SI')      
+        <h4><i><u>Biometría hemática</u></i></h4>
+        <ul type = square>
+          <p><li><strong>WBC (K/uL): </strong>{{ $bioquimica->wbc }}</p>
+          <p><li><strong>Neutrofilos (%): </strong>{{ $bioquimica->neutrofilos }}</p>
+          <p><li><strong>Linfocitos (%): </strong>{{ $bioquimica->linfocitos }}</p>
+          <p><li><strong>Monocitos (%): </strong>{{ $bioquimica->monocitos }}</p>
+          <p><li><strong>Eosinofilos (%): </strong>{{ $bioquimica->eosinofilos }}</p>
+          <p><li><strong>Basofilos (%): </strong>{{ $bioquimica->basofilos }}</p>
+          <p><li><strong>Linfocitos atípicos (%): </strong>{{ $bioquimica->linfocitos_atipicos }}</p>
+          <p><li><strong>Células grandes inmaduras (%): </strong>{{ $bioquimica->celulas_grandes_inmaduras }}</p>
+          <p><li><strong>RBC (M/uL): </strong>{{ $bioquimica->rbc }}</p>
+          <p><li><strong>HGB (g/dL): </strong>{{ $bioquimica->hgb }}</p>
+          <p><li><strong>HCT (%): </strong>{{ $bioquimica->hct }}</p>
+          <p><li><strong>RDW (%): </strong>{{ $bioquimica->rdw }}</p>
+          <p><li><strong>PLT (K/uL): </strong>{{ $bioquimica->plt }}</p>
+          <p><li><strong>MCH (pg): </strong>{{ $bioquimica->mch }}</p>
+          <p><li><strong>MCHC (g/dL): </strong>{{ $bioquimica->mchc }}</p>
+          <p><li><strong>MCV: </strong>{{ $bioquimica->mcv }}</p>
+        </ul>
+        <h4><i><u>Química</u></i></h4>
+        <ul type = square>
+          <p><li><strong>Colesterol: </strong>{{ $bioquimica->colesterol }}</p>
+          <p><li><strong>HDL Colesterol: </strong>{{ $bioquimica->hdl_colesterol }}</p>
+          <p><li><strong>Triglicéridos: </strong>{{ $bioquimica->trigliceridos }}</p>
+          <p><li><strong>Glucosa ayunas: </strong>{{ $bioquimica->glucosa_ayunas }}</p>
+          <p><li><strong>LDL Colesterol: </strong>{{ $bioquimica->ldl_colesterol }}</p>
+        </ul>
+        <h4><i><u>Inmunología</u></i></h4>
+        <ul type = square>
+          <p><li><strong>HBSAG: </strong>{{ $bioquimica->hbsag }}</p>
+        </ul>        
+        <h4><i><u>Resultados e interpretación</u></i></h4>
+        <ul type = square>
+          <p><li><strong></strong></p>          
+        </ul>
+      </div>
+    @else
+      @if($estudiante->edito_perfil!='SI')
+        <br><div class="alert alert-danger">
+          <a href="#" class="close" data-dismiss="alert">&times;</a>
+          No editó su perfil
+        </div>
+        
+      @else
+        <br><div class="alert alert-warning">
+          <a href="#" class="close" data-dismiss="alert">&times;</a>
+          El estudiante no tiene datos bioquímicos<br>
+          <a href="{{{ URL::to('bioquimica/datos/'.$estudiante->id) }}}">Ingresar datos</a>
+        </div>
+        
+      @endif     
+    @endif
   @endif
-	</ul>  
-</table>
-<?php echo $estudiantes->links(); ?>
 </div>
 {{ Form::close() }}
-@stop
-
-
-
-  
+@stop 

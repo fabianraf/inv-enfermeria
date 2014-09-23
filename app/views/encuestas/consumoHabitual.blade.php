@@ -12,30 +12,7 @@ $(function() {
 	activar_tags();
 
 });
-function activar_tags(){
-	var alimentos;
-	var availableTags = [];
-	$.ajax({
-           type: 'GET',
-           url: '/obtener_alimentos',
-           dataType: "json",
-           success: function(data)
-           {
-           	for(var i = 0; i < data.length; i++) {
-			    var obj = data[i];
-			    availableTags.push(obj.nombre);
-			}
-           },
-	         error: function(jqXHR, textStatus, errorThrown) {
-	        	//Si ocurre un error 
-	         },
-	        async: false
-         });
-	
-	$( ".tags" ).autocomplete({
-		source: availableTags
-	});
-}
+
 </script>
 
 <div class="col-lg-12">
@@ -60,7 +37,7 @@ function activar_tags(){
 		{{ Form::label('alumno', 'Alumno',array('class' => 'col-sm-1 col-lg-1 control-label')); }}
 		
 		<div class="col-sm-6">
-			{{ Form::text('nombrePropietario','', array('class' => 'form-control', 'placeholder' => 'Alumno', 'id' => 'nombre_alumno' )); }}
+			{{ Form::text('nombre_alumno','', array('class' => 'form-control', 'placeholder' => 'Buscar estudiante', 'id' => 'nombre_alumno' )); }}
 		</div>
 		<input type="button" value="Obtener Alumno" class="btn btn-warning" id="obtener_alumno">
 		{{ Form::hidden('alumno_id','', array('id' => 'alumno_id' )); }}

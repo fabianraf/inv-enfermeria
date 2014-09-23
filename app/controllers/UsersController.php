@@ -120,7 +120,23 @@ class UsersController extends BaseController {
 	public function entries($id)
 	{
 		$user = User::find($id);
-    return View::make('entries.index', ['user' => $user]);
+    	return View::make('entries.index', ['user' => $user]);
+	}
+
+
+	public function autocomplete(){
+		$term = strtoupper(Input::get('term'));
+		$results = array();
+		$queries = DB::table('usuarios')
+		->where('tipo', '=', 'estudiante')
+		->where('nombre', 'LIKE', '%'.$term.'%')
+		->orWhere('apellido', 'LIKE', '%'.$term.'%')				
+		->take(5)->get();
+		foreach ($queries as $query)
+		{
+			$results[] = [ 'id' => $query->id, 'value' => $query->nombre.' '.$query->apellido ];
+		}
+		return Response::json($results);
 	}
 
 

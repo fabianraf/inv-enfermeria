@@ -223,6 +223,7 @@ class EncuestasController extends BaseController {
 	public function obtener_alumno_randomicamente()
 	{
 		return User::obtenerEstudianteRandomicamente()->first();
+
 	}
 
 	public function grabar_consumo_habitual()

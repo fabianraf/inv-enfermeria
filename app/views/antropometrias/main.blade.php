@@ -2,49 +2,77 @@
     
 @section('content')
 
-<h1>
-  Gestión antropométrica
-  
-</h1>
-<div class="row estudiantes">
-	<h3>Buscar estudiantes</h3>
-	{{ Form::open(array('url' => 'antropometria')) }}
+{{ Form::open(array('url' => 'antropometria')) }}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+{{ HTML::script('/js/jquery-clockpicker.js') }}
+{{ HTML::style('/css/bootstrap-clockpicker.css') }}
+<link rel="stylesheet" href="/resources/demos/style.css">
 
-	<div class="form-group">    	
-        {{Form::text('busqueda', Input::old('busqueda'), array('class'=>'form-control'))}}
-        <br>
-        <button type="submit" class="btn btn-success" id="confirm"><i class='glyphicon glyphicon-search'></i></button>        
-    </div>    
-</div>
-<h3>Estudiantes</h3>
-<div class="list-group">
-<table class="table table-striped" style="width: 900px">
-    <tr>
-        <th>Cedula</th>
-        <th>Nombre Completo</th>
-        <th>Fecha de nacimiento</th>
-        <th>Datos Antropometricos</th>
-    </tr> 
-	<ul>
-  @if(isset($estudiantes))
-  @foreach($estudiantes as $estudiante)
-  <tr>
-        <td>{{ $estudiante->cedula }}</td>
-        <td>{{ $estudiante->nombre.' '.$estudiante->apellido }}</td> 
-        <td>{{ $estudiante->fecha_nacimiento }}</td>
-        @if($estudiante->antropometria=='SI')
-          <td><a href="{{{ URL::to('antropometria/datos/'.$estudiante->id) }}}">Ver</a></td>
-        @elseif($estudiante->edito_perfil=='SI')
-          <td><a href="{{{ URL::to('antropometria/datos/'.$estudiante->id) }}}">Ingresar</a></td>
-        @elseif($estudiante->edito_perfil!='SI')
-          <td>No editó su perfil</a></td>  
-        @endif
-    </tr>    
-  @endforeach
+
+<div class="col-lg-12">
+  <h2>Gestión antropométrica</h2>
+  <hr>
+  </br>
+ 
+	<div class="row">    
+    <div class="col-sm-6">
+      {{ Form::text('nombre_alumno','', array('class' => 'form-control', 'placeholder' => 'Buscar estudiante', 'id' => 'nombre_alumno' )); }}      
+      {{ Form::hidden('alumno_id', Input::old('alumno_id'),array('id'=>'alumno_id'))}}
+    </div>
+    <button type="submit" class="btn btn-success" id="confirm"><i class='glyphicon glyphicon-search'></i></button>        
+  </div>    
+  </br></br>
+  @if(isset($estudiante))
+    <div class="col-md-4 col-lg-9" >
+      <h4><i><u>Datos del estudiante</u></i></h4>
+        <ul type = square>
+          <p><li><strong>Email: </strong>{{ $estudiante->email }}</p>
+          <p><li><strong>Nombre: </strong>{{ $estudiante->nombre.' '. $estudiante->apellido}}</p>
+          <p><li><strong>Edad: </strong>
+            <?php
+              $birthday = new DateTime($estudiante->fecha_nacimiento);
+              $interval = $birthday->diff(new DateTime);
+              echo $interval->y." años";
+            ?></p>
+        </ul>
+    @if($estudiante->antropometria=='SI')      
+        <h4><i><u>Datos antropométricos</u></i></h4>
+        <ul type = square>
+          <p><li><strong>Peso (kg): </strong>{{ $antropometria->peso }}</p>
+          <p><li><strong>Talla (m): </strong>{{ $antropometria->talla }}</p>
+          <p><li><strong>Circunferencia cintura (cm): </strong>{{ $antropometria->circunferencia_cintura }}</p>
+          <p><li><strong>Circunferencia cadera (cm): </strong>{{ $antropometria->circunferencia_cadera }}</p>
+          <p><li><strong>Circunferencia media del brazo – CMB (cm): </strong>{{ $antropometria->circunferencia_media_brazo }}</p>
+          <p><li><strong>Pliegue bicipital (mm): </strong>{{ $antropometria->pliegue_bicipital }}</p>
+          <p><li><strong>Pliegue tricipital - PT (mm): </strong>{{ $antropometria->pliegue_tricipital }}</p>
+          <p><li><strong>Pliegue subescapular (mm): </strong>{{ $antropometria->pliegue_subescapular }}</p>
+          <p><li><strong>Pliegue suprailíaco (mm): </strong>{{ $antropometria->pliegue_suprailiaco }}</p>
+        </ul>        
+        <h4><i><u>Resultados e interpretación</u></i></h4>
+        <ul type = square>
+          <p><li><strong>Indice masa corporal (IMC): </strong>{{ $antropometria->imc }} - {{ $antropometria->interpretacion_imc }}</p>
+          <p><li><strong>Indice cintura-cadera: </strong>{{ $antropometria->indice_cintura_cadera }} - {{ $antropometria->interpretacion_indice_cintura_cadera }}</p>
+          <p><li><strong>Porcentaje circunferencia media del brazo (% CMB): </strong>{{ $antropometria->porcentaje_cmb }} - {{ $antropometria->interpretacion_cmb }}</p>
+          <p><li><strong>Porcentaje pliegue tricipital (%): </strong>{{ $antropometria->porcentaje_pt }}</p>
+        </ul>
+      </div>
+    @else
+      @if($estudiante->edito_perfil!='SI')
+        <br><div class="alert alert-danger">
+          <a href="#" class="close" data-dismiss="alert">&times;</a>
+          No editó su perfil
+        </div>
+        
+      @else
+        <br><div class="alert alert-warning">
+          <a href="#" class="close" data-dismiss="alert">&times;</a>
+          El estudiante no tiene datos antropométricos<br>
+          <a href="{{{ URL::to('antropometria/datos/'.$estudiante->id) }}}">Ingresar datos</a>
+        </div>
+        
+      @endif     
+    @endif
   @endif
-	</ul>  
-</table>
-<?php echo $estudiantes->links(); ?>
 </div>
 {{ Form::close() }}
 @stop
