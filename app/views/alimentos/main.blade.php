@@ -12,7 +12,7 @@
 			<?php 			
 						
 				if($key == 0)
-					$button_class = " btn-info btn-striped";
+					$button_class = "btn-info btn-striped";
 				else
 					$button_class = "btn-success btn-striped";											
 			?>
@@ -34,21 +34,35 @@
 		<table class="table table-no-border col-lg-12 {{ $class }}" id="tipo-alimento-{{ $tipo_de_alimento->id }}">
 			<tr>				
 				<td></td>
-				<td>Alimentos</td>
+				<td>Alimentos</td>				
 			</tr>		
 		  		<?php  $index = 1; ?>
 		 		@foreach($tipo_de_alimento->alimentos as $alimento)				
 		  	<tr>
 				<td>{{ $index }}</td>
 				<td>{{ HTML::linkRoute('alimentos.edit', $alimento->nombre, array($alimento->id) ) }}</td>
-											
+				
 			</tr>
 			<?php  
 					$index++; 					
 				?>
-  		@endforeach
+  		@endforeach  			
 		</table>
 	</div>
 	@endforeach
-</div>	
+</div>
+{{ Form::open(array('url' => 'alimentos')) }}
+<div class="form-group">	
+	<h4>{{ Form::label('nombre', 'Ingresar nuevo alimento',array('class' => 'col-sm-2 control-label')); }}</h4>
+	<div class="col-sm-6">
+		{{ Form::text('nombre', Input::old('nombre'), array('class' => 'form-control' )); }}
+		<div class="pull-right">
+			<br><button type="submit" class="btn btn-warning">Guardar</button>
+		</div>		
+	</div>
+</div>
+{{ Form::hidden('tipo_de_alimento_id', $id_inicial, array('id' => 'tipo_de_alimento_id')) }}
+{{ Form::close() }}
+
+
 @stop

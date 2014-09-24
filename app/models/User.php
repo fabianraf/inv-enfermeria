@@ -10,8 +10,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	protected $guarded = array('id');
 
 	public static $rules = array(
-	    'fecha_nacimiento'=>'required',
-	    'genero'=>'required',
 	    'personas_hogar'=>'required'
 	    );
 			

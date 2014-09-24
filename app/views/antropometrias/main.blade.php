@@ -24,18 +24,21 @@
   </br></br>
   @if(isset($estudiante))
     <div class="col-md-4 col-lg-9" >
-      <h4><i><u>Datos del estudiante</u></i></h4>
-        <ul type = square>
-          <p><li><strong>Email: </strong>{{ $estudiante->email }}</p>
-          <p><li><strong>Nombre: </strong>{{ $estudiante->nombre.' '. $estudiante->apellido}}</p>
-          <p><li><strong>Edad: </strong>
-            <?php
-              $birthday = new DateTime($estudiante->fecha_nacimiento);
-              $interval = $birthday->diff(new DateTime);
-              echo $interval->y." años";
-            ?></p>
-        </ul>
-    @if($estudiante->antropometria=='SI')      
+      <h4><i><u>Datos personales</u></i></h4>
+      <ul type = square>
+        <p><li><strong>Email: </strong>{{ $estudiante->email }}</p>
+        <p><li><strong>Nombre: </strong>{{ $estudiante->nombre.' '. $estudiante->apellido}}</p>
+        <p><li><strong>Edad: </strong>
+          <?php
+            $birthday = new DateTime($estudiante->fecha_nacimiento);
+            $interval = $birthday->diff(new DateTime);
+            echo $interval->y." años";
+          ?></p>
+      </ul>
+    </div>
+    @if($estudiante->antropometria=='SI')
+     <div class="row">
+      <div class="col-sm-5">   
         <h4><i><u>Datos antropométricos</u></i></h4>
         <ul type = square>
           <p><li><strong>Peso (kg): </strong>{{ $antropometria->peso }}</p>
@@ -47,7 +50,9 @@
           <p><li><strong>Pliegue tricipital - PT (mm): </strong>{{ $antropometria->pliegue_tricipital }}</p>
           <p><li><strong>Pliegue subescapular (mm): </strong>{{ $antropometria->pliegue_subescapular }}</p>
           <p><li><strong>Pliegue suprailíaco (mm): </strong>{{ $antropometria->pliegue_suprailiaco }}</p>
-        </ul>        
+        </ul>
+      </div>
+      <div class="col-sm-6">        
         <h4><i><u>Resultados e interpretación</u></i></h4>
         <ul type = square>
           <p><li><strong>Indice masa corporal (IMC): </strong>{{ $antropometria->imc }} - {{ $antropometria->interpretacion_imc }}</p>
@@ -59,13 +64,11 @@
     @else
       @if($estudiante->edito_perfil!='SI')
         <br><div class="alert alert-danger">
-          <a href="#" class="close" data-dismiss="alert">&times;</a>
-          No editó su perfil
+          El estudiante no editó su perfil
         </div>
         
       @else
-        <br><div class="alert alert-warning">
-          <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <br><div class="alert alert-warning">          
           El estudiante no tiene datos antropométricos<br>
           <a href="{{{ URL::to('antropometria/datos/'.$estudiante->id) }}}">Ingresar datos</a>
         </div>

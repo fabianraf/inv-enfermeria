@@ -24,44 +24,45 @@
 	</h2>
 
 	<hr></br>
+
 	<?php if(!isset($id)){?>
-		<div class="row">	
+	
 			<div class="col-sm-6">							
-				<table class="table table-bordered col-lg-12">
+				<table class="table table-no-border col-lg-12">
 					<tr>
-						<td><strong>Peso (kg):</strong></td>
+						<td><li><strong>Peso (kg): </strong></td>
 						<td align='left'>{{Form::text('peso', Input::old('peso'), array('class'=>'form-control'))}}</td>
 					</tr>
 					<tr>
-						<td><strong>Talla (m):</strong></td>
+						<td><li><strong>Talla (m):</strong></td>
 						<td align='left'>{{Form::text('talla', Input::old('talla'), array('class'=>'form-control'))}}</td>
 					</tr>
 					<tr>
-						<td><strong>Circunferencia Cintura (cm):</strong></td>
+						<td><li><strong>Circunferencia Cintura (cm):</strong></td>
 						<td align='left'>{{Form::text('circunferencia_cintura', Input::old('circunferencia_cintura'), array('class'=>'form-control'))}}</td>
 					</tr>
 					<tr>
-						<td><strong>Circunferencia cadera (cm):</strong></td>
+						<td><li><strong>Circunferencia cadera (cm):</strong></td>
 						<td align='left'>{{Form::text('circunferencia_cadera', Input::old('circunferencia_cadera'), array('class'=>'form-control'))}}</td>
 					</tr>
 					<tr>
-						<td><strong>Circunferencia Media del Brazo – CMB (cm):</strong></td>
+						<td><li><strong>Circunferencia Media del Brazo – CMB (cm):</strong></td>
 						<td align='left'>{{Form::text('circunferencia_media_brazo', Input::old('circunferencia_media_brazo'), array('class'=>'form-control'))}}</td>
 					</tr>
 					<tr>
-						<td><strong>Pliegue Bicipital (mm):</strong></td>
+						<td><li><strong>Pliegue Bicipital (mm):</strong></td>
 						<td align='left'>{{Form::text('pliegue_bicipital', Input::old('pliegue_bicipital'), array('class'=>'form-control'))}}</td>
 					</tr>
 					<tr>
-						<td><strong>Pliegue Tricipital - PT (mm):</strong></td>
+						<td><li><strong>Pliegue Tricipital - PT (mm):</strong></td>
 						<td align='left'>{{Form::text('pliegue_tricipital', Input::old('pliegue_tricipital'), array('class'=>'form-control'))}}</td>
 					</tr>
 					<tr>
-						<td><strong>Pliegue Subescapular (mm):</strong></td>
+						<td><li><strong>Pliegue Subescapular (mm):</strong></td>
 						<td align='left'>{{Form::text('pliegue_subescapular', Input::old('pliegue_subescapular'), array('class'=>'form-control'))}}</td>
 					</tr>
 					<tr>
-						<td><strong>Pliegue Suprailíaco (mm):</strong></td>
+						<td><li><strong>Pliegue Suprailíaco (mm):</strong></td>
 						<td align='left'>{{Form::text('pliegue_suprailiaco', Input::old('pliegue_suprailiaco'), array('class'=>'form-control'))}}</td>
 					</tr>
 				</table>

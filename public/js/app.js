@@ -312,6 +312,7 @@ function activar_tags(){
 }
 
 function submit_gestion_alimentos(tipo_de_alimento_id){
+	$("#tipo_de_alimento_id").val(tipo_de_alimento_id);
 	$(".table-no-border").each(function(){
 		if($(this).attr("id") == "tipo-alimento-" + tipo_de_alimento_id){
 			$(this).removeClass("hidden");

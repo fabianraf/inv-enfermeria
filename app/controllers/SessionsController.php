@@ -34,8 +34,9 @@ class SessionsController extends BaseController {
 		{
 			if(Auth::user()->tipo == "admin")
 				return Redirect::to("/");
-			else	
-				return Redirect::to("/profile");//View::make('users.profile');
+			else
+				return Redirect::to("/profile");//View::make('users.profile');			
+				
 		}
 		return "Failed!";
 	}

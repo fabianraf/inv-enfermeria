@@ -24,7 +24,7 @@
   </br></br>
   @if(isset($estudiante))
     <div class="col-md-4 col-lg-9" >
-      <h4><i><u>Datos del estudiante</u></i></h4>
+      <h4><i><u>Datos personales</u></i></h4>
         <ul type = square>
           <p><li><strong>Email: </strong>{{ $estudiante->email }}</p>
           <p><li><strong>Nombre: </strong>{{ $estudiante->nombre.' '. $estudiante->apellido}}</p>
@@ -35,7 +35,10 @@
               echo $interval->y." años";
             ?></p>
         </ul>
-    @if($estudiante->bioquimica=='SI')      
+    </div>
+    @if($estudiante->bioquimica=='SI')
+    <div class="row">
+     <div class="col-sm-5">     
         <h4><i><u>Biometría hemática</u></i></h4>
         <ul type = square>
           <p><li><strong>WBC (K/uL): </strong>{{ $bioquimica->wbc }}</p>
@@ -55,6 +58,8 @@
           <p><li><strong>MCHC (g/dL): </strong>{{ $bioquimica->mchc }}</p>
           <p><li><strong>MCV: </strong>{{ $bioquimica->mcv }}</p>
         </ul>
+      </div>
+      <div class="col-sm-6"> 
         <h4><i><u>Química</u></i></h4>
         <ul type = square>
           <p><li><strong>Colesterol: </strong>{{ $bioquimica->colesterol }}</p>
@@ -72,16 +77,15 @@
           <p><li><strong></strong></p>          
         </ul>
       </div>
+    </div>
     @else
       @if($estudiante->edito_perfil!='SI')
-        <br><div class="alert alert-danger">
-          <a href="#" class="close" data-dismiss="alert">&times;</a>
-          No editó su perfil
+        <br><div class="alert alert-danger">          
+          El estudiante no editó su perfil
         </div>
         
       @else
-        <br><div class="alert alert-warning">
-          <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <br><div class="alert alert-warning">          
           El estudiante no tiene datos bioquímicos<br>
           <a href="{{{ URL::to('bioquimica/datos/'.$estudiante->id) }}}">Ingresar datos</a>
         </div>
