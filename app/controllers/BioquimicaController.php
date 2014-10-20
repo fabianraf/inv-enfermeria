@@ -15,16 +15,15 @@ class BioquimicaController extends BaseController {
 	public function buscarEstudiantes()
 	{
 		$campos = Input::all();
-		$nombre = strtoupper($campos['busqueda']);
-        $estudiantes = User::where('tipo', '=', 'estudiante')
-        					->where('nombre', 'like', '%'.$nombre.'%')
-							->orWhere('tipo', '=', 'estudiante')
-							->where('apellido', 'like', '%'.$nombre.'%')
-                            ->orderBy('nombre')
-                            ->orderBy('apellido')                                                
-                            ->paginate(5);
-
-		return View::make('bioquimica.main', array('estudiantes' => $estudiantes));		
+		$id = $campos['alumno_id'];
+		$estudiante = User::find($id);
+		$bioquimica = Bioquimica::where('usuario_id', '=', $estudiante->id)
+        								->first();
+        if(count($bioquimica)>0)
+        	return View::make('bioquimica.main', array('estudiante' => $estudiante,
+        													'bioquimica' => $bioquimica));
+       	else
+			return View::make('bioquimica.main', array('estudiante' => $estudiante));		
 	}
 
 	public function ingresarDatos($id)
@@ -33,7 +32,7 @@ class BioquimicaController extends BaseController {
         $bioquimica = Bioquimica::where('usuario_id', '=', $estudiante->id)
         								->first();
         if(count($bioquimica)>0)
-        	return View::make('bioquimica.view', array('estudiante' => $estudiante,
+        	return View::make('bioquimica.main', array('estudiante' => $estudiante,
         													'bioquimica' => $bioquimica));
        	else
 			return View::make('bioquimica.create', array('estudiante' => $estudiante));

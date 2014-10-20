@@ -61,6 +61,9 @@ class UsersController extends BaseController {
 	public function profile()
 	{
 		$user = Auth::user();
+		$total_visitas = $user->contador_visitas;
+		$user->contador_visitas = $total_visitas + 1;
+		$user->save();
 		return View::make('users.profile', ['user' => $user]);
 	}
 
@@ -76,8 +79,8 @@ class UsersController extends BaseController {
         $input = Input::all();
         $validator = Validator::make($input, User::$rules);
         if ($validator->passes()) {
-	        $user->fecha_nacimiento = $input['fecha_nacimiento'];
-	        $user->genero = $input['genero'];
+	        //$user->fecha_nacimiento = $input['fecha_nacimiento'];
+	        //$user->genero = $input['genero'];
 	        $user->personas_hogar = $input['personas_hogar'];
 	        $user->edito_perfil = 'SI';
 	        $user->save();
@@ -120,7 +123,23 @@ class UsersController extends BaseController {
 	public function entries($id)
 	{
 		$user = User::find($id);
-    return View::make('entries.index', ['user' => $user]);
+    	return View::make('entries.index', ['user' => $user]);
+	}
+
+
+	public function autocomplete(){		
+		$term = Input::get('term');
+		$results = array();
+		$queries = DB::table('usuarios')
+		->where('tipo', '=', 'estudiante')
+		->where('nombre', 'LIKE', '%'.$term.'%')
+		->orWhere('apellido', 'LIKE', '%'.$term.'%')		
+		->take(5)->get();
+		foreach ($queries as $query)
+		{
+			$results[] = [ 'id' => $query->id, 'value' => $query->nombre.' '.$query->apellido ];
+		}
+		return Response::json($results);
 	}
 
 

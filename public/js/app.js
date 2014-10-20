@@ -32,7 +32,7 @@ $(document).ready(function() {
 	});
 	
 	
-	//Cambia colores a los botones
+	//Cambia colores a los botones de las encuestas
 	$(".tipo-alimento").click(function(){
 		revisar_si_esta_completo();
 		if($(this).hasClass("btn-info")){
@@ -45,8 +45,21 @@ $(document).ready(function() {
 		$(this).attr("class", "btn btn-default tipo-alimento btn-info btn-striped");
 		
 	});
+
+
+	//Cambia colores a los botones de la gestion de alimentos
+	$(".gestion-alimentos").click(function(){		
+		if($(this).hasClass("btn-info")){
+			//No hace nada
+		} else{
+			$(".gestion-alimentos").each(function(){
+				$(this).removeClass("btn-info");
+			});
+		}
+		$(this).attr("class", "btn btn-default gestion-alimentos btn-info btn-striped");
+		
+	});	
 	
-	//Fin de cambiar colores a los botonoes
 
 	$(".encabezado-pregunta").click(function(){
 		if($(this).hasClass("btn-info")){
@@ -168,8 +181,21 @@ $(document).ready(function() {
 			return false;
 		}
 	});
+
+	//Autocompletado de estudiantes
+	$(function(){
+		$( "#nombre_alumno" ).autocomplete({
+			source: "search/autocomplete",
+			minLength: 1,
+			select: function(event, ui) {
+			$('#nombre_alumno').val(ui.item.value);
+			$('#alumno_id').val(ui.item.id);
+			}
+		});
+	});
 	
-});  
+}); 
+
 
 function submit_tipo_de_alimento(tipo_de_alimento_id){
 	$(".table-bordered").each(function(){
@@ -258,4 +284,40 @@ function anadir_ingrediente(objeto){
 	ingrediente_clonado = jQueryItem.prev().clone().val("");
 	jQueryItem.before(ingrediente_clonado);
 	activar_tags();
+}
+
+function activar_tags(){
+	var alimentos;
+	var availableTags = [];
+	$.ajax({
+           type: 'GET',
+           url: '/obtener_alimentos',
+           dataType: "json",
+           success: function(data)
+           {
+           	for(var i = 0; i < data.length; i++) {
+			    var obj = data[i];
+			    availableTags.push(obj.nombre);
+			}
+           },
+	         error: function(jqXHR, textStatus, errorThrown) {
+	        	//Si ocurre un error 
+	         },
+	        async: false
+         });
+	
+	$( ".tags" ).autocomplete({
+		source: availableTags
+	});
+}
+
+function submit_gestion_alimentos(tipo_de_alimento_id){
+	$("#tipo_de_alimento_id").val(tipo_de_alimento_id);
+	$(".table-no-border").each(function(){
+		if($(this).attr("id") == "tipo-alimento-" + tipo_de_alimento_id){
+			$(this).removeClass("hidden");
+		}else{
+			$(this).addClass("hidden");
+		}
+	});	
 }

@@ -10,7 +10,10 @@ class AlimentosController extends BaseController {
 	public function index()
 	{
         $tipos_de_alimentos = TipoDeAlimento::orderBy('nombre')->get();
-        return View::make('alimentos.main', array('tipos_de_alimentos' => $tipos_de_alimentos));
+        $alimento_inicial = TipoDeAlimento::where('nombre', '=', 'Aceites y grasas')->first();
+        $id_inicial = $alimento_inicial->id;
+        return View::make('alimentos.main', array('tipos_de_alimentos' => $tipos_de_alimentos, 
+        										'id_inicial' => $id_inicial));
 	}
 
 	/**
@@ -80,8 +83,12 @@ class AlimentosController extends BaseController {
 				$tipo_de_alimento_id = $alimento->tipo_de_alimento_id;
 				$tipo_de_alimento = TipoDeAlimento::find($tipo_de_alimento_id);
 				$alimentos = Alimento::where('tipo_de_alimento_id', '=', $tipo_de_alimento_id)        					
-	                            ->orderBy('nombre')->get(); 
-	        	return View::make('alimentos.alimentos', array('alimentos' => $alimentos, 'tipo_de_alimento' => $tipo_de_alimento));
+	                            ->orderBy('nombre')->get();
+	            $tipos_de_alimentos = TipoDeAlimento::orderBy('nombre')->get(); 
+	        	$alimento_inicial = TipoDeAlimento::where('nombre', '=', 'Aceites y grasas')->first();
+		        $id_inicial = $alimento_inicial->id;
+		        return View::make('alimentos.main', array('tipos_de_alimentos' => $tipos_de_alimentos, 
+		        										'id_inicial' => $id_inicial));
 	        } else {
 		    return Redirect::back()->withInput()->withErrors($validator->messages());	   
 		    }     	        
@@ -94,8 +101,13 @@ class AlimentosController extends BaseController {
 			$alimento->save();
 			$tipo_de_alimento = TipoDeAlimento::find($tipo_de_alimento_id);
 			$alimentos = Alimento::where('tipo_de_alimento_id', '=', $tipo_de_alimento_id)        					
-                            ->orderBy('nombre')->get(); 
-        	return View::make('alimentos.alimentos', array('alimentos' => $alimentos, 'tipo_de_alimento' => $tipo_de_alimento));
+                            ->orderBy('nombre')->get();
+            $tipos_de_alimentos = TipoDeAlimento::orderBy('nombre')->get(); 
+	        $alimento_inicial = TipoDeAlimento::where('nombre', '=', 'Aceites y grasas')->first();
+		        $id_inicial = $alimento_inicial->id;
+		        return View::make('alimentos.main', array('tipos_de_alimentos' => $tipos_de_alimentos, 
+		        										'id_inicial' => $id_inicial)); 
+        	//return View::make('alimentos.alimentos', array('alimentos' => $alimentos, 'tipo_de_alimento' => $tipo_de_alimento));
 		}			
 	}
 
