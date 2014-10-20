@@ -53,8 +53,11 @@ Route::post('encuesta_manipulacion_comedores', "EncuestasController@createManipu
 Route::get('encuesta_manipulacion_bares', "EncuestasController@manipulacionBares");
 Route::post('encuesta_manipulacion_bares', "EncuestasController@createManipulacionBares");
 
-Route::get('encuesta_control_higiene_personal', "EncuestasController@controlHigienePersonal");
-Route::post('encuesta_control_higiene_personal', "EncuestasController@createControlHigienePersonal");
+//Crear empresas
+Route::get('encuesta_control_higiene_personal/nueva_empresa', "EmpresasController@nuevaEmpresa");
+Route::post('encuesta_control_higiene_personal/crear_empresa', "EmpresasController@crearEmpresa");
+
+//Fin de Crear empresas
 
 Route::get('/obtener_alimentos', "AlimentosController@obtener_alimentos");
 Route::get('search/autocomplete', 'UsersController@autocomplete');
