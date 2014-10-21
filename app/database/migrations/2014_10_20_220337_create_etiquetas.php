@@ -16,6 +16,7 @@ class CreateEtiquetas extends Migration {
 			$table->increments('id');
 			$table->string('titulo');
 			$table->string('identificador');
+			$table->integer('posicion');
 			$table->timestamps();
 		});
 	}

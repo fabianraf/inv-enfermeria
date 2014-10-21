@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('TipoEncuestasTableSeeder');
 		$this->call('EncabezadoPreguntasEncuestasTableSeeder');
 		$this->call('GruposAlimentosTableSeeder');
+		$this->call('EtiquetasTableSeeder');
 		
 
 	}

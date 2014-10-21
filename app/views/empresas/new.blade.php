@@ -5,6 +5,12 @@
 {{ Form::open(array('url' => '/encuesta_control_higiene_personal/crear_empresa')) }}
 @if (Session::get('mensaje'))
 		<div class="alert alert-success">{{Session::get('mensaje')}}</div>
+		
+		<ul>
+	        @foreach($errors->all() as $error)
+	            <li>{{ $error }}</li>
+	        @endforeach
+	    </ul>
 	@endif
 <div class="col-lg-12">
 	<h2>Control de higiene del personal de bares y comedores de la PUCE
