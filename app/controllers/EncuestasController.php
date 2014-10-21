@@ -272,4 +272,51 @@ class EncuestasController extends BaseController {
 		
 	}
 
+
+	public function nuevaEncuestaControlHigienePersonal()
+	{
+		$empresa = Empresa::find(Input::get('empresa_id'));
+		$etiquetas = Etiqueta::getEtiquetasControlHigienePersonal()->get();
+		return View::make('encuestas.nueva_encuesta_control_higiene_personal', array('empresa' => $empresa, 'etiquetas' => $etiquetas));
+	}
+
+	public function crearEncuestaControlHigienePersonal()
+	{
+		$campos = Input::all();
+		$validator = Validator::make($campos['empleado'], Empleado::$rules);
+			if ($validator->passes()) {
+				$empleado = Empleado::create($campos['empleado']);
+				foreach(Etiqueta::getEtiquetasControlHigienePersonal()->get() as $etiqueta){
+					if(isset($campos['encuesta_control_higiene_personal'][$etiqueta->id])){
+						$encuesta_control_higiene_personal = new EncuestaControlHigiene;
+						$encuesta_control_higiene_personal->empleado_id = $empleado->id;
+						$encuesta_control_higiene_personal->etiqueta_id = $etiqueta->id;
+						$encuesta_control_higiene_personal->cumple = $campos['encuesta_control_higiene_personal'][$etiqueta->id];
+						$encuesta_control_higiene_personal->save();
+					}
+				}
+				if($empleado->encuestasControlHigienePersonal()->get()->count() == Etiqueta::getEtiquetasControlHigienePersonal()->get()->count())
+					return Response::json(array(
+			    		'error' => false
+				    	)
+			    	);
+				else {
+					$mensajes = '{"nombre":["Por favor llene todos los campos."]}';
+			    	return Response::json(array(
+			    		'mensajes' => $mensajes, 
+				    	'error' => true
+				    	)
+			    	);
+				}
+			    
+			} else {
+			    return Response::json(array(
+			    	'mensajes' => $validator->messages()->toJson(), 
+			    	'error' => true
+			    	)
+			    );
+			}
+	}
+
+
 }

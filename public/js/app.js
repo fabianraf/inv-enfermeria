@@ -1,5 +1,6 @@
 $(document).ready(function() {
-	$('.clockpicker').clockpicker();
+	if($('.clockpicker').length > 0 )
+		$('.clockpicker').clockpicker();
 	//Add any jquery code here. It will be loaded at the end of the page   
 	$("#crear-tipo-de-alimentos").submit(function(){
 		var message = "";
@@ -181,6 +182,33 @@ $(document).ready(function() {
 			return false;
 		}
 	});
+	
+	//Control de higiene del personal de bares y comedores de la PUCE
+	$("#crear_encuesta_control_higiene_personal").submit(function(){
+		$.ajax({
+           	type: $(this).attr("method"),
+           	url: $(this).attr("action"),
+           	data: $(this).serialize(), // serializes the form's elements.
+			success: function(data)
+	           {
+	           	console.log(data);
+	           	var mensaje = "";
+				if(data['error'] == true){
+					
+					var response = jQuery.parseJSON(data['mensajes']);
+					$.each(response, function(index, element) {
+						mensaje += "<div class='alert alert-warning'><a href='#' class='close' data-dismiss='alert'>&times;</a>" + element + "</a></div>";
+		           });
+				}
+				else{
+					mensaje += "<div class='alert alert-success'><a href='#' class='close' data-dismiss='alert'>&times;</a>Empleado Guardado exitosamente!</a></div>";
+					$("#finalizar-encuesta").remove();
+				}
+				$("#errores").html(mensaje);
+	           }
+         });
+		return false;
+	});
 
 	//Autocompletado de estudiantes
 	$(function(){
@@ -193,6 +221,9 @@ $(document).ready(function() {
 			}
 		});
 	});
+
+
+
 	
 }); 
 
