@@ -53,7 +53,7 @@
 
 			<tr>				
 				<th rowspan="2">Alimentos</th>
-				<th rowspan="2">Porciones</th>
+				<th rowspan="2">Porción</th>
 				<th colspan="10">Frecuencia (veces a la semana)</th>
 				<th rowspan="2">N. de porciones diarias</th>				
 			</tr>		
@@ -76,7 +76,15 @@
 				?>
 		  	<tr>
 				<td>{{ $alimento->nombre }}</td>
-				<td>&nbsp;<input type="hidden" name="frecuencia[alimento][{{ $index }}]" value="{{ $alimento->id }}"></td>
+				<td><!--<button type="button" class="btn btn-default btn-sm">
+  						<span class="glyphicon glyphicon-file"></span>
+					</button>--> 
+					<?php $link = "/images/".$alimento->url_foto;
+
+					echo "<a href=".$link." target='_blank'>Ver</a>"; ?>
+					
+
+					<input type="hidden" name="frecuencia[alimento][{{ $index }}]" value="{{ $alimento->id }}"></td>
 				<td><input type="radio" name="frecuencia[{{ $index }}]" value="1" {{$encuesta_alimentos_universidad['frecuencia'] == 1 ? 'checked="checked"' : ''}}></td>
 				<td><input type="radio" name="frecuencia[{{ $index }}]" value="2" {{$encuesta_alimentos_universidad['frecuencia'] == 2 ? 'checked="checked"' : ''}}></td>
 				<td><input type="radio" name="frecuencia[{{ $index }}]" value="3" {{$encuesta_alimentos_universidad['frecuencia'] == 3 ? 'checked="checked"' : ''}}></td>

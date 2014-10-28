@@ -352,3 +352,10 @@ function submit_gestion_alimentos(tipo_de_alimento_id){
 		}
 	});	
 }
+
+function cUpper(cObj)
+{
+	cObj.value=cObj.value.toUpperCase();
+}
+
+

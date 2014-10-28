@@ -84,7 +84,7 @@
 									</li>
 									<li class="divider"></li>
 									<li>
-										{{ HTML::link('/encuesta_control_higiene_personal/nueva_empresa', "Control de higiene del personal de bares y comedores de la PUCE" ) }}
+										{{ HTML::link('/encuesta_control_higiene_personal/index_empresas_higiene_personal', "Control de higiene del personal de bares y comedores de la PUCE" ) }}
 									</li>
 									<li class="divider"></li>
 									<li>

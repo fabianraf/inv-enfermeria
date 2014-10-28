@@ -3,10 +3,19 @@
 class EmpresasController extends BaseController {
 
 
-	public function nuevaEmpresa()
-		{
+	public function indexEmpresasHigienePersonal(){ 
+		$empresas = Empresa::where('codigo_empresa','=','1')->get();        
+        return View::make('empresas.main', array('empresas' => $empresas));
+	}
+
+	public function nuevaEmpresa(){
 		return View::make('empresas.new');
-		}
+	}
+
+	public function informacionEmpresa($id){		
+		$empresa = Empresa::find($id);
+		return View::make('empresas.view', array('empresa' => $empresa));
+	}
 
 	public function crearEmpresa()
 		{
