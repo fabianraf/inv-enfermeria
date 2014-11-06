@@ -1,6 +1,8 @@
 $(document).ready(function() {
 	if($('.clockpicker').length > 0 )
 		$('.clockpicker').clockpicker();
+	if($('.datepicker').length > 0 )
+		$( ".datepicker" ).datepicker();
 	//Add any jquery code here. It will be loaded at the end of the page   
 	$("#crear-tipo-de-alimentos").submit(function(){
 		var message = "";
@@ -202,12 +204,17 @@ $(document).ready(function() {
 				}
 				else{
 					mensaje += "<div class='alert alert-success'><a href='#' class='close' data-dismiss='alert'>&times;</a>Empleado Guardado exitosamente!</a></div>";
-					$("#finalizar-encuesta").remove();
+					$("#grabar-encuesta").remove();
 				}
 				$("#errores").html(mensaje);
 	           }
          });
 		return false;
+	});
+
+	//Anadir empleado en Control de higiene del personal de bares y comedores de la PUCE
+	$("#anadir-nuevo-empleado").click(function(){
+		location.reload(true);
 	});
 
 	//Autocompletado de estudiantes

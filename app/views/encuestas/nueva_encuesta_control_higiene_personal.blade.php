@@ -7,8 +7,8 @@
 	<div class="col-lg-12">
 	<h2>{{ $empresa->nombre }}
 		<div class="pull-right">
-			<input type="button" value="AÑADIR NUEVO EMPLEADO" class="btn btn-primary">
-			<input type="submit" value="FINALIZAR" class="btn btn-success" id="finalizar-encuesta">
+			<input type="button" value="AÑADIR NUEVO EMPLEADO" class="btn btn-primary" id="anadir-nuevo-empleado">
+			<input type="submit" value="GRABAR" class="btn btn-success" id="grabar-encuesta">
 		</div>
 	</h2>
 	<div id="errores"></div>
@@ -27,7 +27,7 @@
 		<div class="col-sm-6">
 			{{ Form::text('empleado[cargo]','', array('class' => 'form-control', 'placeholder' => 'Cargo' )); }}
 		</div>
-		{{ Form::hidden('empleado[empresa_id]', $_GET['empresa_id']) }}
+		{{ Form::hidden('empleado[empresa_id]', $_GET['empresa_id'], array("id" => "empresa_id")) }}
 		{{ Form::hidden('etiquetas_count', $etiquetas->count()) }}
 	</div>
 
