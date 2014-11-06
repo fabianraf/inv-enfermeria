@@ -19,9 +19,7 @@
 		 	@foreach($empresas as $empresa)				
 		  	<tr>
 				<td>{{ $index }}</td>
-				<td> {{ HTML::link( 'encuesta_control_higiene_personal/'.$empresa->id , $empresa->nombre ) }} </td>
-				<!--<td>{{ HTML::linkRoute('alimentos.edit', $empresa->nombre, array($empresa->id) ) }}</td>-->
-				
+				<td> {{ HTML::link( 'encuesta_control_higiene_personal/datos/'.$empresa->id , $empresa->nombre ) }} </td>			
 			</tr>
 			<?php  
 					$index++; 					

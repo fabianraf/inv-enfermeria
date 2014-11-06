@@ -13,7 +13,7 @@ class AddTipoToUsuarios extends Migration {
 	public function up()
 	{
 		Schema::table('usuarios', function(Blueprint $table) {
-			$table->string('tipo')->nullable();
+			$table->string('tipo')->default('Activo');
 		});
 	}
 

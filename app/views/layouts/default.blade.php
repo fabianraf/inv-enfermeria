@@ -49,13 +49,13 @@
 								<a href="#" class="dropdown-toggle text-white"  data-toggle="dropdown">{{(Auth::user() -> email) }} 
 								<b class="caret"></b></a> 
 								<ul class="dropdown-menu">
-									<?php if(Auth::user()->edito_perfil == "SI" && Auth::user()->tipo != "admin"){?>
+									<?php if(Auth::user()->edito_perfil == "SI" && Auth::user()->perfiles_usuario_id != "1"){?>
 										<li>
 											{{ HTML::link('/profile', "Ver perfil" ) }}
 										</li>									
 										<li class="divider"></li>
 									<?php }?>
-									<?php if(Auth::user()->edito_perfil != "SI" && Auth::user()->tipo != "admin" and Auth::user()->contador_visitas > 1){?>
+									<?php if(Auth::user()->edito_perfil != "SI" && Auth::user()->perfiles_usuario_id != "1" and Auth::user()->contador_visitas > 1){?>
 									<li>
 										{{ HTML::link('/edit', "Editar perfil" ) }}
 									</li>									
@@ -69,7 +69,7 @@
 							<li class="dropdown">
 								<a class="dropdown-toggle text-white"  data-toggle="dropdown">Encuestas<b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<?php if(Auth::user()->tipo == "estudiante" and Auth::user()->contador_visitas > 1){?>
+									<?php if(Auth::user()->perfiles_usuario_id == "2" and Auth::user()->contador_visitas > 1){?>
 									<li>
 										{{ HTML::link('/encuesta_consumo_alimentos', "Consumo de alimentos en Universidad y alrededores" ) }}
 									</li>
@@ -77,7 +77,7 @@
 									<li>
 										{{ HTML::link('/encuesta_consumo_alimentos_bares', "Consumo de alimentos en bares" ) }}
 									</li>
-									<?php }elseif(Auth::user()->tipo == "admin") {?>									
+									<?php }elseif(Auth::user()->perfiles_usuario_id == "1") {?>									
 									<li>
 										{{ HTML::link('/encuesta_consumo_habitual', "Consumo habitual de alimentos" ) }}
 									</li>
@@ -96,7 +96,7 @@
 									<?php } ?>
 								</ul>
 							</li>
-							<?php if(Auth::user()->tipo == "admin"){?>
+							<?php if(Auth::user()->perfiles_usuario_id == "1"){?>
 							<li class="dropdown">
 								<a class="dropdown-toggle text-white"  data-toggle="dropdown">Administración<b class="caret"></b></a>
 								<ul class="dropdown-menu">																	

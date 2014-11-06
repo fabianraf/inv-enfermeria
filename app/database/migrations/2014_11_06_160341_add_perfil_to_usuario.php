@@ -12,8 +12,7 @@ class AddPerfilToUsuario extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('usuarios', function(Blueprint $table) {
-			$table->boolean('activo')->default(true);
+		Schema::table('usuarios', function(Blueprint $table) {			
 			$table->integer('perfiles_usuario_id')->unsigned();
 			$table->foreign('perfiles_usuario_id')->references('id')->on('perfiles_usuario');
 		});
