@@ -110,6 +110,10 @@
 										<li class="divider"></li>										
 										<li>
 											{{ HTML::link('bioquimica', "Gestión de pruebas bioquímicas " ) }}
+										</li>
+										<li class="divider"></li>
+										<li>
+											{{ HTML::link('usuarios', "Gestión de usuarios" ) }}											
 										</li>									
 								</ul>
 							</li>			

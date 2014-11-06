@@ -30,7 +30,7 @@
 		</table>
 	</div>
 </div>
-{{ Form::open(array('url' => 'encuesta_control_higiene_personal/nueva_encuesta')) }}
+{{ Form::open(array('url' => 'encuesta_control_higiene_personal/nueva_empresa')) }}
 <div class="form-group">	
 		<div class="pull-left">
 			<br><button type="submit" class="btn btn-success">Nueva Empresa</button>

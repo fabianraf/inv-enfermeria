@@ -73,19 +73,20 @@
 			<div class="col-sm-6">
 			<select name="genero" id="genero">
 						<option value="">--Seleccione--</option>
-						<option value="M" >Hombre</option>
-						<option value="F" >Mujer</option>					
+						<option <?php if(Input::old('genero')=='M') { echo 'selected'; }?> value="M" >Hombre</option>
+						<option <?php if(Input::old('genero')=='F') { echo 'selected'; }?> value="F" >Mujer</option>					
 					</select>
 			</div>
 		</div><br>
 		<div class="form-group">
 			<div class="col-sm-10">
-			{{ Form::label('tipo', 'Perfil',array('class' => 'col-sm-2 control-label')); }}	
+			{{ Form::label('perfil', 'Perfil',array('class' => 'col-sm-2 control-label')); }}	
 			<div class="col-sm-6">
-			<select name="tipo" id="tipo">
-						<option value="">--Seleccione--</option>
-						<option value="admin" >Administrador</option>
-						<option value="estudiante" >Estudiante</option>					
+			<select name="perfiles_usuario_id" id="perfiles_usuario_id">
+					<option value="">--Seleccione--</option>
+					@foreach($perfiles as $perfil)
+						<option value='{{ $perfil->id }}' >{{ $perfil->nombre }}</option>												
+					@endforeach
 					</select>
 			</div>
 		</div><br><br>
@@ -111,32 +112,6 @@
 			<br><button type="submit" class="btn btn-default">Registrar</button>
 		</div>
 	</div>
-</div>
-				
-{{ Form::close() }}			
-	
+</div>				
+{{ Form::close() }}	
 @stop
-
-
-
-
-
-
-
-
-
-						  
-						  
-						
-						
-
-    <!-- /.container -->
-		
-		<!-- Scripts are placed here -->
-
-		{{ HTML::script('bootstrap/js/bootstrap.min.js') }}
-		{{ HTML::script('js/jquery/validate/jquery.validate.min.js') }}
-		{{ HTML::script('js/jquery/validate/messages_es.js') }}
-		{{ HTML::script('js/jquery/jquery.cookie.js') }}
-		{{ HTML::script('js/app.js') }}
-
