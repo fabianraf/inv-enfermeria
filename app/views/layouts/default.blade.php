@@ -7,7 +7,6 @@
 		<link rel="shortcut icon" type="img/png" href="img/N2RICONO.png"/>
 		<!-- CSS are placed here -->
 		{{ HTML::style('bootstrap/css/bootstrap.css') }}
-		{{ HTML::style('bootstrap/css/bootstrap-responsive.css') }}
 		{{ HTML::style('bootstrap/css/bootstrap-theme.css') }}
 		{{ HTML::style('bootstrap/css/datepicker.css') }}
 		{{ HTML::style('css/app.css') }}
@@ -17,7 +16,7 @@
 		<!-- js are placed here -->
 		{{ HTML::script('/js/jquery/jquery-1.11.0.min.js') }}
 		{{ HTML::script('/js/jquery/jquery-ui.1.11.0.js') }}
-		
+		@yield('cabecera')
 		
 	</head>
 
@@ -88,7 +87,7 @@
 									</li>
 									<li class="divider"></li>
 									<li>
-										{{ HTML::link('/encuesta_manipulacion_comedores', "Control de manipulación de alimentos e higiene de los comedores de la PUCE" ) }}
+										{{ HTML::link('/encuesta_manipulacion_comedores/nueva_empresa', "Control de manipulación de alimentos e higiene de los comedores de la PUCE" ) }}
 									</li>
 									<li class="divider"></li>
 									<li>

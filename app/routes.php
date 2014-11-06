@@ -47,8 +47,8 @@ Route::get('encuesta_consumo_habitual', "EncuestasController@consumoHabitual");
 Route::get('/obtener_alumno_randomicamente', "EncuestasController@obtener_alumno_randomicamente");
 Route::post('/grabar_consumo_habitual', "EncuestasController@grabar_consumo_habitual");
 
-Route::get('encuesta_manipulacion_comedores', "EncuestasController@manipulacionComedores");
-Route::post('encuesta_manipulacion_comedores', "EncuestasController@createManipulacionComedores");
+// Route::get('encuesta_manipulacion_comedores', "EncuestasController@manipulacionComedores");
+// Route::post('encuesta_manipulacion_comedores', "EncuestasController@createManipulacionComedores");
 
 Route::get('encuesta_manipulacion_bares', "EncuestasController@manipulacionBares");
 Route::post('encuesta_manipulacion_bares', "EncuestasController@createManipulacionBares");
@@ -57,6 +57,8 @@ Route::post('encuesta_manipulacion_bares', "EncuestasController@createManipulaci
 Route::get('encuesta_control_higiene_personal/nueva_empresa', "EmpresasController@nuevaEmpresa");
 Route::post('encuesta_control_higiene_personal/crear_empresa', "EmpresasController@crearEmpresa");
 
+Route::get('/encuesta_manipulacion_comedores/nueva_empresa', "EmpresasController@nuevaEmpresaCMAHC");
+Route::post('encuesta_manipulacion_comedores/crear_empresa', "EncuestasController@createManipulacionComedores");
 //Fin de Crear empresas
 
 //
@@ -67,6 +69,10 @@ Route::post('/encuesta_control_higiene_personal/crear_encuesta', "EncuestasContr
 //
 //Fin encuesta Control Higiene del Personal de bares y comedores de la PUCE
 //
+Route::get('/encuesta_manipulacion_comedores/nueva_encuesta', "EncuestasController@nuevaEncuestaManipulacionComedores");
+Route::post('/encuesta_manipulacion_comedores/guardar_informacion', "EncuestasController@nuevaEncuestaManipulacionComedoresGuardarInformacion");
+
+
 
 Route::get('/obtener_alimentos', "AlimentosController@obtener_alimentos");
 Route::get('search/autocomplete', 'UsersController@autocomplete');

@@ -1,8 +1,3 @@
-@extends('layouts.default')
-	
-@section('content')
-
-{{ Form::open(array('url' => 'encuesta_manipulacion_bares')) }}
 	<div class="pull-right">
 			<input type="submit" value="SIGUIENTE" class="btn btn-success">
 	</div></br></br></br>
@@ -50,7 +45,5 @@
 			</tr>				 		
 		</table>
 	</div>	
-	{{ Form::hidden('encuesta', '2') }}
+	
 </div>
-{{ Form::close() }}
-@stop

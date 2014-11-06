@@ -92,7 +92,7 @@ table td,th {
   }
 }
 
-.tipo-alimento{
+.tipo-alimento, .opcion{
 	margin-top: 3px;
 	margin-left: 0px;
 	margin-right: 3px;

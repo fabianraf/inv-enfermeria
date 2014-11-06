@@ -17,8 +17,9 @@ class Etiqueta extends Eloquent {
 		return $this->hasMany('EncuestaControlHigiene');
 	}
 	
-	public static function getEtiquetasControlHigienePersonal(){
-		return Etiqueta::where("identificador", Config::get('constants.IDENTIFICADOR_ECHP'))->orderBy("posicion",  "ASC");
+	public static function getEtiquetasPorPosicion($posicion){
+		return Etiqueta::where("identificador", Config::get('constants.IDENTIFICADORES.'.$posicion))->orderBy("posicion",  "ASC");
 	}
+
 
 }
