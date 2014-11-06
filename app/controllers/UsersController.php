@@ -41,12 +41,19 @@ class UsersController extends BaseController {
 	public function store()
 	{
 		$input = Input::all();
-		$validator = Validator::make($input, User::$rules);
+		$validator = Validator::make($input, User::$rules, User::$messages);
+		$validator->setAttributeNames(User::$friendly_names);
 		if ($validator->passes()) {
 				$input['password'] = Hash::make($input['password']);
 				$user = User::create($input);
-				Auth::login($user);
-		    return Redirect::to('/profile')->with('message', 'Thanks for registering!');
+				$user->nombre = $input['nombre'];
+				$user->apellido = $input['apellido'];
+				$user->cedula = $input['cedula'];
+				$user->tipo = $input['tipo'];
+				$user->genero = $input['genero'];
+				$user->fecha_nacimiento = $input['fecha_nacimiento'];
+				$user->save();				
+		    return View::make('users.create')->with('message', 'Usuario creado satisfactoriamente');
 		} else {
 		    return Redirect::to('users/register')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();
 		}
@@ -77,7 +84,7 @@ class UsersController extends BaseController {
 	{
         $user = Auth::user();
         $input = Input::all();
-        $validator = Validator::make($input, User::$rules);
+        $validator = Validator::make($input, User::$rulesEditarPerfil, User::$messages);        
         if ($validator->passes()) {
 	        //$user->fecha_nacimiento = $input['fecha_nacimiento'];
 	        //$user->genero = $input['genero'];
@@ -134,7 +141,7 @@ class UsersController extends BaseController {
 		->where('tipo', '=', 'estudiante')
 		->where('nombre', 'LIKE', '%'.$term.'%')
 		->orWhere('apellido', 'LIKE', '%'.$term.'%')		
-		->take(5)->get();
+		->take(20)->get();
 		foreach ($queries as $query)
 		{
 			$results[] = [ 'id' => $query->id, 'value' => $query->nombre.' '.$query->apellido ];
