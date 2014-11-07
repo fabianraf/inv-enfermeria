@@ -17,6 +17,23 @@ class CreateUsersTable extends Migration {
 			$table->string("email");
 			$table->string("password");
 			$table->timestamps();
+			$table->string('remember_token')->nullable();
+			$table->string('cedula',10)->nullable();
+			$table->string('nombre')->nullable();
+			$table->string('apellido')->nullable();
+			$table->string('direccion')->nullable();
+			$table->string('telefono')->nullable();
+			$table->date('fecha_nacimiento')->nullable();
+			$table->string('genero',1)->nullable();
+			$table->string('personas_hogar')->nullable();
+			$table->string('tipo')->default('Activo');
+			$table->boolean('antropometria')->default(false);
+			$table->boolean('edito_perfil')->default(false);
+			$table->boolean('bioquimica')->default(false);
+			$table->boolean('tiene_consumo_habitual')->default(false);
+			$table->integer('contador_visitas')->default(0);
+			$table->string('carrera',10)->nullable();
+			$table->integer('nivel')->nullable();		
 		});
 	}
 

@@ -5,11 +5,7 @@ class AntropometriasController extends BaseController {
 
 	public function main()
 	{
-        $estudiantes = User::where('tipo', '=', 'estudiante')
-        					->orderBy('nombre')
-                            ->orderBy('apellido')
-                            ->paginate(5);		                          
-        return View::make('antropometrias.main', array('estudiantes' => $estudiantes));
+        return View::make('antropometrias.main');
 	}
 
 	public function buscarEstudiantes()
@@ -122,7 +118,7 @@ class AntropometriasController extends BaseController {
 				$antropometria->interpretacion_cmb = 'Normal';
 
 			$antropometria->save();		
-			$estudiante->antropometria = 'SI';
+			$estudiante->antropometria = TRUE;
 			$estudiante->save();
 			$id=$estudiante->id;
 			return Redirect::action('AntropometriasController@ingresarDatos', array('id' => $id));

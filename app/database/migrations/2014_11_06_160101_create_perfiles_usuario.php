@@ -26,6 +26,11 @@ class CreatePerfilesUsuario extends Migration {
 	 */
 	public function down()
 	{
+		Schema::table('usuarios', function($table)
+		{
+		    $table->dropColumn('perfiles_usuario_id');
+		});
+
 		Schema::drop('perfiles_usuario');
 	}
 

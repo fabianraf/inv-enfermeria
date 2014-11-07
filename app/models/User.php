@@ -10,8 +10,25 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	protected $guarded = array('id');
 
 	public static $rules = array(
-	    'personas_hogar'=>'required'
+	    'email'=>'required|email|unique:usuarios',
+	    'password' => 'required',
+	    'tipo' => 'required',
+	    'genero' => 'required',
+	    'password_confirm' => 'required|same:password'    
 	    );
+
+	public static $rulesEditarPerfil = array(
+	    'personas_hogar'=>'required'    
+	    );
+
+	public static $messages = array(
+		'personas_hogar.required' => 'Ingresa la información de las personas con las que vives',
+		'password_confirm.same' => 'Las contraseñas no coinciden, vuelva a ingresarlas'
+		);
+
+	public static $friendly_names = array(
+		'tipo' => 'perfil',
+		);
 			
 	/**
 	 * The database table used by the model.

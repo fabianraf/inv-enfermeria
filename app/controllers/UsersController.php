@@ -94,7 +94,7 @@ class UsersController extends BaseController {
 	        //$user->fecha_nacimiento = $input['fecha_nacimiento'];
 	        //$user->genero = $input['genero'];
 	        $user->personas_hogar = $input['personas_hogar'];
-	        $user->edito_perfil = 'SI';
+	        $user->edito_perfil = 'TRUE';
 	        $user->save();
 			return View::make('users.profile', ['user' => $user]);
 		}else {
@@ -143,7 +143,7 @@ class UsersController extends BaseController {
 		$term = Input::get('term');
 		$results = array();
 		$queries = DB::table('usuarios')
-		->where('tipo', '=', 'estudiante')
+		->where('perfiles_usuario_id', '=', '2')
 		->where('nombre', 'LIKE', '%'.$term.'%')
 		->orWhere('apellido', 'LIKE', '%'.$term.'%')		
 		->take(20)->get();

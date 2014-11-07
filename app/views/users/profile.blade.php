@@ -12,7 +12,7 @@ if ($user->contador_visitas == 1 && Auth::user()->perfiles_usuario_id != "1"){
 }else{
 ?>
 	<div class="col-lg-12">
-		<h2>Datos personales</h2>
+		<h2>Perfil</h2>
 		<hr></br>
 
 		<div class="row">

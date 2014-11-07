@@ -3,8 +3,7 @@
 @section('content')
 
 <div class="col-lg-12">
-  <h2><i><u>Index</u></i>
-  <h2>Encuestas por empresa</h2>
+  <h2>Control de higiene del personal de bares y comedores de la PUCE</h2>
   <hr>
   </br>
 

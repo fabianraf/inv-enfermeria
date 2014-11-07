@@ -14,7 +14,7 @@
 
 {{ Form::open(array('url' => 'encuesta_consumo_alimentos_bares', 'id' => 'encuesta_consumo_alimentos_bares')) }}
 <div class="col-lg-12">
-	<h2>Frecuencia de consumo de alimentos en los bares de la Universidad
+	<h2>Consumo de alimentos en los bares de la Universidad 
 		<div class="pull-right">
 			<input type="submit" value="GRABAR" class="btn btn-success">
 			<!-- <input type="button" value="LIMPIAR" class="btn btn-warning"> -->

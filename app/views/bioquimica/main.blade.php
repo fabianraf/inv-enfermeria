@@ -36,7 +36,7 @@
             ?></p>
         </ul>
     </div>
-    @if($estudiante->bioquimica=='SI')
+    @if($estudiante->bioquimica)
     <div class="row">
      <div class="col-sm-5">     
         <h4><i><u>Biometría hemática</u></i></h4>
@@ -79,7 +79,7 @@
       </div>
     </div>
     @else
-      @if($estudiante->edito_perfil!='SI')
+      @if(!$estudiante->edito_perfil)
         <br><br><br><br><br><br><br><div class="alert alert-danger">          
           El estudiante no editó su perfil
         </div>

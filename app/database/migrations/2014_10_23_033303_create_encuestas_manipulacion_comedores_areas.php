@@ -38,7 +38,7 @@ class CreateEncuestasManipulacionComedoresAreas extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('encuestas_manipulacion_comedores_area_cocina');
+		Schema::drop('encuestas_manipulacion_comedores_areas');
 	}
 
 }

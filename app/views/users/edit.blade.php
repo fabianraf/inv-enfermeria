@@ -5,7 +5,7 @@
 {{ Form::open(array('url' => 'edit')) }}
 	
 <div class="col-lg-12">
-	<h2>Datos personales
+	<h2>Editar perfil
 	<div class="pull-right">
 		<button class='btn btn-success' style="white-space: normal" type='button' data-toggle="modal" data-target="#confirmDelete" 
 					data-title="Atención" 

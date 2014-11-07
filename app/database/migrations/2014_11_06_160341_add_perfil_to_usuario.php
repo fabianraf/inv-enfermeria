@@ -14,7 +14,9 @@ class AddPerfilToUsuario extends Migration {
 	{
 		Schema::table('usuarios', function(Blueprint $table) {			
 			$table->integer('perfiles_usuario_id')->unsigned();
-			$table->foreign('perfiles_usuario_id')->references('id')->on('perfiles_usuario');
+			$table->foreign('perfiles_usuario_id')
+				->references('id')->on('perfiles_usuario')
+				->onDelete('set null');
 		});
 	}
 
@@ -25,7 +27,10 @@ class AddPerfilToUsuario extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::table('usuarios', function(Blueprint $table) {
+
+			
+		});
 	}
 
 }

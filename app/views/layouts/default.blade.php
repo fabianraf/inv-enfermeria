@@ -49,13 +49,13 @@
 								<a href="#" class="dropdown-toggle text-white"  data-toggle="dropdown">{{(Auth::user() -> email) }} 
 								<b class="caret"></b></a> 
 								<ul class="dropdown-menu">
-									<?php if(Auth::user()->edito_perfil == "SI" && Auth::user()->perfiles_usuario_id != "1"){?>
+									<?php if(Auth::user()->edito_perfil && Auth::user()->perfiles_usuario_id != "1"){?>
 										<li>
-											{{ HTML::link('/profile', "Ver perfil" ) }}
+											{{ HTML::link('/profile', "Perfil" ) }}
 										</li>									
 										<li class="divider"></li>
 									<?php }?>
-									<?php if(Auth::user()->edito_perfil != "SI" && Auth::user()->perfiles_usuario_id != "1" and Auth::user()->contador_visitas > 1){?>
+									<?php if(!Auth::user()->edito_perfil && Auth::user()->perfiles_usuario_id != "1" and Auth::user()->contador_visitas > 1){?>
 									<li>
 										{{ HTML::link('/edit', "Editar perfil" ) }}
 									</li>									
@@ -75,7 +75,7 @@
 									</li>
 									<li class="divider"></li>
 									<li>
-										{{ HTML::link('/encuesta_consumo_alimentos_bares', "Consumo de alimentos en bares" ) }}
+										{{ HTML::link('/encuesta_consumo_alimentos_bares', "Consumo de alimentos en los bares de la Universidad" ) }}
 									</li>
 									<?php }elseif(Auth::user()->perfiles_usuario_id == "1") {?>									
 									<li>

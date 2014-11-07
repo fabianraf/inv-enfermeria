@@ -5,11 +5,7 @@ class BioquimicaController extends BaseController {
 
 	public function main()
 	{
-        $estudiantes = User::where('tipo', '=', 'estudiante')
-        					->orderBy('nombre')
-                            ->orderBy('apellido')
-                            ->paginate(5);		                          
-        return View::make('bioquimica.main', array('estudiantes' => $estudiantes));
+		return View::make('bioquimica.main');
 	}
 
 	public function buscarEstudiantes()
@@ -70,7 +66,7 @@ class BioquimicaController extends BaseController {
 			$bioquimica->ldl_colesterol = $campos['ldl_colesterol'];
 			$bioquimica->hbsag = $campos['hbsag'];
 			$bioquimica->save();		
-			$estudiante->bioquimica = 'SI';
+			$estudiante->bioquimica = TRUE;
 			$estudiante->save();
 			$id=$estudiante->id;
 			return Redirect::action('BioquimicaController@ingresarDatos', array('id' => $id));
