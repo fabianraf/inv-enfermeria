@@ -12,14 +12,26 @@ class AntropometriasController extends BaseController {
 	{
 		$campos = Input::all();
 		$id = $campos['alumno_id'];
-		$estudiante = User::find($id);
-		$antropometria = Antropometrias::where('usuario_id', '=', $estudiante->id)
+		if (is_numeric($id)){
+    	
+    	$estudiante = User::find($id);
+		
+			$antropometria = Antropometrias::where('usuario_id', '=', $estudiante->id)
         								->first();
-        if(count($antropometria)>0)
-        	return View::make('antropometrias.main', array('estudiante' => $estudiante,
+        	if(count($antropometria)>0)
+        		return View::make('antropometrias.main', array('estudiante' => $estudiante,
         													'antropometria' => $antropometria));
-       	else
-			return View::make('antropometrias.main', array('estudiante' => $estudiante));
+        	else
+				return View::make('antropometrias.main', array('estudiante' => $estudiante));
+
+		}else
+			return View::make('antropometrias.main')->with('message', 'Estudiante no se encuentra en la base de datos');
+
+
+		
+
+
+		
 
 		/*$nombre = strtoupper($campos['nombre_alumno']);
         $estudiantes = User::where('tipo', '=', 'estudiante')

@@ -9,11 +9,15 @@
    </ul>
  </div>
  @endif
-	
+
+ {{ Form::open(array('url' => 'alimentos')) }}
+<div class="pull-right">
+			<a href="alimentos"><input type="button" value="VOLVER" class="btn btn-primary"></button></a>
+			{{ Form::submit('GUARDAR', array('class'=>'btn btn-success')) }}
+</div>	
 <div class="col-lg-12">	
     <h2>Información nutricional - {{ $alimento->nombre }}</h2>
-    <hr>
-    	{{ Form::open(array('url' => 'alimentos')) }}
+    <hr>    	
 			<div class="col row">	
 				<div class="col-md-15 col-lg-12" >
 					<table class="table table-bordered col-lg-12">						
@@ -280,8 +284,7 @@
 
 					</table>
 					<br>
-					{{ Form::hidden('alimento_id', $alimento->id) }}					
-					{{ Form::submit('Guardar', array('class'=>'btn btn-success')) }}</br></br>
+					{{ Form::hidden('alimento_id', $alimento->id) }}										
 				</div>
 				{{ Form::close() }}
 			</div>

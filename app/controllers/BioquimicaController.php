@@ -12,14 +12,17 @@ class BioquimicaController extends BaseController {
 	{
 		$campos = Input::all();
 		$id = $campos['alumno_id'];
-		$estudiante = User::find($id);
-		$bioquimica = Bioquimica::where('usuario_id', '=', $estudiante->id)
-        								->first();
-        if(count($bioquimica)>0)
-        	return View::make('bioquimica.main', array('estudiante' => $estudiante,
-        													'bioquimica' => $bioquimica));
-       	else
-			return View::make('bioquimica.main', array('estudiante' => $estudiante));		
+		if (is_numeric($id)){ 
+			$estudiante = User::find($id);
+			$bioquimica = Bioquimica::where('usuario_id', '=', $estudiante->id)
+	        								->first();
+	        if(count($bioquimica)>0)
+	        	return View::make('bioquimica.main', array('estudiante' => $estudiante,
+	        													'bioquimica' => $bioquimica));
+	       	else
+				return View::make('bioquimica.main', array('estudiante' => $estudiante));
+		}return View::make('bioquimica.main')->with('message', 'Estudiante no se encuentra en la base de datos');
+				
 	}
 
 	public function ingresarDatos($id)

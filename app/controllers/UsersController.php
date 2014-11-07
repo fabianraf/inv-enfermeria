@@ -49,8 +49,8 @@ class UsersController extends BaseController {
 		if ($validator->passes()) {
 				$input['password'] = Hash::make($input['password']);
 				$user = User::create($input);
-				$user->nombre = $input['nombre'];
-				$user->apellido = $input['apellido'];
+				$user->nombre = strtoupper($input['nombre']);
+				$user->apellido = strtoupper($input['apellido']);
 				//$user->cedula = $input['cedula'];
 				//$user->tipo = $input['tipo'];
 				$user->genero = $input['genero'];

@@ -2,7 +2,6 @@
 
 	
 @section('content')
-{{ Form::open(array('url' => 'registro')) }}
 <!-- Success-Messages -->
 	@if(isset($message))
 		    <div class="alert alert-success">		        
@@ -18,7 +17,7 @@
 	</div>
 	@endif
 <div class="pull-right">
-			<input type="submit" value="NUEVO USUARIO" class="btn btn-primary">			
+			<a href="registro"><input type="button" value="NUEVO USUARIO" class="btn btn-primary"></button></a>
 </div>
 <div class="col-lg-12">
 	<br><br><h2>Usuarios del sistema</h2><br>		
@@ -41,6 +40,5 @@
 </div>
 </div>
 <?php echo $users->links(); ?>
-{{ Form::close() }}
 	
 @stop

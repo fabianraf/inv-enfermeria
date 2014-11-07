@@ -13,6 +13,21 @@
   <h2>Gestión de pruebas bioquímicas</h2>
   <hr>
   </br>
+
+  <!-- Success-Messages -->
+  @if(isset($message))
+        <div class="alert alert-danger">           
+        {{$message}}
+        </div>
+    @endif
+
+  @if($errors->any())
+  <div class="alert alert-danger alert-block">
+    <ul>
+      {{ implode('', $errors->all('<li class="error">:message</li>')) }}
+    </ul>
+  </div>
+  @endif
  
   <div class="row">    
     <div class="col-sm-6">
