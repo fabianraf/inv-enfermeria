@@ -5,30 +5,13 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 	
-	protected $fillable = array('email', 'password', 'nombre', 'apellido','genero','perfiles_usuario_id');
+	protected $fillable = array('email', 'password');
 
 	protected $guarded = array('id');
 
 	public static $rules = array(
-	    'email'=>'required|email|unique:usuarios',
-	    'password' => 'required',
-	    'perfiles_usuario_id' => 'required',
-	    'genero' => 'required',
-	    'password_confirm' => 'required|same:password'    
+	    'personas_hogar'=>'required'
 	    );
-
-	public static $rulesEditarPerfil = array(
-	    'personas_hogar'=>'required'    
-	    );
-
-	public static $messages = array(
-		'personas_hogar.required' => 'Ingresa la información de las personas con las que vives',
-		'password_confirm.same' => 'Las contraseñas no coinciden, vuelva a ingresarlas'
-		);
-
-	public static $friendly_names = array(
-		'perfiles_usuario_id' => 'perfil',
-		);
 			
 	/**
 	 * The database table used by the model.
@@ -194,11 +177,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public function consumoHabitualDeAlimento()
 	    {
         return $this->hasOne('ConsumoHabitualDeAlimento');
-	    }
-
-	public function perfilUsuario()
-	    {
-        return $this->belongsTo('PerfilesUsuario','perfiles_usuario_id');
 	    }
 	
 

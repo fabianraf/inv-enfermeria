@@ -4,7 +4,8 @@ class Empresa extends Eloquent {
 	protected $guarded = array();
 	protected $table = 'empresas';
 	public static $rules = array(
-		 'nombre'=>'required'
+		 'nombre'=>'required',
+		 'fecha' => 'required'
 		);
 
 	public function empleados()

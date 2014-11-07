@@ -28,14 +28,14 @@
 		</table>
 	</div>
 </div>
-{{ Form::open(array('url' => 'encuesta_control_higiene_personal/nueva_empresa')) }}
+
 <div class="form-group">	
 		<div class="pull-left">
-			<br><button type="submit" class="btn btn-success">Nueva Empresa</button>
+			<br><a href="/encuesta_control_higiene_personal/nueva_empresa"><button id="nueva-empresa-boton" type="button" class="btn btn-success">Nueva Empresa</button></a>
 		</div>		
 	</div>
 </div>
-{{ Form::close() }}
+
 
 
 @stop

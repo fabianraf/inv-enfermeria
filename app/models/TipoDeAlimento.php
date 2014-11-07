@@ -9,7 +9,7 @@ class TipoDeAlimento extends Eloquent {
 	
 	public function alimentos()
 		    {
-	        return $this->hasMany('Alimento')->orderBy("created_at", "DESC");
+	        return $this->hasMany('Alimento')->orderBy("nombre", "ASC");
 		    }
 				
 	public static function get_total_alimentos(){

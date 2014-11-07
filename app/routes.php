@@ -48,9 +48,6 @@ Route::get('encuesta_consumo_habitual', "EncuestasController@consumoHabitual");
 Route::get('/obtener_alumno_randomicamente', "EncuestasController@obtener_alumno_randomicamente");
 Route::post('/grabar_consumo_habitual', "EncuestasController@grabar_consumo_habitual");
 
-// Route::get('encuesta_manipulacion_comedores', "EncuestasController@manipulacionComedores");
-// Route::post('encuesta_manipulacion_comedores', "EncuestasController@createManipulacionComedores");
-
 Route::get('encuesta_manipulacion_bares', "EncuestasController@manipulacionBares");
 Route::post('encuesta_manipulacion_bares', "EncuestasController@createManipulacionBares");
 

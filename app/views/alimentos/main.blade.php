@@ -7,6 +7,17 @@
   <hr>
   </br>
 
+  	{{ Form::open(array('url' => 'alimentos')) }}
+	<div class="form-group">	
+		<h4>{{ Form::label('nombre', 'Ingresar nuevo alimento',array('class' => 'col-sm-2 control-label')); }}</h4>
+		<div class="col-sm-6">
+			{{ Form::text('nombre', Input::old('nombre'), array('class' => 'form-control', 'onkeyup' => 'cUpper(this)' )); }}
+			<button type="submit" class="btn btn-warning">Guardar</button>
+		</div>
+	</div>
+	{{ Form::hidden('tipo_de_alimento_id', $id_inicial, array('id' => 'tipo_de_alimento_id')) }}
+	{{ Form::close() }}
+
   <div class="col-lg-12">
 	  	@foreach($tipos_de_alimentos as $key => $tipo_de_alimento)
 			<?php 			
@@ -51,18 +62,7 @@
 	</div>
 	@endforeach
 </div>
-{{ Form::open(array('url' => 'alimentos')) }}
-<div class="form-group">	
-	<h4>{{ Form::label('nombre', 'Ingresar nuevo alimento',array('class' => 'col-sm-2 control-label')); }}</h4>
-	<div class="col-sm-6">
-		{{ Form::text('nombre', Input::old('nombre'), array('class' => 'form-control', 'onkeyup' => 'cUpper(this)' )); }}
-		<div class="pull-right">
-			<br><button type="submit" class="btn btn-warning">Guardar</button>
-		</div>		
-	</div>
-</div>
-{{ Form::hidden('tipo_de_alimento_id', $id_inicial, array('id' => 'tipo_de_alimento_id')) }}
-{{ Form::close() }}
+
 
 
 @stop

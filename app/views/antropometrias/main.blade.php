@@ -3,11 +3,8 @@
 @section('content')
 
 {{ Form::open(array('url' => 'antropometria')) }}
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
-{{ HTML::script('/js/jquery-clockpicker.js') }}
-{{ HTML::style('/css/bootstrap-clockpicker.css') }}
-<link rel="stylesheet" href="/resources/demos/style.css">
 
+{{ HTML::style('css/smoothness-jquery-ui.css') }}
 
 <div class="col-lg-12">
   <h2>Gestión antropométrica</h2>

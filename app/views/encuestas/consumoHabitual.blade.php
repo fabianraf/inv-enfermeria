@@ -22,6 +22,13 @@ $(function() {
 		</div>
 	</h2>
 	<div id="mensajes">
+	
+		<?php if(ConsumoHabitualDeAlimento::encuestasConsumoHabitualCompleto()){ ?>
+			<div class="alert alert-warning">
+				<a href="#" class="close" data-dismiss="alert">&times;</a>
+						Ya se han completado 392 encuestas.
+		    </div>
+		<?php } ?>
 		@if(isset($message))
 		    <div class="alert alert-success">
 		        <a href="#" class="close" data-dismiss="alert">&times;</a>

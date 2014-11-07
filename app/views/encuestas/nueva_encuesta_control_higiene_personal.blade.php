@@ -51,7 +51,7 @@
 		  	@foreach($etiquetas as $etiqueta)
 			<tr>
 				<td>{{ $etiqueta->titulo }}</td>				
-				<td><input type="radio" name="encuesta_control_higiene_personal[{{$etiqueta->id}}]" value="{{Config::get('constants.SI_CUMPLE')}}"></td>
+				<td><input required type="radio" name="encuesta_control_higiene_personal[{{$etiqueta->id}}]" value="{{Config::get('constants.SI_CUMPLE')}}"></td>
 				<td><input type="radio" name="encuesta_control_higiene_personal[{{$etiqueta->id}}]" value="{{Config::get('constants.NO_CUMPLE')}}"></td>
 				<td><input type="radio" name="encuesta_control_higiene_personal[{{$etiqueta->id}}]" value="{{Config::get('constants.NO_APLICA')}}"></td>
 			</tr>							
