@@ -16,12 +16,12 @@
  
   <div class="row">    
     <div class="col-sm-6">
-      {{ Form::text('nombre_alumno','', array('class' => 'form-control', 'placeholder' => 'Buscar estudiante', 'id' => 'nombre_alumno' )); }}      
+      {{ Form::text('nombre_alumno','', array('class' => 'form-control', 'placeholder' => 'Buscar estudiante', 'id' => 'nombre_alumno', 'onkeyup' => 'cUpper(this)' )); }}      
       {{ Form::hidden('alumno_id', Input::old('alumno_id'),array('id'=>'alumno_id'))}}
     </div>
     <button type="submit" class="btn btn-success" id="confirm"><i class='glyphicon glyphicon-search'></i></button>        
-  </div>    
-  </br></br>
+  </div>
+  </br> 
   @if(isset($estudiante))
     <div class="col-md-4 col-lg-9" >
       <h4><i><u>Datos personales</u></i></h4>
@@ -80,12 +80,12 @@
     </div>
     @else
       @if($estudiante->edito_perfil!='SI')
-        <br><div class="alert alert-danger">          
+        <br><br><br><br><br><br><br><div class="alert alert-danger">          
           El estudiante no editó su perfil
         </div>
         
       @else
-        <br><div class="alert alert-warning">          
+       <br><br><br><br><br><br><br><div class="alert alert-warning">          
           El estudiante no tiene datos bioquímicos<br>
           <a href="{{{ URL::to('bioquimica/datos/'.$estudiante->id) }}}">Ingresar datos</a>
         </div>

@@ -37,7 +37,7 @@ $(function() {
 		{{ Form::label('alumno', 'Alumno',array('class' => 'col-sm-1 col-lg-1 control-label')); }}
 		
 		<div class="col-sm-6">
-			{{ Form::text('nombre_alumno','', array('class' => 'form-control', 'placeholder' => 'Buscar estudiante', 'id' => 'nombre_alumno' )); }}
+			{{ Form::text('nombre_alumno','', array('class' => 'form-control', 'placeholder' => 'Buscar estudiante', 'id' => 'nombre_alumno', 'onkeyup' => 'cUpper(this)' )); }}
 		</div>
 		<input type="button" value="Obtener Alumno" class="btn btn-warning" id="obtener_alumno">
 		{{ Form::hidden('alumno_id','', array('id' => 'alumno_id' )); }}

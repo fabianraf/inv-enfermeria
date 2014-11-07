@@ -32,8 +32,21 @@ class SessionsController extends BaseController {
 	{
 		if (Auth::attempt(Input::only("email", "password")))
 		{
-			if(Auth::user()->tipo == "admin")
+			if(Auth::user()->tipo == "admin"){
+
+				/*$users = User::all();
+				foreach ($users as $user){
+					$user->password = Hash::make($user->password);
+					$user->nombre = strtoupper($user->nombre);
+					$user->apellido = strtoupper($user->apellido);
+					$user->save();
+				}*/
+				
+				
+
 				return Redirect::to("/");
+			}
+				
 			else
 				return Redirect::to("/profile");//View::make('users.profile');			
 				

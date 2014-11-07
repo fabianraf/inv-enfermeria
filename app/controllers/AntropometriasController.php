@@ -68,15 +68,15 @@ class AntropometriasController extends BaseController {
 
 			$antropometria->imc = $campos['peso']/($campos['talla']*$campos['talla']);
 			$antropometria->indice_cintura_cadera = $campos['circunferencia_cintura']/$campos['circunferencia_cadera'];
-			if($estudiante->genero=='H')
+			if($estudiante->genero=='M')
 				$antropometria->porcentaje_cmb = ($campos['circunferencia_media_brazo']/29.3)*100;
-			elseif($estudiante->genero=='M')
+			elseif($estudiante->genero=='F')
 				$antropometria->porcentaje_cmb = ($campos['circunferencia_media_brazo']/28.5)*100;
 			$antropometria->pliegue_bicipital = $campos['pliegue_bicipital'];
 			$antropometria->pliegue_tricipital = $campos['pliegue_tricipital'];
-			if($estudiante->genero=='H')
+			if($estudiante->genero=='M')
 				$antropometria->porcentaje_pt = ($campos['pliegue_tricipital']/12.5)*100;
-			elseif($estudiante->genero=='M')
+			elseif($estudiante->genero=='F')
 				$antropometria->porcentaje_pt = ($campos['pliegue_tricipital']/16.5)*100;
 			
 			if($antropometria->imc<16)
@@ -96,7 +96,7 @@ class AntropometriasController extends BaseController {
 			elseif($antropometria->imc>=40)
 				$antropometria->interpretacion_imc = 'Obesidad mórbida';
 
-			if($estudiante->genero=='H')
+			if($estudiante->genero=='M')
 				if($antropometria->indice_cintura_cadera<0.96)
 					$antropometria->interpretacion_indice_cintura_cadera = 'Muy bajo';
 				elseif($antropometria->indice_cintura_cadera>=0.96 && $antropometria->indice_cintura_cadera<=0.99)
@@ -104,7 +104,7 @@ class AntropometriasController extends BaseController {
 				elseif($antropometria->indice_cintura_cadera>0.99)
 					$antropometria->interpretacion_indice_cintura_cadera = 'Alto';
 
-			if($estudiante->genero=='M')
+			if($estudiante->genero=='F')
 				if($antropometria->indice_cintura_cadera<0.81)
 					$antropometria->interpretacion_indice_cintura_cadera = 'Muy bajo';
 				elseif($antropometria->indice_cintura_cadera>=0.81 && $antropometria->indice_cintura_cadera<=0.84)

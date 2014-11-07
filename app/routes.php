@@ -30,7 +30,8 @@ Route::get('bioquimica/datos/{id}', "BioquimicaController@ingresarDatos");
 Route::post('bioquimica.ingresar', "BioquimicaController@create");
 
 
-Route::get('/registrar', "UsersController@create");
+Route::get('usuarios', "UsersController@index");
+Route::get('registro', "UsersController@create");
 Route::get('/login', "SessionsController@create");
 Route::get('/logout', "SessionsController@logout");
 Route::get('users/register', "UsersController@create");
@@ -54,7 +55,9 @@ Route::get('encuesta_manipulacion_bares', "EncuestasController@manipulacionBares
 Route::post('encuesta_manipulacion_bares', "EncuestasController@createManipulacionBares");
 
 //Crear empresas
-Route::get('encuesta_control_higiene_personal/nueva_empresa', "EmpresasController@nuevaEmpresa");
+Route::get('/encuesta_control_higiene_personal/index_empresas_higiene_personal', "EmpresasController@indexEmpresasHigienePersonal");
+Route::get('/encuesta_control_higiene_personal/datos/{id}', array('uses'=>'EmpresasController@informacionEmpresa'));
+Route::get('/encuesta_control_higiene_personal/nueva_empresa', "EmpresasController@nuevaEmpresa");
 Route::post('encuesta_control_higiene_personal/crear_empresa', "EmpresasController@crearEmpresa");
 
 Route::get('/encuesta_manipulacion_comedores/nueva_empresa', "EmpresasController@nuevaEmpresaCMAHC");

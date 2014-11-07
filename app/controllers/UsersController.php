@@ -20,7 +20,9 @@ class UsersController extends BaseController {
 	 */
 	public function index()
 	{
-        return View::make('users.index');
+        $users = User::orderBy('perfiles_usuario_id')->orderBy('nombre')
+        				->orderBy('apellido')->paginate(15);
+        return View::make('users.index', array('users' => $users));
 	}
 
 	/**
@@ -30,7 +32,8 @@ class UsersController extends BaseController {
 	 */
 	public function create()
 	{
-        return View::make('users.create');
+        $perfiles = PerfilesUsuario::orderBy('nombre')->get();
+        return View::make('users.create', array('perfiles' => $perfiles));
 	}
 
 	/**
@@ -39,14 +42,23 @@ class UsersController extends BaseController {
 	 * @return Response
 	 */
 	public function store()
-	{
+	{		
 		$input = Input::all();
-		$validator = Validator::make($input, User::$rules);
+		$validator = Validator::make($input, User::$rules, User::$messages);
+		$validator->setAttributeNames(User::$friendly_names);
 		if ($validator->passes()) {
 				$input['password'] = Hash::make($input['password']);
 				$user = User::create($input);
-				Auth::login($user);
-		    return Redirect::to('/profile')->with('message', 'Thanks for registering!');
+				$user->nombre = $input['nombre'];
+				$user->apellido = $input['apellido'];
+				//$user->cedula = $input['cedula'];
+				//$user->tipo = $input['tipo'];
+				$user->genero = $input['genero'];
+				$user->perfiles_usuario_id = $input['perfiles_usuario_id'];
+				$user->save();
+				$users = User::orderBy('perfiles_usuario_id')->orderBy('nombre')
+        				->orderBy('apellido')->paginate(15);				
+		    	return View::make('users.index', array('users' => $users))->with('message', 'Nuevo usuario creado satisfactoriamente');
 		} else {
 		    return Redirect::to('users/register')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();
 		}
@@ -77,7 +89,7 @@ class UsersController extends BaseController {
 	{
         $user = Auth::user();
         $input = Input::all();
-        $validator = Validator::make($input, User::$rules);
+        $validator = Validator::make($input, User::$rulesEditarPerfil, User::$messages);        
         if ($validator->passes()) {
 	        //$user->fecha_nacimiento = $input['fecha_nacimiento'];
 	        //$user->genero = $input['genero'];
@@ -134,7 +146,7 @@ class UsersController extends BaseController {
 		->where('tipo', '=', 'estudiante')
 		->where('nombre', 'LIKE', '%'.$term.'%')
 		->orWhere('apellido', 'LIKE', '%'.$term.'%')		
-		->take(5)->get();
+		->take(20)->get();
 		foreach ($queries as $query)
 		{
 			$results[] = [ 'id' => $query->id, 'value' => $query->nombre.' '.$query->apellido ];

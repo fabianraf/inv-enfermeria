@@ -42,7 +42,7 @@ $(document).ready(function() {
 			//No hace nada
 		} else{
 			$(".tipo-alimento").each(function(){
-				$(this).removeClass("btn-info");
+				$(this).addClass("btn-info");
 			});
 		}
 		$(this).attr("class", "btn btn-default tipo-alimento btn-info btn-striped");
@@ -57,9 +57,25 @@ $(document).ready(function() {
 		} else{
 			$(".gestion-alimentos").each(function(){
 				$(this).removeClass("btn-info");
+				$(this).addClass("btn-success")
 			});
 		}
 		$(this).attr("class", "btn btn-default gestion-alimentos btn-info btn-striped");
+		
+	});
+
+
+	//Cambia colores a los botones de la gestion de usuarios
+	$(".gestion-perfiles").click(function(){		
+		if($(this).hasClass("btn-info")){
+			//No hace nada
+		} else{
+			$(".gestion-perfiles").each(function(){
+				$(this).removeClass("btn-info");
+				$(this).addClass("btn-success")
+			});
+		}
+		$(this).attr("class", "btn btn-default gestion-perfiles btn-info btn-striped");
 		
 	});	
 	
@@ -349,6 +365,18 @@ function activar_tags(){
 	});
 }
 
+function submit_gestion_perfiles(perfil_id){
+	$("#perfil_id").val(perfil_id);
+	$(".table-no-border").each(function(){
+		if($(this).attr("id") == "perfil-" + perfil_id){
+			$(this).removeClass("hidden");
+		}else{
+			$(this).addClass("hidden");
+		}
+	});	
+}
+
+
 function submit_gestion_alimentos(tipo_de_alimento_id){
 	$("#tipo_de_alimento_id").val(tipo_de_alimento_id);
 	$(".table-no-border").each(function(){
@@ -359,3 +387,10 @@ function submit_gestion_alimentos(tipo_de_alimento_id){
 		}
 	});	
 }
+
+function cUpper(cObj)
+{
+	cObj.value=cObj.value.toUpperCase();
+}
+
+

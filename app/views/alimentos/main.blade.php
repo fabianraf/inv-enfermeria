@@ -55,7 +55,7 @@
 <div class="form-group">	
 	<h4>{{ Form::label('nombre', 'Ingresar nuevo alimento',array('class' => 'col-sm-2 control-label')); }}</h4>
 	<div class="col-sm-6">
-		{{ Form::text('nombre', Input::old('nombre'), array('class' => 'form-control' )); }}
+		{{ Form::text('nombre', Input::old('nombre'), array('class' => 'form-control', 'onkeyup' => 'cUpper(this)' )); }}
 		<div class="pull-right">
 			<br><button type="submit" class="btn btn-warning">Guardar</button>
 		</div>		

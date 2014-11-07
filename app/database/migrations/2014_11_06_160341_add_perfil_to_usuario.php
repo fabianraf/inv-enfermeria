@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddTipoToUsuarios extends Migration {
+class AddPerfilToUsuario extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,8 +12,9 @@ class AddTipoToUsuarios extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('usuarios', function(Blueprint $table) {
-			$table->string('tipo')->default('Activo');
+		Schema::table('usuarios', function(Blueprint $table) {			
+			$table->integer('perfiles_usuario_id')->unsigned();
+			$table->foreign('perfiles_usuario_id')->references('id')->on('perfiles_usuario');
 		});
 	}
 
@@ -24,9 +25,7 @@ class AddTipoToUsuarios extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('usuarios', function(Blueprint $table) {
-			
-		});
+		//
 	}
 
 }
