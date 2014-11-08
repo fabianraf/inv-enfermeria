@@ -12,6 +12,7 @@
 */
 Route::get('/', "HomeController@home");
 
+Route::get("alimentosMain", "AlimentosController@index");
 Route::get("alimentos", "AlimentosController@index");
 Route::post("alimentos", "AlimentosController@store");
 Route::resource("alimentos", "AlimentosController");

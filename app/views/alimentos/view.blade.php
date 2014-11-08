@@ -12,7 +12,7 @@
 
  {{ Form::open(array('url' => 'alimentos')) }}
 <div class="pull-right">
-			<a href="alimentos"><input type="button" value="VOLVER" class="btn btn-primary"></button></a>
+			<a href="/alimentos"><input type="button" value="VOLVER" class="btn btn-primary"></button></a>
 			{{ Form::submit('GUARDAR', array('class'=>'btn btn-success')) }}
 </div>	
 <div class="col-lg-12">	

@@ -12,10 +12,8 @@ class AntropometriasController extends BaseController {
 	{
 		$campos = Input::all();
 		$id = $campos['alumno_id'];
-		if (is_numeric($id)){
-    	
-    	$estudiante = User::find($id);
-		
+		if (is_numeric($id)){    	
+    		$estudiante = User::find($id);		
 			$antropometria = Antropometrias::where('usuario_id', '=', $estudiante->id)
         								->first();
         	if(count($antropometria)>0)
