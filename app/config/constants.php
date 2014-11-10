@@ -14,12 +14,24 @@
 	$identificadores[11] = "emc_area_vestidor_2";
 	$identificadores[12] = "emc_area_almacenaje_materiales_limpieza_1";
 	$identificadores[13] = "emc_area_almacenaje_materiales_limpieza_2";
+	$identificadores[14] = "emb_manipulacion_alimentos";
+	$identificadores[15] = "emb_productos_alimenticios";
+	$identificadores[16] = "emb_control_plagas";
+	$identificadores[17] = "emb_area_bar_1";
+	$identificadores[18] = "emb_area_bar_2";
+	$identificadores[19] = "emb_area_comedor_1";
+	$identificadores[20] = "emb_area_comedor_2";
+	$identificadores[21] = "emb_area_almacenaje_materiales_limpieza_1";
+	$identificadores[22] = "emb_area_almacenaje_materiales_limpieza_2";
 	$codigos_areas = [];
 	$codigos_areas[0] = "emc_cocina";
 	$codigos_areas[1] = "emc_comedor";
 	$codigos_areas[2] = "emc_bodega_alimentos";
 	$codigos_areas[3] = "emc_vestidor";
 	$codigos_areas[4] = "emc_materiales_limpieza";
+	$codigos_areas[5] = "emb_bar";
+	$codigos_areas[6] = "emb_comedor";
+	$codigos_areas[7] = "emb_materiales_limpieza";
 return [
 	'IDENTIFICADORES' => $identificadores,
 	'CODIGOS_AREAS' => $codigos_areas,

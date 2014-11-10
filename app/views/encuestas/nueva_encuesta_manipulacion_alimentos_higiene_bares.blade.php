@@ -6,10 +6,10 @@
 
 @section('content')
 
-{{ Form::open(array('url' => '/encuesta_manipulacion_comedores/guardar_informacion', 'id' => 'tbd')) }}
+{{ Form::open(array('url' => '/encuesta_manipulacion_bares/guardar_informacion', 'id' => 'tbd')) }}
 <input type="hidden" name="empresa_id" value="{{$empresa->id}}">
 <div class="col-lg-12">
-	<h2>Control de manipulación de alimentos e higiene de los comedores de la PUCE</br></br>
+	<h2>Control de manipulación de alimentos e higiene de los bares de la PUCE</br></br>
 		{{ $empresa->nombre }}
 		<div class="pull-right">
 			<input type="submit" value="GRABAR" class="btn btn-success">
@@ -73,7 +73,7 @@
 			    	<td>No se pudo observar</td> 
 			  	</tr>	
 
-			  	@foreach(Etiqueta::getEtiquetasPorPosicion(1)->get() as $etiqueta)
+			  	@foreach(Etiqueta::getEtiquetasPorPosicion(14)->get() as $etiqueta)
 			  	
 			  	<tr id="fila-encuestas-manipulacion-alimentos-{{$etiqueta->id}}">
 					<td>{{$etiqueta->titulo}}</td>
@@ -106,7 +106,7 @@
 							No aplica					
 						</th>
 					</tr>
-					@foreach(Etiqueta::getEtiquetasPorPosicion(2)->get() as $etiqueta)
+					@foreach(Etiqueta::getEtiquetasPorPosicion(15)->get() as $etiqueta)
 					  	<tr class="fila-encuesta">
 							<td>{{$etiqueta->titulo}}</td>
 							<td>{{ Form::text('encuestas_productos_alimenticios[lugar_adquirido][' . $etiqueta->id . ']','', array('class' => 'form-control', 'required' => 'required', 'onkeyup' => 'uncheck_no_aplica(this)')); }}</td>
@@ -124,7 +124,7 @@
 				<table class="table table-bordered col-lg-12 {{ $class }}" id="opcion-tabla-{{$key}}" > 
 					<tr>				
 						<th rowspan="2">	
-							<h3>CONTROL DE PLAGAS
+							<h3>{{$opcion}}
 						</th>				
 						<th colspan="3">
 							Frecuencia
@@ -150,7 +150,7 @@
 				    	<td>No</td>		    
 				  	</tr>	
 
-				  	@foreach(Etiqueta::getEtiquetasPorPosicion(3)->get() as $etiqueta)
+				  	@foreach(Etiqueta::getEtiquetasPorPosicion(16)->get() as $etiqueta)
 					  	<tr class="fila-encuesta">
 							<td>{{ $etiqueta->titulo }}</td>
 							<td><input type="radio" name="control_de_plagas[frecuencia][{{$etiqueta->id}}]" value="1" required="required" onclick="uncheck_no_aplica(this)"></td>
@@ -173,7 +173,7 @@
 						<table class="table table-bordered col-lg-12" > 
 							<tr>				
 								<th rowspan="2">	
-									<h3>AREA DE COCINA
+									<h3>{{$opcion}}
 								</th>				
 								<th colspan="2">
 									Higiene
@@ -206,21 +206,21 @@
 						    	<td>Está en</td>
 						    	<td>Necesita</td>
 						  	</tr>	
-						  	@foreach(Etiqueta::getEtiquetasPorPosicion(4)->get() as $etiqueta)
-						  		<input type="hidden" name="area_cocina[codigo_area][{{$etiqueta->id}}]" value="{{Config::get('constants.CODIGOS_AREAS.0')}}">
+						  	@foreach(Etiqueta::getEtiquetasPorPosicion(17)->get() as $etiqueta)
+						  		<input type="hidden" name="area_bar[codigo_area][{{$etiqueta->id}}]" value="{{Config::get('constants.CODIGOS_AREAS.0')}}">
 							  	<tr class="fila-encuesta">
 									<td>{{ $etiqueta->titulo }}</td>
-									<td><input type="radio" name="area_cocina[esta_limpio][{{ $etiqueta->id }}]" value="1" required="required" onclick="uncheck_no_aplica(this)"></td>
-									<td><input type="radio" name="area_cocina[esta_limpio][{{ $etiqueta->id }}]" value="0" required="required" onclick="uncheck_no_aplica(this)"></td>
-									<td><input type="radio" name="area_cocina[es_limpio][{{ $etiqueta->id }}]" value="1" required="required" onclick="uncheck_no_aplica(this)"></td>
-									<td><input type="radio" name="area_cocina[es_limpio][{{ $etiqueta->id }}]" value="0" required="required" onclick="uncheck_no_aplica(this)"></td>
-									<td><input type="radio" name="area_cocina[es_adecuado][{{ $etiqueta->id }}]" value="1" required="required" onclick="uncheck_no_aplica(this)"></td>
-									<td><input type="radio" name="area_cocina[es_adecuado][{{ $etiqueta->id }}]" value="0" required="required" onclick="uncheck_no_aplica(this)"></td>
-									<td><input type="radio" name="area_cocina[funciona][{{ $etiqueta->id }}]" value="1" required="required" onclick="uncheck_no_aplica(this)"></td>
-									<td><input type="radio" name="area_cocina[funciona][{{ $etiqueta->id }}]" value="0" required="required" onclick="uncheck_no_aplica(this)"></td>
-									<td><input type="radio" name="area_cocina[esta_en_mantenimiento][{{ $etiqueta->id }}]" value="1" required="required" onclick="uncheck_no_aplica(this)"></td>
-									<td><input type="radio" name="area_cocina[esta_en_mantenimiento][{{ $etiqueta->id }}]" value="0" required="required" onclick="uncheck_no_aplica(this)"></td>				
-									<td><input type="checkbox" class="no-aplica" name="area_cocina[no_existe][{{ $etiqueta->id }}]" value="1"></td>
+									<td><input type="radio" name="area_bar[esta_limpio][{{ $etiqueta->id }}]" value="1" required="required" onclick="uncheck_no_aplica(this)"></td>
+									<td><input type="radio" name="area_bar[esta_limpio][{{ $etiqueta->id }}]" value="0" required="required" onclick="uncheck_no_aplica(this)"></td>
+									<td><input type="radio" name="area_bar[es_limpio][{{ $etiqueta->id }}]" value="1" required="required" onclick="uncheck_no_aplica(this)"></td>
+									<td><input type="radio" name="area_bar[es_limpio][{{ $etiqueta->id }}]" value="0" required="required" onclick="uncheck_no_aplica(this)"></td>
+									<td><input type="radio" name="area_bar[es_adecuado][{{ $etiqueta->id }}]" value="1" required="required" onclick="uncheck_no_aplica(this)"></td>
+									<td><input type="radio" name="area_bar[es_adecuado][{{ $etiqueta->id }}]" value="0" required="required" onclick="uncheck_no_aplica(this)"></td>
+									<td><input type="radio" name="area_bar[funciona][{{ $etiqueta->id }}]" value="1" required="required" onclick="uncheck_no_aplica(this)"></td>
+									<td><input type="radio" name="area_bar[funciona][{{ $etiqueta->id }}]" value="0" required="required" onclick="uncheck_no_aplica(this)"></td>
+									<td><input type="radio" name="area_bar[esta_en_mantenimiento][{{ $etiqueta->id }}]" value="1" required="required" onclick="uncheck_no_aplica(this)"></td>
+									<td><input type="radio" name="area_bar[esta_en_mantenimiento][{{ $etiqueta->id }}]" value="0" required="required" onclick="uncheck_no_aplica(this)"></td>				
+									<td><input type="checkbox" class="no-aplica" name="area_bar[no_existe][{{ $etiqueta->id }}]" value="1"></td>
 								</tr>
 							@endforeach
 									 		
@@ -234,12 +234,12 @@
 							<td>Si</td>
 							<td>No</td>
 						</tr>
-						@foreach(Etiqueta::getEtiquetasPorPosicion(5)->get() as $etiqueta)
-							<input type="hidden" name="area_cocina[codigo_area][{{$etiqueta->id}}]" value="{{Config::get('constants.CODIGOS_AREAS.0')}}">
+						@foreach(Etiqueta::getEtiquetasPorPosicion(18)->get() as $etiqueta)
+							<input type="hidden" name="area_bar[codigo_area][{{$etiqueta->id}}]" value="{{Config::get('constants.CODIGOS_AREAS.0')}}">
 							<tr class="fila-encuesta">
 								<td>{{ $etiqueta->titulo }}</td>				
-								<td><input type="radio" name="area_cocina[cumple][{{ $etiqueta->id }}]" value="1" required="required"></td>
-								<td><input type="radio" name="area_cocina[cumple][{{ $etiqueta->id }}]" value="0" required="required"></td>				
+								<td><input type="radio" name="area_bar[cumple][{{ $etiqueta->id }}]" value="1" required="required"></td>
+								<td><input type="radio" name="area_bar[cumple][{{ $etiqueta->id }}]" value="0" required="required"></td>				
 							</tr>
 						@endforeach
 						
@@ -251,7 +251,7 @@
 						<table class="table table-bordered col-lg-12"> 
 							<tr>				
 								<th rowspan="2">	
-									<h3>AREA DE COMEDOR
+									<h3>{{$opcion}}
 								</th>				
 								<th colspan="2">
 									Higiene
@@ -284,7 +284,7 @@
 						    	<td>Está en</td>
 						    	<td>Necesita</td>
 						  	</tr>	
-						  	@foreach(Etiqueta::getEtiquetasPorPosicion(6)->get() as $etiqueta)
+						  	@foreach(Etiqueta::getEtiquetasPorPosicion(19)->get() as $etiqueta)
 						  		<input type="hidden" name="area_comedor['codigo_area'][{{$etiqueta->id}}]" value="{{Config::get('constants.CODIGOS_AREAS.1')}}">
 							  	<tr class="fila-encuesta">
 									<td>{{ $etiqueta->titulo }}</td>
@@ -313,7 +313,7 @@
 								<td>Si</td>
 								<td>No</td>
 							</tr>
-							@foreach(Etiqueta::getEtiquetasPorPosicion(7)->get() as $etiqueta)
+							@foreach(Etiqueta::getEtiquetasPorPosicion(20)->get() as $etiqueta)
 								<input type="hidden" name="area_comedor[codigo_area][{{$etiqueta->id}}]" value="{{Config::get('constants.CODIGOS_AREAS.0')}}">
 								<tr class="fila-encuesta">
 									<td>{{ $etiqueta->titulo }}</td>				
@@ -330,7 +330,7 @@
 							<table class="table table-bordered col-lg-12"> 
 								<tr>				
 									<th rowspan="2">	
-										<h3>AREA DE BODEGA DE ALIMENTOS
+										<h3>{{$opcion}}
 									</th>				
 									<th colspan="2">
 										Higiene
@@ -368,174 +368,16 @@
 							    	<td>Está en</td>
 							    	<td>Necesita</td>
 							  	</tr>	
-							  	@foreach(Etiqueta::getEtiquetasPorPosicion(8)->get() as $etiqueta)
-							  		<input type="hidden" name="area_bodega_alimentos[codigo_area][{{$etiqueta->id}}]" value="{{Config::get('constants.CODIGOS_AREAS.2')}}">
-								  	<tr class="fila-encuesta">
-										<td>{{ $etiqueta->titulo }}</td>
-										<td><input type="radio" name="area_bodega_alimentos[esta_limpio][{{ $etiqueta->id }}]" value="1" required="required" onclick="uncheck_no_aplica(this)"></td>
-										<td><input type="radio" name="area_bodega_alimentos[esta_limpio][{{ $etiqueta->id }}]" value="0" required="required" onclick="uncheck_no_aplica(this)"></td>
-										<td><input type="radio" name="area_bodega_alimentos[es_limpio][{{ $etiqueta->id }}]" value="1" required="required" onclick="uncheck_no_aplica(this)"></td>
-										<td><input type="radio" name="area_bodega_alimentos[es_limpio][{{ $etiqueta->id }}]" value="0" required="required" onclick="uncheck_no_aplica(this)"></td>
-										<td><input type="radio" name="area_bodega_alimentos[es_ordenado][{{ $etiqueta->id }}]" value="1" required="required" onclick="uncheck_no_aplica(this)"></td>
-										<td><input type="radio" name="area_bodega_alimentos[es_ordenado][{{ $etiqueta->id }}]" value="0" required="required" onclick="uncheck_no_aplica(this)"></td>
-										<td><input type="radio" name="area_bodega_alimentos[es_adecuado][{{ $etiqueta->id }}]" value="1" required="required" onclick="uncheck_no_aplica(this)"></td>
-										<td><input type="radio" name="area_bodega_alimentos[es_adecuado][{{ $etiqueta->id }}]" value="0" required="required" onclick="uncheck_no_aplica(this)"></td>
-										<td><input type="radio" name="area_bodega_alimentos[funciona][{{ $etiqueta->id }}]" value="1" required="required" onclick="uncheck_no_aplica(this)"></td>
-										<td><input type="radio" name="area_bodega_alimentos[funciona][{{ $etiqueta->id }}]" value="0" required="required" onclick="uncheck_no_aplica(this)"></td>
-										<td><input type="radio" name="area_bodega_alimentos[esta_en_mantenimiento][{{ $etiqueta->id }}]" value="1" required="required" onclick="uncheck_no_aplica(this)"></td>
-										<td><input type="radio" name="area_bodega_alimentos[esta_en_mantenimiento][{{ $etiqueta->id }}]" value="0" required="required" onclick="uncheck_no_aplica(this)"></td>				
-										<td><input type="checkbox" class="no-aplica" name="area_bodega_alimentos[no_existe][{{ $etiqueta->id }}]" value="1"></td>
-									</tr>
-									
-								@endforeach
-							</table>
-							
-							<table class="table table-bordered col-lg-12">
-								<tr>
-									<th rowspan="2"></th>				
-									<th colspan="2">Cumple</th>
-								</tr>
-								<tr>
-									<td>Si</td>
-									<td>No</td>
-								</tr>
-								@foreach(Etiqueta::getEtiquetasPorPosicion(9)->get() as $etiqueta)
-									<input type="hidden" name="area_bodega_alimentos[codigo_area][{{$etiqueta->id}}]" value="{{Config::get('constants.CODIGOS_AREAS.2')}}">
-									<tr class="fila-encuesta">
-										<td>{{ $etiqueta->titulo }}</td>				
-										<td><input type="radio" name="area_bodega_alimentos[cumple][{{ $etiqueta->id }}]" value="1" required="required"></td>
-										<td><input type="radio" name="area_bodega_alimentos[cumple][{{ $etiqueta->id }}]" value="0" required="required"></td>				
-									</tr>
-									
-								@endforeach
-							</table>
-						</div>
-					<?php } elseif($key == 6){ ?>
-						
-						<div id="opcion-div-{{$key}}" class="opcion-div {{ $class }}" >
-							<table class="table table-bordered col-lg-12"> 
-								<tr>				
-									<th rowspan="2">	
-										<h3>AREA DE VESTIDOR
-									</th>				
-									<th colspan="2">
-										Higiene
-									</th>
-									<th colspan="2">
-										Estado
-									</th>
-									<th colspan="2">
-										Adecuado/a
-									</th>
-									<th colspan="2">
-										Funciona
-									</th>
-									<th colspan="2">
-										Mantenimiento
-									</th>
-									<th rowspan="2">
-										No existe				
-									</th>
-								</tr>		
-							  	<tr>
-							  		<td>Limpio</td>
-							    	<td>Sucio</td>
-							    	<td>Bueno</td>
-							    	<td>Malo</td>
-							    	<td>Si</td>
-							    	<td>No</td>
-							    	<td>Si</td>
-							    	<td>No</td>
-							    	<td>Está en</td>
-							    	<td>Necesita</td>
-							  	</tr>	
-							  	@foreach(Etiqueta::getEtiquetasPorPosicion(10)->get() as $etiqueta)
-							  		<input type="hidden" name="area_vestidor[codigo_area][{{$etiqueta->id}}]" value="{{Config::get('constants.CODIGOS_AREAS.3')}}">
-								  	<tr class="fila-encuesta">
-										<td>{{ $etiqueta->titulo }}</td>
-										<td><input type="radio" name="area_vestidor[esta_limpio][{{ $etiqueta->id }}]" value="1" required="required" onclick="uncheck_no_aplica(this)"></td>
-										<td><input type="radio" name="area_vestidor[esta_limpio][{{ $etiqueta->id }}]" value="0" required="required" onclick="uncheck_no_aplica(this)"></td>
-										<td><input type="radio" name="area_vestidor[es_limpio][{{ $etiqueta->id }}]" value="1" required="required" onclick="uncheck_no_aplica(this)"></td>
-										<td><input type="radio" name="area_vestidor[es_limpio][{{ $etiqueta->id }}]" value="0" required="required" onclick="uncheck_no_aplica(this)"></td>
-										<td><input type="radio" name="area_vestidor[es_adecuado][{{ $etiqueta->id }}]" value="1" required="required" onclick="uncheck_no_aplica(this)"></td>
-										<td><input type="radio" name="area_vestidor[es_adecuado][{{ $etiqueta->id }}]" value="0" required="required" onclick="uncheck_no_aplica(this)"></td>
-										<td><input type="radio" name="area_vestidor[funciona][{{ $etiqueta->id }}]" value="1" required="required" onclick="uncheck_no_aplica(this)"></td>
-										<td><input type="radio" name="area_vestidor[funciona][{{ $etiqueta->id }}]" value="0" required="required" onclick="uncheck_no_aplica(this)"></td>
-										<td><input type="radio" name="area_vestidor[esta_en_mantenimiento][{{ $etiqueta->id }}]" value="1" required="required" onclick="uncheck_no_aplica(this)"></td>
-										<td><input type="radio" name="area_vestidor[esta_en_mantenimiento][{{ $etiqueta->id }}]" value="0" required="required" onclick="uncheck_no_aplica(this)"></td>				
-										<td><input type="checkbox" class="no-aplica" name="area_vestidor[no_existe][{{ $etiqueta->id }}]" value="1"></td>
-									</tr>
-									
-								@endforeach
-							</table>
-							
-							<table class="table table-bordered col-lg-12">
-								<tr>
-									<th rowspan="2"></th>				
-									<th colspan="2">Cumple</th>
-								</tr>
-								<tr>
-									<td>Si</td>
-									<td>No</td>
-								</tr>
-								@foreach(Etiqueta::getEtiquetasPorPosicion(11)->get() as $etiqueta)
-									<input type="hidden" name="area_vestidor[codigo_area][{{$etiqueta->id}}]" value="{{Config::get('constants.CODIGOS_AREAS.3')}}">
-									<tr class="fila-encuesta">
-										<td>{{ $etiqueta->titulo }}</td>				
-										<td><input type="radio" name="area_vestidor[cumple][{{ $etiqueta->id }}]" value="1" required="required"></td>
-										<td><input type="radio" name="area_vestidor[cumple][{{ $etiqueta->id }}]" value="0" required="required"></td>				
-									</tr>
-									
-								@endforeach
-							</table>
-						</div>
-					<?php } elseif($key == 7){ ?>
-						
-						<div id="opcion-div-{{$key}}" class="opcion-div {{ $class }}" >
-							<table class="table table-bordered col-lg-12"> 
-								<tr>				
-									<th rowspan="2">	
-										<h3>AREA DE ALMACENAJE DE MATERIALES DE LIMPIEZA
-									</th>				
-									<th colspan="2">
-										Higiene
-									</th>
-									<th colspan="2">
-										Estado
-									</th>
-									<th colspan="2">
-										Adecuado/a
-									</th>
-									<th colspan="2">
-										Funciona
-									</th>
-									<th colspan="2">
-										Mantenimiento
-									</th>
-									<th rowspan="2">
-										No existe				
-									</th>
-								</tr>		
-							  	<tr>
-							  		<td>Limpio</td>
-							    	<td>Sucio</td>
-							    	<td>Bueno</td>
-							    	<td>Malo</td>
-							    	<td>Si</td>
-							    	<td>No</td>
-							    	<td>Si</td>
-							    	<td>No</td>
-							    	<td>Está en</td>
-							    	<td>Necesita</td>
-							  	</tr>	
-							  	@foreach(Etiqueta::getEtiquetasPorPosicion(12)->get() as $etiqueta)
-							  		<input type="hidden" name="area_materiales_limpieza[codigo_area][{{$etiqueta->id}}]" value="{{Config::get('constants.CODIGOS_AREAS.4')}}">
+							  	@foreach(Etiqueta::getEtiquetasPorPosicion(21)->get() as $etiqueta)
+							  		<input type="hidden" name="area_materiales_limpieza[codigo_area][{{$etiqueta->id}}]" value="{{Config::get('constants.CODIGOS_AREAS.2')}}">
 								  	<tr class="fila-encuesta">
 										<td>{{ $etiqueta->titulo }}</td>
 										<td><input type="radio" name="area_materiales_limpieza[esta_limpio][{{ $etiqueta->id }}]" value="1" required="required" onclick="uncheck_no_aplica(this)"></td>
 										<td><input type="radio" name="area_materiales_limpieza[esta_limpio][{{ $etiqueta->id }}]" value="0" required="required" onclick="uncheck_no_aplica(this)"></td>
 										<td><input type="radio" name="area_materiales_limpieza[es_limpio][{{ $etiqueta->id }}]" value="1" required="required" onclick="uncheck_no_aplica(this)"></td>
 										<td><input type="radio" name="area_materiales_limpieza[es_limpio][{{ $etiqueta->id }}]" value="0" required="required" onclick="uncheck_no_aplica(this)"></td>
+										<td><input type="radio" name="area_materiales_limpieza[es_ordenado][{{ $etiqueta->id }}]" value="1" required="required" onclick="uncheck_no_aplica(this)"></td>
+										<td><input type="radio" name="area_materiales_limpieza[es_ordenado][{{ $etiqueta->id }}]" value="0" required="required" onclick="uncheck_no_aplica(this)"></td>
 										<td><input type="radio" name="area_materiales_limpieza[es_adecuado][{{ $etiqueta->id }}]" value="1" required="required" onclick="uncheck_no_aplica(this)"></td>
 										<td><input type="radio" name="area_materiales_limpieza[es_adecuado][{{ $etiqueta->id }}]" value="0" required="required" onclick="uncheck_no_aplica(this)"></td>
 										<td><input type="radio" name="area_materiales_limpieza[funciona][{{ $etiqueta->id }}]" value="1" required="required" onclick="uncheck_no_aplica(this)"></td>
@@ -557,8 +399,8 @@
 									<td>Si</td>
 									<td>No</td>
 								</tr>
-								@foreach(Etiqueta::getEtiquetasPorPosicion(13)->get() as $etiqueta)
-									<input type="hidden" name="area_materiales_limpieza[codigo_area][{{$etiqueta->id}}]" value="{{Config::get('constants.CODIGOS_AREAS.4')}}">
+								@foreach(Etiqueta::getEtiquetasPorPosicion(22)->get() as $etiqueta)
+									<input type="hidden" name="area_cocina[codigo_area][{{$etiqueta->id}}]" value="{{Config::get('constants.CODIGOS_AREAS.2')}}">
 									<tr class="fila-encuesta">
 										<td>{{ $etiqueta->titulo }}</td>				
 										<td><input type="radio" name="area_materiales_limpieza[cumple][{{ $etiqueta->id }}]" value="1" required="required"></td>

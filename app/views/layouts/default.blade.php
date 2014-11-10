@@ -91,7 +91,7 @@
 									</li>
 									<li class="divider"></li>
 									<li>
-										{{ HTML::link('/encuesta_manipulacion_bares', "Control de manipulación de alimentos e higiene de los bares de la PUCE" ) }}
+										{{ HTML::link('/encuestas_manipulacion_bares/empresas', "Control de manipulación de alimentos e higiene de los bares de la PUCE" ) }}
 									</li>
 									<?php } ?>
 								</ul>

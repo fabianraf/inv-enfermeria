@@ -30,7 +30,17 @@
 
 <div class="form-group">	
 		<div class="pull-left">
-			<br><a href="/encuesta_control_higiene_personal/nueva_empresa"><button id="nueva-empresa-boton" type="button" class="btn btn-success">Nueva Empresa</button></a>
+			<br>
+			<?php if($codigo == Config::get('constants.COD_EMPRESA_ENCUESTA_CMAHC')){ ?>
+				<a href="/encuesta_control_higiene_personal/nueva_empresa">
+					<button id="nueva-empresa-boton" type="button" class="btn btn-success">Nueva Empresa</button>
+				</a>
+
+			<?php } elseif($codigo == Config::get('constants.COD_EMPRESA_ENCUESTA_CMAHB')){ ?>
+				<a href="/encuesta_manipulacion_bares/nueva_empresa">
+					<button id="nueva-empresa-boton" type="button" class="btn btn-success">Nueva Empresa</button>
+				</a>
+			<?php } ?>
 		</div>		
 	</div>
 </div>

@@ -48,8 +48,8 @@ Route::get('encuesta_consumo_habitual', "EncuestasController@consumoHabitual");
 Route::get('/obtener_alumno_randomicamente', "EncuestasController@obtener_alumno_randomicamente");
 Route::post('/grabar_consumo_habitual', "EncuestasController@grabar_consumo_habitual");
 
-Route::get('encuesta_manipulacion_bares', "EncuestasController@manipulacionBares");
-Route::post('encuesta_manipulacion_bares', "EncuestasController@createManipulacionBares");
+// Route::get('encuesta_manipulacion_bares', "EncuestasController@manipulacionBares");
+// Route::post('encuesta_manipulacion_bares', "EncuestasController@createManipulacionBares");
 
 //Crear empresas
 Route::get('/encuesta_control_higiene_personal/index_empresas_higiene_personal', "EmpresasController@indexEmpresasHigienePersonal");
@@ -65,15 +65,22 @@ Route::post('encuesta_manipulacion_comedores/crear_empresa', "EncuestasControlle
 //Crear encuesta Control Higiene del Personal de bares y comedores de la PUCE
 //
 Route::get('/encuesta_control_higiene_personal/nueva_encuesta', "EncuestasController@nuevaEncuestaControlHigienePersonal");
-Route::post('/encuesta_control_higiene_personal/crear_encuesta', "EncuestasController@crearEncuestaControlHigienePersonal");
+Route::get('/encuesta_control_higiene_personal/crear_encuesta', "EncuestasController@crearEncuestaControlHigienePersonal");
 //
 //Fin encuesta Control Higiene del Personal de bares y comedores de la PUCE
 //
 Route::get('/encuesta_manipulacion_comedores/nueva_encuesta', "EncuestasController@nuevaEncuestaManipulacionComedores");
 Route::post('/encuesta_manipulacion_comedores/guardar_informacion', "EncuestasController@nuevaEncuestaManipulacionComedoresGuardarInformacion");
 
-
-
+//
+//Control de manipulación de alimentos e higiene de los bares de la PUCE
+//
+Route::get('/encuestas_manipulacion_bares/empresas', "EmpresasController@indexEncuestasManipulacionBares");
+Route::get('/encuesta_manipulacion_bares/nueva_empresa', "EmpresasController@nuevaEmpresaCMAHB");
+Route::get('/encuesta_manipulacion_bares/nueva_encuesta', "EncuestasController@nuevaEncuestaManipulacionBares");
+Route::post('/encuesta_manipulacion_bares/guardar_informacion', "EncuestasController@nuevaEncuestaManipulacionBaresGuardarInformacion");
+//
+//
 Route::get('/obtener_alimentos', "AlimentosController@obtener_alimentos");
 Route::get('search/autocomplete', 'UsersController@autocomplete');
 

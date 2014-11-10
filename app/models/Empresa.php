@@ -13,24 +13,24 @@ class Empresa extends Eloquent {
 		return $this->hasMany('Empleados');
 	}
 
-	public function encuestaManipulacionComedorAlimentos()
+	public function encuestaManipulacionAlimentos()
 	{
-		return $this->hasMany('EncuestaManipulacionComedorAlimento');
+		return $this->hasMany('EncuestaManipulacionAlimento');
 	}
 
-	public function encuestaManipulacionComedorProductosAlimenticios()
+	public function encuestaManipulacionProductosAlimenticios()
 	{
-		return $this->hasMany('EncuestaManipulacionComedorProductosAlimenticio');
+		return $this->hasMany('EncuestaManipulacionProductosAlimenticio');
 	}	
 
-	public function encuestaManipulacionComedorControlDePlagas()
+	public function encuestaManipulacionControlDePlagas()
 	{
-		return $this->hasMany('EncuestaManipulacionComedorControlPlaga');
+		return $this->hasMany('EncuestaManipulacionControlPlaga');
 	}
 
-	public function encuestaManipulacionComedorArea($codigo_area)
+	public function encuestaManipulacionArea($codigo_area)
 	{
-		return EncuestaManipulacionComedorArea::where("codigo_area", "=", $codigo_area)->where("empresa_id", "=", $this->id);
+		return EncuestaManipulacionArea::where("codigo_area", "=", $codigo_area)->where("empresa_id", "=", $this->id);
 		
 	}	
 
