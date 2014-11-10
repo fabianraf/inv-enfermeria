@@ -82,7 +82,7 @@ function submit_emahc(key_id){
 }
 
  function check_if_other_tabs_are_ready(key_id){
- 	if($("#opcion-tabla-" + key_id).length > 0){
+ 	
  		for(var i = 0; i < 3; i ++){
  			if($("#opcion-tabla-" + key_id).attr("id") != $("#opcion-tabla-" + i).attr("id")){
  				var counter = 0;
@@ -113,8 +113,6 @@ function submit_emahc(key_id){
  			}
  			
  		}
- 	} else
- 		if($("#opcion-div-" + key_id).length > 0){
  			for(var i = 3; i < 8; i ++){
  				if($("#opcion-div-" + key_id).attr("id") != $("#opcion-div-" + i).attr("id")){
  					console.log(i);
@@ -146,7 +144,7 @@ function submit_emahc(key_id){
 		 			}
  				}
  			}
- 		}
+ 		
  }
 
 
