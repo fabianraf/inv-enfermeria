@@ -7,7 +7,8 @@
 <div class="col-lg-12">
 	<h2>Control de higiene del personal de bares y comedores de la PUCE
 		<div class="pull-right">
-			<input type="submit" value="SIGUIENTE" class="btn btn-success">			
+			<a href="/encuesta_control_higiene_personal/empresas"><input type="button" value="VOLVER A EMPRESAS" class="btn btn-warning"></a>
+			<input type="submit" value="SIGUIENTE" class="btn btn-success">
 		</div>
 	</h2>
 

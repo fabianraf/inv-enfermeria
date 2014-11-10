@@ -12,6 +12,7 @@
 	<h2>Control de manipulación de alimentos e higiene de los comedores de la PUCE</br></br>
 		{{ $empresa->nombre }}
 		<div class="pull-right">
+			<a href="/encuesta_manipulacion_comedores/empresas"><input type="button" value="VOLVER A EMPRESAS" class="btn btn-warning"></a>
 			<input type="submit" value="GRABAR" class="btn btn-success">
 			<!-- <input type="button" value="GRABAR BORRADOR" class="btn btn-warning"> -->
 			<!-- <input type="button" value="LIMPIAR" class="btn btn-warning"> -->

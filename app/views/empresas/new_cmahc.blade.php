@@ -7,6 +7,7 @@
 <div class="col-lg-12">
 	<h2>Control de manipulación de alimentos e higiene de los comedores de la PUCE
 		<div class="pull-right">
+			<a href="/encuesta_manipulacion_comedores/empresas"><input type="button" value="VOLVER A EMPRESAS" class="btn btn-warning"></a>
 			<input type="submit" value="SIGUIENTE" class="btn btn-success">			
 		</div>
 	</h2>

@@ -7,6 +7,7 @@
 	<div class="col-lg-12">
 	<h2>{{ $empresa->nombre }}
 		<div class="pull-right">
+			<a href="/encuesta_control_higiene_personal/empresas"><input type="button" value="VOLVER A EMPRESAS" class="btn btn-warning"></a>
 			<input type="button" value="AÑADIR NUEVO EMPLEADO" class="btn btn-primary" id="anadir-nuevo-empleado">
 			<input type="submit" value="GRABAR" class="btn btn-success" id="grabar-encuesta">
 		</div>
