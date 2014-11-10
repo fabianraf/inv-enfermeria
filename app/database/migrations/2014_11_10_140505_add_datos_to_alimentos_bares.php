@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddDatosToAlimentos extends Migration {
+class AddDatosToAlimentosBares extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,8 +12,8 @@ class AddDatosToAlimentos extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('alimentos', function(Blueprint $table) {
-			$table->integer('usuario_id')->default(1);
+		Schema::table('alimentos_bares', function(Blueprint $table) {
+			$table->integer('usuario_id')->default(1);;			
 			$table->integer('gramos')->nullable();
 			$table->float('humedad')->nullable();
 			$table->float('calorias')->nullable();
@@ -54,7 +54,7 @@ class AddDatosToAlimentos extends Migration {
 			$table->float('carbohidratos_disponibles')->nullable();
 			$table->float('fibra_cruda')->nullable();
 			$table->foreign('usuario_id')->references('id')->on('usuarios')
-					->onDelete('set null');		
+					->onDelete('set null');
 		});
 	}
 
@@ -65,7 +65,7 @@ class AddDatosToAlimentos extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('alimentos', function(Blueprint $table) {
+		Schema::table('alimentos_bares', function(Blueprint $table) {
 			
 		});
 	}

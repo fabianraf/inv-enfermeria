@@ -39,6 +39,7 @@ class AlimentosController extends BaseController {
 			if ($validator->passes()) {
 				$id = $campos['alimento_id'];
 				$alimento = Alimento::find($id);
+				$alimento->usuario_id = Auth::user()->id;
 				$alimento->porciones = ($campos['porciones']!='' ? $campos['porciones'] : 'n/a');
 				$alimento->gramos = ($campos['gramos']!='' ? $campos['gramos'] : '0');			
 				$alimento->humedad = ($campos['humedad']!='' ? $campos['humedad'] : '0');			

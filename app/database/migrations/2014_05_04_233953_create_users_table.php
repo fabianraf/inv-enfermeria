@@ -45,6 +45,10 @@ class CreateUsersTable extends Migration {
 	 */
 	public function down()
 	{
+		Schema::table('alimentos', function($table)
+		{
+		    $table->dropColumn('usuario_id');
+		});
 		Schema::drop('usuarios');
 	}
 

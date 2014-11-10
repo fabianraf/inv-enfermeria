@@ -39,6 +39,7 @@ class AlimentosBaresController extends BaseController {
 			if ($validator->passes()) {
 				$id = $campos['alimento_bares_id'];
 				$alimento_bares = AlimentoBares::find($id);
+				$alimento_bares->usuario_id = Auth::user()->id;
 				$alimento_bares->porciones = ($campos['porciones']!='' ? $campos['porciones'] : 'n/a');
 				$alimento_bares->gramos = ($campos['gramos']!='' ? $campos['gramos'] : '0');			
 				$alimento_bares->humedad = ($campos['humedad']!='' ? $campos['humedad'] : '0');			
