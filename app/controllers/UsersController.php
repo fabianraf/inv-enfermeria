@@ -72,10 +72,7 @@ class UsersController extends BaseController {
 	 */
 	public function profile()
 	{
-		$user = Auth::user();
-		$total_visitas = $user->contador_visitas;
-		$user->contador_visitas = $total_visitas + 1;
-		$user->save();
+		$user = Auth::user();		
 		return View::make('users.profile', ['user' => $user]);
 	}
 
@@ -94,7 +91,7 @@ class UsersController extends BaseController {
 	        //$user->fecha_nacimiento = $input['fecha_nacimiento'];
 	        //$user->genero = $input['genero'];
 	        $user->personas_hogar = $input['personas_hogar'];
-	        $user->edito_perfil = 'TRUE';
+	        $user->edito_perfil = TRUE;
 	        $user->save();
 			return View::make('users.profile', ['user' => $user]);
 		}else {
@@ -154,5 +151,17 @@ class UsersController extends BaseController {
 		return Response::json($results);
 	}
 
-
+	public function aceptoDisclaimer()
+	{
+        $user = Auth::user();
+        $input = Input::all();
+        if ($input['disclaimer']=="SI") {
+	        $user->acepto_disclaimer = TRUE;	        
+	        $user->save();
+			return View::make('users.profile', ['user' => $user]);
+		}else {
+		    Auth::logout();
+			return Redirect::to('/login')->with('message', 'Your are now logged out!');
+		}		
+	}
 }

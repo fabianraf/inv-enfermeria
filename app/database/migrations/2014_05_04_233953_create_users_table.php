@@ -31,7 +31,7 @@ class CreateUsersTable extends Migration {
 			$table->boolean('edito_perfil')->default(false);
 			$table->boolean('bioquimica')->default(false);
 			$table->boolean('tiene_consumo_habitual')->default(false);
-			$table->integer('contador_visitas')->default(0);
+			$table->boolean('acepto_disclaimer')->default(0);
 			$table->string('carrera',10)->nullable();
 			$table->integer('nivel')->nullable();		
 		});
@@ -45,6 +45,10 @@ class CreateUsersTable extends Migration {
 	 */
 	public function down()
 	{
+		Schema::table('alimentos', function($table)
+		{
+		    $table->dropColumn('usuario_id');
+		});
 		Schema::drop('usuarios');
 	}
 

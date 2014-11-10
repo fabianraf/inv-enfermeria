@@ -36,7 +36,7 @@
 						<span class="icon-bar"></span>
 						
 					</button>
-					 <a class="navbar-brand" href="/">Enfermeria</a>
+					 <a class="navbar-brand">SIVAN</a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
@@ -55,7 +55,7 @@
 										</li>									
 										<li class="divider"></li>
 									<?php }?>
-									<?php if(!Auth::user()->edito_perfil && Auth::user()->perfiles_usuario_id != "1" and Auth::user()->contador_visitas > 1){?>
+									<?php if(!Auth::user()->edito_perfil && Auth::user()->perfiles_usuario_id != "1" and Auth::user()->acepto_disclaimer){?>
 									<li>
 										{{ HTML::link('/edit', "Editar perfil" ) }}
 									</li>									
@@ -69,7 +69,7 @@
 							<li class="dropdown">
 								<a class="dropdown-toggle text-white"  data-toggle="dropdown">Encuestas<b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<?php if(Auth::user()->perfiles_usuario_id == "2" and Auth::user()->contador_visitas > 1){?>
+									<?php if(Auth::user()->perfiles_usuario_id == "2" and Auth::user()->acepto_disclaimer){?>
 									<li>
 										{{ HTML::link('/encuesta_consumo_alimentos', "Consumo de alimentos en Universidad y alrededores" ) }}
 									</li>
@@ -101,7 +101,11 @@
 								<a class="dropdown-toggle text-white"  data-toggle="dropdown">Administración<b class="caret"></b></a>
 								<ul class="dropdown-menu">																	
 										<li>
-											{{ HTML::link('alimentos', "Gestión de alimentos" ) }}											
+											{{ HTML::link('alimentos', "Gestión de alimentos en Universidad y alrededores" ) }}											
+										</li>
+										<li class="divider"></li>
+										<li>
+											{{ HTML::link('alimentosBares', "Gestión de alimentos en los bares de la Universidad" ) }}											
 										</li>
 										<li class="divider"></li>
 										<li>

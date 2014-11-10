@@ -64,6 +64,20 @@ $(document).ready(function() {
 		
 	});
 
+	//Cambia colores a los botones de la gestion de alimentos_bares
+	$(".gestion-alimentos-bares").click(function(){		
+		if($(this).hasClass("btn-info")){
+			//No hace nada
+		} else{
+			$(".gestion-alimentos-bares").each(function(){
+				$(this).removeClass("btn-info");
+				$(this).addClass("btn-success")
+			});
+		}
+		$(this).attr("class", "btn btn-default gestion-alimentos-bares btn-info btn-striped");
+		
+	});
+
 
 	//Cambia colores a los botones de la gestion de usuarios
 	$(".gestion-perfiles").click(function(){		
@@ -269,6 +283,16 @@ function submit_tipo_de_alimento(tipo_de_alimento_id){
 	});	
 }
 
+function submit_tipo_de_alimento_bares(tipo_de_alimento_bares_id){
+	$(".table-bordered").each(function(){
+		if($(this).attr("id") == "tipo-alimento-bares-" + tipo_de_alimento_bares_id){
+			$(this).removeClass("hidden");
+		}else{
+			$(this).addClass("hidden");
+		}
+	});	
+}
+
 function submit_encabezado_pregunta(encabezado_pregunta_id){
 	$(".table-bordered").each(function(){
 		if($(this).attr("id") == "encabezado-pregunta-" + encabezado_pregunta_id){
@@ -389,6 +413,17 @@ function submit_gestion_alimentos(tipo_de_alimento_id){
 	$("#tipo_de_alimento_id").val(tipo_de_alimento_id);
 	$(".table-no-border").each(function(){
 		if($(this).attr("id") == "tipo-alimento-" + tipo_de_alimento_id){
+			$(this).removeClass("hidden");
+		}else{
+			$(this).addClass("hidden");
+		}
+	});	
+}
+
+function submit_gestion_alimentos_bares(tipo_de_alimento_bares_id){
+	$("#tipo_de_alimento_bares_id").val(tipo_de_alimento_bares_id);
+	$(".table-no-border").each(function(){
+		if($(this).attr("id") == "tipo-alimento-bares-" + tipo_de_alimento_bares_id){
 			$(this).removeClass("hidden");
 		}else{
 			$(this).addClass("hidden");

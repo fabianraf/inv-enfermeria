@@ -21,6 +21,13 @@
         </div>
     @endif
 
+    @if(isset($estudiante) && !$estudiante->bioquimica)
+    <div class="alert alert-warning">          
+      El estudiante no tiene datos bioquímicos<br>
+      <a href="{{{ URL::to('bioquimica/datos/'.$estudiante->id) }}}">Ingresar datos</a>
+    </div>
+  @endif
+
   @if($errors->any())
   <div class="alert alert-danger alert-block">
     <ul>
@@ -72,7 +79,8 @@
           <p><li><strong>MCH (pg): </strong>{{ $bioquimica->mch }}</p>
           <p><li><strong>MCHC (g/dL): </strong>{{ $bioquimica->mchc }}</p>
           <p><li><strong>MCV: </strong>{{ $bioquimica->mcv }}</p>
-        </ul>
+        </ul><br>
+        <a href="{{{ URL::to('bioquimica/datos/'.$estudiante->id) }}}"><input type="button" value="EDITAR INFORMACION" class="btn btn-primary"></button></a>    
       </div>
       <div class="col-sm-6"> 
         <h4><i><u>Química</u></i></h4>
@@ -92,20 +100,7 @@
           <p><li><strong></strong></p>          
         </ul>
       </div>
-    </div>
-    @else
-      @if(!$estudiante->edito_perfil)
-        <br><br><br><br><br><br><br><div class="alert alert-danger">          
-          El estudiante no editó su perfil
-        </div>
-        
-      @else
-       <br><br><br><br><br><br><br><div class="alert alert-warning">          
-          El estudiante no tiene datos bioquímicos<br>
-          <a href="{{{ URL::to('bioquimica/datos/'.$estudiante->id) }}}">Ingresar datos</a>
-        </div>
-        
-      @endif     
+    </div>   
     @endif
   @endif
 </div>

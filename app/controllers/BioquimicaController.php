@@ -21,7 +21,7 @@ class BioquimicaController extends BaseController {
 	        													'bioquimica' => $bioquimica));
 	       	else
 				return View::make('bioquimica.main', array('estudiante' => $estudiante));
-		}return View::make('bioquimica.main')->with('message', 'Estudiante no se encuentra en la base de datos');
+		}return View::make('bioquimica.main')->with('message', 'El estudiante no se encuentra en la base de datos');
 				
 	}
 
@@ -31,7 +31,7 @@ class BioquimicaController extends BaseController {
         $bioquimica = Bioquimica::where('usuario_id', '=', $estudiante->id)
         								->first();
         if(count($bioquimica)>0)
-        	return View::make('bioquimica.main', array('estudiante' => $estudiante,
+        	return View::make('bioquimica.create', array('estudiante' => $estudiante,
         													'bioquimica' => $bioquimica));
        	else
 			return View::make('bioquimica.create', array('estudiante' => $estudiante));
@@ -43,8 +43,14 @@ class BioquimicaController extends BaseController {
 		$campos = Input::all();
 		$validator = Validator::make($campos, Bioquimica::$rules);
 		if ($validator->passes()) {
+			if(isset($campos['bioquimica_id'])){
+				$estudiante = User::find($campos['estudiante_id']);
+				$bioquimica = Bioquimica::find($campos['bioquimica_id']);
+		}else{
+
 			$estudiante = User::find($campos['estudiante_id']);		
 			$bioquimica = new Bioquimica;
+		}			
 			$bioquimica->usuario_id = $estudiante->id;
 			$bioquimica->wbc = $campos['wbc'];
 			$bioquimica->neutrofilos = $campos['neutrofilos'];
@@ -72,7 +78,8 @@ class BioquimicaController extends BaseController {
 			$estudiante->bioquimica = TRUE;
 			$estudiante->save();
 			$id=$estudiante->id;
-			return Redirect::action('BioquimicaController@ingresarDatos', array('id' => $id));
+			return View::make('bioquimica.create', array('estudiante' => $estudiante,
+        													'bioquimica' => $bioquimica))->with('message', 'La información ha sido guardada correctamente');
 		}else {
 		    return Redirect::back()->withInput()->withErrors($validator->messages());
 		}

@@ -16,6 +16,10 @@ Route::get("alimentos", "AlimentosController@index");
 Route::post("alimentos", "AlimentosController@store");
 Route::resource("alimentos", "AlimentosController");
 
+Route::get("alimentosBares", "AlimentosBaresController@index");
+Route::post("alimentosBares", "AlimentosBaresController@store");
+Route::resource("alimentosBares", "AlimentosBaresController");
+
 Route::get('encuesta_consumo_alimentos', "EncuestasController@consumoAlimentos");
 Route::post('encuesta_consumo_alimentos', "EncuestasController@createConsumoAlimentos");
 
@@ -40,6 +44,8 @@ Route::resource("users", 'UsersController');
 Route::get('/profile', 'UsersController@profile');
 Route::get('/edit', 'UsersController@editProfile');
 Route::post('edit', 'UsersController@edit');
+Route::post('disclaimer', 'UsersController@aceptoDisclaimer');
+
 
 Route::get('encuesta_consumo_alimentos_bares', "EncuestasController@consumoAlimentosBares");
 Route::post('encuesta_consumo_alimentos_bares', "EncuestasController@createConsumoAlimentosBares");
