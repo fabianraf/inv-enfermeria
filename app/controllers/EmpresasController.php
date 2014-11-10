@@ -5,14 +5,21 @@ class EmpresasController extends BaseController {
 
 	public function indexEmpresasHigienePersonal(){ 
 		$empresas = Empresa::where('codigo_empresa','=','1')->get();        
-        return View::make('empresas.main', array('empresas' => $empresas, 'codigo' => Config::get('constants.COD_EMPRESA_ENCUESTA_CMAHC')));
+        return View::make('empresas.main', array('empresas' => $empresas, 'codigo' => Config::get('constants.COD_EMPRESA_ENCUESTA_CHP')));
 	}
+
+	
+	public function indexEncuestasManipulacionComedores(){ 
+		$empresas = Empresa::where('codigo_empresa','=','2')->get();        
+        return View::make('empresas.main', array('empresas' => $empresas, 'codigo' => Config::get('constants.COD_EMPRESA_ENCUESTA_CMAHC')));
+	}	
 
 	public function indexEncuestasManipulacionBares(){ 
 		$empresas = Empresa::where('codigo_empresa','=','3')->get();        
         return View::make('empresas.main', array('empresas' => $empresas, 'codigo' => Config::get('constants.COD_EMPRESA_ENCUESTA_CMAHB')));
 	}
 
+	
 	public function nuevaEmpresa(){
 		return View::make('empresas.new');
 	}

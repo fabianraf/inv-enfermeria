@@ -75,6 +75,7 @@ Route::get('/encuesta_control_higiene_personal/crear_encuesta', "EncuestasContro
 //
 //Fin encuesta Control Higiene del Personal de bares y comedores de la PUCE
 //
+Route::get('/encuesta_manipulacion_comedores/empresas', "EmpresasController@indexEncuestasManipulacionComedores");
 Route::get('/encuesta_manipulacion_comedores/nueva_encuesta', "EncuestasController@nuevaEncuestaManipulacionComedores");
 Route::post('/encuesta_manipulacion_comedores/guardar_informacion', "EncuestasController@nuevaEncuestaManipulacionComedoresGuardarInformacion");
 
