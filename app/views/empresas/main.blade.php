@@ -36,7 +36,7 @@
 					<button id="nueva-empresa-boton" type="button" class="btn btn-success">Nueva Empresa</button>
 				</a>
 			<?php }elseif($codigo == Config::get('constants.COD_EMPRESA_ENCUESTA_CMAHC')){ ?>
-				<a href="/encuesta_manipulacion_comedores/nueva_encuesta">
+				<a href="/encuesta_manipulacion_comedores/nueva_empresa">
 					<button id="nueva-empresa-boton" type="button" class="btn btn-success">Nueva Empresa</button>
 				</a>
 

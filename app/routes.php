@@ -58,7 +58,7 @@ Route::post('/grabar_consumo_habitual', "EncuestasController@grabar_consumo_habi
 // Route::post('encuesta_manipulacion_bares', "EncuestasController@createManipulacionBares");
 
 //Crear empresas
-Route::get('/encuesta_control_higiene_personal/index_empresas_higiene_personal', "EmpresasController@indexEmpresasHigienePersonal");
+Route::get('/encuesta_control_higiene_personal/empresas', "EmpresasController@indexEmpresasHigienePersonal");
 Route::get('/encuesta_control_higiene_personal/datos/{id}', array('uses'=>'EmpresasController@informacionEmpresa'));
 Route::get('/encuesta_control_higiene_personal/nueva_empresa', "EmpresasController@nuevaEmpresa");
 Route::post('encuesta_control_higiene_personal/crear_empresa', "EmpresasController@crearEmpresa");
