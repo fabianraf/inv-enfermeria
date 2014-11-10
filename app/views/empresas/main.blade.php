@@ -12,13 +12,18 @@
 		<table class="table table-no-border col-lg-9">
 			<tr>				
 				<td></td>
-				<td>Empresas</td>				
+				<td>Empresas</td>
+				<?php if($codigo == Config::get('constants.COD_EMPRESA_ENCUESTA_CHP')){
+					echo "<td>Ver Empleados</td>"; } ?>
 			</tr>		
 		  		<?php  $index = 1; ?>
 		 	@foreach($empresas as $empresa)				
 		  	<tr>
 				<td>{{ $index }}</td>
-				<td> {{ HTML::link( 'encuesta_control_higiene_personal/datos/'.$empresa->id , $empresa->nombre ) }} </td>			
+				<td> {{ HTML::link( 'encuesta_control_higiene_personal/empresas/'.$empresa->id , $empresa->nombre ) }} </td>			
+				<?php if($codigo == Config::get('constants.COD_EMPRESA_ENCUESTA_CHP')){ 
+					echo "<td><a href='/encuesta_control_higiene_personal/ver_empleados/".$empresa->id."'><span class='glyphicon glyphicon-search'></span></td>";
+				} ?>
 			</tr>
 			<?php  
 					$index++; 					

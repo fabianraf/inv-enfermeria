@@ -29,6 +29,11 @@ class EmpresasController extends BaseController {
 		return View::make('empresas.view', array('empresa' => $empresa));
 	}
 
+	public function informacionEmpleados($id){		
+		$empresa = Empresa::find($id);		
+		return View::make('empresas.view_empleados', array('empresa' => $empresa));
+	}
+
 	public function nuevaEmpresaCMAHC()
 		{
 		return View::make('empresas.new_cmahc');

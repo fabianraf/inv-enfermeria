@@ -10,7 +10,7 @@ class Empresa extends Eloquent {
 
 	public function empleados()
 	{
-		return $this->hasMany('Empleados');
+		return $this->hasMany('Empleado');
 	}
 
 	public function encuestaManipulacionAlimentos()
