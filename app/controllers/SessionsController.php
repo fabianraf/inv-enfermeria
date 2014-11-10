@@ -19,7 +19,8 @@ class SessionsController extends BaseController {
 	 */
 	public function create()
 	{
-		if(Auth::check()) return 'Already logged in!!';
+		if(Auth::check()) 
+			return Redirect::to("/")->withErrors('Ya inició sesión');
     	return View::make('sessions.create');
 	}
 
@@ -32,7 +33,7 @@ class SessionsController extends BaseController {
 	{
 		if (Auth::attempt(Input::only("email", "password")))
 		{
-			if(Auth::user()->tipo == "admin"){
+			if(Auth::user()->perfiles_usuario_id == "1"){
 
 				/*$users = User::all();
 				foreach ($users as $user){
@@ -41,9 +42,6 @@ class SessionsController extends BaseController {
 					$user->apellido = strtoupper($user->apellido);
 					$user->save();
 				}*/
-				
-				
-
 				return Redirect::to("/");
 			}
 				
@@ -51,7 +49,7 @@ class SessionsController extends BaseController {
 				return Redirect::to("/profile");//View::make('users.profile');			
 				
 		}
-		return "Failed!";
+		return Redirect::to('/login')->withErrors('Usuario o password incorrectos');
 	}
 
 	/**
@@ -96,7 +94,7 @@ class SessionsController extends BaseController {
 	public function logout()
 	{
 		Auth::logout();
-		return Redirect::to('/login')->with('message', 'Your are now logged out!');
+		return View::make('sessions.create')->with('message', 'Su sesión ha terminado');
 	}
 
 }

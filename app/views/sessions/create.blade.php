@@ -83,6 +83,22 @@
 		<div class="container">
 
         <div class="row">
+
+
+        <!-- Success-Messages -->
+		@if(isset($message))
+		    <div class="alert alert-success">		        
+				{{$message}}
+		    </div>
+		@endif
+
+		@if($errors->any())
+			<div class="alert alert-danger alert-block">
+				<ul>
+				{{ implode('', $errors->all('<li class="error">:message</li>')) }}
+				</ul>
+			</div>
+		@endif
 						{{ Form::open(['route' => 'sessions.store', 'class' => "form-horizontal"]) }}
 						  <div class="form-group">
 						    {{ Form::label('email', 'Email',array('class' => 'col-sm-2 control-label')); }}
