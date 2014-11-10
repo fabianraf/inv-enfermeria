@@ -18,6 +18,13 @@
         </div>
     @endif
 
+  @if(isset($estudiante) && !$estudiante->antropometria)
+    <div class="alert alert-warning">          
+      El estudiante no tiene datos antropométricos<br>
+      <a href="{{{ URL::to('antropometria/datos/'.$estudiante->id) }}}">Ingresar datos</a>
+    </div>
+  @endif
+
   @if($errors->any())
   <div class="alert alert-danger alert-block">
     <ul>
@@ -62,7 +69,8 @@
           <p><li><strong>Pliegue tricipital - PT (mm): </strong>{{ $antropometria->pliegue_tricipital }}</p>
           <p><li><strong>Pliegue subescapular (mm): </strong>{{ $antropometria->pliegue_subescapular }}</p>
           <p><li><strong>Pliegue suprailíaco (mm): </strong>{{ $antropometria->pliegue_suprailiaco }}</p>
-        </ul>
+        </ul><br>
+        <a href="{{{ URL::to('antropometria/datos/'.$estudiante->id) }}}"><input type="button" value="EDITAR INFORMACION" class="btn btn-primary"></button></a>    
       </div>
       <div class="col-sm-6">        
         <h4><i><u>Resultados e interpretación</u></i></h4>
@@ -72,23 +80,10 @@
           <p><li><strong>Porcentaje circunferencia media del brazo (% CMB): </strong>{{ $antropometria->porcentaje_cmb }} - {{ $antropometria->interpretacion_cmb }}</p>
           <p><li><strong>Porcentaje pliegue tricipital (%): </strong>{{ $antropometria->porcentaje_pt }}</p>
         </ul>
-      </div>
-    </div>
-    @else
-      @if(!$estudiante->edito_perfil)
-        <br><br><br><br><br><br><br><div class="alert alert-danger">
-          El estudiante no editó su perfil
-        </div>
-        
-      @else
-        <br><br><br><br><br><br><br><div class="alert alert-warning">          
-          El estudiante no tiene datos antropométricos<br>
-          <a href="{{{ URL::to('antropometria/datos/'.$estudiante->id) }}}">Ingresar datos</a>
-        </div>
-        
-      @endif     
-    @endif
+      </div>   
+    </div>    
   @endif
+@endif
 </div>
 {{ Form::close() }}
 @stop

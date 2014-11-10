@@ -10,7 +10,7 @@ class AlimentosController extends BaseController {
 	public function index()
 	{
         $tipos_de_alimentos = TipoDeAlimento::orderBy('nombre')->get();
-        $alimento_inicial = TipoDeAlimento::where('nombre', '=', 'Aceites y grasas')->first();
+        $alimento_inicial = TipoDeAlimento::orderBy('nombre')->first();
         $id_inicial = $alimento_inicial->id;
         return View::make('alimentos.main', array('tipos_de_alimentos' => $tipos_de_alimentos, 
         										'id_inicial' => $id_inicial));
@@ -85,10 +85,9 @@ class AlimentosController extends BaseController {
 				$alimentos = Alimento::where('tipo_de_alimento_id', '=', $tipo_de_alimento_id)        					
 	                            ->orderBy('nombre')->get();
 	            $tipos_de_alimentos = TipoDeAlimento::orderBy('nombre')->get(); 
-	        	$alimento_inicial = TipoDeAlimento::where('nombre', '=', 'Aceites y grasas')->first();
+	        	$alimento_inicial = TipoDeAlimento::orderBy('nombre','ASC')->first();
 		        $id_inicial = $alimento_inicial->id;
-		        return View::make('alimentos.main', array('tipos_de_alimentos' => $tipos_de_alimentos, 
-		        										'id_inicial' => $id_inicial));
+		        return View::make('alimentos.view', array('alimento' => $alimento))->with('message', 'La información ha sido guardada correctamente');
 	        } else {
 		    return Redirect::back()->withInput()->withErrors($validator->messages());	   
 		    }     	        
@@ -106,7 +105,7 @@ class AlimentosController extends BaseController {
 	        $alimento_inicial = TipoDeAlimento::where('nombre', '=', 'Aceites y grasas')->first();
 		        $id_inicial = $alimento_inicial->id;
 		        return View::make('alimentos.main', array('tipos_de_alimentos' => $tipos_de_alimentos, 
-		        										'id_inicial' => $id_inicial)); 
+		        										'id_inicial' => $id_inicial))->with('message', 'La información ha sido guardada correctamente');
         	//return View::make('alimentos.alimentos', array('alimentos' => $alimentos, 'tipo_de_alimento' => $tipo_de_alimento));
 		}			
 	}

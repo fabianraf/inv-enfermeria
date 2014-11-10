@@ -9,7 +9,7 @@ class TipoDeAlimentoBares extends Eloquent {
 	
 	public function alimentosBares()
 		    {
-	        return $this->hasMany('AlimentoBares')->orderBy("created_at", "DESC");
+	        return $this->hasMany('AlimentoBares')->orderBy("nombre", "ASC");
 		    }
 	public static function get_total_alimentos_bares(){
 		$count = 0;

@@ -21,7 +21,7 @@ class EncuestasController extends BaseController {
 	//Frecuencia de consumo de alimentos en la Universidad y alrededores
 	public function consumoAlimentos()
 	{
-		if(Auth::user()->edito_perfil == "SI"){
+		if(Auth::user()->edito_perfil){
 			$tipos_de_alimentos = TipoDeAlimento::orderBy('nombre')->get();
 			return View::make('encuestas.consumoAlimentos', array('tipos_de_alimentos' => $tipos_de_alimentos));
 		}else{
@@ -31,7 +31,7 @@ class EncuestasController extends BaseController {
 
 	public function consumoAlimentosBares()
 	{
-		if(Auth::user()->edito_perfil == "SI"){
+		if(Auth::user()->edito_perfil){
 			$tipos_de_alimentos_bares = TipoDeAlimentoBares::orderBy('nombre')->get();
         return View::make('encuestas.consumoAlimentosBares', array('tipos_de_alimentos_bares' => $tipos_de_alimentos_bares));
 		}else{

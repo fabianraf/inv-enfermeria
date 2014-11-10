@@ -18,11 +18,11 @@
  @endif
 
 <div class="col-lg-12">
-  <h2>Gestión de alimentos en Universidad y alrededores</h2>
+  <h2>Gestión de alimentos en los bares de la Universidad</h2>
   <hr>
   </br>
 
-  	{{ Form::open(array('url' => 'alimentos')) }}	
+  	{{ Form::open(array('url' => 'alimentosBares')) }}	
 			
 	<div class="col-lg-12">	
 		<h4>{{ Form::label('nombre', 'Ingresar nuevo alimento',array('class' => 'col-sm-3 control-label')); }}</h4>
@@ -31,11 +31,11 @@
 			<button type="submit" class="btn btn-warning pull-right">Guardar</button><br><br>
 		</div>
 	</div><br><br>
-	{{ Form::hidden('tipo_de_alimento_id', $id_inicial, array('id' => 'tipo_de_alimento_id')) }}
+	{{ Form::hidden('tipo_de_alimento_bares_id', $id_inicial, array('id' => 'tipo_de_alimento_bares_id')) }}
 	{{ Form::close() }}
 </div>
 <div class="col-lg-12">
-	  	@foreach($tipos_de_alimentos as $key => $tipo_de_alimento)
+	  	@foreach($tipos_de_alimentos_bares as $key => $tipo_de_alimento_bares)
 			<?php 			
 						
 				if($key == 0)
@@ -43,14 +43,14 @@
 				else
 					$button_class = "btn-success btn-striped";											
 			?>
-			{{ Form::button($tipo_de_alimento->nombre, array('class'=>'btn btn-default gestion-alimentos ' . $button_class, 'onclick' => 'submit_gestion_alimentos("'.$tipo_de_alimento->id.'")', 'id' => 'boton-tipo-alimento-'.$tipo_de_alimento->id)) }}
+			{{ Form::button($tipo_de_alimento_bares->nombre, array('class'=>'btn btn-default gestion-alimentos-bares ' . $button_class, 'onclick' => 'submit_gestion_alimentos_bares("'.$tipo_de_alimento_bares->id.'")', 'id' => 'boton-tipo-alimento-bares-'.$tipo_de_alimento_bares->id)) }}
 		@endforeach
 	
 	</br></br>
 
 
 	
-	@foreach($tipos_de_alimentos as $key => $tipo_de_alimento)
+	@foreach($tipos_de_alimentos_bares as $key => $tipo_de_alimento_bares)
 	<?php 
 		if($key == 0)
 			$class = "";
@@ -58,16 +58,16 @@
 			$class = "hidden";
 	?>
 	<div class="col-lg-12 responsive">
-		<table class="table table-no-border col-lg-12 {{ $class }}" id="tipo-alimento-{{ $tipo_de_alimento->id }}">
+		<table class="table table-no-border col-lg-12 {{ $class }}" id="tipo-alimento-bares-{{ $tipo_de_alimento_bares->id }}">
 			<tr>				
 				<td></td>
 				<td>Alimentos</td>				
 			</tr>		
 		  		<?php  $index = 1; ?>
-		 		@foreach($tipo_de_alimento->alimentos as $alimento)				
+		 		@foreach($tipo_de_alimento_bares->alimentosBares as $alimento_bares)				
 		  	<tr>
 				<td>{{ $index }}</td>
-				<td>{{ HTML::linkRoute('alimentos.edit', $alimento->nombre, array($alimento->id) ) }}</td>
+				<td>{{ HTML::linkRoute('alimentosBares.edit', $alimento_bares->nombre, array($alimento_bares->id) ) }}</td>
 				
 			</tr>
 			<?php  
