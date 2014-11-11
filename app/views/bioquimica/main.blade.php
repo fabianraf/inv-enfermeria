@@ -105,7 +105,17 @@
           <p><li><strong></strong></p>          
         </ul>
       </div>
-    </div>   
+    </div>
+    @else
+      @if(Auth::user()->perfiles_usuario_id == "2")
+        <div class="row">
+          <div class="col-sm-5"> 
+            <div class="alert alert-warning">          
+            No existe información de pruebas bioquímicas
+            </div>  
+          </div>  
+        </div>
+      @endif 
     @endif
   @endif
 </div>

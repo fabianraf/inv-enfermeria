@@ -8,6 +8,15 @@
 if (Auth::user()->perfiles_usuario_id == "2" && !$user->acepto_disclaimer){
 ?>
 	{{ Form::open(array('url' => 'disclaimer')) }}
+	<div class="row">
+        <div class="pull-left responsive"> 
+			<div class="alert alert-success">          
+	            Para continuar, por favor lea detenidamente el siguiente CONSENTIMIENTO INFORMADO PARA LA PARTICIPACIÓN EN 
+	            EL ESTUDIO, y si usted se encuentra de acuerdo con los términos aquí presentados, ACEPTE su participacón 
+	            en la parte inferior del texto.
+           	</div>
+        </div>
+	</div>
 	<h2 align="center">Pontificia Universidad Católica del Ecuador</h2>
 	<h3 align="center">Facultad de Enfermería</h3>
 	<h3 align="center">Carrera de Nutrición Humana</h3><br><br>

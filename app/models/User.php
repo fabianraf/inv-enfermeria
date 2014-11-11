@@ -201,7 +201,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	public function perfilUsuario()
 	    {
-        return $this->belongsTo('PerfilesUsuario','perfiles_usuario_id')->orderBy('nombre');
+        return $this->belongsTo('PerfilesUsuario','perfiles_usuario_id')->orderBy('nombre','ASC');
 	    }
 
 	public function antropometria()

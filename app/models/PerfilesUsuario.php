@@ -8,7 +8,7 @@ class PerfilesUsuario extends Eloquent {
 
 	public function usuarios()
 	{
-		return $this->hasMany('User', 'perfiles_usuario_id');
+		return $this->hasMany('User', 'perfiles_usuario_id')->orderBy("nombre", "ASC");
 	}
 
 

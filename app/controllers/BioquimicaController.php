@@ -5,7 +5,7 @@ class BioquimicaController extends BaseController {
 
 	public function main()
 	{
-		if(Auth::user()->perfiles_usuario_id == "2" && Auth::user()->bioquimica){
+		if(Auth::user()->perfiles_usuario_id == "2"){
 			$id = Auth::user()->id;
 			$estudiante = User::find($id);
 			return View::make('bioquimica.main', array('estudiante' => $estudiante));

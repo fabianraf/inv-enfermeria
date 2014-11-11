@@ -88,7 +88,17 @@
           <p><li><strong>Porcentaje pliegue tricipital (%): </strong>{{ $estudiante->antropometria()->first()->porcentaje_pt }}</p>
         </ul>
       </div>   
-    </div>    
+    </div>
+    @else
+      @if(Auth::user()->perfiles_usuario_id == "2")
+        <div class="row">
+          <div class="col-sm-5"> 
+            <div class="alert alert-warning">          
+            No existe información de pruebas antropométricas
+            </div>  
+          </div>  
+        </div>\
+      @endif
   @endif
 @endif
 </div>

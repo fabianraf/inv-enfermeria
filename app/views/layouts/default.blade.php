@@ -118,11 +118,11 @@
 									</li>									
 									<li class="divider"></li>
 									<li>
-										{{ HTML::link('/encuesta_consumo_alimentos', "Valor nutricional - Alimentos en los bares de la Universidad" ) }}
+										{{ HTML::link('', "Valor nutricional - Consumo alimentos en los bares de la Universidad" ) }}
 									</li>
 									<li class="divider"></li>
 									<li>
-										{{ HTML::link('/encuesta_consumo_alimentos', "Valor nutricional - Alimentos en Universidad y alrededores" ) }}
+										{{ HTML::link('', "Valor nutricional - Consumo alimentos en Universidad y alrededores" ) }}
 									</li>
 									<?php }elseif(Auth::user()->perfiles_usuario_id == "1" || Auth::user()->perfiles_usuario_id == "3") {?>
 									<!--REPORTES DE ADMIN Y ENCUESTADORES-->
