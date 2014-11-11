@@ -18,7 +18,7 @@
  @endif
 
 <div class="col-lg-12">
-  <h2>Gestión de alimentos en Universidad y alrededores</h2>
+  <h2>Gestión de alimentos en hogar, Universidad y alrededores</h2>
   <hr>
   </br>
 

@@ -53,7 +53,7 @@
 
 			<tr>				
 				<th rowspan="2">Alimentos</th>
-				<th rowspan="2">Porción</th>
+				<th rowspan="2">Imagen<br> porción</th>
 				<th colspan="10">Frecuencia (veces a la semana)</th>
 				<th rowspan="2">N. de porciones diarias</th>				
 			</tr>		
@@ -81,7 +81,7 @@
 					</button>--> 
 					<?php $link = "/images/".$alimento->url_foto;
 
-					echo "<a href=".$link." target='_blank'>Ver</a>"; ?>
+					echo "<a href=".$link." target='_blank'><span class='glyphicon glyphicon-picture'></span></a>"; ?>
 					
 
 					<input type="hidden" name="frecuencia[alimento][{{ $index }}]" value="{{ $alimento->id }}"></td>

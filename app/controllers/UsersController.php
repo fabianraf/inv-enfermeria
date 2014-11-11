@@ -88,8 +88,10 @@ class UsersController extends BaseController {
         $input = Input::all();
         $validator = Validator::make($input, User::$rulesEditarPerfil, User::$messages);        
         if ($validator->passes()) {
-	        //$user->fecha_nacimiento = $input['fecha_nacimiento'];
-	        //$user->genero = $input['genero'];
+	        $user->direccion = $input['direccion'];
+	        $user->telefono = $input['telefono'];
+	        $user->fecha_nacimiento = $input['fecha_nacimiento'];
+	        $user->genero = $input['genero'];
 	        $user->personas_hogar = $input['personas_hogar'];
 	        $user->edito_perfil = TRUE;
 	        $user->save();

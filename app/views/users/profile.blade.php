@@ -74,8 +74,12 @@ if (Auth::user()->perfiles_usuario_id == "2" && !$user->acepto_disclaimer){
 <?php 
 }else{
 ?>
+	
 	<div class="col-lg-12">
-		<h2>Perfil</h2>
+		<h2>Información personal
+		<div class="pull-right">
+    	<a href="{{{ URL::to('/edit') }}}"><input type="button" value="EDITAR PERFIL" class="btn btn-primary"></button></a>    
+	</div></h2>
 		<hr></br>
 
 		<div class="row">

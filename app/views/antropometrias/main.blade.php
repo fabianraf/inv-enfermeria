@@ -6,7 +6,15 @@
 
 {{ HTML::style('css/smoothness-jquery-ui.css') }}
 
+
 <div class="col-lg-12">
+<?php if(Auth::user()->perfiles_usuario_id != "2"){ ?>
+@if(isset($estudiante) && $estudiante->antropometria)
+<div class="pull-right">
+    <a href="{{{ URL::to('antropometria/datos/'.$estudiante->id) }}}"><input type="button" value="EDITAR INFORMACION" class="btn btn-primary"></button></a>    
+</div><br>
+@endif
+
   <h2>Gestión antropométrica</h2>
   <hr>
   </br>
@@ -31,8 +39,7 @@
       {{ implode('', $errors->all('<li class="error">:message</li>')) }}
     </ul>
   </div>
-  @endif
- 
+  @endif  
 	<div class="row">    
     <div class="col-sm-6">
       {{ Form::text('nombre_alumno','', array('class' => 'form-control', 'placeholder' => 'Buscar estudiante', 'id' => 'nombre_alumno', 'onkeyup' => 'cUpper(this)' )); }}      
@@ -41,6 +48,7 @@
     <button type="submit" class="btn btn-success" id="confirm"><i class='glyphicon glyphicon-search'></i></button>        
   </div>    
   </br>
+   <?php } ?>   
   @if(isset($estudiante))
     <div class="col-md-4 col-lg-9" >
       <h4><i><u>Datos personales</u></i></h4>
@@ -60,25 +68,24 @@
       <div class="col-sm-5">   
         <h4><i><u>Datos antropométricos</u></i></h4>
         <ul type = square>
-          <p><li><strong>Peso (kg): </strong>{{ $antropometria->peso }}</p>
-          <p><li><strong>Talla (m): </strong>{{ $antropometria->talla }}</p>
-          <p><li><strong>Circunferencia cintura (cm): </strong>{{ $antropometria->circunferencia_cintura }}</p>
-          <p><li><strong>Circunferencia cadera (cm): </strong>{{ $antropometria->circunferencia_cadera }}</p>
-          <p><li><strong>Circunferencia media del brazo – CMB (cm): </strong>{{ $antropometria->circunferencia_media_brazo }}</p>
-          <p><li><strong>Pliegue bicipital (mm): </strong>{{ $antropometria->pliegue_bicipital }}</p>
-          <p><li><strong>Pliegue tricipital - PT (mm): </strong>{{ $antropometria->pliegue_tricipital }}</p>
-          <p><li><strong>Pliegue subescapular (mm): </strong>{{ $antropometria->pliegue_subescapular }}</p>
-          <p><li><strong>Pliegue suprailíaco (mm): </strong>{{ $antropometria->pliegue_suprailiaco }}</p>
-        </ul><br>
-        <a href="{{{ URL::to('antropometria/datos/'.$estudiante->id) }}}"><input type="button" value="EDITAR INFORMACION" class="btn btn-primary"></button></a>    
+          <p><li><strong>Peso (kg): </strong>{{ $estudiante->antropometria()->first()->peso }}</p>
+          <p><li><strong>Talla (m): </strong>{{ $estudiante->antropometria()->first()->talla }}</p>
+          <p><li><strong>Circunferencia cintura (cm): </strong>{{ $estudiante->antropometria()->first()->circunferencia_cintura }}</p>
+          <p><li><strong>Circunferencia cadera (cm): </strong>{{ $estudiante->antropometria()->first()->circunferencia_cadera }}</p>
+          <p><li><strong>Circunferencia media del brazo – CMB (cm): </strong>{{ $estudiante->antropometria()->first()->circunferencia_media_brazo }}</p>
+          <p><li><strong>Pliegue bicipital (mm): </strong>{{ $estudiante->antropometria()->first()->pliegue_bicipital }}</p>
+          <p><li><strong>Pliegue tricipital - PT (mm): </strong>{{ $estudiante->antropometria()->first()->pliegue_tricipital }}</p>
+          <p><li><strong>Pliegue subescapular (mm): </strong>{{ $estudiante->antropometria()->first()->pliegue_subescapular }}</p>
+          <p><li><strong>Pliegue suprailíaco (mm): </strong>{{ $estudiante->antropometria()->first()->pliegue_suprailiaco }}</p>
+        </ul><br>        
       </div>
       <div class="col-sm-6">        
         <h4><i><u>Resultados e interpretación</u></i></h4>
         <ul type = square>
-          <p><li><strong>Indice masa corporal (IMC): </strong>{{ $antropometria->imc }} - {{ $antropometria->interpretacion_imc }}</p>
-          <p><li><strong>Indice cintura-cadera: </strong>{{ $antropometria->indice_cintura_cadera }} - {{ $antropometria->interpretacion_indice_cintura_cadera }}</p>
-          <p><li><strong>Porcentaje circunferencia media del brazo (% CMB): </strong>{{ $antropometria->porcentaje_cmb }} - {{ $antropometria->interpretacion_cmb }}</p>
-          <p><li><strong>Porcentaje pliegue tricipital (%): </strong>{{ $antropometria->porcentaje_pt }}</p>
+          <p><li><strong>Indice masa corporal (IMC): </strong>{{ $estudiante->antropometria()->first()->imc }} - {{ $estudiante->antropometria()->first()->interpretacion_imc }}</p>
+          <p><li><strong>Indice cintura-cadera: </strong>{{ $estudiante->antropometria()->first()->indice_cintura_cadera }} - {{ $estudiante->antropometria()->first()->interpretacion_indice_cintura_cadera }}</p>
+          <p><li><strong>Porcentaje circunferencia media del brazo (% CMB): </strong>{{ $estudiante->antropometria()->first()->porcentaje_cmb }} - {{ $estudiante->antropometria()->first()->interpretacion_cmb }}</p>
+          <p><li><strong>Porcentaje pliegue tricipital (%): </strong>{{ $estudiante->antropometria()->first()->porcentaje_pt }}</p>
         </ul>
       </div>   
     </div>    

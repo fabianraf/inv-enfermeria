@@ -71,13 +71,13 @@
 								<ul class="dropdown-menu">
 									<?php if(Auth::user()->perfiles_usuario_id == "2" and Auth::user()->acepto_disclaimer){?>
 									<li>
-										{{ HTML::link('/encuesta_consumo_alimentos', "Consumo de alimentos en Universidad y alrededores" ) }}
-									</li>
+										{{ HTML::link('/encuesta_consumo_alimentos_bares', "Consumo de alimentos en los bares de la Universidad" ) }}
+									</li>									
 									<li class="divider"></li>
 									<li>
-										{{ HTML::link('/encuesta_consumo_alimentos_bares', "Consumo de alimentos en los bares de la Universidad" ) }}
-									</li>
-									<?php }elseif(Auth::user()->perfiles_usuario_id == "1") {?>									
+										{{ HTML::link('/encuesta_consumo_alimentos', "Consumo de alimentos en Universidad y alrededores" ) }}
+									</li>									
+									<?php }elseif(Auth::user()->perfiles_usuario_id == "1" || Auth::user()->perfiles_usuario_id == "3") {?>									
 									<li>
 										{{ HTML::link('/encuesta_consumo_habitual', "Consumo habitual de alimentos" ) }}
 									</li>
@@ -87,34 +87,60 @@
 									</li>
 									<li class="divider"></li>
 									<li>
-										{{ HTML::link('/encuesta_manipulacion_comedores/empresas', "Control de manipulación de alimentos e higiene de los comedores de la PUCE" ) }}
+										{{ HTML::link('/encuestas_manipulacion_bares/empresas', "Control de manipulación de alimentos e higiene de los bares de la PUCE" ) }}
 									</li>
 									<li class="divider"></li>
 									<li>
-										{{ HTML::link('/encuestas_manipulacion_bares/empresas', "Control de manipulación de alimentos e higiene de los bares de la PUCE" ) }}
+										{{ HTML::link('/encuesta_manipulacion_comedores/empresas', "Control de manipulación de alimentos e higiene de los comedores de la PUCE" ) }}
+									</li>									
+									<li class="divider"></li>
+									<li>
+										{{ HTML::link('antropometria', "Gestión antropométrica" ) }}											
+									</li>
+									<li class="divider"></li>										
+									<li>
+										{{ HTML::link('bioquimica', "Gestión de pruebas bioquímicas " ) }}
 									</li>
 									<?php } ?>
 								</ul>
 							</li>
+
+							<li class="dropdown">
+								<a class="dropdown-toggle text-white"  data-toggle="dropdown">Reportes<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<?php if(Auth::user()->perfiles_usuario_id == "2" and Auth::user()->acepto_disclaimer){?>
+									<li>
+										{{ HTML::link('antropometria', "Antropometría" ) }}
+									</li>
+									<li class="divider"></li>
+									<li>
+										{{ HTML::link('bioquimica', "Bioquímica" ) }}
+									</li>									
+									<li class="divider"></li>
+									<li>
+										{{ HTML::link('/encuesta_consumo_alimentos', "Valor nutricional - Alimentos en los bares de la Universidad" ) }}
+									</li>
+									<li class="divider"></li>
+									<li>
+										{{ HTML::link('/encuesta_consumo_alimentos', "Valor nutricional - Alimentos en Universidad y alrededores" ) }}
+									</li>
+									<?php }elseif(Auth::user()->perfiles_usuario_id == "1" || Auth::user()->perfiles_usuario_id == "3") {?>
+									<!--REPORTES DE ADMIN Y ENCUESTADORES-->
+									<?php } ?>
+								</ul>
+							</li>
+
 							<?php if(Auth::user()->perfiles_usuario_id == "1"){?>
 							<li class="dropdown">
 								<a class="dropdown-toggle text-white"  data-toggle="dropdown">Administración<b class="caret"></b></a>
 								<ul class="dropdown-menu">																	
 										<li>
-											{{ HTML::link('alimentos', "Gestión de alimentos en Universidad y alrededores" ) }}											
+											{{ HTML::link('alimentos', "Gestión de alimentos en hogar, Universidad y alrededores" ) }}											
 										</li>
 										<li class="divider"></li>
 										<li>
 											{{ HTML::link('alimentosBares', "Gestión de alimentos en los bares de la Universidad" ) }}											
-										</li>
-										<li class="divider"></li>
-										<li>
-											{{ HTML::link('antropometria', "Gestión antropométrica" ) }}											
-										</li>
-										<li class="divider"></li>										
-										<li>
-											{{ HTML::link('bioquimica', "Gestión de pruebas bioquímicas " ) }}
-										</li>
+										</li>										
 										<li class="divider"></li>
 										<li>
 											{{ HTML::link('usuarios', "Gestión de usuarios" ) }}											

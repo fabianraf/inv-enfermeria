@@ -11,6 +11,10 @@ public function run()
 
         PerfilesUsuario::create(array(
             'nombre'  => 'Estudiante'
+        ));
+
+        PerfilesUsuario::create(array(
+            'nombre'  => 'Encuestador'
         ));        
     }
 }

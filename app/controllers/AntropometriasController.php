@@ -5,7 +5,13 @@ class AntropometriasController extends BaseController {
 
 	public function main()
 	{
-        return View::make('antropometrias.main');
+		if(Auth::user()->perfiles_usuario_id == "2" && Auth::user()->antropometria){
+			$id = Auth::user()->id;
+			$estudiante = User::find($id);
+			return View::make('antropometrias.main', array('estudiante' => $estudiante));
+		}
+		else
+			return View::make('antropometrias.main');
 	}
 
 	public function buscarEstudiantes()

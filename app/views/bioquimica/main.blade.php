@@ -3,13 +3,18 @@
 @section('content')
 
 {{ Form::open(array('url' => 'bioquimica')) }}
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
-{{ HTML::script('/js/jquery-clockpicker.js') }}
-{{ HTML::style('/css/bootstrap-clockpicker.css') }}
-<link rel="stylesheet" href="/resources/demos/style.css">
+
+{{ HTML::style('css/smoothness-jquery-ui.css') }}
 
 
 <div class="col-lg-12">
+<?php if(Auth::user()->perfiles_usuario_id != "2"){ ?>
+@if(isset($estudiante) && $estudiante->bioquimica)
+<div class="pull-right">
+    <a href="{{{ URL::to('bioquimica/datos/'.$estudiante->id) }}}"><input type="button" value="EDITAR INFORMACION" class="btn btn-primary"></button></a>    
+</div><br>
+@endif
+
   <h2>Gestión de pruebas bioquímicas</h2>
   <hr>
   </br>
@@ -43,7 +48,8 @@
     </div>
     <button type="submit" class="btn btn-success" id="confirm"><i class='glyphicon glyphicon-search'></i></button>        
   </div>
-  </br> 
+  </br>
+  <?php } ?> 
   @if(isset($estudiante))
     <div class="col-md-4 col-lg-9" >
       <h4><i><u>Datos personales</u></i></h4>
@@ -63,37 +69,36 @@
      <div class="col-sm-5">     
         <h4><i><u>Biometría hemática</u></i></h4>
         <ul type = square>
-          <p><li><strong>WBC (K/uL): </strong>{{ $bioquimica->wbc }}</p>
-          <p><li><strong>Neutrofilos (%): </strong>{{ $bioquimica->neutrofilos }}</p>
-          <p><li><strong>Linfocitos (%): </strong>{{ $bioquimica->linfocitos }}</p>
-          <p><li><strong>Monocitos (%): </strong>{{ $bioquimica->monocitos }}</p>
-          <p><li><strong>Eosinofilos (%): </strong>{{ $bioquimica->eosinofilos }}</p>
-          <p><li><strong>Basofilos (%): </strong>{{ $bioquimica->basofilos }}</p>
-          <p><li><strong>Linfocitos atípicos (%): </strong>{{ $bioquimica->linfocitos_atipicos }}</p>
-          <p><li><strong>Células grandes inmaduras (%): </strong>{{ $bioquimica->celulas_grandes_inmaduras }}</p>
-          <p><li><strong>RBC (M/uL): </strong>{{ $bioquimica->rbc }}</p>
-          <p><li><strong>HGB (g/dL): </strong>{{ $bioquimica->hgb }}</p>
-          <p><li><strong>HCT (%): </strong>{{ $bioquimica->hct }}</p>
-          <p><li><strong>RDW (%): </strong>{{ $bioquimica->rdw }}</p>
-          <p><li><strong>PLT (K/uL): </strong>{{ $bioquimica->plt }}</p>
-          <p><li><strong>MCH (pg): </strong>{{ $bioquimica->mch }}</p>
-          <p><li><strong>MCHC (g/dL): </strong>{{ $bioquimica->mchc }}</p>
-          <p><li><strong>MCV: </strong>{{ $bioquimica->mcv }}</p>
-        </ul><br>
-        <a href="{{{ URL::to('bioquimica/datos/'.$estudiante->id) }}}"><input type="button" value="EDITAR INFORMACION" class="btn btn-primary"></button></a>    
+          <p><li><strong>WBC (K/uL): </strong>{{ $estudiante->bioquimica()->first()->wbc }}</p>
+          <p><li><strong>Neutrofilos (%): </strong>{{ $estudiante->bioquimica()->first()->neutrofilos }}</p>
+          <p><li><strong>Linfocitos (%): </strong>{{ $estudiante->bioquimica()->first()->linfocitos }}</p>
+          <p><li><strong>Monocitos (%): </strong>{{ $estudiante->bioquimica()->first()->monocitos }}</p>
+          <p><li><strong>Eosinofilos (%): </strong>{{ $estudiante->bioquimica()->first()->eosinofilos }}</p>
+          <p><li><strong>Basofilos (%): </strong>{{ $estudiante->bioquimica()->first()->basofilos }}</p>
+          <p><li><strong>Linfocitos atípicos (%): </strong>{{ $estudiante->bioquimica()->first()->linfocitos_atipicos }}</p>
+          <p><li><strong>Células grandes inmaduras (%): </strong>{{ $estudiante->bioquimica()->first()->celulas_grandes_inmaduras }}</p>
+          <p><li><strong>RBC (M/uL): </strong>{{ $estudiante->bioquimica()->first()->rbc }}</p>
+          <p><li><strong>HGB (g/dL): </strong>{{ $estudiante->bioquimica()->first()->hgb }}</p>
+          <p><li><strong>HCT (%): </strong>{{ $estudiante->bioquimica()->first()->hct }}</p>
+          <p><li><strong>RDW (%): </strong>{{ $estudiante->bioquimica()->first()->rdw }}</p>
+          <p><li><strong>PLT (K/uL): </strong>{{ $estudiante->bioquimica()->first()->plt }}</p>
+          <p><li><strong>MCH (pg): </strong>{{ $estudiante->bioquimica()->first()->mch }}</p>
+          <p><li><strong>MCHC (g/dL): </strong>{{ $estudiante->bioquimica()->first()->mchc }}</p>
+          <p><li><strong>MCV: </strong>{{ $estudiante->bioquimica()->first()->mcv }}</p>
+        </ul><br>        
       </div>
       <div class="col-sm-6"> 
         <h4><i><u>Química</u></i></h4>
         <ul type = square>
-          <p><li><strong>Colesterol: </strong>{{ $bioquimica->colesterol }}</p>
-          <p><li><strong>HDL Colesterol: </strong>{{ $bioquimica->hdl_colesterol }}</p>
-          <p><li><strong>Triglicéridos: </strong>{{ $bioquimica->trigliceridos }}</p>
-          <p><li><strong>Glucosa ayunas: </strong>{{ $bioquimica->glucosa_ayunas }}</p>
-          <p><li><strong>LDL Colesterol: </strong>{{ $bioquimica->ldl_colesterol }}</p>
+          <p><li><strong>Colesterol: </strong>{{ $estudiante->bioquimica()->first()->colesterol }}</p>
+          <p><li><strong>HDL Colesterol: </strong>{{ $estudiante->bioquimica()->first()->hdl_colesterol }}</p>
+          <p><li><strong>Triglicéridos: </strong>{{ $estudiante->bioquimica()->first()->trigliceridos }}</p>
+          <p><li><strong>Glucosa ayunas: </strong>{{ $estudiante->bioquimica()->first()->glucosa_ayunas }}</p>
+          <p><li><strong>LDL Colesterol: </strong>{{ $estudiante->bioquimica()->first()->ldl_colesterol }}</p>
         </ul>
         <h4><i><u>Inmunología</u></i></h4>
         <ul type = square>
-          <p><li><strong>HBSAG: </strong>{{ $bioquimica->hbsag }}</p>
+          <p><li><strong>HBSAG: </strong>{{ $estudiante->bioquimica()->first()->hbsag }}</p>
         </ul>        
         <h4><i><u>Resultados e interpretación</u></i></h4>
         <ul type = square>

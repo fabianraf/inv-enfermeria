@@ -18,7 +18,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	    );
 
 	public static $rulesEditarPerfil = array(
-	    'personas_hogar'=>'required'    
+	    'direccion'=>'required',
+	    'telefono'=>'required',
+	    'fecha_nacimiento'=>'required',
+	    'personas_hogar'=>'required'
 	    );
 
 	public static $messages = array(
@@ -198,7 +201,17 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	public function perfilUsuario()
 	    {
-        return $this->belongsTo('PerfilesUsuario','perfiles_usuario_id');
+        return $this->belongsTo('PerfilesUsuario','perfiles_usuario_id')->orderBy('nombre');
+	    }
+
+	public function antropometria()
+	    {
+        return $this->hasOne('Antropometrias', 'usuario_id');
+	    }
+
+	public function bioquimica()
+	    {
+        return $this->hasOne('Bioquimica', 'usuario_id');
 	    }
 	
 
