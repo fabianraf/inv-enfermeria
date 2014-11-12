@@ -89,6 +89,13 @@ Route::get('/encuesta_manipulacion_bares/nueva_encuesta', "EncuestasController@n
 Route::post('/encuesta_manipulacion_bares/guardar_informacion', "EncuestasController@nuevaEncuestaManipulacionBaresGuardarInformacion");
 //
 //
+/*REPORTES*/
+Route::get('reportes/antropometria', "AntropometriasController@reporteAntropometria");
+Route::get('reportes/antropometria/{id}', "AntropometriasController@reporteEstudiante");
+Route::get('reportes/bioquimica', "BioquimicaController@reporteBioquimica");
+Route::get('reportes/bioquimica/{id}', "BioquimicaController@reporteEstudiante");
+/**/
+
 Route::get('/obtener_alimentos', "AlimentosController@obtener_alimentos");
 Route::get('search/autocomplete', 'UsersController@autocomplete');
 

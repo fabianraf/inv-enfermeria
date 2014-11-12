@@ -213,6 +213,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	    {
         return $this->hasOne('Bioquimica', 'usuario_id');
 	    }
-	
 
+	public function getEdad()
+	{
+		$birthday = new DateTime($this->fecha_nacimiento);
+        $interval = $birthday->diff(new DateTime);
+        return $interval->y;
+	}
 }

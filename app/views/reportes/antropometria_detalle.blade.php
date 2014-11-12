@@ -2,54 +2,13 @@
     
 @section('content')
 
-{{ Form::open(array('url' => 'antropometria')) }}
-
 {{ HTML::style('css/smoothness-jquery-ui.css') }}
 
 
 <div class="col-lg-12">
-<?php if(Auth::user()->perfiles_usuario_id != "2"){ ?>
-@if(isset($estudiante) && $estudiante->antropometria)
-<div class="pull-right">
-    <a href="{{{ URL::to('antropometria/datos/'.$estudiante->id) }}}"><input type="button" value="EDITAR INFORMACION" class="btn btn-primary"></button></a>    
-</div><br>
-@endif
-
-  <h2>Gestión antropométrica</h2>
-  <hr>
-  </br>
-
-  <!-- Success-Messages -->
-  @if(isset($message))
-        <div class="alert alert-danger">           
-        {{$message}}
-        </div>
-    @endif
-
-  @if(isset($estudiante) && !$estudiante->antropometria)
-    <div class="alert alert-warning">          
-      El estudiante no tiene datos antropométricos<br>
-      <a href="{{{ URL::to('antropometria/datos/'.$estudiante->id) }}}">Ingresar datos</a>
-    </div>
-  @endif
-
-  @if($errors->any())
-  <div class="alert alert-danger alert-block">
-    <ul>
-      {{ implode('', $errors->all('<li class="error">:message</li>')) }}
-    </ul>
-  </div>
-  @endif  
-	<div class="row">    
-    <div class="col-sm-6">
-      {{ Form::text('nombre_alumno','', array('class' => 'form-control', 'placeholder' => 'Buscar estudiante', 'id' => 'nombre_alumno', 'onkeyup' => 'cUpper(this)' )); }}      
-      {{ Form::hidden('alumno_id', Input::old('alumno_id'),array('id'=>'alumno_id'))}}
-    </div>
-    <button type="submit" class="btn btn-success" id="confirm"><i class='glyphicon glyphicon-search'></i></button>        
-  </div>    
-  </br>
-   <?php } ?>   
-  @if(isset($estudiante))
+  <div class="pull-right">
+    <a href="/reportes/antropometria"><input type="button" value="VOLVER" class="btn btn-primary"></button></a>
+    </div><br>
     <div class="col-md-4 col-lg-9" >
       <h4><i><u>Datos personales</u></i></h4>
       <ul type = square>
@@ -58,7 +17,6 @@
         <p><li><strong>Edad: </strong>{{ $estudiante->getEdad()}} años</p>
       </ul>
     </div>
-    @if($estudiante->antropometria)
      <div class="row">
       <div class="col-sm-5">   
         <h4><i><u>Datos antropométricos</u></i></h4>
@@ -84,20 +42,9 @@
         </ul>
       </div>   
     </div>
-    @else
-      @if(Auth::user()->perfiles_usuario_id == "2")
-        <div class="row">
-          <div class="col-sm-5"> 
-            <div class="alert alert-warning">          
-            No existe información de pruebas antropométricas
-            </div>  
-          </div>  
-        </div>\
-      @endif
-  @endif
-@endif
+    
 </div>
-{{ Form::close() }}
+
 @stop
 
 

@@ -126,7 +126,15 @@
 									</li>
 									<?php }elseif(Auth::user()->perfiles_usuario_id == "1" || Auth::user()->perfiles_usuario_id == "3") {?>
 									<!--REPORTES DE ADMIN Y ENCUESTADORES-->
-									<?php } ?>
+									<li>
+										{{ HTML::link('reportes/antropometria', "Información antropométrica" ) }}
+									</li>
+									<li class="divider"></li>
+									<li>
+										{{ HTML::link('reportes/bioquimica', "Información bioquímica" ) }}
+									</li>									
+									<li class="divider"></li>
+									<?php }?>
 								</ul>
 							</li>
 

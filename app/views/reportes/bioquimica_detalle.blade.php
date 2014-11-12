@@ -2,66 +2,23 @@
     
 @section('content')
 
-{{ Form::open(array('url' => 'bioquimica')) }}
-
 {{ HTML::style('css/smoothness-jquery-ui.css') }}
 
 
 <div class="col-lg-12">
-<?php if(Auth::user()->perfiles_usuario_id != "2"){ ?>
-@if(isset($estudiante) && $estudiante->bioquimica)
-<div class="pull-right">
-    <a href="{{{ URL::to('bioquimica/datos/'.$estudiante->id) }}}"><input type="button" value="EDITAR INFORMACION" class="btn btn-primary"></button></a>    
-</div><br>
-@endif
-
-  <h2>Gestión de pruebas bioquímicas</h2>
-  <hr>
-  </br>
-
-  <!-- Success-Messages -->
-  @if(isset($message))
-        <div class="alert alert-danger">           
-        {{$message}}
-        </div>
-    @endif
-
-    @if(isset($estudiante) && !$estudiante->bioquimica)
-    <div class="alert alert-warning">          
-      El estudiante no tiene datos bioquímicos<br>
-      <a href="{{{ URL::to('bioquimica/datos/'.$estudiante->id) }}}">Ingresar datos</a>
-    </div>
-  @endif
-
-  @if($errors->any())
-  <div class="alert alert-danger alert-block">
-    <ul>
-      {{ implode('', $errors->all('<li class="error">:message</li>')) }}
-    </ul>
-  </div>
-  @endif
- 
-  <div class="row">    
-    <div class="col-sm-6">
-      {{ Form::text('nombre_alumno','', array('class' => 'form-control', 'placeholder' => 'Buscar estudiante', 'id' => 'nombre_alumno', 'onkeyup' => 'cUpper(this)' )); }}      
-      {{ Form::hidden('alumno_id', Input::old('alumno_id'),array('id'=>'alumno_id'))}}
-    </div>
-    <button type="submit" class="btn btn-success" id="confirm"><i class='glyphicon glyphicon-search'></i></button>        
-  </div>
-  </br>
-  <?php } ?> 
-  @if(isset($estudiante))
+  <div class="pull-right">
+    <a href="/reportes/antropometria"><input type="button" value="VOLVER" class="btn btn-primary"></button></a>
+    </div><br>
     <div class="col-md-4 col-lg-9" >
       <h4><i><u>Datos personales</u></i></h4>
-        <ul type = square>
-          <p><li><strong>Email: </strong>{{ $estudiante->email }}</p>
-          <p><li><strong>Nombre: </strong>{{ $estudiante->nombre.' '. $estudiante->apellido}}</p>
-          <p><li><strong>Edad: </strong>{{ $estudiante->getEdad()}} años</p>
-        </ul>
+      <ul type = square>
+        <p><li><strong>Email: </strong>{{ $estudiante->email }}</p>
+        <p><li><strong>Nombre: </strong>{{ $estudiante->nombre.' '. $estudiante->apellido}}</p>
+        <p><li><strong>Edad: </strong>{{ $estudiante->getEdad()}} años</p>
+      </ul>
     </div>
-    @if($estudiante->bioquimica)
-    <div class="row">
-     <div class="col-sm-5">     
+     <div class="row">
+      <div class="col-sm-5">     
         <h4><i><u>Biometría hemática</u></i></h4>
         <ul type = square>
           <p><li><strong>WBC (K/uL): </strong>{{ $estudiante->bioquimica()->first()->wbc }}</p>
@@ -101,18 +58,11 @@
         </ul>
       </div>
     </div>
-    @else
-      @if(Auth::user()->perfiles_usuario_id == "2")
-        <div class="row">
-          <div class="col-sm-5"> 
-            <div class="alert alert-warning">          
-            No existe información de pruebas bioquímicas
-            </div>  
-          </div>  
-        </div>
-      @endif 
-    @endif
-  @endif
+    
 </div>
-{{ Form::close() }}
-@stop 
+
+@stop
+
+
+
+  

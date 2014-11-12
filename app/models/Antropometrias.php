@@ -18,6 +18,8 @@ class Antropometrias extends Eloquent {
 
 	public function usuarios()
 	{
-        return $this->belongsTo('User');
+        return $this->hasMany('User','usuario_id');
     }
+
+   
 }

@@ -96,6 +96,8 @@ class AntropometriasController extends BaseController {
 			$antropometria->interpretacion_imc = 'Obesidad II';
 		elseif($antropometria->imc>=40)
 			$antropometria->interpretacion_imc = 'Obesidad mórbida';
+		else
+			$antropometria->interpretacion_imc = '';
 
 		if($estudiante->genero=='M')
 			if($antropometria->indice_cintura_cadera<0.96)
@@ -104,6 +106,8 @@ class AntropometriasController extends BaseController {
 				$antropometria->interpretacion_indice_cintura_cadera = 'Bajo';
 			elseif($antropometria->indice_cintura_cadera>0.99)
 				$antropometria->interpretacion_indice_cintura_cadera = 'Alto';
+			else
+				$antropometria->interpretacion_indice_cintura_cadera = '';
 
 		if($estudiante->genero=='F')
 			if($antropometria->indice_cintura_cadera<0.81)
@@ -112,15 +116,34 @@ class AntropometriasController extends BaseController {
 				$antropometria->interpretacion_indice_cintura_cadera = 'Bajo';
 			elseif($antropometria->indice_cintura_cadera>0.84)
 				$antropometria->interpretacion_indice_cintura_cadera = 'Alto';
+			else
+				$antropometria->interpretacion_indice_cintura_cadera = '';
 
-		if($antropometria->cmb<60)
+
+		if($antropometria->porcentaje_cmb<60)
 			$antropometria->interpretacion_cmb = 'Desnutrición severa';
-		elseif($antropometria->imc>=60 && $antropometria->imc<80)
+		elseif($antropometria->porcentaje_cmb>=60 && $antropometria->porcentaje_cmb<80)
 			$antropometria->interpretacion_cmb = 'Desnutrición moderada';
-		elseif($antropometria->imc>=80 && $antropometria->imc<90)
+		elseif($antropometria->porcentaje_cmb>=80 && $antropometria->porcentaje_cmb<90)
 			$antropometria->interpretacion_cmb = 'Desnutrición leve';
-		elseif($antropometria->imc>=90 && $antropometria->imc<=109)
+		elseif($antropometria->porcentaje_cmb>=90 && $antropometria->porcentaje_cmb<=109)
 			$antropometria->interpretacion_cmb = 'Normal';
+		else
+			$antropometria->interpretacion_cmb = '';
+
+		if($antropometria->porcentaje_pt<30)
+			$antropometria->interpretacion_pliegue_tricipital = 'Déficit de grasa severo';
+		elseif($antropometria->porcentaje_pt>=30 && $antropometria->porcentaje_pt<50)
+			$antropometria->interpretacion_pliegue_tricipital = 'Déficit de grasa moderada';
+		elseif($antropometria->porcentaje_pt>=50 && $antropometria->porcentaje_pt<90)
+			$antropometria->interpretacion_pliegue_tricipital = 'Déficit de grasa leve';
+		elseif($antropometria->porcentaje_pt>=90 && $antropometria->porcentaje_pt<=110)
+			$antropometria->interpretacion_pliegue_tricipital = 'Normal';
+		elseif($antropometria->porcentaje_pt>110)
+			$antropometria->interpretacion_pliegue_tricipital = 'Exceso de grasa';
+		else
+			$antropometria->interpretacion_pliegue_tricipital = '';
+
 
 		$antropometria->save();		
 		$estudiante->antropometria = TRUE;
@@ -131,5 +154,18 @@ class AntropometriasController extends BaseController {
 		} else {
 		    return Redirect::back()->withInput()->withErrors($validator->messages());
 		}		
+	}
+
+	public function reporteAntropometria()
+	{
+		$users = User::has('antropometria')->orderBy('nombre')
+                ->orderBy('apellido')->paginate(20);
+		return View::make('reportes.antropometria', array('users' => $users));
+	}
+
+	public function reporteEstudiante($id)
+	{
+		$estudiante = User::find($id);		
+		return View::make('reportes.antropometria_detalle', array('estudiante' => $estudiante));
 	}
 }
