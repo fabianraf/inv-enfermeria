@@ -5,15 +5,15 @@ class Antropometrias extends Eloquent {
 	protected $table = 'antropometrias';
 	
 	public static $rules = array(
-	    'peso'=>'required|numeric',
-	    'talla'=>'required||numeric|between:1,3',
-	    'circunferencia_cintura'=>'required|numeric',
-	    'circunferencia_cadera'=>'required|numeric',
-	    'circunferencia_media_brazo'=>'required|numeric',
-	    'pliegue_bicipital'=>'required|numeric',
-	    'pliegue_tricipital'=>'required|numeric',
-	    'pliegue_subescapular'=>'required|numeric',
-	    'pliegue_suprailiaco'=>'required|numeric'
+	    'peso'=>'required|numeric|min:0',
+	    'talla'=>'required|numeric|between:1,3',
+	    'circunferencia_cintura'=>'required|numeric|min:0',
+	    'circunferencia_cadera'=>'required|numeric|min:0',
+	    'circunferencia_media_brazo'=>'required|numeric|min:0',
+	    'pliegue_bicipital'=>'required|numeric|min:0',
+	    'pliegue_tricipital'=>'required|numeric|min:0',
+	    'pliegue_subescapular'=>'required|numeric|min:0',
+	    'pliegue_suprailiaco'=>'required|numeric|min:0'
 	    );
 
 	public static $messages = array(

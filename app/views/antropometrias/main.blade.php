@@ -8,7 +8,7 @@
 
 
 <div class="col-lg-12">
-<?php if(Auth::user()->perfiles_usuario_id != "2"){ ?>
+
 @if(isset($estudiante) && $estudiante->antropometria)
 <div class="pull-right">
     <a href="{{{ URL::to('antropometria/datos/'.$estudiante->id) }}}"><input type="button" value="EDITAR INFORMACION" class="btn btn-primary"></button></a>    
@@ -48,7 +48,6 @@
     <button type="submit" class="btn btn-success" id="confirm"><i class='glyphicon glyphicon-search'></i></button>        
   </div>    
   </br>
-   <?php } ?>   
   @if(isset($estudiante))
     <div class="col-md-4 col-lg-9" >
       <h4><i><u>Datos personales</u></i></h4>
@@ -73,29 +72,9 @@
           <p><li><strong>Pliegue subescapular (mm): </strong>{{ $estudiante->antropometria()->first()->pliegue_subescapular }}</p>
           <p><li><strong>Pliegue suprailíaco (mm): </strong>{{ $estudiante->antropometria()->first()->pliegue_suprailiaco }}</p>
         </ul><br>        
-      </div>
-      <div class="col-sm-6">        
-        <h4><i><u>Resultados e interpretación</u></i></h4>
-        <ul type = square>
-          <p><li><strong>Indice masa corporal (IMC): </strong>{{ $estudiante->antropometria()->first()->imc }} - {{ $estudiante->antropometria()->first()->interpretacion_imc }}</p>
-          <p><li><strong>Indice cintura-cadera: </strong>{{ $estudiante->antropometria()->first()->indice_cintura_cadera }} - {{ $estudiante->antropometria()->first()->interpretacion_indice_cintura_cadera }}</p>
-          <p><li><strong>Porcentaje circunferencia media del brazo (% CMB): </strong>{{ $estudiante->antropometria()->first()->porcentaje_cmb }} - {{ $estudiante->antropometria()->first()->interpretacion_cmb }}</p>
-          <p><li><strong>Porcentaje pliegue tricipital (%): </strong>{{ $estudiante->antropometria()->first()->porcentaje_pt }} - {{ $estudiante->antropometria()->first()->interpretacion_pliegue_tricipital }}</p>
-        </ul>
-      </div>   
-    </div>
-    @else
-      @if(Auth::user()->perfiles_usuario_id == "2")
-        <div class="row">
-          <div class="col-sm-5"> 
-            <div class="alert alert-warning">          
-            No existe información de pruebas antropométricas
-            </div>  
-          </div>  
-        </div>\
+      </div>          
       @endif
-  @endif
-@endif
+    @endif
 </div>
 {{ Form::close() }}
 @stop

@@ -110,19 +110,19 @@
 								<ul class="dropdown-menu">
 									<?php if(Auth::user()->perfiles_usuario_id == "2" and Auth::user()->acepto_disclaimer){?>
 									<li>
-										{{ HTML::link('antropometria', "Antropometría" ) }}
+										{{ HTML::link('reportes/antropometria/'.Auth::user()->perfiles_usuario_id, "Antropometría" ) }}
 									</li>
 									<li class="divider"></li>
 									<li>
-										{{ HTML::link('bioquimica', "Bioquímica" ) }}
+										{{ HTML::link('reportes/bioquimica/'.Auth::user()->perfiles_usuario_id, "Bioquímica" ) }}
 									</li>									
 									<li class="divider"></li>
 									<li>
-										{{ HTML::link('', "Valor nutricional - Consumo alimentos en los bares de la Universidad" ) }}
+										{{ HTML::link('reporte', "Valor nutricional - Frecuencia de consumo alimentos en los bares de la Universidad" ) }}
 									</li>
 									<li class="divider"></li>
 									<li>
-										{{ HTML::link('', "Valor nutricional - Consumo alimentos en Universidad y alrededores" ) }}
+										{{ HTML::link('', "Valor nutricional - Frecuencia de consumo alimentos en Universidad y alrededores" ) }}
 									</li>
 									<?php }elseif(Auth::user()->perfiles_usuario_id == "1" || Auth::user()->perfiles_usuario_id == "3") {?>
 									<!--REPORTES DE ADMIN Y ENCUESTADORES-->

@@ -6,9 +6,15 @@
 
 
 <div class="col-lg-12">
+  @if(Auth::user()->perfiles_usuario_id != "2")
   <div class="pull-right">
     <a href="/reportes/antropometria"><input type="button" value="VOLVER" class="btn btn-primary"></button></a>
     </div><br>
+  @endif
+  @if($estudiante->bioquimica)
+    <h2>Resultados e interpretación de las pruebas bioquímicas</h2>
+    <hr>
+    </br>
     <div class="col-md-4 col-lg-9" >
       <h4><i><u>Datos personales</u></i></h4>
       <ul type = square>
@@ -54,6 +60,15 @@
         </ul>                
       </div>
     </div>
+    @else
+        <div class="row">
+          <div class="col-sm-5"> 
+            <div class="alert alert-warning">          
+            No existe información de pruebas bioquímicas
+            </div>  
+          </div>  
+        </div>
+    @endif
     
 </div>
 
