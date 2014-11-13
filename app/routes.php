@@ -15,10 +15,12 @@ Route::get('/', "HomeController@home");
 Route::get("alimentos", "AlimentosController@index");
 Route::post("alimentos", "AlimentosController@store");
 Route::resource("alimentos", "AlimentosController");
+Route::get('alimentos/delete/{id}','AlimentosController@delete');
 
 Route::get("alimentosBares", "AlimentosBaresController@index");
 Route::post("alimentosBares", "AlimentosBaresController@store");
 Route::resource("alimentosBares", "AlimentosBaresController");
+Route::get('alimentosBares/delete/{id}','AlimentosBaresController@delete');
 
 Route::get('encuesta_consumo_alimentos', "EncuestasController@consumoAlimentos");
 Route::post('encuesta_consumo_alimentos', "EncuestasController@createConsumoAlimentos");

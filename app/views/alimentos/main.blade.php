@@ -49,7 +49,7 @@
 	</br></br>
 
 
-	
+
 	@foreach($tipos_de_alimentos as $key => $tipo_de_alimento)
 	<?php 
 		if($key == 0)
@@ -57,18 +57,20 @@
 		else
 			$class = "hidden";
 	?>
-	<div class="col-lg-12 responsive">
-		<table class="table table-no-border col-lg-12 {{ $class }}" id="tipo-alimento-{{ $tipo_de_alimento->id }}">
+	<div class="col-lg-8 responsive">
+		<table class="table table-no-border col-lg-8 {{ $class }}" id="tipo-alimento-{{ $tipo_de_alimento->id }}">
 			<tr>				
-				<td></td>
-				<td>Alimentos</td>				
+				<td style="text-align:left"></td>
+				<td style="text-align:left">Alimentos</td>
+				<td style="text-align:left">Eliminar</td>
 			</tr>		
 		  		<?php  $index = 1; ?>
 		 		@foreach($tipo_de_alimento->alimentos as $alimento)				
 		  	<tr>
-				<td>{{ $index }}</td>
-				<td>{{ HTML::linkRoute('alimentos.edit', $alimento->nombre, array($alimento->id) ) }}</td>
-				
+				<td style="text-align:left">{{ $index }}</td>
+				<td style="text-align:left">{{ HTML::linkRoute('alimentos.edit', $alimento->nombre, array($alimento->id) ) }}</td>
+				<?php  echo "<td style='text-align:left'><a href='alimentos/delete/".$alimento->id."' data-method='delete'>
+				<button type='submit' class='btn btn-danger' id='confirm'><i class='glyphicon glyphicon-remove'></i></button></a></td>";?>				
 			</tr>
 			<?php  
 					$index++; 					
@@ -77,6 +79,7 @@
 		</table>
 	</div>
 	@endforeach
+
 </div>
 
 

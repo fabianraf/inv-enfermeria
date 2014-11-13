@@ -158,6 +158,13 @@ class AlimentosBaresController extends BaseController {
 		//
 	}
 
+	public function delete($id)
+	{
+		$alimento_bares = AlimentoBares::find($id);
+		$alimento_bares->delete();
+        return Redirect::back();
+	}
+
 
 
 	public function obtener_alimentos()

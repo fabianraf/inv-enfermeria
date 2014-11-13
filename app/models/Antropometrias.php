@@ -6,7 +6,7 @@ class Antropometrias extends Eloquent {
 	
 	public static $rules = array(
 	    'peso'=>'required|numeric',
-	    'talla'=>'required|numeric',
+	    'talla'=>'required||numeric|between:1,3',
 	    'circunferencia_cintura'=>'required|numeric',
 	    'circunferencia_cadera'=>'required|numeric',
 	    'circunferencia_media_brazo'=>'required|numeric',
@@ -15,6 +15,11 @@ class Antropometrias extends Eloquent {
 	    'pliegue_subescapular'=>'required|numeric',
 	    'pliegue_suprailiaco'=>'required|numeric'
 	    );
+
+	public static $messages = array(
+		'talla.between' => 'La talla del estudiante debe ser ingresada en metros',
+		'password_confirm.same' => 'Las contraseñas no coinciden, vuelva a ingresarlas'
+		);
 
 	public function usuarios()
 	{

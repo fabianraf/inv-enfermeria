@@ -44,7 +44,7 @@
 						@endif
 					</tr>
 					<tr>
-						<td><li><strong>Talla (m):</strong></td>
+						<td><li><strong>Talla (en metros):</strong></td>
 						@if(isset($antropometria))
 							<td align='left'>{{Form::text('talla', $antropometria->talla, array('class'=>'form-control'))}}</td>
 						@else

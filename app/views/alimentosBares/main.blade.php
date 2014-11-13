@@ -57,17 +57,20 @@
 		else
 			$class = "hidden";
 	?>
-	<div class="col-lg-12 responsive">
-		<table class="table table-no-border col-lg-12 {{ $class }}" id="tipo-alimento-bares-{{ $tipo_de_alimento_bares->id }}">
+	<div class="col-lg-8 responsive">
+		<table class="table table-no-border col-lg-8 {{ $class }}" id="tipo-alimento-bares-{{ $tipo_de_alimento_bares->id }}">
 			<tr>				
-				<td></td>
-				<td>Alimentos</td>				
+				<td style="text-align:left"></td>
+				<td style="text-align:left">Alimentos</td>
+				<td style="text-align:left">Eliminar</td>				
 			</tr>		
 		  		<?php  $index = 1; ?>
 		 		@foreach($tipo_de_alimento_bares->alimentosBares as $alimento_bares)				
 		  	<tr>
-				<td>{{ $index }}</td>
-				<td>{{ HTML::linkRoute('alimentosBares.edit', $alimento_bares->nombre, array($alimento_bares->id) ) }}</td>
+				<td style="text-align:left">{{ $index }}</td>
+				<td style="text-align:left">{{ HTML::linkRoute('alimentosBares.edit', $alimento_bares->nombre, array($alimento_bares->id) ) }}</td>
+				<?php  echo "<td style='text-align:left'><a href='alimentosBares/delete/".$alimento_bares->id."' data-method='delete'>
+				<button type='submit' class='btn btn-danger' id='confirm'><i class='glyphicon glyphicon-remove'></i></button></a></td>";?>				
 				
 			</tr>
 			<?php  

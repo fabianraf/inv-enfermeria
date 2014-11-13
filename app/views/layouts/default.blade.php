@@ -71,11 +71,11 @@
 								<ul class="dropdown-menu">
 									<?php if(Auth::user()->perfiles_usuario_id == "2" and Auth::user()->acepto_disclaimer){?>
 									<li>
-										{{ HTML::link('/encuesta_consumo_alimentos_bares', "Consumo de alimentos en los bares de la Universidad" ) }}
+										{{ HTML::link('/encuesta_consumo_alimentos_bares', "Frecuencia de consumo de alimentos en los bares de la Universidad" ) }}
 									</li>									
 									<li class="divider"></li>
 									<li>
-										{{ HTML::link('/encuesta_consumo_alimentos', "Consumo de alimentos en Universidad y alrededores" ) }}
+										{{ HTML::link('/encuesta_consumo_alimentos', "Frecuencia de consumo de alimentos en Universidad y alrededores" ) }}
 									</li>									
 									<?php }elseif(Auth::user()->perfiles_usuario_id == "1" || Auth::user()->perfiles_usuario_id == "3") {?>									
 									<li>

@@ -119,10 +119,7 @@ class AlimentosController extends BaseController {
 	 */
 	public function show($id)
 	{
-        $tipo_de_alimento = TipoDeAlimento::find($id);        
-        $alimentos = Alimento::where('tipo_de_alimento_id', '=', $id)        					
-                            ->orderBy('nombre')->get();                            
-        return View::make('alimentos.alimentos', array('alimentos' => $alimentos, 'tipo_de_alimento' => $tipo_de_alimento));
+        //
 	}
 
 	/**
@@ -157,6 +154,13 @@ class AlimentosController extends BaseController {
 	public function destroy($id)
 	{
 		//
+	}
+
+	public function delete($id)
+	{
+		$alimento = Alimento::find($id);
+		$alimento->delete();
+        return Redirect::back();
 	}
 
 

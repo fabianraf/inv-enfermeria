@@ -24,8 +24,7 @@
         <td style="text-align:left">{{ $usuario->nombre.' '.$usuario->apellido }}</td>
         <td style="text-align:left">{{ $usuario->getEdad()." años" }}</td>
         <td style="text-align:left">{{ $usuario->genero }}</td>
-        <?php echo "<td style='text-align:left'><a href='/reportes/antropometria/".$usuario->id."'><span class='glyphicon glyphicon-search'></span></td>";
-         ?>    
+        <?php echo "<td style='text-align:left'><a href='/reportes/antropometria/".$usuario->id."'><span class='glyphicon glyphicon-search'></span></td>";?>
       </tr>     
         @endforeach
     </table>

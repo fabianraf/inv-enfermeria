@@ -48,7 +48,7 @@ class AntropometriasController extends BaseController {
 	public function create()
 	{
 		$campos = Input::all();
-		$validator = Validator::make($campos, Antropometrias::$rules);
+		$validator = Validator::make($campos, Antropometrias::$rules, Antropometrias::$messages);
 		if ($validator->passes()) {
 			if(isset($campos['antropometria_id'])){
 				$estudiante = User::find($campos['estudiante_id']);
@@ -168,4 +168,5 @@ class AntropometriasController extends BaseController {
 		$estudiante = User::find($id);		
 		return View::make('reportes.antropometria_detalle', array('estudiante' => $estudiante));
 	}
+
 }
