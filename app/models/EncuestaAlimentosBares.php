@@ -10,7 +10,7 @@ class EncuestaAlimentosBares extends Eloquent {
         return $this->belongsTo('Usuario');
 	    }
 			
-	public function alimento()
+	public function alimentoBares()
 	    {
         return $this->belongsTo('AlimentoBares');
 	    }

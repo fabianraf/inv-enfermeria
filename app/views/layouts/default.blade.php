@@ -118,23 +118,29 @@
 									</li>									
 									<li class="divider"></li>
 									<li>
-										{{ HTML::link('reporte', "Valor nutricional - Frecuencia de consumo alimentos en los bares de la Universidad" ) }}
+										{{ HTML::link('reportes/consumo_alimentos_bares/'.Auth::user()->perfiles_usuario_id, "Valor nutricional - Frecuencia de consumo alimentos en los bares de la Universidad" ) }}
 									</li>
 									<li class="divider"></li>
 									<li>
-										{{ HTML::link('', "Valor nutricional - Frecuencia de consumo alimentos en Universidad y alrededores" ) }}
+										{{ HTML::link('reportes/consumo_alimentos/'.Auth::user()->perfiles_usuario_id, "Valor nutricional - Frecuencia de consumo alimentos en Universidad y alrededores" ) }}
 									</li>
 									<?php }elseif(Auth::user()->perfiles_usuario_id == "1" || Auth::user()->perfiles_usuario_id == "3") {?>
-									<!--REPORTES DE ADMIN Y ENCUESTADORES-->
+									<!--REPORTES DE ADMIN Y ENCUESTADORES-->									
+									<li>
+										{{ HTML::link('reportes/consumo_alimentos_bares/', "Valor nutricional - Frecuencia de consumo alimentos en los bares de la Universidad" ) }}
+									</li>
+									<li class="divider"></li>
+									<li>
+										{{ HTML::link('reportes/consumo_alimentos/', "Valor nutricional - Frecuencia de consumo alimentos en Universidad y alrededores" ) }}
+									</li>
+									<li class="divider"></li>									
 									<li>
 										{{ HTML::link('reportes/antropometria', "Información antropométrica" ) }}
 									</li>
 									<li class="divider"></li>
 									<li>
 										{{ HTML::link('reportes/bioquimica', "Información bioquímica" ) }}
-									</li>									
-									<li class="divider"></li>
-									<?php }?>
+									</li><?php }?>
 								</ul>
 							</li>
 

@@ -96,6 +96,10 @@ Route::get('reportes/antropometria', "AntropometriasController@reporteAntropomet
 Route::get('reportes/antropometria/{id}', "AntropometriasController@reporteEstudiante");
 Route::get('reportes/bioquimica', "BioquimicaController@reporteBioquimica");
 Route::get('reportes/bioquimica/{id}', "BioquimicaController@reporteEstudiante");
+Route::get('reportes/consumo_alimentos', "EncuestasController@reporteConsumoAlimentos");
+Route::get('reportes/consumo_alimentos/{id}', "EncuestasController@reporteConsumoAlimentosEstudiante");
+Route::get('reportes/consumo_alimentos_bares', "EncuestasController@reporteConsumoAlimentosBares");
+Route::get('reportes/consumo_alimentos_bares/{id}', "EncuestasController@reporteConsumoAlimentosBaresEstudiante");
 /**/
 
 Route::get('/obtener_alimentos', "AlimentosController@obtener_alimentos");

@@ -95,7 +95,7 @@
             <p><li><strong>HBSAG: </strong>{{ $estudiante->bioquimica()->first()->hbsag }}</p>
           </ul>
         </div>
-      </div>           
+      </div>l           
     @endif
   @endif
 </div>
