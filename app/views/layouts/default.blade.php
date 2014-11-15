@@ -75,7 +75,7 @@
 									</li>									
 									<li class="divider"></li>
 									<li>
-										{{ HTML::link('/encuesta_consumo_alimentos', "Frecuencia de consumo de alimentos en Universidad y alrededores" ) }}
+										{{ HTML::link('/encuesta_consumo_alimentos', "Frecuencia de consumo de alimentos en hogar, Universidad y alrededores" ) }}
 									</li>									
 									<?php }elseif(Auth::user()->perfiles_usuario_id == "1" || Auth::user()->perfiles_usuario_id == "3") {?>									
 									<li>
