@@ -62,6 +62,7 @@
 			<tr>				
 				<td style="text-align:left"></td>
 				<td style="text-align:left">Alimentos</td>
+				<td style="text-align:left">Imagen</td>
 				<td style="text-align:left">Eliminar</td>
 			</tr>		
 		  		<?php  $index = 1; ?>
@@ -69,6 +70,11 @@
 		  	<tr>
 				<td style="text-align:left">{{ $index }}</td>
 				<td style="text-align:left">{{ HTML::linkRoute('alimentos.edit', $alimento->nombre, array($alimento->id) ) }}</td>
+				<td style="text-align:left">
+					<?php $link = "/images/".$alimento->url_foto;
+
+					echo "<a href=".$link." target='_blank'><span class='glyphicon glyphicon-picture'></span></a></td>"; ?>
+					
 				<?php  echo "<td style='text-align:left'><a href='alimentos/delete/".$alimento->id."' data-method='delete'>
 				<button type='submit' class='btn btn-danger' id='confirm'><i class='glyphicon glyphicon-remove'></i></button></a></td>";?>				
 			</tr>

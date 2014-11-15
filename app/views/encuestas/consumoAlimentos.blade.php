@@ -81,7 +81,7 @@
 					</button>--> 
 					<?php $link = "/images/".$alimento->url_foto;
 
-					echo "<a href=".$link." target='_blank'><span class='glyphicon glyphicon-picture'></span></a>"; ?>
+					echo "<a href=".$link." target='_blank'><span class='glyphicon glyphicon-picture'></span></a></td>"; ?>
 					
 
 					<input type="hidden" name="frecuencia[alimento][{{ $index }}]" value="{{ $alimento->id }}"></td>
