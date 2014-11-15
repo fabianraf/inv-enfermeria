@@ -9,7 +9,7 @@
 
 
 <div class="col-lg-12">
-  <h2>Encuestas de frecuencia de consumo de alimentos en Universidad y alrededores </h2>
+  <h2>Encuestas de frecuencia de consumo de alimentos en hogar, Universidad y alrededores </h2>
   <hr>
   </br>
     <table class="table table-no-border ">

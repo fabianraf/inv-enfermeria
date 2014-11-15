@@ -131,7 +131,7 @@
 									</li>
 									<li class="divider"></li>
 									<li>
-										{{ HTML::link('reportes/consumo_alimentos/', "Valor nutricional - Frecuencia de consumo alimentos en Universidad y alrededores" ) }}
+										{{ HTML::link('reportes/consumo_alimentos/', "Valor nutricional - Frecuencia de consumo alimentos en hogar, Universidad y alrededores" ) }}
 									</li>
 									<li class="divider"></li>									
 									<li>
