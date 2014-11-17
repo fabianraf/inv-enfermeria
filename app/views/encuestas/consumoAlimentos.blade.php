@@ -54,7 +54,7 @@
 			<tr>				
 				<th rowspan="2">Alimentos</th>
 				<th rowspan="2">Imagen<br> porción</th>
-				<th colspan="10">Frecuencia (veces a la semana)</th>
+				<th colspan="12">Frecuencia (veces a la semana)</th>
 				<th rowspan="2">N. de porciones diarias</th>				
 			</tr>		
 		  	<tr>
@@ -65,6 +65,8 @@
 			  	<td>3</td>
 			  	<td>2</td>
 			  	<td>1</td>
+			  	<td>0,5</td>
+			  	<td>0,25</td>
 			  	<td>Cada 15 días</td>
 			  	<td>Nunca</td>
 			  	<td>Desconoce</td>	    
@@ -92,6 +94,8 @@
 				<td><input type="radio" name="frecuencia[{{ $index }}]" value="5" {{$encuesta_alimentos_universidad['frecuencia'] == 5 ? 'checked="checked"' : ''}}></td>
 				<td><input type="radio" name="frecuencia[{{ $index }}]" value="6" {{$encuesta_alimentos_universidad['frecuencia'] == 6 ? 'checked="checked"' : ''}}></td>
 				<td><input type="radio" name="frecuencia[{{ $index }}]" value="7" {{$encuesta_alimentos_universidad['frecuencia'] == 7 ? 'checked="checked"' : ''}}></td>
+				<td><input type="radio" name="frecuencia[{{ $index }}]" value="0.5" {{$encuesta_alimentos_universidad['frecuencia'] == 0.5 ? 'checked="checked"' : ''}}></td>
+				<td><input type="radio" name="frecuencia[{{ $index }}]" value="0.25" {{$encuesta_alimentos_universidad['frecuencia'] == 0.25 ? 'checked="checked"' : ''}}></td>
 				<td><input type="radio" name="frecuencia[{{ $index }}]" value="8" {{$encuesta_alimentos_universidad['frecuencia'] == 8 ? 'checked="checked"' : ''}}></td>
 				<td><input type="radio" name="frecuencia[{{ $index }}]" value="9" {{$encuesta_alimentos_universidad['frecuencia'] == 9 ? 'checked="checked"' : ''}}></td>
 				<td><input type="radio" name="frecuencia[{{ $index }}]" value="10" {{$encuesta_alimentos_universidad['frecuencia'] == 10 ? 'checked="checked"' : ''}}></td>

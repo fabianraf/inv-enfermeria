@@ -38,13 +38,11 @@ $(document).ready(function() {
 	//Cambia colores a los botones de las encuestas
 	$(".tipo-alimento").click(function(){
 		revisar_si_esta_completo();
-		if($(this).hasClass("btn-info")){
-			//No hace nada
-		} else{
-			$(".tipo-alimento").each(function(){
-				$(this).addClass("btn-info");
-			});
-		}
+		
+		$(".tipo-alimento").each(function(){
+			$(this).removeClass("btn-info");
+		});
+		
 		$(this).attr("class", "btn btn-default tipo-alimento btn-info btn-striped");
 		
 	});
@@ -167,7 +165,7 @@ $(document).ready(function() {
 			}
 		}
 
-		if($("#nombre-alimento-desayuno-1").val() == ""){
+		if($("#nombre-alimento-desayuno-1").val() == "" && !$("#no_aplica_desayuno").is(":checked") ){
 			error = true;
 			if($("#desayuno-error").length < 1)
 				mensaje += "<div class='alert alert-warning' id='desayuno-error'><a href='#' class='close' data-dismiss='alert'>&times;</a>Se debe ingresar un alimento para el desayuno.</a></div>";
@@ -177,7 +175,7 @@ $(document).ready(function() {
 				$("#desayuno-error").remove();
 			}
 		}
-		if($("#nombre-alimento-media_manana-1").val() == ""){
+		if($("#nombre-alimento-media_manana-1").val() == "" && !$("#no_aplica_media_manana").is(":checked") ){
 			error = true;
 			if($("#media-manana-error").length < 1)
 				mensaje += "<div class='alert alert-warning' id='media-manana-error'><a href='#' class='close' data-dismiss='alert'>&times;</a>Se debe ingresar un alimento para la media mañana.</a></div>";
@@ -187,7 +185,7 @@ $(document).ready(function() {
 				$("#media-manana-error").remove();
 			}
 		}
-		if($("#nombre-alimento-almuerzo-1").val() == ""){
+		if($("#nombre-alimento-almuerzo-1").val() == "" && !$("#no_aplica_almuerzo").is(":checked") ){
 			error = true;
 			if($("#almuerzo-error").length < 1)
 				mensaje += "<div class='alert alert-warning' id='almuerzo-error'><a href='#' class='close' data-dismiss='alert'>&times;</a>Se debe ingresar un alimento para el almuerzo.</a></div>";
@@ -197,7 +195,7 @@ $(document).ready(function() {
 				$("#almuerzo-error").remove();
 			}
 		}
-		if($("#nombre-alimento-media_tarde-1").val() == ""){
+		if($("#nombre-alimento-media_tarde-1").val() == "" && !$("#no_aplica_media_tarde").is(":checked") ){
 			error = true;
 			if($("#media-tarde-error").length < 1)
 				mensaje += "<div class='alert alert-warning' id='media-tarde-error'><a href='#' class='close' data-dismiss='alert'>&times;</a>Se debe ingresar un alimento para la media tarde.</a></div>";
@@ -207,7 +205,7 @@ $(document).ready(function() {
 				$("#media-tarde-error").remove();
 			}
 		}
-		if($("#nombre-alimento-merienda-1").val() == ""){
+		if($("#nombre-alimento-merienda-1").val() == "" && !$("#no_aplica_merienda").is(":checked") ){
 			error = true;
 			if($("#merienda-error").length < 1)
 				mensaje += "<div class='alert alert-warning' id='merienda-error'><a href='#' class='close' data-dismiss='alert'>&times;</a>Se debe ingresar un alimento para la merienda.</a></div>";
@@ -335,7 +333,7 @@ function revisar_si_esta_completo(){
 		    });
 				//Asigna la clase de completo
 				if($("#boton-tipo-alimento-" + i).hasClass('btn-info'))
-					btn_class = " btn-info"
+					btn_class = " btn-info";
 				else
 					btn_class = "";
 		    if (count_names == count) {
@@ -364,27 +362,59 @@ function autosaveForm() {
 }
 
 function anadir_alimento(tipo){
+	var row_id = parseInt($("#row_counter").val());
 	clonned_row = $("." + tipo + "-row:last").clone();
 	siguiente_id = parseInt($("#numero_de_preparaciones_" + tipo).val());
 	console.log(siguiente_id);
 	$("#numero_de_preparaciones_" + tipo).val(siguiente_id + 1);
 	$("." + tipo + "-row:last").after(clonned_row);
 	$("." + tipo + "-row:last").find(".col-sm-6.col-lg-2.nombre-alimento").children(".small").attr("name", "nombre_alimento_" + tipo + "_" + siguiente_id).val("");
-	$("." + tipo + "-row:last").find(".col-sm-6.col-lg-1.forma-de-coccion").children(".small-select").attr("name", "forma_de_coccion_" + tipo + "_" + siguiente_id).val("");
-	$("." + tipo + "-row:last").find(".col-sm-6.col-lg-1.cantidad").children(".small").attr("name", "cantidad_" + tipo + "_" + siguiente_id).val("");
-	$("." + tipo + "-row:last").find(".col-sm-6.col-lg-1.porciones").children(".small").attr("name", "porciones_" + tipo + "_" + siguiente_id).val("");
-	$("." + tipo + "-row:last").find(".col-sm-6.col-lg-1.grupo-de-alimentos").children(".small-select").attr("name", "grupo_alimento_" + tipo + "_" + siguiente_id).val("");
+	$("." + tipo + "-row:last").find(".col-sm-6.col-lg-1").children(".forma_de_coccion").attr("name", "forma_de_coccion_" + tipo + "_" + siguiente_id).val("");
+	$("." + tipo + "-row:last").find(".col-sm-6.col-lg-1.cantidad").children(".small").attr("name", "cantidad_" + tipo + "_" + siguiente_id + "[]").val("");
+	$("." + tipo + "-row:last").find(".col-sm-6.col-lg-1.porciones").children(".small").attr("name", "porciones_" + tipo + "_" + siguiente_id + "[]").val("");
+	$("." + tipo + "-row:last").find(".col-sm-6.col-lg-1.grupo-de-alimentos").children(".small-select").attr("name", "grupo_alimento_" + tipo + "_" + siguiente_id + "[]").val("");
 	$("." + tipo + "-row:last").find(".col-sm-6.col-lg-2.ingredientes").children(".small").each(function(){
-		$(this).attr("name", "ingredientes_" + tipo + "_" + siguiente_id + "[]");
+		$(this).attr("name", "ingredientes_" + tipo + "_" + siguiente_id + "[]").val("");
 	});
+	console.log(row_id);
+	$("." + tipo + "-row:last .ingredientes-extra").children(".row").each(function(){
+		row_id++;
+		$(this).attr("id", "row-" + row_id);
+	});
+
+	$("." + tipo + "-row:last .ingredientes-extra").find(".ingrediente-extra-nombre").each(function(){
+		$(this).attr("name", "ingredientes_" + tipo + "_" + siguiente_id + "[]");
+		$(this).val("");
+	});
+	$("." + tipo + "-row:last .ingredientes-extra").find(".ingrediente-extra-cantidad").each(function(){
+		$(this).attr("name", "cantidad_" + tipo + "_" + siguiente_id + "[]");
+		$(this).val("");
+	});
+	$("." + tipo + "-row:last .ingredientes-extra").find(".ingrediente-extra-porciones").each(function(){
+		$(this).attr("name", "porciones_" + tipo + "_" + siguiente_id + "[]");
+		$(this).val("");
+	});
+	$("." + tipo + "-row:last .ingredientes-extra").find(".ingrediente-extra-grupo-alimento").each(function(){
+		$(this).attr("name", "grupo_alimento_" + tipo + "_" + siguiente_id + "[]");
+		$(this).val("");
+	});
+
+	$("#row_counter").val(row_id);
 	activar_tags();
 }
 function anadir_ingrediente(objeto){
 	var jQueryItem = $(objeto);
-	ingrediente_clonado = jQueryItem.prev().clone().val("");
-	jQueryItem.before(ingrediente_clonado);
+	ingrediente_clonado = jQueryItem.parent().parent().clone();
+	row_id = $("#row_counter").val();
+	var new_row_id = parseInt(row_id) + 1;
+	ingrediente_clonado.attr("id", "row-" + new_row_id);
+	jQueryItem.parent().parent().after(ingrediente_clonado);
+	clearChildren(document.getElementById('row-' + new_row_id));
+	jQueryItem.remove();
+	$("#row_counter").val(new_row_id);
 	activar_tags();
 }
+
 
 function activar_tags(){
 	var alimentos;
@@ -450,4 +480,29 @@ function cUpper(cObj)
 	cObj.value=cObj.value.toUpperCase();
 }
 
+function clearChildren(element) {
+   for (var i = 0; i < element.childNodes.length; i++) {
+      var e = element.childNodes[i];
+      if (e.tagName) switch (e.tagName.toLowerCase()) {
+         case 'input':
+            switch (e.type) {
+               case "radio":
+               case "checkbox": e.checked = false; break;
+               case "button":
+               case "submit":
+               case "image": break;
+               default: e.value = ''; break;
+            }
+            break;
+         case 'select': e.selectedIndex = 0; break;
+         case 'textarea': e.innerHTML = ''; break;
+         default: clearChildren(e);
+      }
+   }
 
+}
+
+function desactiva_tiempo(tiempo){
+	console.log(tiempo);
+	$("#" + tiempo + "-id").toggleClass('div-disabled');
+}
