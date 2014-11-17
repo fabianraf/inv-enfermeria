@@ -20,7 +20,7 @@
       <ul type = square>
         <p><li><strong>Email: </strong>{{ $estudiante->email }}</p>
         <p><li><strong>Nombre: </strong>{{ $estudiante->nombre.' '. $estudiante->apellido}}</p>
-        <p><li><strong>Edad: </strong>{{ $estudiante->getEdad()}} años</p>
+        <p><li><strong>Edad: </strong>{{ $estudiante->getEdad()}} años</p>        
       </ul>
     </div>
      <div class="row">
