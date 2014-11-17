@@ -13,7 +13,6 @@ class ConsumoHabitualDeAlimento extends Eloquent {
 	
 	public static function encuestasConsumoHabitualCompleto()
 	{
-		//Son 1960 (5 x 392 encuestas) porque hay 5 tipos de encuestas: desayuno, media manana, almuerzo, media tarde, merienda 
 		if(User::where("tiene_consumo_habitual", "=", 1)->get()->count() == 392){
 			if(Setting::consumoAlimentosListo()){
 				//No haga nada
