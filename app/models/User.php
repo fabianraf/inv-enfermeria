@@ -190,7 +190,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	//****************************************	
 	public static function obtenerEstudianteRandomicamente()
 	{
-		$user = User::where("tipo", "=" , 'estudiante')->where("tiene_consumo_habitual", "=", "f")->orderBy(DB::raw('RANDOM()'))->take(1)->get();
+		//id del Perfil Estudiante es 2
+		$user = User::where("perfiles_usuario_id", "=" , 2)->where("tiene_consumo_habitual", "=", "f")->orderBy(DB::raw('RANDOM()'))->take(1)->get();
 		return $user;
 	}
 
