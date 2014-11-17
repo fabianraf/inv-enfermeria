@@ -131,10 +131,7 @@ $(document).ready(function() {
 
 	//FIXME: Esta funcion deberia buscar el id del estudiante de acuerdo al nombre ingresado
 	$("#nombre_alumno").focusout(function(){
-		// $.get('/obtener_alumno_randomicamente', function( data ) {
-		// 	$("#nombre_alumno").val(data["nombre"] + " " + data["apellido"])
-		// 	$("#alumno_id").val(data["id"]);
-		// });
+		//No hace nada aun
 	});
 
 	//Oculta y Muestra los campos para los tiempos de consumo habitual

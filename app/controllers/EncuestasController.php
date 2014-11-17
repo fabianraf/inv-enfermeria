@@ -33,6 +33,9 @@ class EncuestasController extends BaseController {
 
 	public function consumoHabitual()
 	{
+		// $a = ConsumoHabitualDeAlimento::encuestasConsumoHabitualCompleto();
+		// return Setting::enviaMailConsumoAlimentos();
+		// return $a ? "si" : "no";
 		return View::make('encuestas.consumoHabitual');
 	}
 
