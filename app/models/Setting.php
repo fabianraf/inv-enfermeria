@@ -14,7 +14,7 @@ class Setting extends Eloquent {
 
 	public static function enviaMailConsumoAlimentos(){
 		Mail::send('emails.enviar_consumo_alimento', [], function($message) {
-		    $message->to('fabianraf@gmail.com', 'Fabian Aguirre')
+		    $message->to('sivan.promocion@gmail.com', 'Sivan Promoción')
 		    ->replyTo('sivan.promocion@gmail.com', 'Sivan Promoción')
 		    ->subject('Se han completado las encuestas de Consumo Habitual!');
 		});
