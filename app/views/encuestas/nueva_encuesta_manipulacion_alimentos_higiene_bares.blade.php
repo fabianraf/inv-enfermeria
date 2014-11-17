@@ -19,7 +19,17 @@
 		</div>
 	</h2>
 	<hr>
-	<div class="col-lg-12">
+
+	<!-- <div class="row">
+		{{ Form::label('nombre_bar', 'Nombre de Bar',array('class' => 'col-sm-1 col-lg-2 control-label')); }}
+		
+		<div class="col-sm-6 col-lg-8">
+			{{ Form::text('nombre_bar','', array('class' => 'form-control', 'placeholder' => 'Nombre de bar', 'id' => 'nombre_bar' )); }}
+		</div>
+		
+	</div> -->
+
+	<div class="col-lg-12 top10">
 		@if(isset($message))
     <div class="alert alert-success">
         <a href="#" class="close" data-dismiss="alert">&times;</a>
@@ -45,6 +55,7 @@
 		@endforeach
 	</div>
 	</br></br>
+	
 	
 
 	<div class="top30 col-lg-12">

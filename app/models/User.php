@@ -215,6 +215,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return $this->hasOne('Bioquimica', 'usuario_id');
 	    }
 
+	public static function usuariosConConsumohabitual(){
+		return User::where("perfiles_usuario_id", "=" , 2)->where("tiene_consumo_habitual", "=", "t")->orderBy('apellido')->get();
+	}
+
 	public function getEdad()
 	{
 		$birthday = new DateTime($this->fecha_nacimiento);

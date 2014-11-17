@@ -79,7 +79,7 @@
 									</li>									
 									<?php }elseif(Auth::user()->perfiles_usuario_id == "1" || Auth::user()->perfiles_usuario_id == "3") {?>									
 									<li>
-										{{ HTML::link('/encuesta_consumo_habitual', "Consumo habitual de alimentos" ) }}
+										{{ HTML::link('/encuestas_consumo_habitual', "Consumo habitual de alimentos" ) }}
 									</li>
 									<li class="divider"></li>
 									<li>
