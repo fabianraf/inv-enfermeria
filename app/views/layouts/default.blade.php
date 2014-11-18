@@ -118,11 +118,11 @@
 									</li>									
 									<li class="divider"></li>
 									<li>
-										{{ HTML::link('reportes/consumo_alimentos/'.Auth::user()->id, "Valor nutricional - Frecuencia de consumo de alimentos en hogar, Universidad y alrededores" ) }}
+										{{ HTML::link('reportes/consumo_alimentos/'.Auth::user()->id, "Frecuencia de consumo de alimentos en hogar, Universidad y alrededores" ) }}
 									</li>									
 									<li class="divider"></li>
 									<li>
-										{{ HTML::link('reportes/consumo_alimentos_bares/'.Auth::user()->id, "Valor nutricional - Frecuencia de consumo de alimentos en los bares de la Universidad" ) }}
+										{{ HTML::link('reportes/consumo_alimentos_bares/'.Auth::user()->id, "Frecuencia de consumo de alimentos en los bares de la Universidad" ) }}
 									</li>
 									<?php }elseif(Auth::user()->perfiles_usuario_id == "1" || Auth::user()->perfiles_usuario_id == "3") {?>
 									<!--REPORTES DE ADMIN Y ENCUESTADORES-->									

@@ -2,7 +2,7 @@
     
 @section('content')
 
-<h2>Valor nutricional - Frecuencia de consumo de alimentos en hogar, Universidad y alrededores</h2>
+<h2>Frecuencia de consumo de alimentos en hogar, Universidad y alrededores</h2>
 <hr>    
 <div class="table-responsive">    
     </br>
