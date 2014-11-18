@@ -9,7 +9,7 @@
     </div><br>
   @endif
   @if($estudiante->encuestaAlimentosBares)
-    <h2>Valor nutricional - Frecuencia de consumo de alimentos en los bares de la Universidad</h2>
+    <h2>Frecuencia de consumo de alimentos en los bares de la Universidad</h2>
     <hr>
     </br>
     <div class="col-md-4 col-lg-9" >
