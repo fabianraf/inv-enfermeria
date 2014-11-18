@@ -293,6 +293,7 @@
 					<br>
 					{{ Form::hidden('alimento_id', $alimento->id) }}										
 				</div>
+				<p><li><strong>Foto: </strong>{{ Form::text('foto', $alimento->url_foto, array('size'=>'40'))}}</p>				
 				{{ Form::close() }}
 			</div>
 </div>

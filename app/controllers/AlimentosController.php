@@ -83,6 +83,7 @@ class AlimentosController extends BaseController {
 				$alimento->fraccion_comestible = ($campos['fraccion_comestible']!='' ? $campos['fraccion_comestible'] : '0');
 				$alimento->carbohidratos_disponibles = ($campos['carbohidratos_disponibles']!='' ? $campos['carbohidratos_disponibles'] : '0');
 				$alimento->fibra_cruda = ($campos['fibra_cruda']!='' ? $campos['fibra_cruda'] : '0');
+				$alimento->url_foto =$campos['foto'];
 				$alimento->save();
 				$tipo_de_alimento_id = $alimento->tipo_de_alimento_id;
 				$tipo_de_alimento = TipoDeAlimento::find($tipo_de_alimento_id);
