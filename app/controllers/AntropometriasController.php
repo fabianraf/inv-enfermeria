@@ -2,6 +2,9 @@
 
 class AntropometriasController extends BaseController {
 
+	function __construct() {
+        $this->beforeFilter('auth');
+    }
 
 	public function main()
 	{

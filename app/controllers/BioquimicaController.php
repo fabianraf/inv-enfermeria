@@ -2,7 +2,10 @@
 
 class BioquimicaController extends BaseController {
 
-
+	function __construct() {
+        $this->beforeFilter('auth');
+    }
+    
 	public function main()
 	{
 		if(Auth::user()->perfiles_usuario_id == "2"){

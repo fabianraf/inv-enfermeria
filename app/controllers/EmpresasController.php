@@ -2,6 +2,9 @@
 
 class EmpresasController extends BaseController {
 
+	function __construct() {
+        $this->beforeFilter('auth');
+    }
 
 	public function indexEmpresasHigienePersonal(){ 
 		$empresas = Empresa::where('codigo_empresa','=','1')->get();        
