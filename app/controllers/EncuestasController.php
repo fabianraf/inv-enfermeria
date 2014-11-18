@@ -21,14 +21,33 @@ class EncuestasController extends BaseController {
 	//Frecuencia de consumo de alimentos en la Universidad y alrededores
 	public function consumoAlimentos()
 	{
+		$encuestas_completas = 0;
+		$user = Auth::user();
+		$bloquear_encuestas = "";
+		if($user->encuestaAlimentosUniversidad->count() == TipoDeAlimento::get_total_alimentos()){
+			$encuestas_completas = 1;
+		}
+		if(Auth::user()->perfilUsuario->nombre == "Estudiante" && $encuestas_completas == 1)
+			$bloquear_encuestas = "disabled";
 		$tipos_de_alimentos = TipoDeAlimento::orderBy('nombre')->get();
-		return View::make('encuestas.consumoAlimentos', array('tipos_de_alimentos' => $tipos_de_alimentos));		
+		return View::make('encuestas.consumoAlimentos', array('tipos_de_alimentos' => $tipos_de_alimentos,
+						'encuestas_completas' => $encuestas_completas, 'bloquear_encuestas' => $bloquear_encuestas));				
 	}
 
 	public function consumoAlimentosBares()
 	{
+		$encuestas_completas = 0;
+		$user = Auth::user();
+		$bloquear_encuestas = "";
+		if($user->encuestaAlimentosBares->count() == TipoDeAlimentoBares::get_total_alimentos_bares()){
+			$encuestas_completas = 1;
+		}
+
+		if(Auth::user()->perfilUsuario->nombre == "Estudiante" && $encuestas_completas == 1)
+			$bloquear_encuestas = "disabled";
 		$tipos_de_alimentos_bares = TipoDeAlimentoBares::orderBy('nombre')->get();
-        return View::make('encuestas.consumoAlimentosBares', array('tipos_de_alimentos_bares' => $tipos_de_alimentos_bares));		
+        return View::make('encuestas.consumoAlimentosBares', array('tipos_de_alimentos_bares' => $tipos_de_alimentos_bares, 
+        					'encuestas_completas' => $encuestas_completas, 'bloquear_encuestas' => $bloquear_encuestas));		
 	}
 
 	public function consumoHabitual()
@@ -141,53 +160,117 @@ class EncuestasController extends BaseController {
 	//Frecuencia de consumo de alimentos en la Universidad y alrededores
 	public function createConsumoAlimentos()
 	{
+		$user = Auth::user();
+		$encuestas_completas = 0;
 		$campos = Input::all();
-		for($i = 0; $i < 126 ; $i++){
-			if(isset($campos['frecuencia'][$i])){
-				$encuesta = EncuestaAlimentosUniversidad::where("usuario_id", "=", Auth::user()->id)->where("alimento_id", "=", $campos['frecuencia']['alimento'][$i])->first();
-				//Reviso si es que ya existe un dato guardado para el usuario para decidir si se va a editar o a crear nuevo.
-				if(!isset($encuesta)){
-					$encuesta = new EncuestaAlimentosUniversidad;	
+		$contador_encuesta = 0;
+		if($user->encuestaAlimentosUniversidad->count() != TipoDeAlimento::get_total_alimentos()){
+			for($i = 1; $i <= TipoDeAlimento::get_total_alimentos(); $i++){
+				if(isset($campos['frecuencia'][$i])){
+					$encuesta = EncuestaAlimentosUniversidad::where("usuario_id", "=", Auth::user()->id)->where("alimento_id", "=", $campos['frecuencia']['alimento'][$i])->first();
+					//Reviso si es que ya existe un dato guardado para el usuario para decidir si se va a editar o a crear nuevo.
+					if(!isset($encuesta)){
+						$encuesta = new EncuestaAlimentosUniversidad;	
+					}
+					$encuesta->alimento_id = $campos['frecuencia']['alimento'][$i];
+					$encuesta->frecuencia = $campos['frecuencia'][$i];
+					$encuesta->usuario_id = Auth::user()->id;
+					$encuesta->num_porciones = $campos['frecuencia']['porciones'][$i];
+					$encuesta->save();
+					$contador_encuesta++;
 				}
-				$encuesta->alimento_id = $campos['frecuencia']['alimento'][$i];
-				$encuesta->frecuencia = $campos['frecuencia'][$i];
-				$encuesta->usuario_id = Auth::user()->id;
-				$encuesta->num_porciones = $campos['frecuencia']['porciones'][$i];
-				$encuesta->save();
 			}
+		}else{
+			$encuestas_completas = 1;
 		}
+		if($contador_encuesta == TipoDeAlimento::get_total_alimentos()){
+			$encuestas_completas = 1;
+		}
+		$bloquear_encuestas = "";
+		if($user->encuestaAlimentosUniversidad->count() == TipoDeAlimento::get_total_alimentos()){
+			$encuestas_completas = 1;
+		}
+
+		if(Auth::user()->perfilUsuario->nombre == "Estudiante" && $encuestas_completas == 1)
+			$bloquear_encuestas = "disabled";
+
 		if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])
 				     AND strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
-							 //No haga nada
+							 if($encuestas_completas == 1){
+							 	return "Encuesta completa";
+							 }
    				 }else{
-							$tipos_de_alimentos = TipoDeAlimento::orderBy('nombre')->get();
-							return View::make('encuestas.consumoAlimentos', array('tipos_de_alimentos' => $tipos_de_alimentos, 'message' => "Borrador grabado exitosamente!"));
-		}
+
+   				 		if($encuestas_completas == 0){
+   				 			$mensaje = "Borrador grabado exitosamente!";
+   				 		}else{
+   				 			$mensaje = "Encuestas Completas!!";
+   				 		}
+						$tipos_de_alimentos = TipoDeAlimento::orderBy('nombre')->get();
+						return View::make('encuestas.consumoAlimentos', array('tipos_de_alimentos' => $tipos_de_alimentos, 
+																			'message' => $mensaje,
+																			'encuestas_completas' => $encuestas_completas,
+																			'bloquear_encuestas' => $bloquear_encuestas));
+				}
 	}
 
+	//*****************************************************************
+	//Funcion que crea Consumo Alimentos Bares
+	//Esta funcion se maneja medianta $.post desde app.js
+	//Hace un submit refrescando la pantalla cuando $contador_encuesta 
+	//es igual al tipo de alimentos
+	//*****************************************************************
 	public function createConsumoAlimentosBares()
 	{
+		$user = Auth::user();
+		$encuestas_completas = 0;
 		$campos = Input::all();
-		for($i = 0; $i < 161 ; $i++){
-			if(isset($campos['frecuencia'][$i])){
-				$encuesta = EncuestaAlimentosBares::where("usuario_id", "=", Auth::user()->id)->where("alimento_bares_id", "=", $campos['frecuencia']['alimento'][$i])->first();
-				//Reviso si es que ya existe un dato guardado para el usuario para decidir si se va a editar o a crear nuevo.
-				if(!isset($encuesta)){
-					$encuesta = new EncuestaAlimentosBares;	
+		$contador_encuesta = 0;
+		if($user->encuestaAlimentosBares->count() != TipoDeAlimentoBares::get_total_alimentos_bares()){
+			for($i = 1; $i <= TipoDeAlimentoBares::get_total_alimentos_bares(); $i++){
+				if(isset($campos['frecuencia'][$i])){
+					$encuesta = EncuestaAlimentosBares::where("usuario_id", "=", Auth::user()->id)->where("alimento_bares_id", "=", $campos['frecuencia']['alimento'][$i])->first();
+					//Reviso si es que ya existe un dato guardado para el usuario para decidir si se va a editar o a crear nuevo.
+					if(!isset($encuesta)){
+						$encuesta = new EncuestaAlimentosBares;	
+					}
+					$encuesta->alimento_bares_id = $campos['frecuencia']['alimento'][$i];
+					$encuesta->frecuencia = $campos['frecuencia'][$i];
+					$encuesta->usuario_id = Auth::user()->id;
+					$encuesta->num_porciones = $campos['frecuencia']['porciones'][$i];
+					$encuesta->save();
+					$contador_encuesta++;
 				}
-				$encuesta->alimento_bares_id = $campos['frecuencia']['alimento'][$i];
-				$encuesta->frecuencia = $campos['frecuencia'][$i];
-				$encuesta->usuario_id = Auth::user()->id;
-				$encuesta->num_porciones = $campos['frecuencia']['porciones'][$i];
-				$encuesta->save();
 			}
+		}else{
+			$encuestas_completas = 1;
 		}
+		if($contador_encuesta == TipoDeAlimentoBares::get_total_alimentos_bares()){
+			$encuestas_completas = 1;
+		}
+		$bloquear_encuestas = "";
+		if($user->encuestaAlimentosBares->count() == TipoDeAlimentoBares::get_total_alimentos_bares()){
+			$encuestas_completas = 1;
+		}
+
+		if(Auth::user()->perfilUsuario->nombre == "Estudiante" && $encuestas_completas == 1)
+			$bloquear_encuestas = "disabled";
 		if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])
 				     AND strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
-							 //No haga nada
-   				 }else{
-							$tipo_de_alimento_bares = TipoDeAlimentoBares::orderBy('nombre')->get();
-							return View::make('encuestas.consumoAlimentosBares', array('tipos_de_alimentos_bares' => $tipo_de_alimento_bares, 'message' => "Borrador grabado exitosamente!"));
+							 if($encuestas_completas == 1){
+							 	return "Encuesta completa";
+							 }
+   				 }else{	
+   				 		if($encuestas_completas == 0){
+   				 			$mensaje = "Borrador grabado exitosamente!";
+   				 		}else{
+   				 			$mensaje = "Encuestas Completas!!";
+   				 		}
+   				 		$tipo_de_alimento_bares = TipoDeAlimentoBares::orderBy('nombre')->get();
+						return View::make('encuestas.consumoAlimentosBares', array('tipos_de_alimentos_bares' => $tipo_de_alimento_bares, 
+																					'message' => $mensaje, 
+																					'encuestas_completas' => $encuestas_completas,
+																					'bloquear_encuestas' => $bloquear_encuestas));
 		}
 	}
 

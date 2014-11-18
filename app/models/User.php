@@ -178,15 +178,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->hasMany('EncuestaAlimentosBares', 'usuario_id');
 	}
 
-
-	//======================
+	//========================================
 	//****************************************
 	//
 	//
 	// Obtener estudiante randomicamente
 	//
 	//
-	//======================
+	//========================================
 	//****************************************	
 	public static function obtenerEstudianteRandomicamente()
 	{
@@ -225,4 +224,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         $interval = $birthday->diff(new DateTime);
         return $interval->y;
 	}
+
+
 }

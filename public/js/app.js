@@ -105,20 +105,45 @@ $(document).ready(function() {
 	
 	//Frecuencia de consumo de alimentos en la Universidad y alrededores
 	$('#encuesta_consumo_alimentos_universidad').submit(function(){
-		$.post('/encuesta_consumo_alimentos', $('#encuesta_consumo_alimentos_universidad').serialize());
+		var encuesta_completa = false;
+		$.ajax({
+		  type: 'POST',
+		  url: '/encuesta_consumo_alimentos',
+		  data: $('#encuesta_consumo_alimentos_universidad').serialize(),
+		  success: function(data){
+		  	if(data == "Encuesta completa"){
+				encuesta_completa = true;
+			}
+		  },
+		  dataType: "text",
+		  async: false
+		});
 		$('#draft-saved').show();
 		revisar_si_esta_completo();
 		setTimeout("$('#draft-saved').hide()", 7000);
-		return false;
+		return encuesta_completa;
 	});
 	
 	//Frecuencia de consumo de alimentos en los bares de la Universidad
 	$('#encuesta_consumo_alimentos_bares').submit(function(){
-		$.post('/encuesta_consumo_alimentos_bares', $('#encuesta_consumo_alimentos_bares').serialize());
+		var encuesta_completa = false;
+		$.ajax({
+		  type: 'POST',
+		  url: '/encuesta_consumo_alimentos_bares',
+		  data: $('#encuesta_consumo_alimentos_bares').serialize(),
+		  success: function(data){
+		  	if(data == "Encuesta completa"){
+				encuesta_completa = true;
+			}
+		  },
+		  dataType: "text",
+		  async: false
+		});
 		$('#draft-saved').show();
 		revisar_si_esta_completo();
 		setTimeout("$('#draft-saved').hide()", 7000);
-		return false;
+		return encuesta_completa;
+		
 	});
 
 	//Obtener alumnos randomicamente para consumo habitual
@@ -313,35 +338,35 @@ function submit_encabezado_pregunta(encabezado_pregunta_id){
 }
 
 function revisar_si_esta_completo(){
-			for(var i = 0; i < 18; i++){
+			var tipos_de_alimentos = $("#tipo_de_alimentos").val();
+			for(var i = 0; i < parseInt(tipos_de_alimentos) + 1; i++){
 				var names = {};
-		    var count = 0;
-				var count_names = 0;
+		   		var count = 0;
+				var count_names = 0;	
 				
-		    $("#tipo-alimento-" + i + " :radio").each(function() {
-		        names[$(this).attr('name')] = true;
-		    });
-		    
-				//Itera cada alimento de acuerdo a su nombre. Ej: frecuencia[15]
-		    $.each(names, function(name, value) { 
-					count_names++;
-						if($('[name="' + name + '"]').is(':checked'))
-							count++;
-		    });
-				//Asigna la clase de completo
-				if($("#boton-tipo-alimento-" + i).hasClass('btn-info'))
-					btn_class = " btn-info";
-				else
-					btn_class = "";
-		    if (count_names == count) {
-					// if($("#boton-tipo-alimento-" + i).hasClass('btn-info'))
-						$("#boton-tipo-alimento-" + i).attr("class", "btn btn-default tipo-alimento  btn-success btn-striped" + btn_class);
-					
-		    } else{
-						$("#boton-tipo-alimento-" + i).attr("class", "btn btn-default tipo-alimento btn-danger btn-striped");
-					
-		    }
+			    $("#tipo-alimento-" + i + " :radio").each(function() {
+			        names[$(this).attr('name')] = true;
+			    });
+			    //Itera cada alimento de acuerdo a su nombre. Ej: frecuencia[15]
+			    $.each(names, function(name, value) { 
+						count_names++;
+							if($('[name="' + name + '"]').is(':checked'))
+								count++;
+			    });
+					//Asigna la clase de completo
+					if($("#boton-tipo-alimento-" + i).hasClass('btn-info'))
+						btn_class = " btn-info";
+					else
+						btn_class = "";
+			    if (count_names == count) {
+					$("#boton-tipo-alimento-" + i).attr("class", "btn btn-default tipo-alimento  btn-success btn-striped" + btn_class);
+						
+			    } else{
+					$("#boton-tipo-alimento-" + i).attr("class", "btn btn-default tipo-alimento btn-danger btn-striped");
+						
+			    }
 			}
+			
 	
 }
 

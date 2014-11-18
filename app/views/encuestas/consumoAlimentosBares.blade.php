@@ -3,10 +3,13 @@
 @section('content')
 
 {{ Form::open(array('url' => 'encuesta_consumo_alimentos_bares', 'id' => 'encuesta_consumo_alimentos_bares')) }}
+<input type="hidden" id="tipo_de_alimentos" name="tipo_de_alimentos" value="{{TipoDeAlimentoBares::get_total_alimentos_bares()}}">
 <div class="col-lg-12">
 	<h2>Frecuencia de consumo de alimentos en los bares de la Universidad 
 		<div class="pull-right">
-			<input type="submit" value="GRABAR" class="btn btn-success">
+			@if($encuestas_completas == 0)
+				<input type="submit" value="GRABAR" class="btn btn-success">
+			@endif
 			<!-- <input type="button" value="LIMPIAR" class="btn btn-warning"> -->
 		</div>
 	</h2>
@@ -19,12 +22,17 @@
     </div>
 		@endif
 		
-		@if(Auth::user()->encuestaAlimentosBares->count() < TipoDeAlimentoBares::get_total_alimentos_bares())
-    <div class="alert alert-success">
-        <a href="#" class="close" data-dismiss="alert">&times;</a>
-				Por favor completa todas las etiquetas rojas.
-    </div>
-		@endif
+		@if($encuestas_completas == 0)
+		    <div class="alert alert-success">
+		        <a href="#" class="close" data-dismiss="alert">&times;</a>
+						Por favor completa todas las etiquetas rojas.
+		    </div>
+		@else
+			<div class="alert alert-warning">
+		        <a href="#" class="close" data-dismiss="alert">&times;</a>
+						Gracias, has llenado todos los tipos de alimentos!
+		    </div>
+		@endif		
 	
 	  	@foreach($tipos_de_alimentos_bares as $key => $tipo_de_alimento)
 			<?php 
@@ -54,7 +62,7 @@
 			<tr>				
 				<th rowspan="2">Alimentos</th>
 				<th rowspan="2">Imagen<br> porción</th>
-				<th colspan="12">Frecuencia (veces a la semana)</th>
+				<th colspan="10">Frecuencia (veces a la semana)</th>
 				<th rowspan="2">N. de porciones diarias</th>				
 			</tr>		
 		 	<tr>
@@ -65,8 +73,6 @@
 			  	<td>3</td>
 			  	<td>2</td>
 			  	<td>1</td>
-			  	<td>0,50</td>
-			  	<td>0,25</td>
 			  	<td>Cada 15 días</td>
 			  	<td>Nunca</td>
 			  	<td>Desconoce</td>	    
@@ -80,21 +86,21 @@
 				<td>{{ $alimento->nombre }}</td>
 				<td><?php $link = "/images/".$alimento->url_foto;
 					echo "<a href=".$link." target='_blank'><span class='glyphicon glyphicon-picture'></span></a>"; ?>
-					<input type="hidden" name="frecuencia[alimento][{{ $index }}]" value="{{ $alimento->id }}"></td>
-				<td><input type="radio" name="frecuencia[{{ $index }}]" value="1" {{$encuesta_alimentos_bares['frecuencia'] == 1 ? 'checked="checked"' : ''}}></td>
-				<td><input type="radio" name="frecuencia[{{ $index }}]" value="2" {{$encuesta_alimentos_bares['frecuencia'] == 2 ? 'checked="checked"' : ''}}></td>
-				<td><input type="radio" name="frecuencia[{{ $index }}]" value="3" {{$encuesta_alimentos_bares['frecuencia'] == 3 ? 'checked="checked"' : ''}}></td>
-				<td><input type="radio" name="frecuencia[{{ $index }}]" value="4" {{$encuesta_alimentos_bares['frecuencia'] == 4 ? 'checked="checked"' : ''}}></td>
-				<td><input type="radio" name="frecuencia[{{ $index }}]" value="5" {{$encuesta_alimentos_bares['frecuencia'] == 5 ? 'checked="checked"' : ''}}></td>
-				<td><input type="radio" name="frecuencia[{{ $index }}]" value="6" {{$encuesta_alimentos_bares['frecuencia'] == 6 ? 'checked="checked"' : ''}}></td>
-				<td><input type="radio" name="frecuencia[{{ $index }}]" value="7" {{$encuesta_alimentos_bares['frecuencia'] == 7 ? 'checked="checked"' : ''}}></td>
-				<td><input type="radio" name="frecuencia[{{ $index }}]" value="0.5" {{$encuesta_alimentos_bares['frecuencia'] == 0.5 ? 'checked="checked"' : ''}}></td>
-				<td><input type="radio" name="frecuencia[{{ $index }}]" value="0.25" {{$encuesta_alimentos_bares['frecuencia'] == 0.25 ? 'checked="checked"' : ''}}></td>
-				<td><input type="radio" name="frecuencia[{{ $index }}]" value="8" {{$encuesta_alimentos_bares['frecuencia'] == 8 ? 'checked="checked"' : ''}}></td>
-				<td><input type="radio" name="frecuencia[{{ $index }}]" value="9" {{$encuesta_alimentos_bares['frecuencia'] == 9 ? 'checked="checked"' : ''}}></td>
-				<td><input type="radio" name="frecuencia[{{ $index }}]" value="10" {{$encuesta_alimentos_bares['frecuencia'] == 10 ? 'checked="checked"' : ''}}></td>
+				<input type="hidden" name="frecuencia[alimento][{{ $index }}]" value="{{ $alimento->id }}"></td>
+				<td><input type="radio" {{$bloquear_encuestas}} name="frecuencia[{{ $index }}]" value="7" {{$encuesta_alimentos_bares['frecuencia'] == 7 ? 'checked="checked"' : ''}}></td>
+				<td><input type="radio" {{$bloquear_encuestas}} name="frecuencia[{{ $index }}]" value="6" {{$encuesta_alimentos_bares['frecuencia'] == 6 ? 'checked="checked"' : ''}}></td>
+				<td><input type="radio" {{$bloquear_encuestas}} name="frecuencia[{{ $index }}]" value="5" {{$encuesta_alimentos_bares['frecuencia'] == 5 ? 'checked="checked"' : ''}}></td>
+				<td><input type="radio" {{$bloquear_encuestas}} name="frecuencia[{{ $index }}]" value="4" {{$encuesta_alimentos_bares['frecuencia'] == 4 ? 'checked="checked"' : ''}}></td>
+				<td><input type="radio" {{$bloquear_encuestas}} name="frecuencia[{{ $index }}]" value="3" {{$encuesta_alimentos_bares['frecuencia'] == 3 ? 'checked="checked"' : ''}}></td>
+				<td><input type="radio" {{$bloquear_encuestas}} name="frecuencia[{{ $index }}]" value="2" {{$encuesta_alimentos_bares['frecuencia'] == 2 ? 'checked="checked"' : ''}}></td>
+				<td><input type="radio" {{$bloquear_encuestas}} name="frecuencia[{{ $index }}]" value="1" {{$encuesta_alimentos_bares['frecuencia'] == 1 ? 'checked="checked"' : ''}}></td>
+				<td><input type="radio" {{$bloquear_encuestas}} name="frecuencia[{{ $index }}]" value="0.5" {{$encuesta_alimentos_bares['frecuencia'] == 0.5 ? 'checked="checked"' : ''}}></td>
+				<td><input type="radio" {{$bloquear_encuestas}} name="frecuencia[{{ $index }}]" value="-2" {{$encuesta_alimentos_bares['frecuencia'] == -2 ? 'checked="checked"' : ''}}></td>
+				<td><input type="radio" {{$bloquear_encuestas}} name="frecuencia[{{ $index }}]" value="-1" {{$encuesta_alimentos_bares['frecuencia'] == -1 ? 'checked="checked"' : ''}}></td>
 				<td>
-					<select name="frecuencia[porciones][{{$index}}]">
+					<select {{$bloquear_encuestas}} name="frecuencia[porciones][{{$index}}]">
+							<option value="0.25" {{$encuesta_alimentos_bares['num_porciones'] == 0.25 ? 'selected="selected"' : ''}}>0.25</option>
+							<option value="0.5" {{$encuesta_alimentos_bares['num_porciones'] == 0.5 ? 'selected="selected"' : ''}}>0.5</option>
 							<option value="1" {{$encuesta_alimentos_bares['num_porciones'] == 1 ? 'selected="selected"' : ''}}>1</option>
 							<option value="2" {{$encuesta_alimentos_bares['num_porciones'] == 2 ? 'selected="selected"' : ''}}>2</option>
 							<option value="3" {{$encuesta_alimentos_bares['num_porciones'] == 3 ? 'selected="selected"' : ''}}>3</option>
