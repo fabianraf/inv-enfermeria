@@ -2,11 +2,10 @@
     
 @section('content')
 
-{{ HTML::style('css/smoothness-jquery-ui.css') }}
 
-<div class="col-lg-12">
-  <h2>Información antropométrica</h2>
-  <hr>
+<h2>Información antropométrica</h2>
+<hr>
+<div class="table-responsive">  
   </br>
     <table class="table table-no-border ">
       <tr> 

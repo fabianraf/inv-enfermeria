@@ -3,9 +3,10 @@
 @section('content')
 
 <h2>Valor nutricional - Frecuencia de consumo de alimentos en los bares de la Universidad</h2>
-<br>
+<hr>    
 <div class="table-responsive">    
-    <table class="table table-bordered">
+    </br>
+    <table class="table table-no-border ">
       <tr>              
             <td style="text-align:left"><b></td> 
             <td style="text-align:left"><b>Nombres</td>

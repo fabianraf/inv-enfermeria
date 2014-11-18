@@ -2,15 +2,10 @@
     
 @section('content')
 
-{{ Form::open(array('url' => 'antropometria')) }}
 
-{{ HTML::style('css/smoothness-jquery-ui.css') }}
-
-
-
-<div class="col-lg-12">
-  <h2>Información de pruebas bioquímicas</h2>
-  <hr>
+<h2>Información de pruebas bioquímicas</h2>
+<hr>
+<div class="table-responsive">  
   </br>
     <table class="table table-no-border ">
       <tr> 
