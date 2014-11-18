@@ -558,35 +558,5 @@ class EncuestasController extends BaseController {
 
 		return Redirect::to('/encuesta_manipulacion_bares/nueva_empresa');
 	}
-
-
-	public function reporteConsumoAlimentos()
-	{
-		$users = User::has('encuestaAlimentosUniversidad')->orderBy('nombre')
-                ->orderBy('apellido')->get();
-		return View::make('reportes.consumo_alimento', array('users' => $users));
-	}
-
-
-	public function reporteConsumoAlimentosEstudiante($id)
-	{
-		$estudiante = User::find($id);		
-		return View::make('reportes.consumo_alimento_detalle', array('estudiante' => $estudiante));
-	}
-
-	public function reporteConsumoAlimentosBares()
-	{
-		$users = User::has('encuestaAlimentosBares')->orderBy('nombre')
-                ->orderBy('apellido')->get();
-		return View::make('reportes.consumo_alimento_bares', array('users' => $users));
-	}
-
-
-	public function reporteConsumoAlimentosBaresEstudiante($id)
-	{
-		$estudiante = User::find($id);		
-		return View::make('reportes.consumo_alimento_bares_detalle', array('estudiante' => $estudiante));
-	}
-
-
+	
 }

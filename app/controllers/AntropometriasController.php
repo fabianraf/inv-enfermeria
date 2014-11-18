@@ -159,17 +159,4 @@ class AntropometriasController extends BaseController {
 		}		
 	}
 
-	public function reporteAntropometria()
-	{
-		$users = User::has('antropometria')->orderBy('nombre')
-                ->orderBy('apellido')->paginate(20);
-		return View::make('reportes.antropometria', array('users' => $users));
-	}
-
-	public function reporteEstudiante($id)
-	{
-		$estudiante = User::find($id);		
-		return View::make('reportes.antropometria_detalle', array('estudiante' => $estudiante));
-	}
-
 }

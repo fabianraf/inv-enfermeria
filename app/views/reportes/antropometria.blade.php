@@ -9,18 +9,18 @@
   <hr>
   </br>
     <table class="table table-no-border ">
-      <tr>              
-        <td style="text-align:left"><b>Nombres</td>
-        <td style="text-align:left"><b>Edad</td>
-        <td style="text-align:left"><b>Género</td>
-        <td style="text-align:left"><b>Ver info</td>        
+      <tr> 
+          <td style="text-align:left"><b></td>              
+          <td style="text-align:left"><b>Nombres</td>
+          <td style="text-align:left"><b>Edad</td>
+          <td style="text-align:left"><b>Género</td>               
       </tr>         
         @foreach($users as $usuario)        
-        <tr>      
-        <td style="text-align:left">{{ $usuario->nombre.' '.$usuario->apellido }}</td>
-        <td style="text-align:left">{{ $usuario->getEdad()." años" }}</td>
-        <td style="text-align:left">{{ $usuario->genero }}</td>
-        <?php echo "<td style='text-align:left'><a href='/reportes/antropometria/".$usuario->id."'><span class='glyphicon glyphicon-search'></span></td>";?>
+        <tr>
+          <?php echo "<td style='text-align:left'><a href='/reportes/antropometria/".$usuario->id."'><span class='glyphicon glyphicon-search'></span></td>";?>
+          <td style="text-align:left">{{ $usuario->nombre.' '.$usuario->apellido }}</td>
+          <td style="text-align:left">{{ $usuario->getEdad()." años" }}</td>
+          <td style="text-align:left">{{ $usuario->genero }}</td>        
       </tr>     
         @endforeach
     </table>

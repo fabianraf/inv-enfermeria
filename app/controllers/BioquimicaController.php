@@ -234,17 +234,4 @@ class BioquimicaController extends BaseController {
 		}
 	}
 
-	public function reporteBioquimica()
-	{
-		$users = User::has('bioquimica')->orderBy('nombre')
-                ->orderBy('apellido')->paginate(20);
-		return View::make('reportes.bioquimica', array('users' => $users));
-	}
-
-	public function reporteEstudiante($id)
-	{
-		$estudiante = User::find($id);		
-		return View::make('reportes.bioquimica_detalle', array('estudiante' => $estudiante));
-	}
-
 }

@@ -93,14 +93,14 @@ Route::post('/encuesta_manipulacion_bares/guardar_informacion', "EncuestasContro
 //
 //
 /*REPORTES*/
-Route::get('reportes/antropometria', "AntropometriasController@reporteAntropometria");
-Route::get('reportes/antropometria/{id}', "AntropometriasController@reporteEstudiante");
-Route::get('reportes/bioquimica', "BioquimicaController@reporteBioquimica");
-Route::get('reportes/bioquimica/{id}', "BioquimicaController@reporteEstudiante");
-Route::get('reportes/consumo_alimentos', "EncuestasController@reporteConsumoAlimentos");
-Route::get('reportes/consumo_alimentos/{id}', "EncuestasController@reporteConsumoAlimentosEstudiante");
-Route::get('reportes/consumo_alimentos_bares', "EncuestasController@reporteConsumoAlimentosBares");
-Route::get('reportes/consumo_alimentos_bares/{id}', "EncuestasController@reporteConsumoAlimentosBaresEstudiante");
+Route::get('reportes/antropometria', "ReportesController@reporteAntropometria");
+Route::get('reportes/antropometria/{id}', "ReportesController@reporteAntropometriaEstudiante");
+Route::get('reportes/bioquimica', "ReportesController@reporteBioquimica");
+Route::get('reportes/bioquimica/{id}', "ReportesController@reporteBioquimicaEstudiante");
+Route::get('reportes/consumo_alimentos', "ReportesController@reporteConsumoAlimentos");
+Route::get('reportes/consumo_alimentos/{id}', "ReportesController@reporteConsumoAlimentosEstudiante");
+Route::get('reportes/consumo_alimentos_bares', "ReportesController@reporteConsumoAlimentosBares");
+Route::get('reportes/consumo_alimentos_bares/{id}', "ReportesController@reporteConsumoAlimentosBaresEstudiante");
 /**/
 
 Route::get('/obtener_alimentos', "AlimentosController@obtener_alimentos");
