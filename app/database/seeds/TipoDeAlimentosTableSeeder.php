@@ -88,5 +88,10 @@ public function run()
             'nombre'  => 'Snacks',
             'posicion' => '17'
         ));
+
+        TipoDeAlimento::create(array(
+            'nombre'  => 'Bebidas',
+            'posicion' => '18'
+        ));
     }
 }

@@ -22,7 +22,7 @@ if (Auth::user()->perfiles_usuario_id == "2" && !$user->acepto_disclaimer){
 	<h3 align="center">Carrera de Nutrición Humana</h3><br><br>
 	<h3 align="center">CONSENTIMIENTO INFORMADO PARA LA PARTICIPACIÓN EN EL ESTUDIO</h3>
 	<h3 align="center">TITULO: 	Implementación de un Sistema de Vigilancia Alimentaria y Nutricional para los 
-	estudiantes de la PUCE</h3><br><br>
+	estudiantes de la PUCE</h3><hr><br>
 	<p align="justify"”>
 		I. INTRODUCCIÓN: La Facultad de Enfermería, conjuntamente con el departamento de Promoción de la salud de la 
 		Dirección General de Estudiantes y la Dirección General Administrativa se encuentran ejecutando un proyecto de 
@@ -72,7 +72,7 @@ if (Auth::user()->perfiles_usuario_id == "2" && !$user->acepto_disclaimer){
 		Yo autorizo el uso y la divulgación de mi información a las entidades antes mencionadas para los propósitos 
 		descritos anteriormente.<br><br>
 		Al confirmar la hoja de consentimiento adjunta, no se ha renunciado a ninguno de los derechos legales.<br>
-	</p”><br><br>
+	</p”><hr>
 	<div>
 	<input type="radio" name="disclaimer" value="SI"><b>ACEPTO</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<input type="radio" name="disclaimer" value="NO"><b>NO ACEPTO</b>

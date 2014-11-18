@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration {
 			$table->date('fecha_nacimiento')->nullable();
 			$table->string('genero',1)->nullable();
 			$table->string('personas_hogar')->nullable();
-			$table->string('tipo')->default('Activo');
+			$table->string('estado')->default('Activo');
 			$table->boolean('antropometria')->default(false);
 			$table->boolean('edito_perfil')->default(false);
 			$table->boolean('bioquimica')->default(false);

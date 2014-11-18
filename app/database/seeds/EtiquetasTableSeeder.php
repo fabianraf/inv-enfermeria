@@ -8,7 +8,7 @@ public function run()
         $etiquetas = ["Usa uniforme completo", "Usa mandil limpio", "Usa gorro", "Usa mascarilla", "Usa guantes",
                         "Usa desinfectante de manos", "Uñas cortas y limpias", "Uñas sin esmalte", "Sin maquillaje",
                         "Pelo recogido", "Sin joyas", "Sin colonia", "Afeitado y sin bigote", "Carné de Salud actualizado",
-                        "Certificado de Vacuna Hepatitis", "A y B", ];
+                        "Certificado de Vacuna Hepatitis A", "Certificado de Vacuna Hepatitis B", ];
         foreach($etiquetas as $key => $etiqueta){
             Etiqueta::create(array(
                 'titulo'  => $etiqueta,

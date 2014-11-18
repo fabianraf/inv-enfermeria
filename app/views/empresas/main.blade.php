@@ -3,7 +3,15 @@
 @section('content')
 
 <div class="col-lg-12">
-  <h2>Control de higiene del personal de bares y comedores de la PUCE</h2>
+  <?php if($codigo == Config::get('constants.COD_EMPRESA_ENCUESTA_CHP')){ ?>
+  	<h2>Control de higiene del personal de bares y comedores de la PUCE</h2>
+  <?php }elseif($codigo == Config::get('constants.COD_EMPRESA_ENCUESTA_CMAHC')){ ?>
+  	<h2>Control de manipulación de alimentos e higiene de los comedores de la PUCE</h2>
+  <?php } elseif($codigo == Config::get('constants.COD_EMPRESA_ENCUESTA_CMAHB')){ ?>
+  	<h2>Control de manipulación de alimentos e higiene de los bares de la PUCE</h2>
+  <?php } ?>
+
+
   <hr>
   </br>
 
