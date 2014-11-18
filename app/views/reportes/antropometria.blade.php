@@ -2,11 +2,7 @@
     
 @section('content')
 
-{{ Form::open(array('url' => 'antropometria')) }}
-
 {{ HTML::style('css/smoothness-jquery-ui.css') }}
-
-
 
 <div class="col-lg-12">
   <h2>Información antropométrica</h2>

@@ -476,7 +476,7 @@ class EncuestasController extends BaseController {
 	public function reporteConsumoAlimentos()
 	{
 		$users = User::has('encuestaAlimentosUniversidad')->orderBy('nombre')
-                ->orderBy('apellido')->paginate(20);
+                ->orderBy('apellido')->get();
 		return View::make('reportes.consumo_alimento', array('users' => $users));
 	}
 
@@ -490,7 +490,7 @@ class EncuestasController extends BaseController {
 	public function reporteConsumoAlimentosBares()
 	{
 		$users = User::has('encuestaAlimentosBares')->orderBy('nombre')
-                ->orderBy('apellido')->paginate(20);
+                ->orderBy('apellido')->get();
 		return View::make('reportes.consumo_alimento_bares', array('users' => $users));
 	}
 

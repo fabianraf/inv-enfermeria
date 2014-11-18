@@ -1582,16 +1582,13 @@ table th[class*="col-"] {
 .table-hover > tbody > tr.danger:hover > th {
   background-color: #ebcccc;
 }
-@media (max-width: 767px) {
-  .table-responsive {
-    width: 100%;
-    margin-bottom: 15px;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-    border: 1px solid #ddd;
-  }
+.table-responsive { 
+  width: 100%; 
+  overflow-y: auto !important; 
+  overflow-x: auto !important; 
+  -ms-overflow-style: -ms-autohiding-scrollbar; 
+  -webkit-overflow-scrolling: touch !important; 
+}
   .table-responsive > .table {
     margin-bottom: 0;
   }
