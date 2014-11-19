@@ -12,11 +12,14 @@ class Setting extends Eloquent {
 			return false;
 	}
 
-	public static function enviaMailConsumoAlimentos(){
-		Mail::send('emails.enviar_consumo_alimento', [], function($message) {
-		    $message->to('sivan.promocion@gmail.com', 'Sivan Promoción')
+	public static function enviaMailConsumoAlimentos($estudiantes_con_encuesta){
+		Mail::send('emails.enviar_consumo_alimento', array('estudiantes_con_encuesta' => $estudiantes_con_encuesta), 
+			function($message) {
+		    $message->to('sivan.promocion@gmail.com', 'Dr. Edgar Rojas')
 		    ->replyTo('sivan.promocion@gmail.com', 'Sivan Promoción')
 		    ->subject('Se han completado las encuestas de Consumo Habitual!');
 		});
 	}
+
+
 }

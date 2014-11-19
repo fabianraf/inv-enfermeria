@@ -3,7 +3,7 @@
 </p>
 
 <p>
-	Se han completado las 392 encuestas.
+	Se han completado {{$estudiantes_con_encuesta}} encuestas.
 </p>
 
 <p>Saludos,</p>

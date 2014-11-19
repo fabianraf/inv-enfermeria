@@ -13,8 +13,13 @@ class ConsumoHabitualDeAlimento extends Eloquent {
 	
 	public static function encuestasConsumoHabitualCompleto()
 	{
-		if(User::where("tiene_consumo_habitual", "=", 1)->get()->count() == 392){
-			if(Setting::consumoAlimentosListo()){
+		$estudiantes_con_encuestas = User::where("tiene_consumo_habitual", "=", 1)->get()->count();
+		if($estudiantes_con_encuestas == 5 || $estudiantes_con_encuestas == 20 || $estudiantes_con_encuestas == 100){
+			Setting::consumoAlimentosListo($estudiantes_con_encuestas);
+		}
+
+		if($estudiantes_con_encuestas == 392){
+			if(Setting::consumoAlimentosListo($estudiantes_con_encuestas)){
 				//No haga nada
 			}
 			else{
@@ -25,7 +30,7 @@ class ConsumoHabitualDeAlimento extends Eloquent {
 				$setting->save();
 			}
 			return true;
-		}elseif(User::where("tiene_consumo_habitual", "=", 1)->get()->count() > 392){
+		}elseif($estudiantes_con_encuestas > 392){
 			return true;
 		}else{
 			return false;

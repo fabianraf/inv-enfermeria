@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'sivan.promocion@gmail.com', 'name' => 'Sivan Promoción'),
+	'from' => array('address' => 'sivan.promocion@gmail.com', 'name' => 'Dr. Edgar Rojas'),
 
 	/*
 	|--------------------------------------------------------------------------
