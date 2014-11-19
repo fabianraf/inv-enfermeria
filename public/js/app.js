@@ -371,16 +371,17 @@ function revisar_si_esta_completo(){
 }
 
 // var autosave = window.setInterval("autosaveForm()", 15000); //Para probar, 15 segundos
-var	autosave = window.setInterval("autosaveForm()", 120000); //Dos minutos
+var	autosave = window.setInterval("autosaveForm()", 10000); //Dos minutos
 		
 function autosaveForm() {
+		if(("#encuestas-llenas").length < 1){
 		if($('#encuesta_consumo_alimentos_universidad').length > 0)
 			$('#encuesta_consumo_alimentos_universidad').submit();
 		
 		if($('#encuesta_consumo_alimentos_bares').length > 0)
 			$('#encuesta_consumo_alimentos_bares').submit();
 		
-  
+  		}
 }
 
 function anadir_alimento(tipo){

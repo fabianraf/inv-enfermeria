@@ -29,8 +29,8 @@
 		    </div>
 		@else
 			<div class="alert alert-success">
-		        <a href="#" class="close" data-dismiss="alert">&times;</a>
-						Gracias, has llenado todas las etiquetas.
+		        <a href="#" class="close" data-dismiss="alert" id="encuestas-llenas">&times;</a>
+						Gracias, has llenado todos los tipos de alimentos!
 		    </div>
 		@endif		
 		

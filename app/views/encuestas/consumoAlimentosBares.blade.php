@@ -28,7 +28,7 @@
 						Por favor completa todas las etiquetas rojas.
 		    </div>
 		@else
-			<div class="alert alert-warning">
+			<div class="alert alert-warning" id="encuestas-llenas">
 		        <a href="#" class="close" data-dismiss="alert">&times;</a>
 						Gracias, has llenado todos los tipos de alimentos!
 		    </div>
