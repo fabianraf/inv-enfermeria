@@ -371,7 +371,7 @@ function revisar_si_esta_completo(){
 }
 
 // var autosave = window.setInterval("autosaveForm()", 15000); //Para probar, 15 segundos
-var	autosave = window.setInterval("autosaveForm()", 10000); //Dos minutos
+var	autosave = window.setInterval("autosaveForm()", 120000); //Dos minutos
 		
 function autosaveForm() {
 		if(("#encuestas-llenas").length < 1){
