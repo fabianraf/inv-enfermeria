@@ -2,17 +2,19 @@
 	
 @section('content')
 
-{{ Form::open(array('url' => 'encuesta_consumo_alimentos', 'id' => 'encuesta_consumo_alimentos_universidad')) }}
+{{ Form::open(array('url' => 'encuesta_consumo_alimentos?estudiante_id=' . $user->id, 'id' => 'encuesta_consumo_alimentos_universidad')) }}
 <input type="hidden" id="tipo_de_alimentos" name="tipo_de_alimentos" value="{{TipoDeAlimento::get_total_alimentos()}}">
 <div class="col-lg-12">
 	<h2>Frecuencia de consumo de alimentos en hogar, Universidad y alrededores
 		<div class="pull-right">
-			@if($encuestas_completas == 0)
-				<input type="submit" value="GRABAR" class="btn btn-success">
+			@if($encuestas_completas == 0 ||  Auth::user()->esAdmin() == 1)
+				<input type="submit" value="GRABAR" class="btn btn-success" id="grabar-encuesta">
+				<img src="/images/ajax-loader.gif" class="ajax_loader"/>
 			@endif
 			<!-- <input type="button" value="LIMPIAR" class="btn btn-warning"> -->
 		</div>
 	</h2>
+	<input type="hidden" name="estudiante_id" value="{{$user->id}}" id="estudiante_id">
 	<hr>
 	<div class="col-lg-12">
 		@if(isset($message))
@@ -36,7 +38,7 @@
 		
 	  	@foreach($tipos_de_alimentos as $key => $tipo_de_alimento)
 			<?php 
-			if(Auth::user()->totalDeAlimentosPorTipoEncuestaAlimentosUniversidad($tipo_de_alimento) == "0")
+			if($user->totalDeAlimentosPorTipoEncuestaAlimentosUniversidad($tipo_de_alimento) == "0")
 				$button_class = "btn-danger btn-striped";
 			else
 				$button_class = "btn-success btn-striped";		
@@ -80,7 +82,7 @@
 		 		@foreach($tipo_de_alimento->alimentos as $alimento)
 				<?php  
 					$index++; 
-					$encuesta_alimentos_universidad = EncuestaAlimentosUniversidad::where("usuario_id", "=", Auth::user()->id)->where("alimento_id", "=", $alimento->id)->first();
+					$encuesta_alimentos_universidad = EncuestaAlimentosUniversidad::where("usuario_id", "=", $user->id)->where("alimento_id", "=", $alimento->id)->first();
 				?>
 		  	<tr>
 				<td>{{ $alimento->nombre }}</td>

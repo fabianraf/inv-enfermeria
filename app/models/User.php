@@ -218,6 +218,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return User::where("perfiles_usuario_id", "=" , 2)->where("tiene_consumo_habitual", "=", "t")->orderBy('apellido')->get();
 	}
 
+	public function esAdmin(){
+		if($this->perfilUsuario->nombre == 'Admin')
+			return true;
+		else
+			return false;
+	}
+
 	public function getEdad()
 	{
 		$birthday = new DateTime($this->fecha_nacimiento);

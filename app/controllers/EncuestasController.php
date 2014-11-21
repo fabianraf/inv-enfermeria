@@ -26,7 +26,11 @@ class EncuestasController extends BaseController {
 	public function consumoAlimentos()
 	{
 		$encuestas_completas = 0;
-		$user = Auth::user();
+		if(isset(Input::all()['estudiante_id']))
+			$estudiante_id = Input::all()['estudiante_id'];
+		else
+			$estudiante_id = null;
+		$user = EncuestasController::setUsuario($estudiante_id);
 		$bloquear_encuestas = "";
 		if($user->encuestaAlimentosUniversidad->count() == TipoDeAlimento::get_total_alimentos()){
 			$encuestas_completas = 1;
@@ -35,13 +39,25 @@ class EncuestasController extends BaseController {
 			$bloquear_encuestas = "disabled";
 		$tipos_de_alimentos = TipoDeAlimento::orderBy('nombre')->get();
 		return View::make('encuestas.consumoAlimentos', array('tipos_de_alimentos' => $tipos_de_alimentos,
-						'encuestas_completas' => $encuestas_completas, 'bloquear_encuestas' => $bloquear_encuestas));				
+						'encuestas_completas' => $encuestas_completas, 'bloquear_encuestas' => $bloquear_encuestas, 'user' => $user));				
+	}
+
+	public function setUsuario($estudiante_id){
+		if((isset($estudiante_id)) && Auth::user()->esAdmin())
+			$user = User::find(Input::all()['estudiante_id']);
+		else
+			$user = Auth::user();
+		return $user;
 	}
 
 	public function consumoAlimentosBares()
 	{
 		$encuestas_completas = 0;
-		$user = Auth::user();
+		if(isset(Input::all()['estudiante_id']))
+			$estudiante_id = Input::all()['estudiante_id'];
+		else
+			$estudiante_id = null;
+		$user = EncuestasController::setUsuario($estudiante_id);
 		$bloquear_encuestas = "";
 		if($user->encuestaAlimentosBares->count() == TipoDeAlimentoBares::get_total_alimentos_bares()){
 			$encuestas_completas = 1;
@@ -51,7 +67,8 @@ class EncuestasController extends BaseController {
 			$bloquear_encuestas = "disabled";
 		$tipos_de_alimentos_bares = TipoDeAlimentoBares::orderBy('nombre')->get();
         return View::make('encuestas.consumoAlimentosBares', array('tipos_de_alimentos_bares' => $tipos_de_alimentos_bares, 
-        					'encuestas_completas' => $encuestas_completas, 'bloquear_encuestas' => $bloquear_encuestas));		
+        					'encuestas_completas' => $encuestas_completas, 'bloquear_encuestas' => $bloquear_encuestas,
+        					'user' => $user));		
 	}
 
 	public function consumoHabitual()
@@ -164,21 +181,26 @@ class EncuestasController extends BaseController {
 	//Frecuencia de consumo de alimentos en la Universidad y alrededores
 	public function createConsumoAlimentos()
 	{
-		$user = Auth::user();
+
+		if(isset(Input::all()['estudiante_id']))
+			$estudiante_id = Input::all()['estudiante_id'];
+		else
+			$estudiante_id = null;
+		$user = EncuestasController::setUsuario($estudiante_id);
 		$encuestas_completas = 0;
 		$campos = Input::all();
 		$contador_encuesta = 0;
-		if($user->encuestaAlimentosUniversidad->count() != TipoDeAlimento::get_total_alimentos()){
+		if(($user->encuestaAlimentosUniversidad->count() != TipoDeAlimento::get_total_alimentos()) || Auth::user()->esAdmin()){
 			for($i = 1; $i <= TipoDeAlimento::get_total_alimentos(); $i++){
 				if(isset($campos['frecuencia'][$i])){
-					$encuesta = EncuestaAlimentosUniversidad::where("usuario_id", "=", Auth::user()->id)->where("alimento_id", "=", $campos['frecuencia']['alimento'][$i])->first();
+					$encuesta = EncuestaAlimentosUniversidad::where("usuario_id", "=", $user->id)->where("alimento_id", "=", $campos['frecuencia']['alimento'][$i])->first();
 					//Reviso si es que ya existe un dato guardado para el usuario para decidir si se va a editar o a crear nuevo.
 					if(!isset($encuesta)){
 						$encuesta = new EncuestaAlimentosUniversidad;	
 					}
 					$encuesta->alimento_id = $campos['frecuencia']['alimento'][$i];
 					$encuesta->frecuencia = $campos['frecuencia'][$i];
-					$encuesta->usuario_id = Auth::user()->id;
+					$encuesta->usuario_id = $user->id;
 					$encuesta->num_porciones = $campos['frecuencia']['porciones'][$i];
 					$encuesta->save();
 					$contador_encuesta++;
@@ -214,7 +236,8 @@ class EncuestasController extends BaseController {
 						return View::make('encuestas.consumoAlimentos', array('tipos_de_alimentos' => $tipos_de_alimentos, 
 																			'message' => $mensaje,
 																			'encuestas_completas' => $encuestas_completas,
-																			'bloquear_encuestas' => $bloquear_encuestas));
+																			'bloquear_encuestas' => $bloquear_encuestas,
+																			'user' => $user));
 				}
 	}
 
@@ -226,21 +249,25 @@ class EncuestasController extends BaseController {
 	//*****************************************************************
 	public function createConsumoAlimentosBares()
 	{
-		$user = Auth::user();
+		if(isset(Input::all()['estudiante_id']))
+			$estudiante_id = Input::all()['estudiante_id'];
+		else
+			$estudiante_id = null;
+		$user = EncuestasController::setUsuario($estudiante_id);
 		$encuestas_completas = 0;
 		$campos = Input::all();
 		$contador_encuesta = 0;
-		if($user->encuestaAlimentosBares->count() != TipoDeAlimentoBares::get_total_alimentos_bares()){
+		if(($user->encuestaAlimentosBares->count() != TipoDeAlimentoBares::get_total_alimentos_bares()) || Auth::user()->esAdmin()){
 			for($i = 1; $i <= TipoDeAlimentoBares::get_total_alimentos_bares(); $i++){
 				if(isset($campos['frecuencia'][$i])){
-					$encuesta = EncuestaAlimentosBares::where("usuario_id", "=", Auth::user()->id)->where("alimento_bares_id", "=", $campos['frecuencia']['alimento'][$i])->first();
+					$encuesta = EncuestaAlimentosBares::where("usuario_id", "=", $user->id)->where("alimento_bares_id", "=", $campos['frecuencia']['alimento'][$i])->first();
 					//Reviso si es que ya existe un dato guardado para el usuario para decidir si se va a editar o a crear nuevo.
 					if(!isset($encuesta)){
 						$encuesta = new EncuestaAlimentosBares;	
 					}
 					$encuesta->alimento_bares_id = $campos['frecuencia']['alimento'][$i];
 					$encuesta->frecuencia = $campos['frecuencia'][$i];
-					$encuesta->usuario_id = Auth::user()->id;
+					$encuesta->usuario_id = $user->id;
 					$encuesta->num_porciones = $campos['frecuencia']['porciones'][$i];
 					$encuesta->save();
 					$contador_encuesta++;
@@ -274,7 +301,8 @@ class EncuestasController extends BaseController {
 						return View::make('encuestas.consumoAlimentosBares', array('tipos_de_alimentos_bares' => $tipo_de_alimento_bares, 
 																					'message' => $mensaje, 
 																					'encuestas_completas' => $encuestas_completas,
-																					'bloquear_encuestas' => $bloquear_encuestas));
+																					'bloquear_encuestas' => $bloquear_encuestas,
+																					'user' => $user));
 		}
 	}
 

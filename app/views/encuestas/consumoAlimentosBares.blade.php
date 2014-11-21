@@ -2,17 +2,19 @@
 	
 @section('content')
 
-{{ Form::open(array('url' => 'encuesta_consumo_alimentos_bares', 'id' => 'encuesta_consumo_alimentos_bares')) }}
+{{ Form::open(array('url' => 'encuesta_consumo_alimentos_bares?estudiante_id=' . $user->id, 'id' => 'encuesta_consumo_alimentos_bares')) }}
 <input type="hidden" id="tipo_de_alimentos" name="tipo_de_alimentos" value="{{TipoDeAlimentoBares::get_total_alimentos_bares()}}">
 <div class="col-lg-12">
 	<h2>Frecuencia de consumo de alimentos en los bares de la Universidad 
 		<div class="pull-right">
-			@if($encuestas_completas == 0)
-				<input type="submit" value="GRABAR" class="btn btn-success">
+			@if($encuestas_completas == 0 ||  Auth::user()->esAdmin() == 1)
+				<input type="submit" value="GRABAR" class="btn btn-success" id="grabar-encuesta">
+				<img src="/images/ajax-loader.gif" class="ajax_loader"/>
 			@endif
 			<!-- <input type="button" value="LIMPIAR" class="btn btn-warning"> -->
 		</div>
 	</h2>
+	<input type="hidden" name="estudiante_id" value="{{$user->id}}" id="estudiante_id">
 	<hr>
 	<div class="col-lg-12">
 		@if(isset($message))
@@ -28,7 +30,7 @@
 						Por favor completa todas las etiquetas rojas.
 		    </div>
 		@else
-			<div class="alert alert-warning" id="encuestas-llenas">
+			<div class="alert alert-success" id="encuestas-llenas">
 		        <a href="#" class="close" data-dismiss="alert">&times;</a>
 						Gracias, has llenado todos los tipos de alimentos!
 		    </div>
@@ -36,7 +38,7 @@
 	
 	  	@foreach($tipos_de_alimentos_bares as $key => $tipo_de_alimento)
 			<?php 
-			if(Auth::user()->totalDeAlimentosPorTipoEncuestaAlimentosBaresDeLaUniversidad($tipo_de_alimento) == "0")
+			if($user->totalDeAlimentosPorTipoEncuestaAlimentosBaresDeLaUniversidad($tipo_de_alimento) == "0")
 				$button_class = "btn-danger btn-striped";
 			else
 				$button_class = "btn-success btn-striped";		
@@ -80,7 +82,7 @@
 		 		@foreach($tipo_de_alimento->alimentosBares as $alimento)
 		 		<?php  
 					$index++; 
-					$encuesta_alimentos_bares = EncuestaAlimentosBares::where("usuario_id", "=", Auth::user()->id)->where("alimento_bares_id", "=", $alimento->id)->first();
+					$encuesta_alimentos_bares = EncuestaAlimentosBares::where("usuario_id", "=", $user->id)->where("alimento_bares_id", "=", $alimento->id)->first();
 				?>			
 		  	<tr>
 				<td>{{ $alimento->nombre }}</td>

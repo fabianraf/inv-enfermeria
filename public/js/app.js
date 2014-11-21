@@ -106,9 +106,12 @@ $(document).ready(function() {
 	//Frecuencia de consumo de alimentos en la Universidad y alrededores
 	$('#encuesta_consumo_alimentos_universidad').submit(function(){
 		var encuesta_completa = false;
+		$('.ajax_loader').show();
 		$.ajax({
 		  type: 'POST',
 		  url: '/encuesta_consumo_alimentos',
+		  beforeSend: function () { $('.ajax_loader').show(); $("#grabar-encuesta").attr("disabled", true); },
+		  complete: function () { $('.ajax_loader').hide(); $("#grabar-encuesta").attr("disabled", false);},
 		  data: $('#encuesta_consumo_alimentos_universidad').serialize(),
 		  success: function(data){
 		  	if(data == "Encuesta completa"){
@@ -130,6 +133,8 @@ $(document).ready(function() {
 		$.ajax({
 		  type: 'POST',
 		  url: '/encuesta_consumo_alimentos_bares',
+		  beforeSend: function () { $('.ajax_loader').show(); $("#grabar-encuesta").attr("disabled", true);},
+		  complete: function () { $('.ajax_loader').hide(); $("#grabar-encuesta").attr("disabled", false);},
 		  data: $('#encuesta_consumo_alimentos_bares').serialize(),
 		  success: function(data){
 		  	if(data == "Encuesta completa"){

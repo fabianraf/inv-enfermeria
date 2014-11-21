@@ -6,6 +6,7 @@
   @if(Auth::user()->perfiles_usuario_id != "2")
   <div class="pull-right">
     <a href="/reportes/consumo_alimentos_bares"><input type="button" value="VOLVER" class="btn btn-primary"></button></a>
+    <a href="/encuesta_consumo_alimentos_bares?estudiante_id={{$estudiante->id}}"><input type="submit" value="EDITAR ENCUESTA" class="btn btn-success"></a>
     </div><br>
   @endif
   @if($estudiante->encuestaAlimentosBares)

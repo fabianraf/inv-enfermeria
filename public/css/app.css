@@ -176,3 +176,6 @@ select.small-select{
     background-color: #d3d3d3;
     box-shadow: 5px 5px 5px rgba(33,33,33,0.5);
 }
+.ajax_loader{
+    display: none;
+}
