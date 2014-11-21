@@ -37,7 +37,8 @@ class ReportesController extends BaseController {
 	{
 		$users = User::has('encuestaAlimentosUniversidad')->orderBy('nombre')
                 ->orderBy('apellido')->get();
-		return View::make('reportes.consumo_alimento', array('users' => $users));
+              return View::make('reportes.en_construccion');
+		// return View::make('reportes.consumo_alimento', array('users' => $users));
 	}
 
 
@@ -51,7 +52,8 @@ class ReportesController extends BaseController {
 	{
 		$users = User::has('encuestaAlimentosBares')->orderBy('nombre')
                 ->orderBy('apellido')->get();
-		return View::make('reportes.consumo_alimento_bares', array('users' => $users));
+              return View::make('reportes.en_construccion');
+		// return View::make('reportes.consumo_alimento_bares', array('users' => $users));
 	}
 
 
