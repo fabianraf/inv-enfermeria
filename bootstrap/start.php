@@ -27,7 +27,8 @@ $app = new Illuminate\Foundation\Application;
 $env = $app->detectEnvironment(array(
 
 	'local' => array('Nets-MacBook-Pro.local'), //Aqui se pone el nombre de la maquina
-	'production' => array('li798-95') //Linode server Sivan
+	'production' => array('li798-95'), //Linode server Sivan
+	'preview' => array('li468-170') //Linode server Fabian
 ));
 
 /*
