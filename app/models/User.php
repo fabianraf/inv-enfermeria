@@ -237,6 +237,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     	return $this->hasOne('ResultadoEncuestasAlimentosUniversidad', 'usuario_id');
 	}
 
+	public function resultadoEncuestasAlimentosBares()
+	{
+    	return $this->hasOne('ResultadoEncuestasAlimentosBares', 'usuario_id');
+	}
+
+	/*
 	public function getTotalCalorias($tipo_encuesta)
 	//1 para hogares y Universidad
 	//2 para bares
@@ -343,7 +349,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 					$frecuencia = ($encuesta->frecuencia > 0 ? $encuesta->frecuencia : 0);
 					$promedioPorcion = ($frecuencia * $encuesta->num_porciones)/7;	
 					$pesoPorcion = ($promedioPorcion * $encuesta->alimento->gramos);
-					$totalHidratosDeC += ($pesoPorcion * $encuesta->alimento->hidratos_de_c)/100;												
+					$totalHidratosDeC += ($pesoPorcion * $encuesta->alimento->hidratos_de_c)/100;
 				}
 				return $totalHidratosDeC;
 			}
@@ -374,7 +380,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 					$frecuencia = ($encuesta->frecuencia > 0 ? $encuesta->frecuencia : 0);
 					$promedioPorcion = ($frecuencia * $encuesta->num_porciones)/7;	
 					$pesoPorcion = ($promedioPorcion * $encuesta->alimento->gramos);
-					$totalFibraDietaria += ($pesoPorcion * $encuesta->alimento->fibra_dietaria)/100;												
+					$totalFibraDietaria += ($pesoPorcion * $encuesta->alimento->fibra_dietaria)/100;
 				}
 				return $totalFibraDietaria;
 			}
@@ -1415,6 +1421,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 				return $totalFibraCruda;
 			}
 		}		
-	}
+	}*/
 
 }

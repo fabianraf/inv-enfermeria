@@ -102,7 +102,8 @@ Route::get('reportes/consumo_alimentos', "ReportesController@reporteConsumoAlime
 Route::get('reportes/consumo_alimentos/{id}', "ReportesController@reporteConsumoAlimentosEstudiante");
 Route::get('reportes/consumo_alimentos_bares', "ReportesController@reporteConsumoAlimentosBares");
 Route::get('reportes/consumo_alimentos_bares/{id}', "ReportesController@reporteConsumoAlimentosBaresEstudiante");
-Route::get('reportes/calcular_datos/{id}', "ReportesController@calcularDatosEncuestaAlimentosUniversidadEstudiante");
+Route::get('reportes/calcular_datos_universidad/{id}', "ReportesController@calcularDatosEncuestaAlimentosUniversidadEstudiante");
+Route::get('reportes/calcular_datos_bares/{id}', "ReportesController@calcularDatosEncuestaAlimentosBaresEstudiante");
 /**/
 
 Route::get('/obtener_alimentos', "AlimentosController@obtener_alimentos");

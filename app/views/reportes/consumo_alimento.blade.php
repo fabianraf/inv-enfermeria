@@ -55,7 +55,7 @@
         @foreach($users as $estudiante)        
         <tr>
             <?php echo "<td style='text-align:left'><a href='/reportes/consumo_alimentos/".$estudiante->id."'><span class='glyphicon glyphicon-search'></span></td>";?>      
-            <?php echo "<td style='text-align:left'><a href='/reportes/calcular_datos/".$estudiante->id."'><span class='glyphicon glyphicon-refresh'></span></td>";?>      
+            <?php echo "<td style='text-align:left'><a href='/reportes/calcular_datos_universidad/".$estudiante->id."'><span class='glyphicon glyphicon-refresh'></span></td>";?>      
             <td style="text-align:left">{{ $estudiante->nombre.' '.$estudiante->apellido }}</td>
             <td style="text-align:left">{{ $estudiante->getEdad()." años" }}</td>
             <td style="text-align:left">{{ $estudiante->genero }}</td>
@@ -99,44 +99,44 @@
                   <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosUniversidad->carbohidratos_disponibles, 2) }}</td>
                   <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosUniversidad->fibra_cruda, 2) }}</td>
             @else
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>
-                  <td style="text-align:left">0</td>                 
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>                 
             @endif
       </tr>     
         @endforeach
