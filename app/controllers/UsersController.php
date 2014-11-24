@@ -167,4 +167,11 @@ class UsersController extends BaseController {
 			return Redirect::to('/login')->with('message', 'Your are now logged out!');
 		}		
 	}
+
+	public function delete($id)
+	{
+		$usuario = User::find($id);
+		$usuario->delete();
+        return Redirect::back();
+	}
 }

@@ -47,6 +47,7 @@ Route::get('/profile', 'UsersController@profile');
 Route::get('/edit', 'UsersController@editProfile');
 Route::post('edit', 'UsersController@edit');
 Route::post('disclaimer', 'UsersController@aceptoDisclaimer');
+Route::get('usuarios/delete/{id}','UsersController@delete');
 
 
 Route::get('encuesta_consumo_alimentos_bares', "EncuestasController@consumoAlimentosBares");
@@ -101,6 +102,7 @@ Route::get('reportes/consumo_alimentos', "ReportesController@reporteConsumoAlime
 Route::get('reportes/consumo_alimentos/{id}', "ReportesController@reporteConsumoAlimentosEstudiante");
 Route::get('reportes/consumo_alimentos_bares', "ReportesController@reporteConsumoAlimentosBares");
 Route::get('reportes/consumo_alimentos_bares/{id}', "ReportesController@reporteConsumoAlimentosBaresEstudiante");
+Route::get('reportes/calcular_datos/{id}', "ReportesController@calcularDatosEncuestaAlimentosUniversidadEstudiante");
 /**/
 
 Route::get('/obtener_alimentos', "AlimentosController@obtener_alimentos");

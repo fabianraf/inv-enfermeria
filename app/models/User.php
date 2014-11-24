@@ -232,6 +232,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return $interval->y;
 	}
 
+	public function resultadoEncuestasAlimentosUniversidad()
+	{
+    	return $this->hasOne('ResultadoEncuestasAlimentosUniversidad', 'usuario_id');
+	}
+
 	public function getTotalCalorias($tipo_encuesta)
 	//1 para hogares y Universidad
 	//2 para bares
@@ -239,7 +244,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		$totalCalorias = 0;
 		if($tipo_encuesta==1){
 			if($this::has('encuestaAlimentosUniversidad')){
-				$encuestaAlimentosUniversidad = EncuestaAlimentosUniversidad::where("usuario_id", "=", $this->id)->get();			
+				$encuestaAlimentosUniversidad = EncuestaAlimentosUniversidad::where("usuario_id", "=", $this->id)->get();
 				foreach($encuestaAlimentosUniversidad as $encuesta)
 				{
 					$frecuencia = ($encuesta->frecuencia > 0 ? $encuesta->frecuencia : 0);
