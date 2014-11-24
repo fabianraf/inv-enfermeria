@@ -52,7 +52,7 @@ class UsersController extends BaseController {
 				$user = User::create($input);
 				$user->nombre = strtoupper($input['nombre']);
 				$user->apellido = strtoupper($input['apellido']);
-				//$user->cedula = $input['cedula'];
+				$user->cedula = $input['cedula'];
 				//$user->tipo = $input['tipo'];
 				$user->genero = $input['genero'];
 				$user->perfiles_usuario_id = $input['perfiles_usuario_id'];

@@ -57,16 +57,14 @@
 			<div class="col-sm-6">
 			{{ Form::text('apellido','', array('class' => 'form-control' )); }}
 			</div>
-		</div><br>
-		<!--
+		</div><br>		
 		<div class="form-group">
 			<div class="col-sm-10">
 			{{ Form::label('cedula', 'Cédula',array('class' => 'col-sm-2 control-label')); }}	
 			<div class="col-sm-6">
 			{{ Form::text('cedula','', array('class' => 'form-control' )); }}
 			</div>
-		</div><br>
-	-->
+		</div><br>	
 		<div class="form-group">
 			<div class="col-sm-10">
 			{{ Form::label('genero', 'Género',array('class' => 'col-sm-2 control-label')); }}	
