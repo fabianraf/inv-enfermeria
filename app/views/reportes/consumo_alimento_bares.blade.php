@@ -12,6 +12,7 @@
             <td style="text-align:left"><b>Nombres</td>
             <td style="text-align:left"><b>Edad</td>
             <td style="text-align:left"><b>Género</td>
+            <!--
             <td style="text-align:left"><b>Humedad</td>
             <td style="text-align:left"><b>Calorías</td>
             <td style="text-align:left"><b>Proteínas</td>
@@ -49,7 +50,7 @@
             <td style="text-align:left"><b>Acido fólico</td>
             <td style="text-align:left"><b>Fracción comestible</td>
             <td style="text-align:left"><b>Carbohidratos disponibles</td>
-            <td style="text-align:left"><b>Fibra cruda</td>               
+            <td style="text-align:left"><b>Fibra cruda</td>    -->           
       </tr>         
         @foreach($users as $estudiante)        
         <tr> 
@@ -57,6 +58,7 @@
             <td style="text-align:left">{{ $estudiante->nombre.' '.$estudiante->apellido }}</td>
             <td style="text-align:left">{{ $estudiante->getEdad()." años" }}</td>
             <td style="text-align:left">{{ $estudiante->genero }}</td>
+            <!--
             <td style="text-align:left">{{ round($estudiante->getTotalHumedad(2), 2) }}</td>
             <td style="text-align:left">{{ round($estudiante->getTotalCalorias(2), 2) }}</td>
             <td style="text-align:left">{{ round($estudiante->getTotalProteinas(2), 2) }}</td>
@@ -94,7 +96,7 @@
             <td style="text-align:left">{{ round($estudiante->getTotalAcidoFolico(2), 2) }}</td>
             <td style="text-align:left">{{ round($estudiante->getTotalFraccionComestible(2), 2) }}</td>
             <td style="text-align:left">{{ round($estudiante->getTotalCarbohidratosDisponibles(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalFibraCruda(2), 2) }}</td>        
+            <td style="text-align:left">{{ round($estudiante->getTotalFibraCruda(2), 2) }}</td>-->        
       </tr>     
         @endforeach
     </table>
