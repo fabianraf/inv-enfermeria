@@ -71,4 +71,10 @@ class EmpresasController extends BaseController {
 			    	return Redirect::to('/encuesta_manipulacion_bares/nueva_empresa')->with('mensaje', 'Han ocurrido los siguientes errores:')->withErrors($validator)->withInput();
 			}
 		}
+
+	public function editarEmpresa($id)
+		{
+		$empresa = Empresa::find($id);
+		return View::make("empresas.edit_chp", array('empresa' => $empresa));
+		}
 }

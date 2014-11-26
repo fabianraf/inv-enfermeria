@@ -21,17 +21,37 @@
 			<tr>				
 				<td></td>
 				<td>Empresas</td>
-				<?php if($codigo == Config::get('constants.COD_EMPRESA_ENCUESTA_CHP')){
-					echo "<td>Ver Empleados</td>"; } ?>
+				<td class="acciones">Acciones</td>
 			</tr>		
 		  		<?php  $index = 1; ?>
 		 	@foreach($empresas as $empresa)				
+		 	<?php 
+		 		$link = "";
+		 		switch ($empresa->codigo_empresa) {
+		 			case  Config::get('constants.COD_EMPRESA_ENCUESTA_CHP'):
+		 				$link = "/encuesta_control_higiene_personal/empresas/$empresa->id";
+		 				break;
+		 			case  Config::get('constants.COD_EMPRESA_ENCUESTA_CMAHC'):
+		 				$link = "/encuesta_manipulacion_comedores/empresas/$empresa->id";
+		 				break;
+		 			case  Config::get('constants.COD_EMPRESA_ENCUESTA_CMAHB'):
+		 				$link = "/encuestas_manipulacion_bares/empresas/$empresa->id";
+		 				break;
+		 			default:
+		 				//Default
+		 				break;
+		 		}
+		 	?>
 		  	<tr>
 				<td>{{ $index }}</td>
-				<td> {{ HTML::link( 'encuesta_control_higiene_personal/empresas/'.$empresa->id , $empresa->nombre ) }} </td>			
-				<?php if($codigo == Config::get('constants.COD_EMPRESA_ENCUESTA_CHP')){ 
-					echo "<td><a href='/encuesta_control_higiene_personal/ver_empleados/".$empresa->id."'><span class='glyphicon glyphicon-search'></span></td>";
-				} ?>
+				<td> {{ HTML::link( $link , $empresa->nombre ) }} </td>			
+				<td class="acciones">
+					<a title="Editar Empresa" href="/{{$link.'/editar'}}"><span aria-hidden="true" class="glyphicon glyphicon-edit"></span></a>
+					<a title="Eliminar Empresa" href="/{{$link.'/eliminar'}}"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></a>
+					<?php if($codigo == Config::get('constants.COD_EMPRESA_ENCUESTA_CHP')){ 
+						echo "<a title='Ver Empleados' href='/encuesta_control_higiene_personal/ver_empleados/".$empresa->id."'><span class='glyphicon glyphicon-search'></span>";
+					} ?>
+				</td>
 			</tr>
 			<?php  
 					$index++; 					
