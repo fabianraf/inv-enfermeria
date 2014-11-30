@@ -73,10 +73,35 @@ class EncuestasController extends BaseController {
 
 	public function consumoHabitual()
 	{
-		// $a = ConsumoHabitualDeAlimento::encuestasConsumoHabitualCompleto();
-		// return Setting::enviaMailConsumoAlimentos();
-		// return $a ? "si" : "no";
-		return View::make('encuestas.consumoHabitual');
+		if(isset(Input::all()['estudiante_id']))
+			$estudiante_id = Input::all()['estudiante_id'];
+		else
+			$estudiante_id = null;
+		$user = EncuestasController::setUsuario($estudiante_id);
+		if($user->tiene_consumo_habitual == true){
+			$desayuno = ConsumoHabitualDeAlimento::where("usuario_id", "=", $user->id)
+													->where("tiempo_de_comida", "=", "desayuno")->take(1)->get();
+			$media_manana = ConsumoHabitualDeAlimento::where("usuario_id", "=", $user->id)
+													->where("tiempo_de_comida", "=", "media_manana")->take(1)->get();
+			$almuerzo = ConsumoHabitualDeAlimento::where("usuario_id", "=", $user->id)
+													->where("tiempo_de_comida", "=", "almuerzo")->take(1)->get();
+			$media_tarde = ConsumoHabitualDeAlimento::where("usuario_id", "=", $user->id)
+													->where("tiempo_de_comida", "=", "media_tarde")->take(1)->get();
+ 			$merienda = ConsumoHabitualDeAlimento::where("usuario_id", "=", $user->id)
+													->where("tiempo_de_comida", "=", "merienda")->take(1)->get();
+			// if($desayuno->isEmpty()){
+			// 	return "asdasd";
+			// }else
+			// 	return $desayuno;
+			return View::make('encuestas.editarConsumoHabitual', array('usuario' => $user,
+																		'desayuno' => $desayuno,
+																		'media_manana' => $media_manana,
+																		'almuerzo' => $almuerzo,
+																		'media_tarde' => $media_tarde,
+																		'merienda' => $merienda));
+		}else{
+			return View::make('encuestas.consumoHabitual');
+		}
 	}
 
 	public function manipulacionComedores()

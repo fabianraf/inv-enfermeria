@@ -13,7 +13,7 @@ class ConsumoHabitualController extends BaseController {
 	 */
 	public function index()
 	{
-		$usuarios_con_encuesta = User::usuariosConConsumohabitual();
+		$usuarios_con_encuesta = User::usuariosConConsumohabitual()->paginate(15);
 		return View::make('consumo_habitual.index', array('usuarios_con_encuesta' => $usuarios_con_encuesta));
 	}
 

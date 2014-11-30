@@ -11,22 +11,27 @@
 	  	
 		<table class="table table-no-border col-lg-9">
 			<tr>				
-				<td></td>
-				<td>Encuestas</td>
+				<td>#</td>
+				<td>Nombre Estudiante</td>
+				<td>Acciones</td>
 				
 			</tr>		
-		  		<?php  $index = 1; ?>
+		  	<?php  $index = 1; ?>
 		 	@foreach($usuarios_con_encuesta as $usuario)				
-		  	<tr>
-				<td>{{ $index }}</td>
-				<td> {{ HTML::link( 'encuesta_consumo_alimento/'.$usuario->id , $usuario->nombre . ' ' . $usuario->apellido ) }} </td>			
-				
-			</tr>
+			  	<tr>
+					<td>{{ $index }}</td>
+					<td> {{ HTML::link( 'encuesta_consumo_alimento/'.$usuario->id , $usuario->nombre . ' ' . $usuario->apellido ) }} </td>			
+					<td class="acciones">
+						<a href="/encuesta_consumo_habitual?estudiante_id={{$usuario->id}}" title="Editar encuesta"><span aria-hidden="true" class="glyphicon glyphicon-edit"></span></a>
+						<a href="" title="Eliminar encuesta"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></a>
+					</td>
+				</tr>
 			<?php  
 					$index++; 					
 				?>
   			@endforeach  			
 		</table>
+		<?php echo $usuarios_con_encuesta->links(); ?>
 	</div>
 </div>
 
