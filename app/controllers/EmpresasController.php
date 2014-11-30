@@ -7,18 +7,18 @@ class EmpresasController extends BaseController {
     }
 
 	public function indexEmpresasHigienePersonal(){ 
-		$empresas = Empresa::where('codigo_empresa','=','1')->get();        
+		$empresas = Empresa::where('codigo_empresa','=','1')->orderBy("created_at")->get();        
         return View::make('empresas.main', array('empresas' => $empresas, 'codigo' => Config::get('constants.COD_EMPRESA_ENCUESTA_CHP')));
 	}
 
 	
 	public function indexEncuestasManipulacionComedores(){ 
-		$empresas = Empresa::where('codigo_empresa','=','2')->get();        
+		$empresas = Empresa::where('codigo_empresa','=','2')->orderBy("created_at")->get();        
         return View::make('empresas.main', array('empresas' => $empresas, 'codigo' => Config::get('constants.COD_EMPRESA_ENCUESTA_CMAHC')));
 	}	
 
 	public function indexEncuestasManipulacionBares(){ 
-		$empresas = Empresa::where('codigo_empresa','=','3')->get();        
+		$empresas = Empresa::where('codigo_empresa','=','3')->orderBy("created_at")->get();        
         return View::make('empresas.main', array('empresas' => $empresas, 'codigo' => Config::get('constants.COD_EMPRESA_ENCUESTA_CMAHB')));
 	}
 
@@ -35,7 +35,7 @@ class EmpresasController extends BaseController {
 	public function informacionEmpleados($id){		
 		$empresa = Empresa::find($id);		
 
-		return View::make('empresas.view_empleados', array('empresa' => $empresa, 'empleados' => $empresa->empleados()->paginate(10)));
+		return View::make('empresas.view_empleados', array('empresa' => $empresa, 'empleados' => $empresa->empleados()->orderBy("created_at", "ASC")->paginate(10)));
 	}
 
 	public function nuevaEmpresaCMAHC()
