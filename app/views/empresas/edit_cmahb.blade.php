@@ -2,21 +2,27 @@
 	
 @section('content')
 
-{{ Form::open(array('url' => '/encuesta_control_higiene_personal/empresas/'.$empresa->id.'/guardar_empresa')) }}
-
+{{ Form::open(array('url' => '/encuestas_manipulacion_bares/empresas/'.$empresa->id.'/guardar_empresa')) }}
 <div class="col-lg-12">
-	<h2>Control de higiene del personal de bares y comedores de la PUCE
+	<h2>Control de manipulación de alimentos e higiene de los bares de la PUCE
 		<div class="pull-right">
-			<a href="/encuesta_control_higiene_personal/empresas"><input type="button" value="VOLVER A EMPRESAS" class="btn btn-warning"></a>
-			<a href="/encuesta_control_higiene_personal/nueva_encuesta?empresa_id={{$empresa->id}}"><input type="button" value="AÑADIR NUEVO EMPLEADO" class="btn btn-primary"></a>
-			<input type="submit" value="GRABAR" class="btn btn-success">
+			<a href="/encuestas_manipulacion_bares/empresas"><input type="button" value="VOLVER A EMPRESAS" class="btn btn-warning"></a>
+			<a href="/encuesta_manipulacion_bares/empresas/{{$empresa->id}}/editar_encuesta"><input type="button" value="EDITAR ENCUESTA" class="btn btn-primary"></a>
+			<input type="submit" value="GRABAR" class="btn btn-success">			
 		</div>
 	</h2>
-
 	@if (Session::get('mensaje'))
 		@if (Session::get('mensaje') == "¡Empresa actualizada exitosamente!")
 			<div class='alert alert-warning'><a href='#' class='close' data-dismiss='alert'>&times;</a>{{ Session::get('mensaje') }}</a></div>
 		@endif
+	@endif
+	@if(isset($message))
+		<div class="alert alert-success">
+	        <a href="#" class="close" data-dismiss="alert">&times;</a>
+					{{$message}}
+	    </div>
+	@endif
+	@if (Session::get('mensaje'))
 		@foreach($errors->all() as $error)
 			<div class='alert alert-warning'><a href='#' class='close' data-dismiss='alert'>&times;</a>{{ $error }}</a></div>
 		@endforeach
@@ -37,9 +43,21 @@
 	<div class="row top10 form-group">
 		{{ Form::label('propietario', 'Nombre del Propietario',array('class' => 'col-sm-2 control-label')); }}
 		<div class="col-sm-6">
-			{{ Form::text('propietario',$empresa->propietario, array('class' => 'form-control', 'placeholder' => 'Nombre del propietario' )); }}
+			{{ Form::text('propietario', $empresa->propietario, array('class' => 'form-control', 'placeholder' => 'Nombre del propietario' )); }}
 		</div>
 	</div>
+
+	<div class="row top10 form-group">
+		{{ Form::label('relacion_puce', 'Relacion PUCE',array('class' => 'col-sm-2 control-label')); }}
+		<div class="col-sm-6">
+			<select name="relacion_puce">
+					<option>--Seleccione--</option>
+					<option <?php if($empresa->relacion_puce == 1) echo "selected";?> value="1">Externo</option>
+					<option <?php if($empresa->relacion_puce == 2) echo "selected";?> value="2">Interno</option>
+				</select>
+		</div>
+	</div>
+
 	<div class="row top10 form-group">
 		{{ Form::label('fecha', 'Fecha',array('class' => 'col-sm-2 control-label')); }}
 		<div class="col-sm-6">
@@ -56,15 +74,21 @@
 		<div class="col-sm-6">
 			{{ Form::textarea('observaciones', $empresa->observaciones, array('class' => 'form-control', 'placeholder' => 'Observaciones' )); }}
 		</div>
-	</div><br><br>
-	<div class="col-lg-12">
-	  
 	</div>
+
+	<div class="row top10 form-group">
+		{{ Form::label('recomendaciones', 'Recomendaciones',array('class' => 'col-sm-2 control-label')); }}
+		<div class="col-sm-6">
+			{{ Form::textarea('recomendaciones',$empresa->recomendaciones, array('class' => 'form-control', 'placeholder' => 'Recomendaciones' )); }}
+		</div>
+	</div>
+	
 </div>
 	</div>
 	<div class="col-lg-12">
 	</div>
 	</br></br>
+	{{ Form::hidden('codigo_empresa', Config::get('constants.COD_EMPRESA_ENCUESTA_CMAHB')) }}
 </div>
 {{ Form::close() }}
 @stop

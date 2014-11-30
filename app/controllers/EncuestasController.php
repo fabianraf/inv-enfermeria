@@ -490,18 +490,22 @@ class EncuestasController extends BaseController {
 	//Control de manipulación de alimentos e higiene de los comedores de la PUCE 
 	//Manipulacion de alimentos
 	public function manipulacion_alimentos($manipulacion_alimentos_campos, $empresa, $index){
-		if($empresa->encuestaManipulacionAlimentos()->get()->count() == 0){
-			foreach(Etiqueta::getEtiquetasPorPosicion($index)->get() as $etiqueta){
-				$emc_alimentos = new EncuestaManipulacionAlimento;
-				$emc_alimentos->etiqueta_id = $etiqueta->id;
-				$emc_alimentos->empresa_id = $empresa->id;
-				if(isset($manipulacion_alimentos_campos['no_hay_termometro'][$etiqueta->id]) && ($manipulacion_alimentos_campos['no_hay_termometro'][$etiqueta->id] == "1")){
-					$emc_alimentos->no_hay_termometro = $manipulacion_alimentos_campos['no_hay_termometro'][$etiqueta->id];
-				}else{
-					$emc_alimentos->cumple = $manipulacion_alimentos_campos['cumple'][$etiqueta->id];	
-				}
-				$emc_alimentos->save();
+		foreach(Etiqueta::getEtiquetasPorPosicion($index)->get() as $etiqueta){
+			$emc_alimentos = EncuestaManipulacionAlimento::where("empresa_id", "=", $empresa->id)
+															->where("etiqueta_id", "=", $etiqueta->id)->get()->first();
+			if(!isset($emc_alimentos)){
+				$emc_alimentos = new EncuestaManipulacionAlimento;	
 			}
+			$emc_alimentos->etiqueta_id = $etiqueta->id;
+			$emc_alimentos->empresa_id = $empresa->id;
+			if(isset($manipulacion_alimentos_campos['no_hay_termometro'][$etiqueta->id]) && ($manipulacion_alimentos_campos['no_hay_termometro'][$etiqueta->id] == "1")){
+				$emc_alimentos->no_hay_termometro = $manipulacion_alimentos_campos['no_hay_termometro'][$etiqueta->id];
+				$emc_alimentos->cumple = null;
+			}else{
+				$emc_alimentos->cumple = $manipulacion_alimentos_campos['cumple'][$etiqueta->id];	
+				$emc_alimentos->no_hay_termometro = null;
+			}
+			$emc_alimentos->save();
 		}
 	}
 
@@ -509,44 +513,57 @@ class EncuestasController extends BaseController {
 	//Control de manipulación de alimentos e higiene de los comedores de la PUCE 
 	//Productos Alimenticios
 	public function productos_alimenticios($productos_alimenticios_campos, $empresa, $index){
-
-		if($empresa->encuestaManipulacionProductosAlimenticios()->get()->count() == 0){
-			foreach(Etiqueta::getEtiquetasPorPosicion($index)->get() as $etiqueta){
-				$emc_producto_alimenticio = new EncuestaManipulacionProductosAlimenticio;
-				$emc_producto_alimenticio->etiqueta_id = $etiqueta->id;
-				$emc_producto_alimenticio->empresa_id = $empresa->id;
-				if(isset($productos_alimenticios_campos['no_aplica'][$etiqueta->id]) && ($productos_alimenticios_campos['no_aplica'][$etiqueta->id] == "1")){
-					$emc_producto_alimenticio->no_aplica = 1;
-				}else{
-					$emc_producto_alimenticio->lugar_adquirido = $productos_alimenticios_campos['lugar_adquirido'][$etiqueta->id];	
-					$emc_producto_alimenticio->registro_sanitario = $productos_alimenticios_campos['registro_sanitario'][$etiqueta->id];	
-					if($productos_alimenticios_campos['fecha_de_caducidad'][$etiqueta->id] != "")
-						$emc_producto_alimenticio->fecha_de_caducidad = $productos_alimenticios_campos['fecha_de_caducidad'][$etiqueta->id];	
-					$emc_producto_alimenticio->sello_de_control = $productos_alimenticios_campos['sello_de_control'][$etiqueta->id];	
-				}
-				$emc_producto_alimenticio->save();
+		foreach(Etiqueta::getEtiquetasPorPosicion($index)->get() as $etiqueta){
+			$emc_producto_alimenticio = EncuestaManipulacionProductosAlimenticio::where("empresa_id", "=", $empresa->id)
+														->where("etiqueta_id", "=", $etiqueta->id)->get()->first();
+			if(!isset($emc_producto_alimenticio)){
+				$emc_producto_alimenticio = new EncuestaManipulacionProductosAlimenticio;	
 			}
-		}
+			$emc_producto_alimenticio->etiqueta_id = $etiqueta->id;
+			$emc_producto_alimenticio->empresa_id = $empresa->id;
+			if(isset($productos_alimenticios_campos['no_aplica'][$etiqueta->id]) && ($productos_alimenticios_campos['no_aplica'][$etiqueta->id] == "1")){
+				$emc_producto_alimenticio->no_aplica = 1;
+				$emc_producto_alimenticio->lugar_adquirido = null;
+				$emc_producto_alimenticio->registro_sanitario = null;
+				$emc_producto_alimenticio->fecha_de_caducidad = null;
+				$emc_producto_alimenticio->sello_de_control = null;
+			}else{
+				$emc_producto_alimenticio->no_aplica = null;
+				$emc_producto_alimenticio->lugar_adquirido = $productos_alimenticios_campos['lugar_adquirido'][$etiqueta->id];	
+				$emc_producto_alimenticio->registro_sanitario = $productos_alimenticios_campos['registro_sanitario'][$etiqueta->id];	
+				if($productos_alimenticios_campos['fecha_de_caducidad'][$etiqueta->id] != "")
+					$emc_producto_alimenticio->fecha_de_caducidad = $productos_alimenticios_campos['fecha_de_caducidad'][$etiqueta->id];	
+				$emc_producto_alimenticio->sello_de_control = $productos_alimenticios_campos['sello_de_control'][$etiqueta->id];	
+			}
+			$emc_producto_alimenticio->save();
+		}	
 	}
 
 	//Control de manipulación de alimentos e higiene de los comedores de la PUCE 
 	//Control de Plagas
 	public function control_de_plagas($control_de_plagas_campos, $empresa, $index){
-		if($empresa->encuestaManipulacionControlDePlagas()->get()->count() == 0){
-			foreach(Etiqueta::getEtiquetasPorPosicion($index)->get() as $etiqueta){
-				$emc_control_de_plagas = new EncuestaManipulacionControlPlaga;
-				$emc_control_de_plagas->etiqueta_id = $etiqueta->id;
-				$emc_control_de_plagas->empresa_id = $empresa->id;
-				if(isset($control_de_plagas_campos['no_aplica'][$etiqueta->id]) && ($control_de_plagas_campos['no_aplica'][$etiqueta->id] == "1")){
-					$emc_control_de_plagas->no_aplica = $control_de_plagas_campos['no_aplica'][$etiqueta->id];
-				}else{
-					$emc_control_de_plagas->frecuencia = $control_de_plagas_campos['frecuencia'][$etiqueta->id];	
-					$emc_control_de_plagas->fecha_ultima_aplicacion = $control_de_plagas_campos['fecha_ultima_aplicacion'][$etiqueta->id];	
-					$emc_control_de_plagas->fecha_a_aplicarse = $control_de_plagas_campos['fecha_a_aplicarse'][$etiqueta->id];	
-					$emc_control_de_plagas->cumple = $control_de_plagas_campos['cumple'][$etiqueta->id];	
-				}
-				$emc_control_de_plagas->save();
+		foreach(Etiqueta::getEtiquetasPorPosicion($index)->get() as $etiqueta){
+			$emc_control_de_plagas = EncuestaManipulacionControlPlaga::where("empresa_id", "=", $empresa->id)
+														->where("etiqueta_id", "=", $etiqueta->id)->get()->first();
+			if(!isset($emc_control_de_plagas)){
+				$emc_control_de_plagas = new EncuestaManipulacionControlPlaga;	
 			}
+			$emc_control_de_plagas->etiqueta_id = $etiqueta->id;
+			$emc_control_de_plagas->empresa_id = $empresa->id;
+			if(isset($control_de_plagas_campos['no_aplica'][$etiqueta->id]) && ($control_de_plagas_campos['no_aplica'][$etiqueta->id] == "1")){
+				$emc_control_de_plagas->no_aplica = $control_de_plagas_campos['no_aplica'][$etiqueta->id];
+				$emc_control_de_plagas->frecuencia = null;
+				$emc_control_de_plagas->fecha_ultima_aplicacion = null;
+				$emc_control_de_plagas->fecha_a_aplicarse = null;
+				$emc_control_de_plagas->cumple = null;
+			}else{
+				$emc_control_de_plagas->no_aplica = null;
+				$emc_control_de_plagas->frecuencia = $control_de_plagas_campos['frecuencia'][$etiqueta->id];	
+				$emc_control_de_plagas->fecha_ultima_aplicacion = $control_de_plagas_campos['fecha_ultima_aplicacion'][$etiqueta->id];	
+				$emc_control_de_plagas->fecha_a_aplicarse = $control_de_plagas_campos['fecha_a_aplicarse'][$etiqueta->id];	
+				$emc_control_de_plagas->cumple = $control_de_plagas_campos['cumple'][$etiqueta->id];	
+			}
+			$emc_control_de_plagas->save();
 		}
 	}
 
@@ -554,44 +571,56 @@ class EncuestasController extends BaseController {
 	//Control de manipulación de alimentos e higiene de los comedores de la PUCE 
 	//Creacion de Areas
 	public function creacion_de_area($area_campos, $empresa, $codigo_encuesta, $codigo_area, $index){
-		if($empresa->encuestaManipulacionArea($codigo_area)->get()->count() == 0){
-			foreach(Etiqueta::getEtiquetasPorPosicion($index)->get() as $etiqueta){
+		foreach(Etiqueta::getEtiquetasPorPosicion($index)->get() as $etiqueta){
+			$emc_area = EncuestaManipulacionArea::where("empresa_id", "=", $empresa->id)
+														->where("etiqueta_id", "=", $etiqueta->id)->get()->first();
+			if(!isset($emc_area)){
 				$emc_area = new EncuestaManipulacionArea;
-				$emc_area->etiqueta_id = $etiqueta->id;
-				$emc_area->empresa_id = $empresa->id;
-				$emc_area->codigo_encuesta = $codigo_encuesta;
-				$emc_area->codigo_area = $codigo_area;
-				if(isset($area_campos['no_existe'][$etiqueta->id]) && ($area_campos['no_existe'][$etiqueta->id] == "1")){
-					$emc_area->no_existe = $area_campos['no_existe'][$etiqueta->id];
-				}else{
-					if(isset($area_campos['esta_limpio'][$etiqueta->id])){
-						$emc_area->esta_limpio = $area_campos['esta_limpio'][$etiqueta->id];	
-					}
-					if(isset($area_campos['es_limpio'][$etiqueta->id]))
-						$emc_area->es_limpio = $area_campos['es_limpio'][$etiqueta->id];
-					if(isset($area_campos['es_adecuado'][$etiqueta->id]))
-						$emc_area->es_adecuado = $area_campos['es_adecuado'][$etiqueta->id];
-					if(isset($area_campos['esta_en_mantenimiento'][$etiqueta->id]))	
-						$emc_area->esta_en_mantenimiento = $area_campos['esta_en_mantenimiento'][$etiqueta->id];	
-					if(isset($area_campos['funciona'][$etiqueta->id]))
-						$emc_area->funciona = $area_campos['funciona'][$etiqueta->id];	
-					if(isset($area_campos['es_ordenado'][$etiqueta->id])){
-						$emc_area->es_ordenado = $area_campos['es_ordenado'][$etiqueta->id];	
-					}
-					
+			}
+			$emc_area->etiqueta_id = $etiqueta->id;
+			$emc_area->empresa_id = $empresa->id;
+			$emc_area->codigo_encuesta = $codigo_encuesta;
+			$emc_area->codigo_area = $codigo_area;
+			if(isset($area_campos['no_existe'][$etiqueta->id]) && ($area_campos['no_existe'][$etiqueta->id] == "1")){
+				$emc_area->no_existe = $area_campos['no_existe'][$etiqueta->id];
+				$emc_area->esta_limpio = null;
+				$emc_area->es_limpio = null;
+				$emc_area->es_adecuado = null;
+				$emc_area->esta_en_mantenimiento = null;
+				$emc_area->es_ordenado = null;
+			}else{
+				$emc_area->no_existe = null;
+				if(isset($area_campos['esta_limpio'][$etiqueta->id])){
+					$emc_area->esta_limpio = $area_campos['esta_limpio'][$etiqueta->id];	
 				}
-				$emc_area->save();
+				if(isset($area_campos['es_limpio'][$etiqueta->id]))
+					$emc_area->es_limpio = $area_campos['es_limpio'][$etiqueta->id];
+				if(isset($area_campos['es_adecuado'][$etiqueta->id]))
+					$emc_area->es_adecuado = $area_campos['es_adecuado'][$etiqueta->id];
+				if(isset($area_campos['esta_en_mantenimiento'][$etiqueta->id]))	
+					$emc_area->esta_en_mantenimiento = $area_campos['esta_en_mantenimiento'][$etiqueta->id];	
+				if(isset($area_campos['funciona'][$etiqueta->id]))
+					$emc_area->funciona = $area_campos['funciona'][$etiqueta->id];	
+				if(isset($area_campos['es_ordenado'][$etiqueta->id])){
+					$emc_area->es_ordenado = $area_campos['es_ordenado'][$etiqueta->id];	
+				}
+				
 			}
-			foreach(Etiqueta::getEtiquetasPorPosicion($index + 1)->get() as $etiqueta){
+			$emc_area->save();
+		}
+		foreach(Etiqueta::getEtiquetasPorPosicion($index + 1)->get() as $etiqueta){
+			$emc_area = EncuestaManipulacionArea::where("empresa_id", "=", $empresa->id)
+														->where("etiqueta_id", "=", $etiqueta->id)->get()->first();
+			if(!isset($emc_area)){
 				$emc_area = new EncuestaManipulacionArea;
-				$emc_area->etiqueta_id = $etiqueta->id;
-				$emc_area->empresa_id = $empresa->id;
-				$emc_area->codigo_encuesta = $codigo_encuesta;
-				$emc_area->codigo_area = $codigo_area;
-				if(isset($area_campos['cumple'][$etiqueta->id]))
-						$emc_area->cumple = $area_campos['cumple'][$etiqueta->id];	
-				$emc_area->save();
 			}
+			$emc_area->etiqueta_id = $etiqueta->id;
+			$emc_area->empresa_id = $empresa->id;
+			$emc_area->codigo_encuesta = $codigo_encuesta;
+			$emc_area->codigo_area = $codigo_area;
+			if(isset($area_campos['cumple'][$etiqueta->id]))
+					$emc_area->cumple = $area_campos['cumple'][$etiqueta->id];	
+			$emc_area->save();
 		}
 	}
 
@@ -605,22 +634,28 @@ class EncuestasController extends BaseController {
 		return View::make('encuestas.nueva_encuesta_manipulacion_alimentos_higiene_bares', array('empresa' => $empresa, 'opciones' => $opciones));
 	}
 
+	public function editarEncuestaManipulacionBares($id){
+		$empresa = Empresa::find($id);
+		$opciones = array("Manipulación de Alimentos", "Productos Alimenticios", "Control de Plagas", "Area de Bar", "Area de Comedor", 
+						"Area de Almacenaje de Materiales de Limpieza");
+		return View::make('encuestas.nueva_encuesta_manipulacion_alimentos_higiene_bares', array('empresa' => $empresa, 'opciones' => $opciones));
+	}
+
 	public function nuevaEncuestaManipulacionBaresGuardarInformacion(){
 		$empresa = Empresa::find(Input::get('empresa_id'));
 		$campos = Input::all();
 		
 		//Manipulacion de alimentos
 		EncuestasController::manipulacion_alimentos($campos['encuestas_manipulacion_alimentos'], $empresa, 14);
-		
 		EncuestasController::productos_alimenticios($campos['encuestas_productos_alimenticios'], $empresa, 15);
 		EncuestasController::control_de_plagas($campos['control_de_plagas'], $empresa, 16);
-		//AREAS
+		// //AREAS
 		EncuestasController::creacion_de_area($campos['area_bar'], $empresa, 'encuesta_manipulacion_bar', Config::get('constants.CODIGOS_AREAS.5'), 17);
 		EncuestasController::creacion_de_area($campos['area_comedor'], $empresa, 'encuesta_manipulacion_bar', Config::get('constants.CODIGOS_AREAS.6'), 19);
 		EncuestasController::creacion_de_area($campos['area_materiales_limpieza'], $empresa, 'encuesta_manipulacion_bar', Config::get('constants.CODIGOS_AREAS.7'), 21);
 		
 
-		return Redirect::to('/encuesta_manipulacion_bares/nueva_empresa');
+		return Redirect::to('/encuestas_manipulacion_bares/empresas')->with('mensaje', "$empresa->nombre: Encuesta actualizada exitosamente.");
 	}
 	
 }

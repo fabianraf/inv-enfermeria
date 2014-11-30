@@ -76,7 +76,14 @@ class EmpresasController extends BaseController {
 	public function editarEmpresa($id)
 		{
 		$empresa = Empresa::find($id);
-		return View::make("empresas.edit_chp", array('empresa' => $empresa));
+		if($empresa->codigo_empresa == Config::get('constants.COD_EMPRESA_ENCUESTA_CHP')){	
+			return View::make("empresas.edit_chp", array('empresa' => $empresa));
+		}elseif($empresa->codigo_empresa == Config::get('constants.COD_EMPRESA_ENCUESTA_CMAHC')){
+			return View::make("empresas.edit_cmahc", array('empresa' => $empresa));
+		}elseif($empresa->codigo_empresa == Config::get('constants.COD_EMPRESA_ENCUESTA_CMAHB')){
+			return View::make("empresas.edit_cmahb", array('empresa' => $empresa));
+		}	
+		
 		}
 
 	public function guardarEmpresa($id){
@@ -92,15 +99,17 @@ class EmpresasController extends BaseController {
 				$empresa->fecha = $input['fecha'];
 			if(isset($input['observaciones']))
 				$empresa->observaciones = $input['observaciones'];
+			if(isset($input['relacion_puce']))
+				$empresa->relacion_puce = $input['relacion_puce'];
 			if(isset($input['recomendaciones']))
 				$empresa->recomendaciones = $input['recomendaciones'];
 			$empresa->save();
 			if($empresa->codigo_empresa == Config::get('constants.COD_EMPRESA_ENCUESTA_CHP')){	
-					return Redirect::to("/encuesta_control_higiene_personal/empresas/$empresa->id/editar")->with('mensaje', 'Empresa actualizada exitosamente!');
+					return Redirect::to("/encuesta_control_higiene_personal/empresas/$empresa->id/editar")->with('mensaje', '¡Empresa actualizada exitosamente!');
 				}elseif($empresa->codigo_empresa == Config::get('constants.COD_EMPRESA_ENCUESTA_CMAHC')){
 					return Redirect::to("/encuesta_manipulacion_comedores/empresas/$empresa->id/editar");
 				}elseif($empresa->codigo_empresa == Config::get('constants.COD_EMPRESA_ENCUESTA_CMAHB')){
-					return Redirect::to("/encuesta_manipulacion_bares/empresas/$empresa->id/editar");
+					return Redirect::to("/encuestas_manipulacion_bares/empresas/$empresa->id/editar")->with('mensaje', '¡Empresa actualizada exitosamente!');
 				}	
 		} else {
 				if($empresa->codigo_empresa == Config::get('constants.COD_EMPRESA_ENCUESTA_CHP'))
@@ -115,13 +124,16 @@ class EmpresasController extends BaseController {
 	public function eliminarEmpresa($id){
 		$empresa = Empresa::find($id);
 		$codigo_empresa = $empresa->codigo_empresa;
+		$nombre_empresa = $empresa->nombre;
 		$empresa->delete();
 		if($codigo_empresa == Config::get('constants.COD_EMPRESA_ENCUESTA_CHP'))
-	    	return Redirect::to('/encuesta_control_higiene_personal/empresas')->with('mensaje', '¡Empresa eliminada exitosamente!');
-	    // elseif($codigo_empresa == Config::get('constants.COD_EMPRESA_ENCUESTA_CMAHC'))
+	    	return Redirect::to('/encuesta_control_higiene_personal/empresas')->with('mensaje', "$nombre_empresa: Empresa eliminada exitosamente.");
+	    elseif($codigo_empresa == Config::get('constants.COD_EMPRESA_ENCUESTA_CMAHC')){
 	    	//Falta
-	    // elseif($codigo_empresa == Config::get('constants.COD_EMPRESA_ENCUESTA_CMAHB'))
-			//Falta	    	
+	    }
+	    elseif($codigo_empresa == Config::get('constants.COD_EMPRESA_ENCUESTA_CMAHB')){
+			return Redirect::to('/encuestas_manipulacion_bares/empresas')->with('mensaje', "$nombre_empresa: Empresa eliminada exitosamente.");
+	    }
 	}
 
 }

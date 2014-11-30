@@ -93,9 +93,13 @@ Route::post('/encuesta_manipulacion_comedores/guardar_informacion', "EncuestasCo
 //
 Route::get('/encuestas_manipulacion_bares/empresas', "EmpresasController@indexEncuestasManipulacionBares");
 Route::get('/encuestas_manipulacion_bares/empresas/{id}/editar', 'EmpresasController@editarEmpresa');
+Route::post('/encuestas_manipulacion_bares/empresas/{id}/guardar_empresa', 'EmpresasController@guardarEmpresa');
+Route::get('/encuestas_manipulacion_bares/empresas/{id}', 'EmpresasController@informacionEmpresa');
 Route::get('/encuesta_manipulacion_bares/nueva_empresa', "EmpresasController@nuevaEmpresaCMAHB");
 Route::get('/encuesta_manipulacion_bares/nueva_encuesta', "EncuestasController@nuevaEncuestaManipulacionBares");
 Route::post('/encuesta_manipulacion_bares/guardar_informacion', "EncuestasController@nuevaEncuestaManipulacionBaresGuardarInformacion");
+Route::get('/encuesta_manipulacion_bares/empresas/{id}/editar_encuesta', "EncuestasController@editarEncuestaManipulacionBares");
+
 //
 //
 /*REPORTES*/
@@ -114,7 +118,7 @@ Route::get('reportes/calcular_datos_bares/{id}', "ReportesController@calcularDat
 Route::get('/obtener_alimentos', "AlimentosController@obtener_alimentos");
 Route::get('search/autocomplete', 'UsersController@autocomplete');
 
-Route::get('/encuesta_control_higiene_personal/empresas/{id}/eliminar', "EmpresasController@eliminarEmpresa");
+Route::get('/empresas/{id}/eliminar', "EmpresasController@eliminarEmpresa");
 Route::get('/encuesta_control_higiene_personal/empleados/{id}/eliminar', "EmpleadosController@eliminarEmpleado");
 
 

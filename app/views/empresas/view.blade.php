@@ -1,12 +1,33 @@
 @extends('layouts.default')
 	
 @section('content')
+<?php 
+	$link = "";
+	switch ($empresa->codigo_empresa) {
+		case  Config::get('constants.COD_EMPRESA_ENCUESTA_CHP'):
+			$link = "/encuesta_control_higiene_personal/empresas";
+			break;
+		case  Config::get('constants.COD_EMPRESA_ENCUESTA_CMAHC'):
+			$link = "/encuesta_manipulacion_comedores/empresas";
+			break;
+		case  Config::get('constants.COD_EMPRESA_ENCUESTA_CMAHB'):
+			$link = "/encuestas_manipulacion_bares/empresas";
+			break;
+		default:
+			//Default
+			break;
+	}
+?>
 <div class="col-lg-12">
   <h2>Información de la Empresa
   	<div class="pull-right">
-		<a href="/encuesta_control_higiene_personal/empresas"><input type="button" value="VOLVER A EMPRESAS" class="btn btn-warning"></a>
-		<a href="/encuesta_control_higiene_personal/nueva_encuesta?empresa_id={{$empresa->id}}"><input type="button" value="AÑADIR NUEVO EMPLEADO" class="btn btn-primary"></a>
-		<a href="/encuesta_control_higiene_personal/empresas/{{$empresa->id}}/editar"><input type="button" value="EDITAR" class="btn btn-success" id="grabar-encuesta"></a>
+		<a href="{{ $link }}"><input type="button" value="VOLVER A EMPRESAS" class="btn btn-warning"></a>
+		<?php if($empresa->codigo_empresa == Config::get('constants.COD_EMPRESA_ENCUESTA_CHP')){ ?> 
+			<a href="/encuesta_control_higiene_personal/nueva_encuesta?empresa_id={{$empresa->id}}"><input type="button" value="AÑADIR NUEVO EMPLEADO" class="btn btn-primary"></a>
+		<?php } else{ ?>
+			<a href="{{ $link }}/editar_encuesta"><input type="button" value="EDITAR ENCUESTA" class="btn btn-primary"></a>
+		<?php } ?>
+		<a href="{{ $link }}/{{$empresa->id}}/editar"><input type="button" value="EDITAR" class="btn btn-success" id="grabar-encuesta"></a>
 	</div>
   </h2>
   <hr>

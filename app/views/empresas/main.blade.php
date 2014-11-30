@@ -50,7 +50,7 @@
 				<td> {{ HTML::link( $link , $empresa->nombre ) }} </td>			
 				<td class="acciones">
 					<a title="Editar Empresa" href="{{$link.'/editar'}}"><span aria-hidden="true" class="glyphicon glyphicon-edit"></span></a>
-					<a title="Eliminar Empresa" onclick="return confirm('¿Está seguro de querer eliminar ésta empresa y todos sus datos relacionados?');" href="{{$link.'/eliminar'}}" data-method="delete"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></a>
+					<a title="Eliminar Empresa" onclick="return confirm('¿Está seguro de querer eliminar ésta empresa y todos sus datos relacionados?');" href="/empresas/{{$empresa->id}}/eliminar" data-method="delete"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></a>
 					<?php if($codigo == Config::get('constants.COD_EMPRESA_ENCUESTA_CHP')){ 
 						echo "<a title='Ver Empleados' href='/encuesta_control_higiene_personal/ver_empleados/".$empresa->id."'><span class='glyphicon glyphicon-search'></span>";
 					} ?>

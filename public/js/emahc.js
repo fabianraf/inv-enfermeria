@@ -1,4 +1,21 @@
 $(document).ready(function(){
+	$(".no-aplica").each(function(){
+		if($(this).is(':checked')){
+			$(this).parent().parent("tr").find("input").each(function(){
+				if($(this).hasClass('no-aplica')){
+				} else{
+					if($(this).is(":checkbox") || $(this).is(":radio"))
+						$(this).attr("checked", false);
+					else	
+						$(this).val("");
+					$(this).removeAttr("required");
+				}
+			 });
+			
+		}
+	});
+	check_if_other_tabs_are_ready(0);
+
 	$(".no-aplica").click(function(){
 		var jcheckbox = $(this);
 		if($(this).is(':checked')){
