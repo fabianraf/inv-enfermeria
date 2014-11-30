@@ -107,7 +107,7 @@ class EmpresasController extends BaseController {
 			if($empresa->codigo_empresa == Config::get('constants.COD_EMPRESA_ENCUESTA_CHP')){	
 					return Redirect::to("/encuesta_control_higiene_personal/empresas/$empresa->id/editar")->with('mensaje', '¡Empresa actualizada exitosamente!');
 				}elseif($empresa->codigo_empresa == Config::get('constants.COD_EMPRESA_ENCUESTA_CMAHC')){
-					return Redirect::to("/encuesta_manipulacion_comedores/empresas/$empresa->id/editar");
+					return Redirect::to("/encuesta_manipulacion_comedores/empresas/$empresa->id/editar")->with('mensaje', '¡Empresa actualizada exitosamente!');
 				}elseif($empresa->codigo_empresa == Config::get('constants.COD_EMPRESA_ENCUESTA_CMAHB')){
 					return Redirect::to("/encuestas_manipulacion_bares/empresas/$empresa->id/editar")->with('mensaje', '¡Empresa actualizada exitosamente!');
 				}	
@@ -129,7 +129,7 @@ class EmpresasController extends BaseController {
 		if($codigo_empresa == Config::get('constants.COD_EMPRESA_ENCUESTA_CHP'))
 	    	return Redirect::to('/encuesta_control_higiene_personal/empresas')->with('mensaje', "$nombre_empresa: Empresa eliminada exitosamente.");
 	    elseif($codigo_empresa == Config::get('constants.COD_EMPRESA_ENCUESTA_CMAHC')){
-	    	//Falta
+	    	return Redirect::to('/encuesta_manipulacion_comedores/empresas')->with('mensaje', "$nombre_empresa: Empresa eliminada exitosamente.");
 	    }
 	    elseif($codigo_empresa == Config::get('constants.COD_EMPRESA_ENCUESTA_CMAHB')){
 			return Redirect::to('/encuestas_manipulacion_bares/empresas')->with('mensaje', "$nombre_empresa: Empresa eliminada exitosamente.");

@@ -339,8 +339,7 @@
 							  		}
 							  		
 							  	?>
-						  		<input type="hidden" name="area_bar[codigo_area][{{$etiqueta->id}}]" value="{{Config::get('constants.CODIGOS_AREAS.0')}}">
-							  	<tr class="fila-encuesta">
+						  		<tr class="fila-encuesta">
 									<td>{{ $etiqueta->titulo }}</td>
 									<td><input {{$si_esta_limpio}} type="radio" name="area_bar[esta_limpio][{{ $etiqueta->id }}]" value="1" required="required" onclick="uncheck_no_aplica(this)"></td>
 									<td><input {{$no_esta_limpio}} type="radio" name="area_bar[esta_limpio][{{ $etiqueta->id }}]" value="0" required="required" onclick="uncheck_no_aplica(this)"></td>

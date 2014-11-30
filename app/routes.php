@@ -85,9 +85,10 @@ Route::post('/encuesta_control_higiene_personal/crear_encuesta', "EncuestasContr
 //
 Route::get('/encuesta_manipulacion_comedores/empresas', "EmpresasController@indexEncuestasManipulacionComedores");
 Route::get('/encuesta_manipulacion_comedores/empresas/{id}/editar', 'EmpresasController@editarEmpresa');
+Route::post('/encuesta_manipulacion_comedores/empresas/{id}/guardar_empresa', 'EmpresasController@guardarEmpresa');
 Route::get('/encuesta_manipulacion_comedores/nueva_encuesta', "EncuestasController@nuevaEncuestaManipulacionComedores");
 Route::post('/encuesta_manipulacion_comedores/guardar_informacion', "EncuestasController@nuevaEncuestaManipulacionComedoresGuardarInformacion");
-
+Route::get('/encuesta_manipulacion_comedores/empresas/{id}/editar_encuesta', "EncuestasController@editarEncuestaManipulacionComedores");
 //
 //Control de manipulación de alimentos e higiene de los bares de la PUCE
 //

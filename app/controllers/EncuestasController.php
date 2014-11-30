@@ -468,6 +468,13 @@ class EncuestasController extends BaseController {
 		return View::make('encuestas.nueva_encuesta_manipulacion_alimentos_higiene_comedores', array('empresa' => $empresa, 'opciones' => $opciones));
 	}
 
+	public function editarEncuestaManipulacionComedores($id){
+		$empresa = Empresa::find($id);
+		$opciones = array("Manipulación de Alimentos", "Productos Alimenticios", "Control de Plagas", "Area de Cocina",
+							  "Area de Comedor", "Area de Bodega de Alimentos", "Area de Vestidor", "Area de Almacenaje de Materiales de Limpieza");
+		return View::make('encuestas.nueva_encuesta_manipulacion_alimentos_higiene_comedores', array('empresa' => $empresa, 'opciones' => $opciones));
+	}
+
 
 	public function nuevaEncuestaManipulacionComedoresGuardarInformacion(){
 		$empresa = Empresa::find(Input::get('empresa_id'));
@@ -484,7 +491,7 @@ class EncuestasController extends BaseController {
 		EncuestasController::creacion_de_area($campos['area_vestidor'], $empresa, 'encuesta_manipulacion_comedor', Config::get('constants.CODIGOS_AREAS.3'), 10);
 		EncuestasController::creacion_de_area($campos['area_materiales_limpieza'], $empresa, 'encuesta_manipulacion_comedor', Config::get('constants.CODIGOS_AREAS.4'), 12);
 
-		return Redirect::to('/encuesta_manipulacion_comedores/nueva_empresa');
+		return Redirect::to('/encuesta_manipulacion_comedores/empresas')->with('mensaje', "$empresa->nombre: Encuesta actualizada exitosamente.");
 	}
 
 	//Control de manipulación de alimentos e higiene de los comedores de la PUCE 
