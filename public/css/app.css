@@ -179,3 +179,10 @@ select.small-select{
 .ajax_loader{
     display: none;
 }
+.acciones a{
+    color: #000000;
+    text-decoration: none !important;
+}
+.acciones span{
+    padding-left: 6px;
+}

@@ -24,44 +24,85 @@
      <div class="col-md-4 col-lg-9" >
       <h4><i><u>Nutrientes</u></i></h4>
       <ul type = square>
-        <p><li><strong>Humedad: </strong>{{  round($estudiante->getTotalHumedad(2), 2) }}</p>
-        <p><li><strong>Calorías: </strong>{{ round($estudiante->getTotalCalorias(2), 2) }}</p>
-        <p><li><strong>Proteínas: </strong>{{ round($estudiante->getTotalProteinas(2),2) }}</p>
-        <p><li><strong>Hidratos de C: </strong>{{ round($estudiante->getTotalHidratosDeC(2), 2) }}</p>
-        <p><li><strong>Fibra dietaria: </strong>{{ round($estudiante->getTotalFibraDietaria(2), 2) }}</p>
-        <p><li><strong>Lípidos: </strong>{{ round($estudiante->getTotalLipidos(2), 2) }}</p>
-        <p><li><strong>Acidos grasos saturados: </strong>{{ round($estudiante->getTotalAcidosGrasosSaturados(2), 2) }}</p>
-        <p><li><strong>Acidos grasos monoinsat: </strong>{{ round($estudiante->getTotalAcidosGrasosMonoinsat(2), 2) }}</p>
-        <p><li><strong>Acidos grasos polinsat: </strong>{{ round($estudiante->getTotalAcidosGrasosPolinsat(2), 2) }}</p>
-        <p><li><strong>Colesterol: </strong>{{ round($estudiante->getTotalColesterol(2), 2) }}</p>
-        <p><li><strong>N6: </strong>{{ round($estudiante->getTotalN6(2), 2) }}</p>
-        <p><li><strong>N3: </strong>{{ round($estudiante->getTotalN3(2), 2) }}</p>
-        <p><li><strong>Caroteno: </strong>{{ round($estudiante->getTotalCaroteno(2), 2) }}</p>
-        <p><li><strong>Retinol re: </strong>{{ round($estudiante->getTotalRetinolRe(2), 2) }}</p>
-        <p><li><strong>Vitamina A total re: </strong>{{ round($estudiante->getTotalVitATotalRe(2), 2) }}</p>
-        <p><li><strong>Vitamina B1: </strong>{{ round($estudiante->getTotalVitB1(2), 2) }}</p>
-        <p><li><strong>Vitamina B2: </strong>{{ round($estudiante->getTotalVitB2(2), 2) }}</p>
-        <p><li><strong>Niacina: </strong>{{ round($estudiante->getTotalNiacina(2), 2) }}</p>
-        <p><li><strong>Vitamina B6: </strong>{{ round($estudiante->getTotalVitB6(2), 2) }}</p>
-        <p><li><strong>Vitamina B12: </strong>{{ round($estudiante->getTotalVitB12(2), 2) }}</p>
-        <p><li><strong>Folatos: </strong>{{ round($estudiante->getTotalFolatos(2), 2) }}</p>
-        <p><li><strong>Acido pantogénico: </strong>{{ round($estudiante->getTotalAcidoPantogenico(2), 2) }}</p>
-        <p><li><strong>Vitamina C: </strong>{{ round($estudiante->getTotalVitC(2), 2) }}</p>
-        <p><li><strong>Vitamina E: </strong>{{ round($estudiante->getTotalVitE(2), 2) }}</p>
-        <p><li><strong>Calcio: </strong>{{ round($estudiante->getTotalCalcio(2), 2) }}</p>
-        <p><li><strong>Cobre: </strong>{{ round($estudiante->getTotalCobre(2), 2) }}</p>
-        <p><li><strong>Hierro: </strong>{{ round($estudiante->getTotalHierro(2), 2) }}</p>
-        <p><li><strong>Magnesio: </strong>{{ round($estudiante->getTotalMagnesio(2), 2) }}</p>
-        <p><li><strong>Fósforo: </strong>{{ round($estudiante->getTotalFosforo(2), 2) }}</p>
-        <p><li><strong>Potasio: </strong>{{ round($estudiante->getTotalPotasio(2), 2) }}</p>
-        <p><li><strong>Selenio: </strong>{{ round($estudiante->getTotalSelenio(2), 2) }}</p>
-        <p><li><strong>Sodio: </strong>{{ round($estudiante->getTotalSodio(2), 2) }}</p>
-        <p><li><strong>Zinc: </strong>{{ round($estudiante->getTotalZinc(2), 2) }}</p>
-        <p><li><strong>Cenizas: </strong>{{ round($estudiante->getTotalCenizas(2), 2) }}</p>
-        <p><li><strong>Acido fólico: </strong>{{ round($estudiante->getTotalAcidoFolico(2), 2) }}</p>
-        <p><li><strong>Fracción comestible: </strong>{{ round($estudiante->getTotalFraccionComestible(2), 2) }}</p>
-        <p><li><strong>Carbohidratos disponibles: </strong>{{ round($estudiante->getTotalCarbohidratosDisponibles(2), 2) }}</p>
-        <p><li><strong>Fibra cruda: </strong>{{ round($estudiante->getTotalFibraCruda(2), 2) }}</p>
+        @if(isset($estudiante->resultadoEncuestasAlimentosBares->usuario_id))
+            <p><li><strong>Humedad: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->humedad,2) }}</p>
+            <p><li><strong>Calorías: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->calorias,2) }}</p>
+            <p><li><strong>Proteínas: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->proteinas, 2) }}</p>
+            <p><li><strong>Hidratos de C: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->hidratos_de_c, 2) }}</p>
+            <p><li><strong>Fibra dietaria: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->fibra_dietaria, 2) }}</p>
+            <p><li><strong>Lípidos: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->lipidos, 2) }}</p>
+            <p><li><strong>Acidos grasos saturados: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->acidos_grasos_saturados, 2) }}</p>
+            <p><li><strong>Acidos grasos monoinsat: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->acidos_grasos_monoinsat, 2) }}</p>
+            <p><li><strong>Acidos grasos polinsat: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->acidos_grasos_polinsat, 2) }}</p>
+            <p><li><strong>Colesterol: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->colesterol, 2) }}</p>
+            <p><li><strong>N6: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->n6, 2) }}</p>
+            <p><li><strong>N3: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->n3, 2) }}</p>
+            <p><li><strong>Caroteno: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->caroteno, 2) }}</p>
+            <p><li><strong>Retinol re: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->retinol_re, 2) }}</p>
+            <p><li><strong>Vitamina A total re: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->vit_a_total_re, 2) }}</p>
+            <p><li><strong>Vitamina B1: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->vit_b1, 2) }}</p>
+            <p><li><strong>Vitamina B2: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->vit_b2, 2) }}</p>
+            <p><li><strong>Niacina: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->niacina, 2) }}</p>
+            <p><li><strong>Vitamina B6: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->vit_b6, 2) }}</p>
+            <p><li><strong>Vitamina B12: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->vit_b12, 2) }}</p>
+            <p><li><strong>Folatos: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->folatos, 2) }}</p>
+            <p><li><strong>Acido pantogénico: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->acido_pantogenico, 2) }}</p>
+            <p><li><strong>Vitamina C: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->vit_c, 2) }}</p>
+            <p><li><strong>Vitamina E: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->vit_e, 2) }}</p>
+            <p><li><strong>Calcio: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->calcio, 2) }}</p>
+            <p><li><strong>Cobre: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->cobre, 2) }}</p>
+            <p><li><strong>Hierro: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->hierro, 2) }}</p>
+            <p><li><strong>Magnesio: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->magnesio, 2) }}</p>
+            <p><li><strong>Fósforo: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->fosforo, 2) }}</p>
+            <p><li><strong>Potasio: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->potasio, 2) }}</p>
+            <p><li><strong>Selenio: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->selenio, 2) }}</p>
+            <p><li><strong>Sodio: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->sodio, 2) }}</p>
+            <p><li><strong>Zinc: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->zinc, 2) }}</p>
+            <p><li><strong>Cenizas: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->cenizas, 2) }}</p>
+            <p><li><strong>Acido fólico: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->acido_folico, 2) }}</p>
+            <p><li><strong>Fracción comestible: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->fraccion_comestible, 2) }}</p>
+            <p><li><strong>Carbohidratos disponibles: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->carbohidratos_disponibles, 2) }}</p>
+            <p><li><strong>Fibra cruda: </strong>{{ round($estudiante->resultadoEncuestasAlimentosBares->fibra_cruda, 2) }}</p>
+        @else
+            <p><li><strong>Humedad: </strong></p>
+            <p><li><strong>Calorías: </strong></p>
+            <p><li><strong>Proteínas: </strong></p>
+            <p><li><strong>Hidratos de C: </strong></p>
+            <p><li><strong>Fibra dietaria: </strong></p>
+            <p><li><strong>Lípidos: </strong></p>
+            <p><li><strong>Acidos grasos saturados: </strong></p>
+            <p><li><strong>Acidos grasos monoinsat: </strong></p>
+            <p><li><strong>Acidos grasos polinsat: </strong></p>
+            <p><li><strong>Colesterol: </strong></p>
+            <p><li><strong>N6: </strong></p>
+            <p><li><strong>N3: </strong></p>
+            <p><li><strong>Caroteno: </strong></p>
+            <p><li><strong>Retinol re: </strong></p>
+            <p><li><strong>Vitamina A total re: </strong></p>
+            <p><li><strong>Vitamina B1: </strong></p>
+            <p><li><strong>Vitamina B2: </strong></p>
+            <p><li><strong>Niacina: </strong></p>
+            <p><li><strong>Vitamina B6: </strong></p>
+            <p><li><strong>Vitamina B12: </strong></p>
+            <p><li><strong>Folatos: </strong></p>
+            <p><li><strong>Acido pantogénico: </strong></p>
+            <p><li><strong>Vitamina C: </strong></p>
+            <p><li><strong>Vitamina E: </strong></p>
+            <p><li><strong>Calcio: </strong></p>
+            <p><li><strong>Cobre: </strong></p>
+            <p><li><strong>Hierro: </strong></p>
+            <p><li><strong>Magnesio: </strong></p>
+            <p><li><strong>Fósforo: </strong></p>
+            <p><li><strong>Potasio: </strong></p>
+            <p><li><strong>Selenio: </strong></p>
+            <p><li><strong>Sodio: </strong></p>
+            <p><li><strong>Zinc: </strong></p>
+            <p><li><strong>Cenizas: </strong></p>
+            <p><li><strong>Acido fólico: </strong></p>
+            <p><li><strong>Fracción comestible: </strong></p>
+            <p><li><strong>Carbohidratos disponibles: </strong></p>
+            <p><li><strong>Fibra cruda: </strong></p>
+        @endif
       </ul>
     </div>
 </div>

@@ -12,6 +12,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public static $rules = array(
 	    'email'=>'required|email|unique:usuarios',
 	    'password' => 'required',
+	    'cedula' => 'required',
 	    'perfiles_usuario_id' => 'required',
 	    'genero' => 'required',
 	    'password_confirm' => 'required|same:password'    
@@ -232,6 +233,17 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return $interval->y;
 	}
 
+	public function resultadoEncuestasAlimentosUniversidad()
+	{
+    	return $this->hasOne('ResultadoEncuestasAlimentosUniversidad', 'usuario_id');
+	}
+
+	public function resultadoEncuestasAlimentosBares()
+	{
+    	return $this->hasOne('ResultadoEncuestasAlimentosBares', 'usuario_id');
+	}
+
+	/*
 	public function getTotalCalorias($tipo_encuesta)
 	//1 para hogares y Universidad
 	//2 para bares
@@ -239,7 +251,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		$totalCalorias = 0;
 		if($tipo_encuesta==1){
 			if($this::has('encuestaAlimentosUniversidad')){
-				$encuestaAlimentosUniversidad = EncuestaAlimentosUniversidad::where("usuario_id", "=", $this->id)->get();			
+				$encuestaAlimentosUniversidad = EncuestaAlimentosUniversidad::where("usuario_id", "=", $this->id)->get();
 				foreach($encuestaAlimentosUniversidad as $encuesta)
 				{
 					$frecuencia = ($encuesta->frecuencia > 0 ? $encuesta->frecuencia : 0);
@@ -338,7 +350,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 					$frecuencia = ($encuesta->frecuencia > 0 ? $encuesta->frecuencia : 0);
 					$promedioPorcion = ($frecuencia * $encuesta->num_porciones)/7;	
 					$pesoPorcion = ($promedioPorcion * $encuesta->alimento->gramos);
-					$totalHidratosDeC += ($pesoPorcion * $encuesta->alimento->hidratos_de_c)/100;												
+					$totalHidratosDeC += ($pesoPorcion * $encuesta->alimento->hidratos_de_c)/100;
 				}
 				return $totalHidratosDeC;
 			}
@@ -369,7 +381,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 					$frecuencia = ($encuesta->frecuencia > 0 ? $encuesta->frecuencia : 0);
 					$promedioPorcion = ($frecuencia * $encuesta->num_porciones)/7;	
 					$pesoPorcion = ($promedioPorcion * $encuesta->alimento->gramos);
-					$totalFibraDietaria += ($pesoPorcion * $encuesta->alimento->fibra_dietaria)/100;												
+					$totalFibraDietaria += ($pesoPorcion * $encuesta->alimento->fibra_dietaria)/100;
 				}
 				return $totalFibraDietaria;
 			}
@@ -1410,6 +1422,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 				return $totalFibraCruda;
 			}
 		}		
-	}
+	}*/
 
 }

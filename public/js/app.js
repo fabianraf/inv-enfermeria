@@ -349,14 +349,26 @@ function revisar_si_esta_completo(){
 		   		var count = 0;
 				var count_names = 0;	
 				
-			    $("#tipo-alimento-" + i + " :radio").each(function() {
-			        names[$(this).attr('name')] = true;
+			      $("#tipo-alimento-" + i + " :input").each(function() {
+			    	if($(this).is(":radio"))
+			        	names[$(this).attr('name')] = true;
+			        else{
+			        	if($(this).is("select"))
+			        		names[$(this).attr('name')] = $(this).val();
+			        }
 			    });
 			    //Itera cada alimento de acuerdo a su nombre. Ej: frecuencia[15]
 			    $.each(names, function(name, value) { 
-						count_names++;
-							if($('[name="' + name + '"]').is(':checked'))
-								count++;
+		    			count_names++;
+					if($('[name="' + name + '"]').is(":input"))
+						if($('[name="' + name + '"]').is(':checked')){
+							count++;
+						}
+					else{
+						if(value != ""){
+							count++;
+						}
+					}
 			    });
 					//Asigna la clase de completo
 					if($("#boton-tipo-alimento-" + i).hasClass('btn-info'))

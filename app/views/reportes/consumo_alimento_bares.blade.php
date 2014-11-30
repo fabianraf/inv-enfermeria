@@ -8,6 +8,7 @@
     </br>
     <table class="table table-no-border ">
       <tr>              
+            <td style="text-align:left"><b></td>
             <td style="text-align:left"><b></td> 
             <td style="text-align:left"><b>Nombres</td>
             <td style="text-align:left"><b>Edad</td>
@@ -49,52 +50,94 @@
             <td style="text-align:left"><b>Acido fólico</td>
             <td style="text-align:left"><b>Fracción comestible</td>
             <td style="text-align:left"><b>Carbohidratos disponibles</td>
-            <td style="text-align:left"><b>Fibra cruda</td>               
+            <td style="text-align:left"><b>Fibra cruda</td>           
       </tr>         
         @foreach($users as $estudiante)        
         <tr> 
-            <?php echo "<td style='text-align:left'><a href='/reportes/consumo_alimentos_bares/".$estudiante->id."'><span class='glyphicon glyphicon-search'></span></td>";?>     
+            <?php echo "<td style='text-align:left'><a href='/reportes/consumo_alimentos_bares/".$estudiante->id."'><span class='glyphicon glyphicon-search'></span></td>";?>
+            <?php echo "<td style='text-align:left'><a href='/reportes/calcular_datos_bares/".$estudiante->id."'><span class='glyphicon glyphicon-refresh'></span></td>";?>      
             <td style="text-align:left">{{ $estudiante->nombre.' '.$estudiante->apellido }}</td>
             <td style="text-align:left">{{ $estudiante->getEdad()." años" }}</td>
             <td style="text-align:left">{{ $estudiante->genero }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalHumedad(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalCalorias(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalProteinas(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalHidratosDeC(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalFibraDietaria(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalLipidos(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalAcidosGrasosSaturados(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalAcidosGrasosMonoinsat(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalAcidosGrasosPolinsat(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalColesterol(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalN6(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalN3(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalCaroteno(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalRetinolRe(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalVitATotalRe(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalVitB1(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalVitB2(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalNiacina(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalVitB6(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalVitB12(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalFolatos(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalAcidoPantogenico(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalVitC(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalVitE(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalCalcio(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalCobre(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalHierro(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalMagnesio(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalFosforo(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalPotasio(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalSelenio(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalSodio(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalZinc(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalCenizas(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalAcidoFolico(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalFraccionComestible(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalCarbohidratosDisponibles(2), 2) }}</td>
-            <td style="text-align:left">{{ round($estudiante->getTotalFibraCruda(2), 2) }}</td>        
+            @if(isset($estudiante->resultadoEncuestasAlimentosBares->usuario_id))           
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->humedad,2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->calorias,2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->proteinas, 2) }}</td>                  
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->hidratos_de_c, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->fibra_dietaria, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->lipidos, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->acidos_grasos_saturados, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->acidos_grasos_monoinsat, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->acidos_grasos_polinsat, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->colesterol, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->n6, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->n3, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->caroteno, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->retinol_re, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->vit_a_total_re, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->vit_b1, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->vit_b2, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->niacina, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->vit_b6, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->vit_b12, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->folatos, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->acido_pantogenico, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->vit_c, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->vit_e, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->calcio, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->cobre, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->hierro, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->magnesio, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->fosforo, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->potasio, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->selenio, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->sodio, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->zinc, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->cenizas, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->acido_folico, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->fraccion_comestible, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->carbohidratos_disponibles, 2) }}</td>
+                  <td style="text-align:left">{{ round($estudiante->resultadoEncuestasAlimentosBares->fibra_cruda, 2) }}</td>
+            @else
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>
+                  <td style="text-align:left"></td>                 
+            @endif
       </tr>     
         @endforeach
     </table>

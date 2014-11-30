@@ -27,12 +27,15 @@
 				<td style="text-align:left"><b>Nombres</td>
 				<td style="text-align:left"><b>Email</td>
 				<td style="text-align:left"><b>Perfil</td>
+				<td style="text-align:left"><b>Eliminar</td>
 			</tr>		  		
 		 	@foreach($users as $usuario)				
 		  	<tr>			
 				<td style="text-align:left">{{ $usuario->nombre.' '.$usuario->apellido }}</td>
 				<td style="text-align:left">{{ $usuario->email }}</td>
-				<td style="text-align:left">{{ $usuario->perfilUsuario->nombre }}</td>				
+				<td style="text-align:left">{{ $usuario->perfilUsuario->nombre }}</td>
+				<?php  echo "<td style='text-align:left'><a href='usuarios/delete/".$usuario->id."' data-method='delete'>
+				<button type='submit' class='btn btn-danger' id='confirm'><i class='glyphicon glyphicon-remove'></i></button></a></td>";?>				
 			</tr>			
   			@endforeach
 		</table>

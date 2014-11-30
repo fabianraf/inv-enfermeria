@@ -76,7 +76,7 @@
 					echo "<a href=".$link." target='_blank'><span class='glyphicon glyphicon-picture'></span></a></td>"; ?>
 					
 				<?php  echo "<td style='text-align:left'><a href='alimentos/delete/".$alimento->id."' data-method='delete'>
-				<button type='submit' class='btn btn-danger' id='confirm'><i class='glyphicon glyphicon-remove'></i></button></a></td>";?>				
+				<button type='submit' class='btn btn-danger' id='confirm'><i class='glyphicon glyphicon-remove'></i></button></a></td>";?>
 			</tr>
 			<?php  
 					$index++; 					
