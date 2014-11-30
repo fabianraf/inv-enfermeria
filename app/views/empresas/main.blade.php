@@ -13,16 +13,19 @@
 
 
   <hr>
-  </br>
 
-  <div class="col-lg-12">
+  	@if (Session::get('mensaje'))
+		<div class="top10 alert alert-success">{{Session::get('mensaje')}}</div>
+	@endif
+
+  <div class="top10 col-lg-12">
 	  	
-		<table class="table table-no-border col-lg-9">
-			<tr>				
-				<td></td>
-				<td>Empresas</td>
-				<td class="acciones">Acciones</td>
-			</tr>		
+		<table class="table table-no-border table-hover col-lg-9">
+			<thead>				
+				<th></th>
+				<th>Empresas</th>
+				<th class="acciones">Acciones</th>
+			</thead>		
 		  		<?php  $index = 1; ?>
 		 	@foreach($empresas as $empresa)				
 		 	<?php 
@@ -46,8 +49,8 @@
 				<td>{{ $index }}</td>
 				<td> {{ HTML::link( $link , $empresa->nombre ) }} </td>			
 				<td class="acciones">
-					<a title="Editar Empresa" href="/{{$link.'/editar'}}"><span aria-hidden="true" class="glyphicon glyphicon-edit"></span></a>
-					<a title="Eliminar Empresa" href="/{{$link.'/eliminar'}}"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></a>
+					<a title="Editar Empresa" href="{{$link.'/editar'}}"><span aria-hidden="true" class="glyphicon glyphicon-edit"></span></a>
+					<a title="Eliminar Empresa" onclick="return confirm('¿Está seguro de querer eliminar ésta empresa y todos sus datos relacionados?');" href="{{$link.'/eliminar'}}" data-method="delete"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></a>
 					<?php if($codigo == Config::get('constants.COD_EMPRESA_ENCUESTA_CHP')){ 
 						echo "<a title='Ver Empleados' href='/encuesta_control_higiene_personal/ver_empleados/".$empresa->id."'><span class='glyphicon glyphicon-search'></span>";
 					} ?>

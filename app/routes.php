@@ -61,10 +61,12 @@ Route::post('/grabar_consumo_habitual', "EncuestasController@grabar_consumo_habi
 // Route::get('encuesta_manipulacion_bares', "EncuestasController@manipulacionBares");
 // Route::post('encuesta_manipulacion_bares', "EncuestasController@createManipulacionBares");
 
-//Crear empresas
+//Crear empresas - Control de higiene del personal de bares y comedores de la PUCE
 Route::get('/encuesta_control_higiene_personal/empresas', "EmpresasController@indexEmpresasHigienePersonal");
 Route::get('/encuesta_control_higiene_personal/empresas/{id}', array('uses'=>'EmpresasController@informacionEmpresa'));
 Route::get('/encuesta_control_higiene_personal/empresas/{id}/editar', 'EmpresasController@editarEmpresa');
+Route::post('/encuesta_control_higiene_personal/empresas/{id}/guardar_empresa', 'EmpresasController@guardarEmpresa');
+Route::get('/encuesta_control_higiene_personal/empleados/{id}/editar', 'EmpleadosController@editarEmpleado');
 Route::get('/encuesta_control_higiene_personal/ver_empleados/{id}', array('uses'=>'EmpresasController@informacionEmpleados'));
 Route::get('/encuesta_control_higiene_personal/nueva_empresa', "EmpresasController@nuevaEmpresa");
 Route::post('encuesta_control_higiene_personal/crear_empresa', "EmpresasController@crearEmpresa");
@@ -112,5 +114,7 @@ Route::get('reportes/calcular_datos_bares/{id}', "ReportesController@calcularDat
 Route::get('/obtener_alimentos', "AlimentosController@obtener_alimentos");
 Route::get('search/autocomplete', 'UsersController@autocomplete');
 
+Route::get('/encuesta_control_higiene_personal/empresas/{id}/eliminar', "EmpresasController@eliminarEmpresa");
+Route::get('/encuesta_control_higiene_personal/empleados/{id}/eliminar', "EmpleadosController@eliminarEmpleado");
 
 

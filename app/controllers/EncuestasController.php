@@ -400,7 +400,10 @@ class EncuestasController extends BaseController {
 	{
 		$empresa = Empresa::find(Input::get('empresa_id'));
 		$etiquetas = Etiqueta::getEtiquetasPorPosicion(0)->get();
-		return View::make('encuestas.nueva_encuesta_control_higiene_personal', array('empresa' => $empresa, 'etiquetas' => $etiquetas));
+		$empleado = new Empleado;
+		return View::make('encuestas.nueva_encuesta_control_higiene_personal', array('empresa' => $empresa, 
+																					'etiquetas' => $etiquetas,
+																					'empleado' => $empleado));
 	}
 
 	//Control de higiene del personal de bares y comedores de la PUCE 
@@ -409,18 +412,26 @@ class EncuestasController extends BaseController {
 		$campos = Input::all();
 		$validator = Validator::make($campos['empleado'], Empleado::$rules);
 			if ($validator->passes()) {
-				$empleado = Empleado::where("empresa_id", "=", $campos['empleado']['empresa_id'])
-									->where("nombre", "=", $campos['empleado']['nombre'])
-									->where("cargo", "=", $campos['empleado']['cargo'])->get()->first();
-				if(!isset($empleado)){
-					$empleado = Empleado::create($campos['empleado']);
+				if(isset($campos['empleado_id'])){
+					$empleado = Empleado::find($campos['empleado_id']);
+				} else{
+					$empleado = new Empleado;
 				}
-				
+				$empleado->empresa_id = $campos['empleado']['empresa_id'];
+				$empleado->nombre = $campos['empleado']['nombre'];
+				$empleado->cargo = $campos['empleado']['cargo'];
+				$empleado->save();
 				foreach(Etiqueta::getEtiquetasPorPosicion(0)->get() as $etiqueta){
 					if(isset($campos['encuesta_control_higiene_personal'][$etiqueta->id])){
-						$encuesta_control_higiene_personal = new EncuestaControlHigiene;
-						$encuesta_control_higiene_personal->empleado_id = $empleado->id;
-						$encuesta_control_higiene_personal->etiqueta_id = $etiqueta->id;
+						$encuesta_control_higiene_personal = EncuestaControlHigiene::where("etiqueta_id", "=", $etiqueta->id)
+																				->where("empleado_id", "=", $empleado->id)->get()->first();
+						if(!isset($encuesta_control_higiene_personal)){
+							$encuesta_control_higiene_personal = new EncuestaControlHigiene;	
+							$encuesta_control_higiene_personal->empleado_id = $empleado->id;
+							$encuesta_control_higiene_personal->etiqueta_id = $etiqueta->id;
+						}
+						
+						
 						$encuesta_control_higiene_personal->cumple = $campos['encuesta_control_higiene_personal'][$etiqueta->id];
 						$encuesta_control_higiene_personal->save();
 					}

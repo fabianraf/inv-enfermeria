@@ -2,17 +2,21 @@
 	
 @section('content')
 
-{{ Form::open(array('url' => '/encuesta_control_higiene_personal/guardar_empresa')) }}
+{{ Form::open(array('url' => '/encuesta_control_higiene_personal/empresas/'.$empresa->id.'/guardar_empresa')) }}
 
 <div class="col-lg-12">
 	<h2>Control de higiene del personal de bares y comedores de la PUCE
 		<div class="pull-right">
 			<a href="/encuesta_control_higiene_personal/empresas"><input type="button" value="VOLVER A EMPRESAS" class="btn btn-warning"></a>
-			<input type="submit" value="SIGUIENTE" class="btn btn-success">
+			<a href="/encuesta_control_higiene_personal/nueva_encuesta?empresa_id={{$empresa->id}}"><input type="button" value="AÑADIR NUEVO EMPLEADO" class="btn btn-primary"></a>
+			<input type="submit" value="GRABAR" class="btn btn-success">
 		</div>
 	</h2>
 
 	@if (Session::get('mensaje'))
+		@if (Session::get('mensaje') == "Empresa actualizada exitosamente!")
+			<div class='alert alert-warning'><a href='#' class='close' data-dismiss='alert'>&times;</a>{{ Session::get('mensaje') }}</a></div>
+		@endif
 		@foreach($errors->all() as $error)
 			<div class='alert alert-warning'><a href='#' class='close' data-dismiss='alert'>&times;</a>{{ $error }}</a></div>
 		@endforeach

@@ -1,9 +1,14 @@
 @extends('layouts.default')
 	
 @section('content')
-
 <div class="col-lg-12">
-  <h2>Información de la Empresa</h2>
+  <h2>Información de la Empresa
+  	<div class="pull-right">
+		<a href="/encuesta_control_higiene_personal/empresas"><input type="button" value="VOLVER A EMPRESAS" class="btn btn-warning"></a>
+		<a href="/encuesta_control_higiene_personal/nueva_encuesta?empresa_id={{$empresa->id}}"><input type="button" value="AÑADIR NUEVO EMPLEADO" class="btn btn-primary"></a>
+		<a href="/encuesta_control_higiene_personal/empresas/{{$empresa->id}}/editar"><input type="button" value="EDITAR" class="btn btn-success" id="grabar-encuesta"></a>
+	</div>
+  </h2>
   <hr>
   </br>  
 	<div class="row">

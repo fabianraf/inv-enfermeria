@@ -274,12 +274,6 @@ $(document).ready(function() {
          });
 		return false;
 	});
-
-	//Anadir empleado en Control de higiene del personal de bares y comedores de la PUCE
-	$("#anadir-nuevo-empleado").click(function(){
-		location.reload(true);
-	});
-
 	
 
 	//Autocompletado de estudiantes

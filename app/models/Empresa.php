@@ -34,4 +34,17 @@ class Empresa extends Eloquent {
 		
 	}	
 
+	public function delete(){
+		 $this->encuestaManipulacionAlimentos()->delete();
+		 foreach($this->empleados as $empleado){
+		 	$empleado->delete();
+		 }
+		 $this->empleados()->delete();
+		 $this->encuestaManipulacionProductosAlimenticios()->delete();
+		 $this->encuestaManipulacionControlDePlagas()->delete();
+		 EncuestaManipulacionArea::where("empresa_id", "=", $this->id)->delete();
+		 return parent::delete();
+	}
+
+
 }

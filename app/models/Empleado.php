@@ -17,4 +17,9 @@ class Empleado extends Eloquent {
 	    {
 	    return $this->hasMany('EncuestaControlHigiene');
 	    }
+
+	public function delete(){
+		 $this->encuestasControlHigienePersonal()->delete();
+		 return parent::delete();
+	}
 }
