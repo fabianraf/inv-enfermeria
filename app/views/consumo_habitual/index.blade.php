@@ -13,18 +13,18 @@
 			<tr>				
 				<td>#</td>
 				<td>Nombre Estudiante</td>
-				<td>Acciones</td>
+				<!-- <td>Acciones</td> -->
 				
 			</tr>		
 		  	<?php  $index = 1; ?>
 		 	@foreach($usuarios_con_encuesta as $usuario)				
 			  	<tr>
 					<td>{{ $index }}</td>
-					<td> {{ HTML::link( 'encuesta_consumo_alimento/'.$usuario->id , $usuario->nombre . ' ' . $usuario->apellido ) }} </td>			
-					<td class="acciones">
+					<td> {{$usuario->nombre . ' ' . $usuario->apellido}} </td>			
+				<!-- 	<td class="acciones">
 						<a href="/encuesta_consumo_habitual?estudiante_id={{$usuario->id}}" title="Editar encuesta"><span aria-hidden="true" class="glyphicon glyphicon-edit"></span></a>
 						<a href="" title="Eliminar encuesta"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></a>
-					</td>
+					</td> -->
 				</tr>
 			<?php  
 					$index++; 					

@@ -11,7 +11,7 @@
 			$link = "/encuesta_manipulacion_comedores/empresas";
 			break;
 		case  Config::get('constants.COD_EMPRESA_ENCUESTA_CMAHB'):
-			$link = "/encuestas_manipulacion_bares/empresas";
+			$link = "/encuesta_manipulacion_bares/empresas";
 			break;
 		default:
 			//Default
@@ -25,7 +25,7 @@
 		<?php if($empresa->codigo_empresa == Config::get('constants.COD_EMPRESA_ENCUESTA_CHP')){ ?> 
 			<a href="/encuesta_control_higiene_personal/nueva_encuesta?empresa_id={{$empresa->id}}"><input type="button" value="AÑADIR NUEVO EMPLEADO" class="btn btn-primary"></a>
 		<?php } else{ ?>
-			<a href="{{ $link }}/editar_encuesta"><input type="button" value="EDITAR ENCUESTA" class="btn btn-primary"></a>
+			<a href="{{ $link }}/{{$empresa->id}}/editar_encuesta"><input type="button" value="EDITAR ENCUESTA" class="btn btn-primary"></a>
 		<?php } ?>
 		<a href="{{ $link }}/{{$empresa->id}}/editar"><input type="button" value="EDITAR" class="btn btn-success" id="grabar-encuesta"></a>
 	</div>
