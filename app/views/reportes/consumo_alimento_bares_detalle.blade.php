@@ -13,7 +13,7 @@
     <h2>Frecuencia de consumo de alimentos en los bares de la Universidad</h2>
     <hr>
     </br>
-    <div class="col-md-4 col-lg-9" >
+    <div class="col-md-4 col-lg-12" >
       <h4><i><u>Datos personales</u></i></h4>
       <ul type = square>
         <p><li><strong>Email: </strong>{{ $estudiante->email }}</p>
@@ -21,7 +21,7 @@
         <p><li><strong>Edad: </strong>{{ $estudiante->getEdad()}} años</p>        
       </ul>
     </div>
-     <div class="col-md-4 col-lg-9" >
+     <div class="col-md-4 col-lg-12" >
       <h4><i><u>Nutrientes</u></i></h4>
       <ul class="list-group">
         @if(isset($estudiante->resultadoEncuestasAlimentosBares->usuario_id))
