@@ -94,7 +94,7 @@ Route::get('/encuesta_manipulacion_comedores/empresas/{id}/editar_encuesta', "En
 //Control de manipulación de alimentos e higiene de los bares de la PUCE
 //
 Route::get('/encuestas_manipulacion_bares/empresas', "EmpresasController@indexEncuestasManipulacionBares");
-Route::get('/encuestas_manipulacion_bares/empresas/{id}/editar', 'EmpresasController@editarEmpresa');
+Route::get('/encuesta_manipulacion_bares/empresas/{id}/editar', 'EmpresasController@editarEmpresa');
 Route::post('/encuestas_manipulacion_bares/empresas/{id}/guardar_empresa', 'EmpresasController@guardarEmpresa');
 Route::get('/encuestas_manipulacion_bares/empresas/{id}', 'EmpresasController@informacionEmpresa');
 Route::get('/encuesta_manipulacion_bares/nueva_empresa', "EmpresasController@nuevaEmpresaCMAHB");
