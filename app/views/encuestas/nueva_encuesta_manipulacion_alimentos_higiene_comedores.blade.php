@@ -56,7 +56,7 @@
 					$class = "hidden";
 			?>
 			<?php if($key == "0"){ ?>
-			<table class="table table-bordered col-lg-12 {{ $class }}" id="opcion-tabla-{{$key}}"> 
+			<table class="table table-bordered table-hover col-lg-12 {{ $class }}" id="opcion-tabla-{{$key}}"> 
 				<tr>				
 					<th rowspan="2">	
 						<h3>{{$opcion}}

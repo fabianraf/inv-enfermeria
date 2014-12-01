@@ -59,7 +59,7 @@
 			$class = "hidden";
 	?>
 	<div class="col-lg-12 responsive">
-		<table class="table table-bordered col-lg-12 {{ $class }}" id="tipo-alimento-{{ $tipo_de_alimento->id }}"> 
+		<table class="table table-bordered table-hover col-lg-12 {{ $class }}" id="tipo-alimento-{{ $tipo_de_alimento->id }}"> 
 
 			<tr>				
 				<th rowspan="2">Alimentos</th>

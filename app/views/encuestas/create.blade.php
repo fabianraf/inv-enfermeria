@@ -12,7 +12,7 @@
 	  @endforeach
 	</div>
 	<div class="col-lg-9">
-		<table class="table table-bordered col-lg-12"> 
+		<table class="table table-bordered table-hover col-lg-12"> 
 
 			<tr>
 				

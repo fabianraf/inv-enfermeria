@@ -9,13 +9,13 @@
 
   <div class="col-lg-12">
 	  	
-		<table class="table table-no-border col-lg-9">
-			<tr>				
-				<td>#</td>
-				<td>Nombre Estudiante</td>
-				<!-- <td>Acciones</td> -->
+		<table class="table table-no-border table-hover col-lg-9">
+			<thead>				
+				<th>#</th>
+				<th>Nombre Estudiante</th>
+				<!-- <th>Acciones</th> -->
 				
-			</tr>		
+			</thead>		
 		  	<?php  $index = 1; ?>
 		 	@foreach($usuarios_con_encuesta as $usuario)				
 			  	<tr>

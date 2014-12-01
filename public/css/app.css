@@ -186,3 +186,7 @@ select.small-select{
 .acciones span{
     padding-left: 6px;
 }
+
+.table-with-text-aligned-to-the-left td, th{
+    text-align: left;
+}
