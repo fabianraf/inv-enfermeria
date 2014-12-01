@@ -96,7 +96,7 @@ Route::get('/encuesta_manipulacion_comedores/empresas/{id}/editar_encuesta', "En
 Route::get('/encuestas_manipulacion_bares/empresas', "EmpresasController@indexEncuestasManipulacionBares");
 Route::get('/encuesta_manipulacion_bares/empresas/{id}/editar', 'EmpresasController@editarEmpresa');
 Route::post('/encuestas_manipulacion_bares/empresas/{id}/guardar_empresa', 'EmpresasController@guardarEmpresa');
-Route::get('/encuestas_manipulacion_bares/empresas/{id}', 'EmpresasController@informacionEmpresa');
+Route::get('/encuesta_manipulacion_bares/empresas/{id}', 'EmpresasController@informacionEmpresa');
 Route::get('/encuesta_manipulacion_bares/nueva_empresa', "EmpresasController@nuevaEmpresaCMAHB");
 Route::get('/encuesta_manipulacion_bares/nueva_encuesta', "EncuestasController@nuevaEncuestaManipulacionBares");
 Route::post('/encuesta_manipulacion_bares/guardar_informacion', "EncuestasController@nuevaEncuestaManipulacionBaresGuardarInformacion");

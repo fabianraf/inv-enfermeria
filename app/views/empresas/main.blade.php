@@ -38,7 +38,7 @@
 		 				$link = "/encuesta_manipulacion_comedores/empresas/$empresa->id";
 		 				break;
 		 			case  Config::get('constants.COD_EMPRESA_ENCUESTA_CMAHB'):
-		 				$link = "/encuestas_manipulacion_bares/empresas/$empresa->id";
+		 				$link = "/encuesta_manipulacion_bares/empresas/$empresa->id";
 		 				break;
 		 			default:
 		 				//Default
