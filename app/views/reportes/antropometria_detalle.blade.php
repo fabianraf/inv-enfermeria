@@ -41,10 +41,10 @@
       <div class="col-sm-6">        
         <h4><i><u>Resultados e interpretación</u></i></h4>
         <ul type = square>
-          <p><li><strong>Indice masa corporal (IMC): </strong>{{ $estudiante->antropometria()->first()->imc }} - {{ $estudiante->antropometria()->first()->interpretacion_imc }}</p>
-          <p><li><strong>Indice cintura-cadera: </strong>{{ $estudiante->antropometria()->first()->indice_cintura_cadera }} - {{ $estudiante->antropometria()->first()->interpretacion_indice_cintura_cadera }}</p>
-          <p><li><strong>Porcentaje circunferencia media del brazo (% CMB): </strong>{{ $estudiante->antropometria()->first()->porcentaje_cmb }} - {{ $estudiante->antropometria()->first()->interpretacion_cmb }}</p>
-          <p><li><strong>Porcentaje pliegue tricipital (%): </strong>{{ $estudiante->antropometria()->first()->porcentaje_pt }} - {{ $estudiante->antropometria()->first()->interpretacion_pliegue_tricipital }}</p>
+          <p><li><strong>Indice masa corporal (IMC): </strong>{{ round($estudiante->antropometria()->first()->imc,2) }} - {{ $estudiante->antropometria()->first()->interpretacion_imc }}</p>
+          <p><li><strong>Indice cintura-cadera: </strong>{{ round($estudiante->antropometria()->first()->indice_cintura_cadera,2) }} - {{ $estudiante->antropometria()->first()->interpretacion_indice_cintura_cadera }}</p>
+          <p><li><strong>Porcentaje circunferencia media del brazo (% CMB): </strong>{{ round($estudiante->antropometria()->first()->porcentaje_cmb,2) }} - {{ $estudiante->antropometria()->first()->interpretacion_cmb }}</p>
+          <p><li><strong>Porcentaje pliegue tricipital (%): </strong>{{ round($estudiante->antropometria()->first()->porcentaje_pt,2) }} - {{ $estudiante->antropometria()->first()->interpretacion_pliegue_tricipital }}</p>
         </ul>
       </div>   
     </div>

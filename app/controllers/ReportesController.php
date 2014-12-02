@@ -10,7 +10,7 @@ class ReportesController extends BaseController {
 	public function reporteAntropometria()
 	{
 		$users = User::has('antropometria')->orderBy('nombre')
-                ->orderBy('apellido')->paginate(20);
+                ->orderBy('apellido')->get();
 		return View::make('reportes.antropometria', array('users' => $users));
 	}
 
@@ -23,7 +23,7 @@ class ReportesController extends BaseController {
 	public function reporteBioquimica()
 	{
 		$users = User::has('bioquimica')->orderBy('nombre')
-                ->orderBy('apellido')->paginate(20);
+                ->orderBy('apellido')->get();
 		return View::make('reportes.bioquimica', array('users' => $users));
 	}
 
