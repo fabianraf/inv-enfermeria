@@ -25,6 +25,5 @@ class Antropometrias extends Eloquent {
 	{
         return $this->hasMany('User','usuario_id');
     }
-
    
 }

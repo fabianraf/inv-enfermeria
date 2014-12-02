@@ -22,9 +22,10 @@
       </ul>
     </div>
 
-    <div class="col-md-4 col-lg-9" >
-      <h4><i><u>Nutrientes</u></i></h4>
-      <ul type = square>
+    <div class="row">   
+      <div class="col-sm-4"> 
+        <h4><i><u>Nutrientes</u></i></h4>        
+        <ul type = square>
         @if(isset($estudiante->resultadoEncuestasAlimentosUniversidad->usuario_id))
             <p><li><strong>Humedad: </strong>{{ round($estudiante->resultadoEncuestasAlimentosUniversidad->humedad,2) }}</p>
             <p><li><strong>Calorías: </strong>{{ round($estudiante->resultadoEncuestasAlimentosUniversidad->calorias,2) }}</p>
@@ -39,12 +40,14 @@
             <p><li><strong>N6: </strong>{{ round($estudiante->resultadoEncuestasAlimentosUniversidad->n6, 2) }}</p>
             <p><li><strong>N3: </strong>{{ round($estudiante->resultadoEncuestasAlimentosUniversidad->n3, 2) }}</p>
             <p><li><strong>Caroteno: </strong>{{ round($estudiante->resultadoEncuestasAlimentosUniversidad->caroteno, 2) }}</p>
+        </div>
+        <div class="col-sm-4">
             <p><li><strong>Retinol re: </strong>{{ round($estudiante->resultadoEncuestasAlimentosUniversidad->retinol_re, 2) }}</p>
             <p><li><strong>Vitamina A total re: </strong>{{ round($estudiante->resultadoEncuestasAlimentosUniversidad->vit_a_total_re, 2) }}</p>
             <p><li><strong>Vitamina B1: </strong>{{ round($estudiante->resultadoEncuestasAlimentosUniversidad->vit_b1, 2) }}</p>
             <p><li><strong>Vitamina B2: </strong>{{ round($estudiante->resultadoEncuestasAlimentosUniversidad->vit_b2, 2) }}</p>
             <p><li><strong>Niacina: </strong>{{ round($estudiante->resultadoEncuestasAlimentosUniversidad->niacina, 2) }}</p>
-            <p><li><strong>Vitamina B6: </strong>{{ round($estudiante->resultadoEncuestasAlimentosUniversidad->vit_b6, 2) }}</p>
+            <p><li><strong>Vitamina B6: </strong>{{ round($estudiante->resultadoEncuestasAlimentosUniversidad->vit_b6, 2) }}</p>        
             <p><li><strong>Vitamina B12: </strong>{{ round($estudiante->resultadoEncuestasAlimentosUniversidad->vit_b12, 2) }}</p>
             <p><li><strong>Folatos: </strong>{{ round($estudiante->resultadoEncuestasAlimentosUniversidad->folatos, 2) }}</p>
             <p><li><strong>Acido pantogénico: </strong>{{ round($estudiante->resultadoEncuestasAlimentosUniversidad->acido_pantogenico, 2) }}</p>
@@ -52,6 +55,8 @@
             <p><li><strong>Vitamina E: </strong>{{ round($estudiante->resultadoEncuestasAlimentosUniversidad->vit_e, 2) }}</p>
             <p><li><strong>Calcio: </strong>{{ round($estudiante->resultadoEncuestasAlimentosUniversidad->calcio, 2) }}</p>
             <p><li><strong>Cobre: </strong>{{ round($estudiante->resultadoEncuestasAlimentosUniversidad->cobre, 2) }}</p>
+        </div>
+        <div class="col-sm-4">
             <p><li><strong>Hierro: </strong>{{ round($estudiante->resultadoEncuestasAlimentosUniversidad->hierro, 2) }}</p>
             <p><li><strong>Magnesio: </strong>{{ round($estudiante->resultadoEncuestasAlimentosUniversidad->magnesio, 2) }}</p>
             <p><li><strong>Fósforo: </strong>{{ round($estudiante->resultadoEncuestasAlimentosUniversidad->fosforo, 2) }}</p>
@@ -64,6 +69,7 @@
             <p><li><strong>Fracción comestible: </strong>{{ round($estudiante->resultadoEncuestasAlimentosUniversidad->fraccion_comestible, 2) }}</p>
             <p><li><strong>Carbohidratos disponibles: </strong>{{ round($estudiante->resultadoEncuestasAlimentosUniversidad->carbohidratos_disponibles, 2) }}</p>
             <p><li><strong>Fibra cruda: </strong>{{ round($estudiante->resultadoEncuestasAlimentosUniversidad->fibra_cruda, 2) }}</p>
+        </div>
         @else
             <p><li><strong>Humedad: </strong></p>
             <p><li><strong>Calorías: </strong></p>
@@ -78,6 +84,8 @@
             <p><li><strong>N6: </strong></p>
             <p><li><strong>N3: </strong></p>
             <p><li><strong>Caroteno: </strong></p>
+        </div>
+        <div class="col-sm-4">
             <p><li><strong>Retinol re: </strong></p>
             <p><li><strong>Vitamina A total re: </strong></p>
             <p><li><strong>Vitamina B1: </strong></p>
@@ -91,6 +99,8 @@
             <p><li><strong>Vitamina E: </strong></p>
             <p><li><strong>Calcio: </strong></p>
             <p><li><strong>Cobre: </strong></p>
+        </div>
+        <div class="col-sm-4">
             <p><li><strong>Hierro: </strong></p>
             <p><li><strong>Magnesio: </strong></p>
             <p><li><strong>Fósforo: </strong></p>
@@ -103,6 +113,7 @@
             <p><li><strong>Fracción comestible: </strong></p>
             <p><li><strong>Carbohidratos disponibles: </strong></p>
             <p><li><strong>Fibra cruda: </strong></p>
+        </div>        
         @endif
       </ul>
     </div>
