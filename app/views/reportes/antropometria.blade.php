@@ -87,7 +87,7 @@
           <p><li>Desnutrición severa: {{ round($imcDesnutricionSevera/$totalAntropometria*100,2) }}%</p>
           <p><li>Desnutrición moderada: {{ round($imcDesnutricionModerada/$totalAntropometria*100,2) }}%</p>
           <p><li>Desnutrición leve: {{ round($imcDesnutricionLeve/$totalAntropometria*100,2) }}%</p>
-          <p><li>Desnutrición normal: {{ round($imcNormal/$totalAntropometria*100,2) }}%</p>
+          <p><li>Normal: {{ round($imcNormal/$totalAntropometria*100,2) }}%</p>
           <p><li>Desnutrición sobrepeso: {{ round($imcSobrepeso/$totalAntropometria*100,2) }}%</p>
           <p><li>Obesidad I: {{ round($imcObesidadI/$totalAntropometria*100,2) }}%</p>
           <p><li>Obesidad II: {{ round($imcObesidadII/$totalAntropometria*100,2) }}%</p>
