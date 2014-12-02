@@ -180,6 +180,7 @@
 			<div class="col-sm-6 col-lg-1">
 				<select class="small-select" name="grupo_alimento_{{$tiempo}}_1[]">
 						<option>-</option>
+						<option>L</option>
 						<option>LE</option>
 						<option>LSD</option>
 						<option>LD</option>
@@ -229,6 +230,7 @@
 				<div class="col-sm-6 col-lg-1">
 					<select class="small-select" name="grupo_alimento_{{$tiempo}}_1[]">
 							<option>-</option>
+							<option>L</option>
 							<option>LE</option>
 							<option>LSD</option>
 							<option>LD</option>
@@ -284,6 +286,7 @@
 				<div class="col-sm-6 col-lg-1 grupo-de-alimentos">
 					<select class="small-select" name="grupo_alimento_{{$tiempo}}_2[]">
 							<option>-</option>
+							<option>L</option>
 							<option>LE</option>
 							<option>LSD</option>
 							<option>LD</option>
@@ -330,6 +333,7 @@
 						<div class="col-sm-6 col-lg-1">
 							<select class="small-select ingrediente-extra-grupo-alimento" name="grupo_alimento_{{$tiempo}}_2[]">
 									<option>-</option>
+									<option>L</option>
 									<option>LE</option>
 									<option>LSD</option>
 									<option>LD</option>
