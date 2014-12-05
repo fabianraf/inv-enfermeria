@@ -88,7 +88,7 @@
 					</select>
 			</div>
 		</div><br><br>
-		<!--	
+
 		<div class="form-group">
 			<div class="col-sm-10">
 			{{ Form::label('fecha_nacimiento', 'Fecha de nacimiento',array('class' => 'col-sm-2 control-label')); }}	
@@ -100,7 +100,7 @@
 			});
 			</script>
 			</div>
-		</div><br>	-->
+		</div><br>	
 	</div>
 
 

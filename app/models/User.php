@@ -15,6 +15,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	    'cedula' => 'required',
 	    'perfiles_usuario_id' => 'required',
 	    'genero' => 'required',
+	    'fecha_nacimiento'=>'required',
 	    'password_confirm' => 'required|same:password'    
 	    );
 
@@ -32,6 +33,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	public static $friendly_names = array(
 		'perfiles_usuario_id' => 'perfil',
+		'fecha_nacimiento' => 'fecha de nacimiento'
 		);
 			
 	/**

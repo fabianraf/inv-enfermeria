@@ -53,7 +53,7 @@ class UsersController extends BaseController {
 				$user->nombre = strtoupper($input['nombre']);
 				$user->apellido = strtoupper($input['apellido']);
 				$user->cedula = $input['cedula'];
-				//$user->tipo = $input['tipo'];
+				$user->fecha_nacimiento = $input['fecha_nacimiento'];
 				$user->genero = $input['genero'];
 				$user->perfiles_usuario_id = $input['perfiles_usuario_id'];
 				$user->save();
