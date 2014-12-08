@@ -140,6 +140,10 @@
 									<li class="divider"></li>
 									<li>
 										{{ HTML::link('reportes/consumo_alimentos_bares/', "Frecuencia de consumo de alimentos en los bares de la Universidad" ) }}
+									</li>
+									<li class="divider"></li>
+									<li>
+										{{ HTML::link('reportes/consumo_habitual/', "Consumo habitual de alimentos" ) }}
 									</li>																	
 									<?php }?>
 								</ul>
