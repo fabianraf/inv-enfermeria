@@ -65,8 +65,10 @@ class ReportesController extends BaseController {
 
 	public function reporteConsumoHabitual()
 	{
-		$users = User::has('ConsumoHabitualDeAlimento')->orderBy('nombre')
-                ->orderBy('apellido')->get();
+		/*$users = User::has('ConsumoHabitualDeAlimento')->orderBy('nombre')
+                ->orderBy('apellido')->get();*/
+        $users = User::usuariosConConsumohabitual()->get();
+
 		return View::make('reportes.consumo_habitual', array('users' => $users));
 	}
 

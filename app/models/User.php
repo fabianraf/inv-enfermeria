@@ -218,7 +218,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	    }
 
 	public static function usuariosConConsumohabitual(){
-		return User::where("perfiles_usuario_id", "=" , 2)->where("tiene_consumo_habitual", "=", "t")->orderBy('apellido');
+		return User::where("perfiles_usuario_id", "=" , 2)->orderBy('nombre')
+                ->orderBy('apellido')->where("tiene_consumo_habitual", "=", "t")->orderBy('apellido');
 	}
 
 	public function esAdmin(){

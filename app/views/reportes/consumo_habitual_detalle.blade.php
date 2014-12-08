@@ -22,7 +22,7 @@
     </div>
 
     <div class="row">   
-      <div class="col-sm-4"> 
+      <div class="col-sm-4">       
             <h4><i><u>Desayuno</u></i></h4>        
             <ul type = square>
             @foreach($estudiante->consumoHabitualDeAlimento as $consumoHabitual)
@@ -105,7 +105,9 @@
         </div>            
       
     </div>
+    *Información de ingredientes: nombre, cantidad en medidas caseras, número de porciones y grupo de alimento.
 </div>
+
 @endif
 @stop
 
