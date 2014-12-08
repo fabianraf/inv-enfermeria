@@ -8,6 +8,7 @@
     </br>
     <table class="table table-no-border table-hover table-with-text-aligned-to-the-left">
       <thead>              
+            <th></th>
             <th>Nombres</th>
             <th>Edad</th>
             <th>Género</th>
@@ -18,6 +19,7 @@
       </thead>         
         @foreach($users as $estudiante)        
         <tr>
+            <?php echo "<td><a href='/reportes/consumo_habitual/".$estudiante->id."'><span class='glyphicon glyphicon-search'></span></td>";?>      
             <td>{{ $estudiante->nombre.' '.$estudiante->apellido }}</td>
             <td>{{ $estudiante->getEdad()." años" }}</td>
             <td>{{ $estudiante->genero }}</td>
@@ -71,7 +73,7 @@
                                           $totalCHO += $ingrediente->numero_de_porciones*15;
                                           $totalPROT += $ingrediente->numero_de_porciones*2;
                                           $totalGRAS += $ingrediente->numero_de_porciones*5;
-                                          $totalKcal += $ingrediente->numero_de_porciones*150;
+                                          $totalKcal += $ingrediente->numero_de_porciones*115;
                                     }
                                     if($ingrediente->grupo_de_alimentos=='Az'){
                                           $totalCHO += $ingrediente->numero_de_porciones*10;
