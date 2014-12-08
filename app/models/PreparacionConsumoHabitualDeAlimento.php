@@ -7,12 +7,12 @@ class PreparacionConsumoHabitualDeAlimento extends Eloquent {
 	
 	public function ingredientesPreparacionConsumoHabitualDeAlimento()
 	{
-		return $this->hasMany('IngredientesPreparacionConsumoHabitualDeAlimento')->orderBy("created_at", "DESC");
+		return $this->hasMany('IngredientesPreparacionConsumoHabitualDeAlimento','preparacion_consumo_habitual_de_alimentos_id')->orderBy("created_at", "DESC");
 	}
 
 	public function consumoHabitualDeAlimento()
-	    {
-        return $this->belongsTo('ConsumoHabitualDeAlimento');
-	    }
+	{
+        return $this->belongsTo('ConsumoHabitualDeAlimento','consumo_habitual_de_alimentos_id');
+	}
 	
 }

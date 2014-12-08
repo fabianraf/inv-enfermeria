@@ -6,9 +6,14 @@ class ConsumoHabitualDeAlimento extends Eloquent {
 	public static $rules = array();
 
 
+	public function usuario()
+	{
+        return $this->belongsTo('User','usuario_id');
+	}
+	
 	public function preparacionConsumoHabitualDeAlimentos()
 	{
-		return $this->hasMany('PreparacionConsumoHabitualDeAlimento')->orderBy("created_at", "DESC");
+		return $this->hasMany('PreparacionConsumoHabitualDeAlimento','consumo_habitual_de_alimentos_id')->orderBy("created_at", "DESC");
 	}
 	
 	public static function encuestasConsumoHabitualCompleto()

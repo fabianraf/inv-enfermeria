@@ -63,6 +63,13 @@ class ReportesController extends BaseController {
 		return View::make('reportes.consumo_alimento_bares_detalle', array('estudiante' => $estudiante));
 	}
 
+	public function reporteConsumoHabitual()
+	{
+		$users = User::has('ConsumoHabitualDeAlimento')->orderBy('nombre')
+                ->orderBy('apellido')->get();
+		return View::make('reportes.consumo_habitual', array('users' => $users));
+	}
+
 	public function calcularDatosEncuestaAlimentosUniversidadEstudiante($id){
 		$estudiante = User::find($id);
 		$totalCalorias = 0;

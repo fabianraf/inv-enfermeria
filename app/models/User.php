@@ -199,7 +199,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	public function consumoHabitualDeAlimento()
 	    {
-        return $this->hasOne('ConsumoHabitualDeAlimento');
+        return $this->hasMany('ConsumoHabitualDeAlimento', 'usuario_id');
 	    }
 
 	public function perfilUsuario()
