@@ -101,7 +101,7 @@
 				<td><input type="radio" {{$bloquear_encuestas}} name="frecuencia[{{ $index }}]" value="-1" {{$encuesta_alimentos_bares['frecuencia'] == -1 ? 'checked="checked"' : ''}}></td>
 				<td>
 					<select {{$bloquear_encuestas}} name="frecuencia[porciones][{{$index}}]">
-							<option value="">--seleccione--</option>
+							<!--<option value="">--seleccione--</option>-->
 							<option value="0.25" {{$encuesta_alimentos_bares['num_porciones'] == 0.25 ? 'selected="selected"' : ''}}>0.25</option>
 							<option value="0.5" {{$encuesta_alimentos_bares['num_porciones'] == 0.5 ? 'selected="selected"' : ''}}>0.5</option>
 							<option value="1" {{$encuesta_alimentos_bares['num_porciones'] == 1 ? 'selected="selected"' : ''}}>1</option>
