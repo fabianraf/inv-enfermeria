@@ -15,4 +15,8 @@ class PreparacionConsumoHabitualDeAlimento extends Eloquent {
         return $this->belongsTo('ConsumoHabitualDeAlimento','consumo_habitual_de_alimentos_id');
 	}
 	
+	public function delete(){
+		 $this->ingredientesPreparacionConsumoHabitualDeAlimento()->delete();	 
+		 return parent::delete();
+	}
 }

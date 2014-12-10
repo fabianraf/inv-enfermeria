@@ -124,5 +124,6 @@ Route::get('search/autocomplete', 'UsersController@autocomplete');
 
 Route::get('/empresas/{id}/eliminar', "EmpresasController@eliminarEmpresa");
 Route::get('/encuesta_control_higiene_personal/empleados/{id}/eliminar', "EmpleadosController@eliminarEmpleado");
+Route::get('/consumo_habitual/{id}/eliminar', "ConsumoHabitualController@eliminar");
 
 

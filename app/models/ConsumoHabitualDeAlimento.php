@@ -42,4 +42,8 @@ class ConsumoHabitualDeAlimento extends Eloquent {
 		}
 	}
 
+	public function delete(){
+		 $this->preparacionConsumoHabitualDeAlimentos()->delete();	 
+		 return parent::delete();
+	}
 }

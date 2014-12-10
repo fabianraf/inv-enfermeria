@@ -81,4 +81,14 @@ class ConsumoHabitualController extends BaseController {
 		//
 	}
 
+	public function eliminar($id){
+		$user = User::find($id);
+		$consumoHabituales = ConsumoHabitualDeAlimento::where("usuario_id", "=", $id)->get();		
+		foreach($consumoHabituales as $consumoHabitual)
+			$consumoHabitual->delete();
+		$user->tiene_consumo_habitual=FALSE;
+		$user->save();
+		return Redirect::to('/encuestas_consumo_habitual')->with('mensaje', "Consumo habitual eliminado exitosamente.");	    
+	}
+
 }
