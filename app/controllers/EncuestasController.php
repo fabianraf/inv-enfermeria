@@ -355,7 +355,11 @@ class EncuestasController extends BaseController {
 		$user = User::find($campos['alumno_id']);
 		if($user->tiene_consumo_habitual <> true){
 			foreach($tiempos as $tiempo){ 
-				$consumo_habitual = new ConsumoHabitualDeAlimento;
+				$consumo_habitual = ConsumoHabitualDeAlimento::where("usuario_id", "=", $campos['alumno_id'])
+															->where("tiempo_de_comida", "=", $tiempo)->get()->first();
+				if(!isset($consumo_habitual)){
+					$consumo_habitual = new ConsumoHabitualDeAlimento;
+				}
 				$consumo_habitual->usuario_id = $campos['alumno_id'];
 				$consumo_habitual->ingresado_por_usuario = Auth::user()->id;
 				$consumo_habitual->tiempo_de_comida	= $tiempo;
@@ -377,7 +381,11 @@ class EncuestasController extends BaseController {
 								$ingrediente_preparacion->preparacion_consumo_habitual_de_alimentos_id = $preparacion_consumo_habitual->id;
 								$ingrediente_preparacion->ingrediente = $ingrediente;
 								$ingrediente_preparacion->cantidad_en_medidas_caseras = $campos['cantidad_'.$tiempo.'_'.$i][$key];
-								$ingrediente_preparacion->numero_de_porciones = $campos['porciones_'.$tiempo.'_'.$i][$key];
+								if(is_numeric($campos['porciones_'.$tiempo.'_'.$i][$key])){
+									$ingrediente_preparacion->numero_de_porciones = $campos['porciones_'.$tiempo.'_'.$i][$key];
+								}else{
+									$ingrediente_preparacion->numero_de_porciones = 0.00;
+								}
 								$ingrediente_preparacion->grupo_de_alimentos = $campos['grupo_alimento_'.$tiempo.'_'.$i][$key];
 								$ingrediente_preparacion->save();
 							}
