@@ -12,7 +12,7 @@
     <h2>Consumo habitual de alimentos</h2>
     <hr>
     </br>
-    <div class="col-md-4 col-lg-9" >
+    <div class="col-md-4 col-lg-12" >
       <h4><i><u>Datos personales</u></i></h4>
       <ul type = square>
         <p><li><strong>Email: </strong>{{ $estudiante->email }}</p>
@@ -22,90 +22,346 @@
     </div>
 
     <div class="row">   
-      <div class="col-sm-4">       
-            <h4><i><u>Desayuno</u></i></h4>        
-            <ul type = square>
+      <div class="col-sm-12"><br><br>     
+        <table class="table table-bordered col-lg-12">
+            <tr>
+                <td></td>
+                <th class="text-center">Preparación</td>
+                <th class="text-center">Ingrediente</td>
+                <th class="text-center">Cantidad en medidas caseras</td>
+                <th class="text-center">Número de porciones</td>
+                <th class="text-center">Grupo de alimentos</td>
+            </tr>
+            <?php 
+                $desayuno=0; 
+                $media_manana=0;
+                $almuerzo=0;
+                $media_tarde=0;
+                $merienda=0;
+            ?>
             @foreach($estudiante->consumoHabitualDeAlimento as $consumoHabitual)
                 @if($consumoHabitual->tiempo_de_comida=='desayuno')
                     @foreach($consumoHabitual->preparacionConsumoHabitualDeAlimentos as $preparacionCHA)
-                        <p><li>{{$preparacionCHA->nombre_alimento}}:</p>
-                        <ul type = circle>
                         @foreach($preparacionCHA->ingredientesPreparacionConsumoHabitualDeAlimento as $ingrediente)
-                            <p><li>{{$ingrediente->ingrediente.','.$ingrediente->cantidad_en_medidas_caseras.','.$ingrediente->numero_de_porciones.','.$ingrediente->grupo_de_alimentos}}</p>
+                            <?php $desayuno ++; ?>
                         @endforeach
-                        </ul>
                     @endforeach
                 @endif
-            @endforeach
-            </ul><br>
-            <h4><i><u>Media Mañana</u></i></h4>        
-            <ul type = square>
-            @foreach($estudiante->consumoHabitualDeAlimento as $consumoHabitual)
                 @if($consumoHabitual->tiempo_de_comida=='media_manana')
                     @foreach($consumoHabitual->preparacionConsumoHabitualDeAlimentos as $preparacionCHA)
-                        <p><li>{{$preparacionCHA->nombre_alimento}}:</p>
-                        <ul type = circle>
                         @foreach($preparacionCHA->ingredientesPreparacionConsumoHabitualDeAlimento as $ingrediente)
-                            <p><li>{{$ingrediente->ingrediente.','.$ingrediente->cantidad_en_medidas_caseras.','.$ingrediente->numero_de_porciones.','.$ingrediente->grupo_de_alimentos}}</p>
+                            <?php $media_manana ++; ?>
                         @endforeach
-                        </ul>
                     @endforeach
                 @endif
-            @endforeach
-            </ul><br>        
-        </div>
-        <div class="col-sm-4">
-            <h4><i><u>Almuerzo</u></i></h4>        
-            <ul type = square>
-            @foreach($estudiante->consumoHabitualDeAlimento as $consumoHabitual)
                 @if($consumoHabitual->tiempo_de_comida=='almuerzo')
                     @foreach($consumoHabitual->preparacionConsumoHabitualDeAlimentos as $preparacionCHA)
-                        <p><li>{{$preparacionCHA->nombre_alimento}}:</p>
-                        <ul type = circle>
                         @foreach($preparacionCHA->ingredientesPreparacionConsumoHabitualDeAlimento as $ingrediente)
-                            <p><li>{{$ingrediente->ingrediente.','.$ingrediente->cantidad_en_medidas_caseras.','.$ingrediente->numero_de_porciones.','.$ingrediente->grupo_de_alimentos}}</p>
+                            <?php $almuerzo ++; ?>
                         @endforeach
-                        </ul>
                     @endforeach
                 @endif
-            @endforeach
-            </ul><br>            
-        </div>
-        <div class="col-sm-4">
-            <h4><i><u>Media Tarde</u></i></h4>        
-            <ul type = square>
-            @foreach($estudiante->consumoHabitualDeAlimento as $consumoHabitual)
                 @if($consumoHabitual->tiempo_de_comida=='media_tarde')
                     @foreach($consumoHabitual->preparacionConsumoHabitualDeAlimentos as $preparacionCHA)
-                        <p><li>{{$preparacionCHA->nombre_alimento}}:</p>
-                        <ul type = circle>
                         @foreach($preparacionCHA->ingredientesPreparacionConsumoHabitualDeAlimento as $ingrediente)
-                            <p><li>{{$ingrediente->ingrediente.','.$ingrediente->cantidad_en_medidas_caseras.','.$ingrediente->numero_de_porciones.','.$ingrediente->grupo_de_alimentos}}</p>
+                            <?php $media_tarde ++; ?>
                         @endforeach
-                        </ul>
                     @endforeach
                 @endif
-            @endforeach
-            </ul><br>
-            <h4><i><u>Cena</u></i></h4>        
-            <ul type = square>
-            @foreach($estudiante->consumoHabitualDeAlimento as $consumoHabitual)
                 @if($consumoHabitual->tiempo_de_comida=='merienda')
                     @foreach($consumoHabitual->preparacionConsumoHabitualDeAlimentos as $preparacionCHA)
-                        <p><li>{{$preparacionCHA->nombre_alimento}}:</p>
-                        <ul type = circle>
                         @foreach($preparacionCHA->ingredientesPreparacionConsumoHabitualDeAlimento as $ingrediente)
-                            <p><li>{{$ingrediente->ingrediente.','.$ingrediente->cantidad_en_medidas_caseras.','.$ingrediente->numero_de_porciones.','.$ingrediente->grupo_de_alimentos}}</p>
+                            <?php $merienda ++; ?>
                         @endforeach
-                        </ul>
                     @endforeach
                 @endif
             @endforeach
-            </ul><br>            
-        </div>            
-      
+
+            @foreach($estudiante->consumoHabitualDeAlimento as $consumoHabitual)            
+                @if($consumoHabitual->tiempo_de_comida=='desayuno')
+                    <?php $i = 0; ?>                    
+                    @foreach($consumoHabitual->preparacionConsumoHabitualDeAlimentos as $preparacionCHA)
+                        @if($i==0)
+                            <tr>
+                                <?php echo "<th class='text-center' align='middle' rowspan=".$desayuno.">Desayuno</td>"; ?>
+                                <?php $totalIngredientes=0; ?>
+                                @foreach($preparacionCHA->ingredientesPreparacionConsumoHabitualDeAlimento as $ingrediente)
+                                    <?php $totalIngredientes ++; ?>
+                                @endforeach
+                                <?php $j = 0; ?>
+                                @foreach($preparacionCHA->ingredientesPreparacionConsumoHabitualDeAlimento as $ingrediente)
+                                    @if($j==0)
+                                        <?php echo "<td rowspan=".$totalIngredientes.">".$preparacionCHA->nombre_alimento."</td>"; ?>
+                                        <td>{{$ingrediente->ingrediente}}</td>
+                                        <td>{{$ingrediente->cantidad_en_medidas_caseras}}</td>
+                                        <td>{{$ingrediente->numero_de_porciones}}</td>
+                                        <td>{{$ingrediente->grupo_de_alimentos}}</td>
+                                    @else
+                                        <tr>
+                                            <td>{{$ingrediente->ingrediente}}</td>
+                                            <td>{{$ingrediente->cantidad_en_medidas_caseras}}</td>
+                                            <td>{{$ingrediente->numero_de_porciones}}</td>
+                                            <td>{{$ingrediente->grupo_de_alimentos}}</td>
+                                        </tr>
+                                    @endif
+                                <?php $j++; ?>                                        
+                                @endforeach                           
+                            </tr>
+                        @else
+                            <?php $totalIngredientes=0; ?>
+                                @foreach($preparacionCHA->ingredientesPreparacionConsumoHabitualDeAlimento as $ingrediente)
+                                    <?php $totalIngredientes ++; ?>
+                                @endforeach
+                                <?php $j = 0; ?>
+                                @foreach($preparacionCHA->ingredientesPreparacionConsumoHabitualDeAlimento as $ingrediente)
+                                    @if($j==0)
+                                        <?php echo "<td rowspan=".$totalIngredientes.">".$preparacionCHA->nombre_alimento."</td>"; ?>
+                                        <td>{{$ingrediente->ingrediente}}</td>
+                                        <td>{{$ingrediente->cantidad_en_medidas_caseras}}</td>
+                                        <td>{{$ingrediente->numero_de_porciones}}</td>
+                                        <td>{{$ingrediente->grupo_de_alimentos}}</td>
+                                    @else
+                                        <tr>
+                                            <td>{{$ingrediente->ingrediente}}</td>
+                                            <td>{{$ingrediente->cantidad_en_medidas_caseras}}</td>
+                                            <td>{{$ingrediente->numero_de_porciones}}</td>
+                                            <td>{{$ingrediente->grupo_de_alimentos}}</td>
+                                        </tr>
+                                    @endif
+                                <?php $j++; ?>                                        
+                                @endforeach
+                        @endif
+                    <?php $i++; ?>                                             
+                    @endforeach                
+                @endif
+                @if($consumoHabitual->tiempo_de_comida=='media_manana')
+                    <?php $i = 0; ?>                    
+                    @foreach($consumoHabitual->preparacionConsumoHabitualDeAlimentos as $preparacionCHA)
+                        @if($i==0)
+                            <tr>
+                                <?php echo "<th class='text-center' rowspan=".$media_manana.">Media Mañana</td>"; ?>
+                                <?php $totalIngredientes=0; ?>
+                                @foreach($preparacionCHA->ingredientesPreparacionConsumoHabitualDeAlimento as $ingrediente)
+                                    <?php $totalIngredientes ++; ?>
+                                @endforeach
+                                <?php $j = 0; ?>
+                                @foreach($preparacionCHA->ingredientesPreparacionConsumoHabitualDeAlimento as $ingrediente)
+                                    @if($j==0)
+                                        <?php echo "<td rowspan=".$totalIngredientes.">".$preparacionCHA->nombre_alimento."</td>"; ?>
+                                        <td>{{$ingrediente->ingrediente}}</td>
+                                        <td>{{$ingrediente->cantidad_en_medidas_caseras}}</td>
+                                        <td>{{$ingrediente->numero_de_porciones}}</td>
+                                        <td>{{$ingrediente->grupo_de_alimentos}}</td>
+                                    @else
+                                        <tr>
+                                            <td>{{$ingrediente->ingrediente}}</td>
+                                            <td>{{$ingrediente->cantidad_en_medidas_caseras}}</td>
+                                            <td>{{$ingrediente->numero_de_porciones}}</td>
+                                            <td>{{$ingrediente->grupo_de_alimentos}}</td>
+                                        </tr>
+                                    @endif
+                                <?php $j++; ?>                                        
+                                @endforeach                           
+                            </tr>
+                        @else
+                            <?php $totalIngredientes=0; ?>
+                                @foreach($preparacionCHA->ingredientesPreparacionConsumoHabitualDeAlimento as $ingrediente)
+                                    <?php $totalIngredientes ++; ?>
+                                @endforeach
+                                <?php $j = 0; ?>
+                                @foreach($preparacionCHA->ingredientesPreparacionConsumoHabitualDeAlimento as $ingrediente)
+                                    @if($j==0)
+                                        <?php echo "<td rowspan=".$totalIngredientes.">".$preparacionCHA->nombre_alimento."</td>"; ?>
+                                        <td>{{$ingrediente->ingrediente}}</td>
+                                        <td>{{$ingrediente->cantidad_en_medidas_caseras}}</td>
+                                        <td>{{$ingrediente->numero_de_porciones}}</td>
+                                        <td>{{$ingrediente->grupo_de_alimentos}}</td>
+                                    @else
+                                        <tr>
+                                            <td>{{$ingrediente->ingrediente}}</td>
+                                            <td>{{$ingrediente->cantidad_en_medidas_caseras}}</td>
+                                            <td>{{$ingrediente->numero_de_porciones}}</td>
+                                            <td>{{$ingrediente->grupo_de_alimentos}}</td>
+                                        </tr>
+                                    @endif
+                                <?php $j++; ?>                                        
+                                @endforeach
+                        @endif
+                    <?php $i++; ?>                                             
+                    @endforeach                
+                @endif
+                @if($consumoHabitual->tiempo_de_comida=='almuerzo')
+                    <?php $i = 0; ?>                    
+                    @foreach($consumoHabitual->preparacionConsumoHabitualDeAlimentos as $preparacionCHA)
+                        @if($i==0)
+                            <tr>
+                                <?php echo "<th class='text-center' rowspan=".$almuerzo.">Almuerzo</td>"; ?>
+                                <?php $totalIngredientes=0; ?>
+                                @foreach($preparacionCHA->ingredientesPreparacionConsumoHabitualDeAlimento as $ingrediente)
+                                    <?php $totalIngredientes ++; ?>
+                                @endforeach
+                                <?php $j = 0; ?>
+                                @foreach($preparacionCHA->ingredientesPreparacionConsumoHabitualDeAlimento as $ingrediente)
+                                    @if($j==0)
+                                        <?php echo "<td rowspan=".$totalIngredientes.">".$preparacionCHA->nombre_alimento."</td>"; ?>
+                                        <td>{{$ingrediente->ingrediente}}</td>
+                                        <td>{{$ingrediente->cantidad_en_medidas_caseras}}</td>
+                                        <td>{{$ingrediente->numero_de_porciones}}</td>
+                                        <td>{{$ingrediente->grupo_de_alimentos}}</td>
+                                    @else
+                                        <tr>
+                                            <td>{{$ingrediente->ingrediente}}</td>
+                                            <td>{{$ingrediente->cantidad_en_medidas_caseras}}</td>
+                                            <td>{{$ingrediente->numero_de_porciones}}</td>
+                                            <td>{{$ingrediente->grupo_de_alimentos}}</td>
+                                        </tr>
+                                    @endif
+                                <?php $j++; ?>                                        
+                                @endforeach                           
+                            </tr>
+                        @else
+                            <?php $totalIngredientes=0; ?>
+                                @foreach($preparacionCHA->ingredientesPreparacionConsumoHabitualDeAlimento as $ingrediente)
+                                    <?php $totalIngredientes ++; ?>
+                                @endforeach
+                                <?php $j = 0; ?>
+                                @foreach($preparacionCHA->ingredientesPreparacionConsumoHabitualDeAlimento as $ingrediente)
+                                    @if($j==0)
+                                        <?php echo "<td rowspan=".$totalIngredientes.">".$preparacionCHA->nombre_alimento."</td>"; ?>
+                                        <td>{{$ingrediente->ingrediente}}</td>
+                                        <td>{{$ingrediente->cantidad_en_medidas_caseras}}</td>
+                                        <td>{{$ingrediente->numero_de_porciones}}</td>
+                                        <td>{{$ingrediente->grupo_de_alimentos}}</td>
+                                    @else
+                                        <tr>
+                                            <td>{{$ingrediente->ingrediente}}</td>
+                                            <td>{{$ingrediente->cantidad_en_medidas_caseras}}</td>
+                                            <td>{{$ingrediente->numero_de_porciones}}</td>
+                                            <td>{{$ingrediente->grupo_de_alimentos}}</td>
+                                        </tr>
+                                    @endif
+                                <?php $j++; ?>                                        
+                                @endforeach
+                        @endif
+                    <?php $i++; ?>                                             
+                    @endforeach                
+                @endif
+                @if($consumoHabitual->tiempo_de_comida=='media_tarde')
+                    <?php $i = 0; ?>                    
+                    @foreach($consumoHabitual->preparacionConsumoHabitualDeAlimentos as $preparacionCHA)
+                        @if($i==0)
+                            <tr>
+                                <?php echo "<th class='text-center' rowspan=".$media_tarde.">Media Tarde</td>"; ?>
+                                <?php $totalIngredientes=0; ?>
+                                @foreach($preparacionCHA->ingredientesPreparacionConsumoHabitualDeAlimento as $ingrediente)
+                                    <?php $totalIngredientes ++; ?>
+                                @endforeach
+                                <?php $j = 0; ?>
+                                @foreach($preparacionCHA->ingredientesPreparacionConsumoHabitualDeAlimento as $ingrediente)
+                                    @if($j==0)
+                                        <?php echo "<td rowspan=".$totalIngredientes.">".$preparacionCHA->nombre_alimento."</td>"; ?>
+                                        <td>{{$ingrediente->ingrediente}}</td>
+                                        <td>{{$ingrediente->cantidad_en_medidas_caseras}}</td>
+                                        <td>{{$ingrediente->numero_de_porciones}}</td>
+                                        <td>{{$ingrediente->grupo_de_alimentos}}</td>
+                                    @else
+                                        <tr>
+                                            <td>{{$ingrediente->ingrediente}}</td>
+                                            <td>{{$ingrediente->cantidad_en_medidas_caseras}}</td>
+                                            <td>{{$ingrediente->numero_de_porciones}}</td>
+                                            <td>{{$ingrediente->grupo_de_alimentos}}</td>
+                                        </tr>
+                                    @endif
+                                <?php $j++; ?>                                        
+                                @endforeach                           
+                            </tr>
+                        @else
+                            <?php $totalIngredientes=0; ?>
+                                @foreach($preparacionCHA->ingredientesPreparacionConsumoHabitualDeAlimento as $ingrediente)
+                                    <?php $totalIngredientes ++; ?>
+                                @endforeach
+                                <?php $j = 0; ?>
+                                @foreach($preparacionCHA->ingredientesPreparacionConsumoHabitualDeAlimento as $ingrediente)
+                                    @if($j==0)
+                                        <?php echo "<td rowspan=".$totalIngredientes.">".$preparacionCHA->nombre_alimento."</td>"; ?>
+                                        <td>{{$ingrediente->ingrediente}}</td>
+                                        <td>{{$ingrediente->cantidad_en_medidas_caseras}}</td>
+                                        <td>{{$ingrediente->numero_de_porciones}}</td>
+                                        <td>{{$ingrediente->grupo_de_alimentos}}</td>
+                                    @else
+                                        <tr>
+                                            <td>{{$ingrediente->ingrediente}}</td>
+                                            <td>{{$ingrediente->cantidad_en_medidas_caseras}}</td>
+                                            <td>{{$ingrediente->numero_de_porciones}}</td>
+                                            <td>{{$ingrediente->grupo_de_alimentos}}</td>
+                                        </tr>
+                                    @endif
+                                <?php $j++; ?>                                        
+                                @endforeach
+                        @endif
+                    <?php $i++; ?>                                             
+                    @endforeach                
+                @endif
+                @if($consumoHabitual->tiempo_de_comida=='merienda')
+                    <?php $i = 0; ?>                    
+                    @foreach($consumoHabitual->preparacionConsumoHabitualDeAlimentos as $preparacionCHA)
+                        @if($i==0)
+                            <tr>
+                                <?php echo "<th class='text-center' rowspan=".$merienda.">Merienda</td>"; ?>
+                                <?php $totalIngredientes=0; ?>
+                                @foreach($preparacionCHA->ingredientesPreparacionConsumoHabitualDeAlimento as $ingrediente)
+                                    <?php $totalIngredientes ++; ?>
+                                @endforeach
+                                <?php $j = 0; ?>
+                                @foreach($preparacionCHA->ingredientesPreparacionConsumoHabitualDeAlimento as $ingrediente)
+                                    @if($j==0)
+                                        <?php echo "<td rowspan=".$totalIngredientes.">".$preparacionCHA->nombre_alimento."</td>"; ?>
+                                        <td>{{$ingrediente->ingrediente}}</td>
+                                        <td>{{$ingrediente->cantidad_en_medidas_caseras}}</td>
+                                        <td>{{$ingrediente->numero_de_porciones}}</td>
+                                        <td>{{$ingrediente->grupo_de_alimentos}}</td>
+                                    @else
+                                        <tr>
+                                            <td>{{$ingrediente->ingrediente}}</td>
+                                            <td>{{$ingrediente->cantidad_en_medidas_caseras}}</td>
+                                            <td>{{$ingrediente->numero_de_porciones}}</td>
+                                            <td>{{$ingrediente->grupo_de_alimentos}}</td>
+                                        </tr>
+                                    @endif
+                                <?php $j++; ?>                                        
+                                @endforeach                           
+                            </tr>
+                        @else
+                            <?php $totalIngredientes=0; ?>
+                                @foreach($preparacionCHA->ingredientesPreparacionConsumoHabitualDeAlimento as $ingrediente)
+                                    <?php $totalIngredientes ++; ?>
+                                @endforeach
+                                <?php $j = 0; ?>
+                                @foreach($preparacionCHA->ingredientesPreparacionConsumoHabitualDeAlimento as $ingrediente)
+                                    @if($j==0)
+                                        <?php echo "<td rowspan=".$totalIngredientes.">".$preparacionCHA->nombre_alimento."</td>"; ?>
+                                        <td>{{$ingrediente->ingrediente}}</td>
+                                        <td>{{$ingrediente->cantidad_en_medidas_caseras}}</td>
+                                        <td>{{$ingrediente->numero_de_porciones}}</td>
+                                        <td>{{$ingrediente->grupo_de_alimentos}}</td>
+                                    @else
+                                        <tr>
+                                            <td>{{$ingrediente->ingrediente}}</td>
+                                            <td>{{$ingrediente->cantidad_en_medidas_caseras}}</td>
+                                            <td>{{$ingrediente->numero_de_porciones}}</td>
+                                            <td>{{$ingrediente->grupo_de_alimentos}}</td>
+                                        </tr>
+                                    @endif
+                                <?php $j++; ?>                                        
+                                @endforeach
+                        @endif
+                    <?php $i++; ?>                                             
+                    @endforeach                
+                @endif            
+            @endforeach
+            </table>                        
+        </div>      
     </div>
-    *Información de ingredientes: nombre, cantidad en medidas caseras, número de porciones y grupo de alimento.
 </div>
 
 @endif
