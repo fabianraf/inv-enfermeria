@@ -295,7 +295,7 @@
 				</div>
 				{{ Form::close() }}
 			</div>
-			<p><li><strong>Foto: </strong>{{ Form::text('foto', $alimento_bares->url_foto, array('size'=>'40'))}}</p>
+			<!--<p><li><strong>Foto: </strong>{{ Form::text('foto', $alimento_bares->url_foto, array('size'=>'40'))}}</p>-->
 </div>
 	
 
