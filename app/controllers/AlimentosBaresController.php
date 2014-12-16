@@ -83,7 +83,7 @@ class AlimentosBaresController extends BaseController {
 				$alimento_bares->fraccion_comestible = ($campos['fraccion_comestible']!='' ? $campos['fraccion_comestible'] : '0');
 				$alimento_bares->carbohidratos_disponibles = ($campos['carbohidratos_disponibles']!='' ? $campos['carbohidratos_disponibles'] : '0');
 				$alimento_bares->fibra_cruda = ($campos['fibra_cruda']!='' ? $campos['fibra_cruda'] : '0');
-				$alimento_bares->url_foto =$campos['foto'];
+				//$alimento_bares->url_foto =$campos['foto'];
 				$alimento_bares->save();
 				$tipo_de_alimento_bares_id = $alimento_bares->tipo_de_alimento_bares_id;
 				$tipo_de_alimento_bares = TipoDeAlimentoBares::find($tipo_de_alimento_bares_id);
