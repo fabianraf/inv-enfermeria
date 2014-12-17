@@ -82,10 +82,7 @@ class AlimentosController extends BaseController {
 				$alimento->acido_folico = ($campos['acido_folico']!='' ? $campos['acido_folico'] : '0');
 				$alimento->fraccion_comestible = ($campos['fraccion_comestible']!='' ? $campos['fraccion_comestible'] : '0');
 				$alimento->carbohidratos_disponibles = ($campos['carbohidratos_disponibles']!='' ? $campos['carbohidratos_disponibles'] : '0');
-<<<<<<< HEAD
-				$alimento->fibra_cruda = ($campos['fibra_cruda']!='' ? $campos['fibra_cruda'] : '0');
-=======
-				$alimento->fibra_cruda = ($campos['fibra_cruda']!='' ? $campos['fibra_cruda'] : '0');
+				$alimento->fibra_cruda = ($campos['fibra_cruda']!='' ? $campos['fibra_cruda'] : '0');				
 				$alimento->save();
 				$tipo_de_alimento_id = $alimento->tipo_de_alimento_id;
 				$tipo_de_alimento = TipoDeAlimento::find($tipo_de_alimento_id);
