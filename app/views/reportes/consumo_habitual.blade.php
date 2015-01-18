@@ -16,7 +16,14 @@
             <th>PROT (g)</th>
             <th>GRAS (g)</th>
             <th>Kcal Total</th>
-      </thead>         
+      </thead>
+      <?php 
+            $CHO = 0;
+            $PROT = 0;
+            $GRAS = 0;
+            $Kcal = 0;
+            $estudiantes = 0;
+      ?>         
         @foreach($users as $estudiante)        
         <tr>
             <?php echo "<td><a href='/reportes/consumo_habitual/".$estudiante->id."'><span class='glyphicon glyphicon-search'></span></td>";?>      
@@ -101,12 +108,33 @@
             <td>{{ $totalPROT }}</td>
             <td>{{ $totalGRAS }}</td>
             <td>{{ $totalKcal }}</td>
-            <td></td>                                  
+            <td></td>
+            <?php
+                  $CHO += $totalCHO;
+                  $PROT += $totalPROT;
+                  $GRAS += $totalGRAS;
+                  $Kcal += $totalKcal;
+                  $estudiantes ++;
+            ?>                                   
             
       </tr>     
         @endforeach
     </table>
   </div>
+
+<br>   
+<div class="row">   
+      <div class="col-sm-4"> 
+        <h4><i><u>Promedio Nutrientes</u></i></h4>        
+        <ul type = square>  
+            <p><li><strong>CHO (g): </strong>{{ $CHO/$estudiantes }}</p>
+            <p><li><strong>PROT (g): </strong>{{ $PROT/$estudiantes }}</p>
+            <p><li><strong>GRAS (g): </strong>{{ $GRAS/$estudiantes }}</p>
+            <p><li><strong>Kcal Total: </strong>{{ $Kcal/$estudiantes }}</p>
+        </div>        
+      </ul>
+    </div>
+
 </div>
 </div>
 
