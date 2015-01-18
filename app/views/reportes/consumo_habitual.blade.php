@@ -127,10 +127,10 @@
       <div class="col-sm-4"> 
         <h4><i><u>Promedio Nutrientes</u></i></h4>        
         <ul type = square>  
-            <p><li><strong>CHO (g): </strong>{{ $CHO/$estudiantes }}</p>
-            <p><li><strong>PROT (g): </strong>{{ $PROT/$estudiantes }}</p>
-            <p><li><strong>GRAS (g): </strong>{{ $GRAS/$estudiantes }}</p>
-            <p><li><strong>Kcal Total: </strong>{{ $Kcal/$estudiantes }}</p>
+            <p><li><strong>CHO (g): </strong>{{ round($CHO/$estudiantes,2) }}</p>
+            <p><li><strong>PROT (g): </strong>{{ round($PROT/$estudiantes,2) }}</p>
+            <p><li><strong>GRAS (g): </strong>{{ round($GRAS/$estudiantes,2) }}</p>
+            <p><li><strong>Kcal Total: </strong>{{ round($Kcal/$estudiantes,2) }}</p>
         </div>        
       </ul>
     </div>

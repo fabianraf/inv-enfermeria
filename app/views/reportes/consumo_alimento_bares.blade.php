@@ -359,50 +359,50 @@
   <br>   
 <div class="row">   
       <div class="col-sm-4"> 
-        <h4><i><u>Promedio Nutrientes</u></i></h4>      
+        <h4><i><u>Promedio Nutrientes</u></i></h4>        
         <ul type = square>            
-            <p><li><strong>Humedad: </strong>{{ $totalHumedad/$totalEstudiantes }}</p>
-            <p><li><strong>Calorías: </strong>{{ $totalCalorias/$totalEstudiantes }}</p>
-            <p><li><strong>Proteínas: </strong>{{ $totalProteinas/$totalEstudiantes }}</p>
-            <p><li><strong>Hidratos de C: </strong>{{ $totalHidratosDeC/$totalEstudiantes }}</p>
-            <p><li><strong>Fibra dietaria: </strong>{{ $totalFibraDietaria/$totalEstudiantes }}</p>
-            <p><li><strong>Lípidos: </strong>{{ $totalLipidos/$totalEstudiantes }}</p>
-            <p><li><strong>Acidos grasos saturados: </strong>{{ $totalAcidosGrasosSaturados/$totalEstudiantes }}</p>
-            <p><li><strong>Acidos grasos monoinsat: </strong>{{ $totalAcidosGrasosMonoinsat/$totalEstudiantes }}</p>
-            <p><li><strong>Acidos grasos polinsat: </strong>{{ $totalAcidosGrasosPolinsat/$totalEstudiantes }}</p>
-            <p><li><strong>Colesterol: </strong>{{ $totalColesterol/$totalEstudiantes }}</p>
-            <p><li><strong>N6: </strong>{{ $totalN6/$totalEstudiantes }}</p>
-            <p><li><strong>N3: </strong>{{ $totalN3/$totalEstudiantes }}</p>
-            <p><li><strong>Caroteno: </strong>{{ $totalCaroteno/$totalEstudiantes }}</p>
+            <p><li><strong>Humedad: </strong>{{ round($totalHumedad/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Calorías: </strong>{{ round($totalCalorias/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Proteínas: </strong>{{ round($totalProteinas/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Hidratos de C: </strong>{{ round($totalHidratosDeC/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Fibra dietaria: </strong>{{ round($totalFibraDietaria/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Lípidos: </strong>{{ round($totalLipidos/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Acidos grasos saturados: </strong>{{ round($totalAcidosGrasosSaturados/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Acidos grasos monoinsat: </strong>{{ round($totalAcidosGrasosMonoinsat/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Acidos grasos polinsat: </strong>{{ round($totalAcidosGrasosPolinsat/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Colesterol: </strong>{{ round($totalColesterol/$totalEstudiantes,2) }}</p>
+            <p><li><strong>N6: </strong>{{ round($totalN6/$totalEstudiantes,2) }}</p>
+            <p><li><strong>N3: </strong>{{ round($totalN3/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Caroteno: </strong>{{ round($totalCaroteno/$totalEstudiantes,2) }}</p>
         </div>
         <div class="col-sm-4">
-            <p><li><strong>Retinol re: </strong>{{ $totalRetinolRe/$totalEstudiantes }}</p>
-            <p><li><strong>Vitamina A total re: </strong>{{ $totalVitATotalRe/$totalEstudiantes }}</p>
-            <p><li><strong>Vitamina B1: </strong>{{ $totalVitB1/$totalEstudiantes }}</p>
-            <p><li><strong>Vitamina B2: </strong>{{ $totalVitB2/$totalEstudiantes }}</p>
-            <p><li><strong>Niacina: </strong>{{ $totalNiacina/$totalEstudiantes }}</p>
-            <p><li><strong>Vitamina B6: </strong>{{ $totalVitB6/$totalEstudiantes }}</p>
-            <p><li><strong>Vitamina B12: </strong>{{ $totalVitB12/$totalEstudiantes }}</p>
-            <p><li><strong>Folatos: </strong>{{ $totalFolatos/$totalEstudiantes }}</p>
-            <p><li><strong>Acido pantogénico: </strong>{{ $totalAcidoPantogenico/$totalEstudiantes }}</p>
-            <p><li><strong>Vitamina C: </strong>{{ $totalVitC/$totalEstudiantes }}</p>
-            <p><li><strong>Vitamina E: </strong>{{ $totalVitE/$totalEstudiantes }}</p>
-            <p><li><strong>Calcio: </strong>{{ $totalCalcio/$totalEstudiantes }}</p>
-            <p><li><strong>Cobre: </strong>{{ $totalCobre/$totalEstudiantes }}</p>
+            <p><li><strong>Retinol re: </strong>{{ round($totalRetinolRe/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Vitamina A total re: </strong>{{ round($totalVitATotalRe/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Vitamina B1: </strong>{{ round($totalVitB1/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Vitamina B2: </strong>{{ round($totalVitB2/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Niacina: </strong>{{ round($totalNiacina/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Vitamina B6: </strong>{{ round($totalVitB6/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Vitamina B12: </strong>{{ round($totalVitB12/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Folatos: </strong>{{ round($totalFolatos/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Acido pantogénico: </strong>{{ round($totalAcidoPantogenico/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Vitamina C: </strong>{{ round($totalVitC/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Vitamina E: </strong>{{ round($totalVitE/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Calcio: </strong>{{ round($totalCalcio/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Cobre: </strong>{{ round($totalCobre/$totalEstudiantes,2) }}</p>
         </div>
         <div class="col-sm-4">
-            <p><li><strong>Hierro: </strong>{{ $totalHierro/$totalEstudiantes }}</p>
-            <p><li><strong>Magnesio: </strong>{{ $totalMagnesio/$totalEstudiantes }}</p>
-            <p><li><strong>Fósforo: </strong>{{ $totalFosforo/$totalEstudiantes }}</p>
-            <p><li><strong>Potasio: </strong>{{ $totalPotasio/$totalEstudiantes }}</p>
-            <p><li><strong>Selenio: </strong>{{ $totalSelenio/$totalEstudiantes }}</p>
-            <p><li><strong>Sodio: </strong>{{ $totalSodio/$totalEstudiantes }}</p>
-            <p><li><strong>Zinc: </strong>{{ $totalZinc/$totalEstudiantes }}</p>
-            <p><li><strong>Cenizas: </strong>{{ $totalCenizas/$totalEstudiantes }}</p>
-            <p><li><strong>Acido fólico: </strong>{{ $totalAcidoFolico/$totalEstudiantes }}</p>
-            <p><li><strong>Fracción comestible: </strong>{{ $totalFraccionComestible/$totalEstudiantes }}</p>
-            <p><li><strong>Carbohidratos disponibles: </strong>{{ $totalCarbohidratosDisponibles/$totalEstudiantes }}</p>
-            <p><li><strong>Fibra cruda: </strong>{{ $totalFibraCruda/$totalEstudiantes }}</p>
+            <p><li><strong>Hierro: </strong>{{ round($totalHierro/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Magnesio: </strong>{{ round($totalMagnesio/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Fósforo: </strong>{{ round($totalFosforo/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Potasio: </strong>{{ round($totalPotasio/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Selenio: </strong>{{ round($totalSelenio/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Sodio: </strong>{{ round($totalSodio/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Zinc: </strong>{{ round($totalZinc/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Cenizas: </strong>{{ round($totalCenizas/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Acido fólico: </strong>{{ round($totalAcidoFolico/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Fracción comestible: </strong>{{ round($totalFraccionComestible/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Carbohidratos disponibles: </strong>{{ round($totalCarbohidratosDisponibles/$totalEstudiantes,2) }}</p>
+            <p><li><strong>Fibra cruda: </strong>{{ round($totalFibraCruda/$totalEstudiantes,2) }}</p>
         </div>        
       </ul>
     </div>
