@@ -78,6 +78,26 @@ class ReportesController extends BaseController {
 		return View::make('reportes.consumo_habitual_detalle', array('estudiante' => $estudiante));
 	}
 
+	public function reporteFrecuenciaDeConsumoBares(){
+		$encuestas_completas = 0;
+		if(isset(Input::all()['estudiante_id']))
+			$estudiante_id = Input::all()['estudiante_id'];
+		else
+			$estudiante_id = null;
+		$user = User::find(1);
+		$bloquear_encuestas = "";
+		if($user->encuestaAlimentosBares->count() == TipoDeAlimentoBares::get_total_alimentos_bares()){
+			$encuestas_completas = 1;
+		}
+
+		if(Auth::user()->perfilUsuario->nombre == "Estudiante" && $encuestas_completas == 1)
+			$bloquear_encuestas = "disabled";
+		$tipos_de_alimentos_bares = TipoDeAlimentoBares::orderBy('nombre')->get();
+        return View::make('reportes.consumoAlimentosBares', array('tipos_de_alimentos_bares' => $tipos_de_alimentos_bares, 
+        					'encuestas_completas' => $encuestas_completas, 'bloquear_encuestas' => $bloquear_encuestas,
+        					'user' => $user));		
+	}
+
 	public function calcularDatosEncuestaAlimentosUniversidadEstudiante($id){
 		$estudiante = User::find($id);
 		$totalCalorias = 0;
