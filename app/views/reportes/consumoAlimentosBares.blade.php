@@ -5,7 +5,7 @@
 {{ Form::open(array('url' => 'encuesta_consumo_alimentos_bares?estudiante_id=' . $user->id, 'id' => 'encuesta_consumo_alimentos_bares')) }}
 <input type="hidden" id="tipo_de_alimentos" name="tipo_de_alimentos" value="{{TipoDeAlimentoBares::get_total_alimentos_bares()}}">
 <div class="col-lg-12">
-	<h2>Frecuencia de consumo de alimentos en los bares de la Universidad</h2>
+	<h2>Frecuencia de consumo de alimentos en los bares de la Universidad (BIOQUÍMICA)</h2>
 	<input type="hidden" name="estudiante_id" value="{{$user->id}}" id="estudiante_id">
 	<hr>
 	<div class="col-lg-12">
